@@ -2386,3 +2386,11 @@ footer .textoAnimado span .charFooter {
   color: var(--color-light);
   margin: 0;
 }
+
+.construtor{
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
