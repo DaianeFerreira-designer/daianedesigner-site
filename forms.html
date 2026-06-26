@@ -1,0 +1,899 @@
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Orçamento | Grupo WebHub</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+
+    <!-- intl-tel-input CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/css/intlTelInput.css"
+    />
+
+    <!-- Form styles -->
+    <link rel="stylesheet" href="styl.css" />
+  </head>
+  <body cz-shortcut-listen="true">
+    <div class="app-wrapper">
+      <!-- ═══════════════════════════════════════════════════
+       LEFT PANEL — static, golden gradient
+  ════════════════════════════════════════════════════ -->
+      <aside
+        class="left-panel"
+        id="leftPanel"
+        aria-label="Informações do formulário">
+        <div class="lp-bg" aria-hidden="true">
+          <div class="lp-glow"></div>
+          <div class="lp-glow lp-glow--secondary"></div>
+        </div>
+
+        <div class="lp-content">
+          <!-- Logo -->
+          <div class="lp-logo" aria-label="Grupo WebHub">
+            <img src="../assets/img/logo.svg" alt="Logotipo Grupo WebHub" />
+          </div>
+
+          <!-- Title -->
+          <h1 class="lp-title">Vamos criar algo incrível juntos!</h1>
+
+          <!-- Step cards -->
+          <div class="lp-steps" role="list">
+            <div
+              class="step-card step-card--active"
+              id="stepCard1"
+              role="listitem"
+            >
+              <div class="step-badge">1</div>
+              <p>Insira suas informações</p>
+            </div>
+            <div class="step-card" id="stepCard2" role="listitem">
+              <div class="step-badge">2</div>
+              <p>Detalhes do seu projeto</p>
+            </div>
+            <div class="step-card" id="stepCard3" role="listitem">
+              <div class="step-badge">3</div>
+              <p>Entraremos em contato</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ═══════════════════════════════════════════════════
+       RIGHT PANEL — scrollable form
+  ════════════════════════════════════════════════════ -->
+      <main class="right-panel" id="rightPanel">
+        <!-- Progress bar (3 segments) -->
+        <div
+          class="progress-wrap"
+          role="progressbar"
+          aria-label="Progresso do formulário"
+          aria-valuenow="0"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          id="progressBar"
+        >
+          <div class="prog-seg"><div class="prog-fill" id="pf1"></div></div>
+          <div class="prog-seg"><div class="prog-fill" id="pf2"></div></div>
+          <div class="prog-seg"><div class="prog-fill" id="pf3"></div></div>
+        </div>
+
+        <!-- Form -->
+        <div class="form-wrap">
+          <form id="mainForm" novalidate="" autocomplete="off">
+            <!-- Anti-CSRF -->
+            <input
+              type="hidden"
+              name="csrf_token"
+              value="d5494f6e2b2dcf11afb66c63dbe317c696219dc164a3ee596429b9de76445da8"
+            />
+
+            <!-- Honeypot (hidden from real users, traps bots) -->
+            <div class="hp-trap" aria-hidden="true">
+              <input
+                type="text"
+                name="website"
+                tabindex="-1"
+                autocomplete="off"
+                aria-label="leave empty"
+              />
+            </div>
+
+            <!-- ──────────────────────────────────────────
+             STEP 1  —  Basic info (Q1–Q4)
+        ─────────────────────────────────────────── -->
+            <div class="form-step" id="formStep1">
+              <!-- Q1 — Nome -->
+              <div class="field-group">
+                <label class="field-label" for="nome">
+                  Olá! Qual o seu nome?
+                </label>
+                <input
+                  type="text"
+                  id="nome"
+                  name="nome"
+                  class="field-input"
+                  placeholder="Digite aqui..."
+                  maxlength="100"
+                  autocomplete="name"
+                  spellcheck="false"
+                  aria-required="true"
+                  aria-describedby="nomeErr"
+                  fdprocessedid="dtomso"
+                />
+                <span class="field-error" id="nomeErr" role="alert"></span>
+              </div>
+
+              <!-- Q2 — WhatsApp -->
+              <div class="field-group">
+                <label class="field-label" for="phone">
+                  Qual o seu WhatsApp para contato?
+                </label>
+                <div class="phone-wrap">
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="whatsapp"
+                    class="field-input"
+                    placeholder="11 96123-4567"
+                    autocomplete="tel"
+                    aria-required="true"
+                    aria-describedby="phoneErr"
+                  />
+                </div>
+                <span class="field-error" id="phoneErr" role="alert"></span>
+              </div>
+
+              <!-- Q3 — Negócio -->
+              <div class="field-group">
+                <label class="field-label" for="sobre_negocio">
+                  Me conta um pouco sobre seu negócio.
+                </label>
+                <textarea
+                  id="sobre_negocio"
+                  name="sobre_negocio"
+                  class="field-input field-textarea"
+                  placeholder="Somos uma agência que..."
+                  maxlength="2000"
+                  rows="4"
+                  aria-required="true"
+                  aria-describedby="sobreErr"
+                ></textarea>
+                <span class="field-error" id="sobreErr" role="alert"></span>
+              </div>
+
+              <!-- Q4 — Instagram / site -->
+              <div class="field-group">
+                <label class="field-label" for="instagram_site">
+                  Qual o Instagram ou site da sua empresa?
+                </label>
+                <input
+                  type="text"
+                  id="instagram_site"
+                  name="instagram_site"
+                  class="field-input"
+                  placeholder="Insira o link aqui"
+                  maxlength="500"
+                  autocomplete="url"
+                  aria-required="true"
+                  aria-describedby="instagramErr"
+                  fdprocessedid="yjsk7"
+                />
+                <span class="field-error" id="instagramErr" role="alert"></span>
+              </div>
+
+              <div class="form-nav">
+                <button
+                  type="button"
+                  class="btn-primary"
+                  id="btnNextStep1"
+                  fdprocessedid="hp4brp"
+                >
+                  Próximo
+                </button>
+              </div>
+            </div>
+            <!-- /formStep1 -->
+
+            <!-- ──────────────────────────────────────────
+             STEP 2  —  Project details (Q5–Q11)
+        ─────────────────────────────────────────── -->
+            <div
+              class="form-step form-step--hidden"
+              id="formStep2"
+              aria-hidden="true"
+            >
+              <!-- Q5 — Presença digital -->
+              <div class="field-group">
+                <p class="field-label" id="presencaLabel">
+                  Atualmente, como está sua presença digital?
+                </p>
+                <div
+                  class="options-grid"
+                  role="radiogroup"
+                  aria-labelledby="presencaLabel"
+                  aria-required="true"
+                >
+                  <label
+                    class="option-card"
+                    for="pd_4f4cb1558e6c9dd312b6f4bdc7023c9c"
+                  >
+                    <input
+                      type="radio"
+                      id="pd_4f4cb1558e6c9dd312b6f4bdc7023c9c"
+                      name="presenca_digital"
+                      value="Não tenho site nem redes estruturadas"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text"
+                      >Não tenho site nem redes estruturadas</span
+                    >
+                  </label>
+                  <label
+                    class="option-card"
+                    for="pd_938e2cb22ac4c4629e85dccfcf7fd163"
+                  >
+                    <input
+                      type="radio"
+                      id="pd_938e2cb22ac4c4629e85dccfcf7fd163"
+                      name="presenca_digital"
+                      value="Tenho redes sociais ativas, mas não tenho site"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text"
+                      >Tenho redes sociais ativas, mas não tenho site</span
+                    >
+                  </label>
+                  <label
+                    class="option-card"
+                    for="pd_74db5892fff87bf26b180d709e3e7cfa"
+                  >
+                    <input
+                      type="radio"
+                      id="pd_74db5892fff87bf26b180d709e3e7cfa"
+                      name="presenca_digital"
+                      value="Tenho site, mas ele não converte / está desatualizado"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text"
+                      >Tenho site, mas ele não converte / está
+                      desatualizado</span
+                    >
+                  </label>
+                  <label
+                    class="option-card"
+                    for="pd_5b13d274e7711ec3e2c770a19cc480c2"
+                  >
+                    <input
+                      type="radio"
+                      id="pd_5b13d274e7711ec3e2c770a19cc480c2"
+                      name="presenca_digital"
+                      value="Tenho site e sistema funcionando, quero melhorar/escalar"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text"
+                      >Tenho site e sistema funcionando, quero
+                      melhorar/escalar</span
+                    >
+                  </label>
+                </div>
+                <span class="field-error" id="presencaErr" role="alert"></span>
+              </div>
+
+              <!-- Q6 — Tipo de projeto (checkbox) -->
+              <div class="field-group">
+                <p class="field-label" id="tipoLabel">
+                  Qual tipo de projeto você precisa?
+                  <span class="label-hint">pode marcar mais de um</span>
+                </p>
+                <div
+                  class="options-grid"
+                  role="group"
+                  aria-labelledby="tipoLabel"
+                  aria-required="true"
+                >
+                  <label
+                    class="option-card option-card--check"
+                    for="tp_dbf9772b2805eb1ff68bea96088671e8"
+                  >
+                    <input
+                      type="checkbox"
+                      id="tp_dbf9772b2805eb1ff68bea96088671e8"
+                      name="tipo_projeto[]"
+                      value="Landing Page"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">
+                      Landing Page
+                      <span class="opt-sub"
+                        >página única para captação/venda</span
+                      >
+                    </span>
+                  </label>
+                  <label
+                    class="option-card option-card--check"
+                    for="tp_7c1adbcec66a7f1096a153c06214288d"
+                  >
+                    <input
+                      type="checkbox"
+                      id="tp_7c1adbcec66a7f1096a153c06214288d"
+                      name="tipo_projeto[]"
+                      value="Site institucional"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">
+                      Site institucional
+                      <span class="opt-sub">apresentar a empresa</span>
+                    </span>
+                  </label>
+                  <label
+                    class="option-card option-card--check"
+                    for="tp_be8df1f28c0abc85a0ed0c6860e5d832"
+                  >
+                    <input
+                      type="checkbox"
+                      id="tp_be8df1f28c0abc85a0ed0c6860e5d832"
+                      name="tipo_projeto[]"
+                      value="Blog"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">
+                      Blog <span class="opt-sub">conteúdo e SEO</span>
+                    </span>
+                  </label>
+                  <label
+                    class="option-card option-card--check"
+                    for="tp_37b24e8a94d444a1383d4bcd149ca370"
+                  >
+                    <input
+                      type="checkbox"
+                      id="tp_37b24e8a94d444a1383d4bcd149ca370"
+                      name="tipo_projeto[]"
+                      value="E-commerce"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">
+                      E-commerce <span class="opt-sub">loja virtual</span>
+                    </span>
+                  </label>
+                  <label
+                    class="option-card option-card--check"
+                    for="tp_931697e8b5723e4abdce2d038d881472"
+                  >
+                    <input
+                      type="checkbox"
+                      id="tp_931697e8b5723e4abdce2d038d881472"
+                      name="tipo_projeto[]"
+                      value="Sistema / Aplicativo sob medida"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">
+                      Sistema / Aplicativo sob medida
+                    </span>
+                  </label>
+                  <label
+                    class="option-card option-card--check"
+                    for="tp_60ff25d577e6820c9b1cecc36bf8f204"
+                  >
+                    <input
+                      type="checkbox"
+                      id="tp_60ff25d577e6820c9b1cecc36bf8f204"
+                      name="tipo_projeto[]"
+                      value="Ainda não sei, preciso de consultoria"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">
+                      Ainda não sei, preciso de consultoria
+                    </span>
+                  </label>
+                </div>
+                <span class="field-error" id="tipoErr" role="alert"></span>
+              </div>
+
+              <!-- Q7 — Objetivo -->
+              <div class="field-group">
+                <p class="field-label" id="objetivoLabel">
+                  Qual é o principal objetivo desse projeto?
+                </p>
+                <div
+                  class="options-grid"
+                  role="radiogroup"
+                  aria-labelledby="objetivoLabel"
+                >
+                  <label
+                    class="option-card"
+                    for="obj_ee14b36cf09d94f99bc40912c26270c9"
+                  >
+                    <input
+                      type="radio"
+                      id="obj_ee14b36cf09d94f99bc40912c26270c9"
+                      name="objetivo_projeto"
+                      value="Aumentar vendas / gerar mais leads"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text"
+                      >Aumentar vendas / gerar mais leads</span
+                    >
+                  </label>
+                  <label
+                    class="option-card"
+                    for="obj_fd24926ec3264eb109f0ca33afd31c21"
+                  >
+                    <input
+                      type="radio"
+                      id="obj_fd24926ec3264eb109f0ca33afd31c21"
+                      name="objetivo_projeto"
+                      value="Profissionalizar a marca / ganhar autoridade"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text"
+                      >Profissionalizar a marca / ganhar autoridade</span
+                    >
+                  </label>
+                  <label
+                    class="option-card"
+                    for="obj_613471ae9f94fa52454e256d8d31fc21"
+                  >
+                    <input
+                      type="radio"
+                      id="obj_613471ae9f94fa52454e256d8d31fc21"
+                      name="objetivo_projeto"
+                      value="Automatizar processos internos"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">Automatizar processos internos</span>
+                  </label>
+                  <label
+                    class="option-card"
+                    for="obj_861c3efdaf24718bc22d66feb068135f"
+                  >
+                    <input
+                      type="radio"
+                      id="obj_861c3efdaf24718bc22d66feb068135f"
+                      name="objetivo_projeto"
+                      value="Substituir um site/sistema que não funciona"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text"
+                      >Substituir um site/sistema que não funciona</span
+                    >
+                  </label>
+                  <label
+                    class="option-card"
+                    for="obj_9de91f15a55f0f42e748d8e5c803eca0"
+                  >
+                    <input
+                      type="radio"
+                      id="obj_9de91f15a55f0f42e748d8e5c803eca0"
+                      name="objetivo_projeto"
+                      value="Lançar um novo produto/serviço"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">Lançar um novo produto/serviço</span>
+                  </label>
+                </div>
+                <span class="field-error" id="objetivoErr" role="alert"></span>
+              </div>
+
+              <!-- Q8 — Faturamento -->
+              <div class="field-group">
+                <p class="field-label" id="fatLabel">
+                  Qual a média mensal de faturamento da sua empresa?
+                </p>
+                <div
+                  class="options-grid options-grid--2col"
+                  role="radiogroup"
+                  aria-labelledby="fatLabel"
+                >
+                  <label
+                    class="option-card"
+                    for="fat_99aabab0b20b16ea4d06dcb3bb53226f"
+                  >
+                    <input
+                      type="radio"
+                      id="fat_99aabab0b20b16ea4d06dcb3bb53226f"
+                      name="faturamento_mensal"
+                      value="Até 5k"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">Até 5k</span>
+                  </label>
+                  <label
+                    class="option-card"
+                    for="fat_d08260fee87c24264b8a258622e11b6f"
+                  >
+                    <input
+                      type="radio"
+                      id="fat_d08260fee87c24264b8a258622e11b6f"
+                      name="faturamento_mensal"
+                      value="5k – 10k"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">5k – 10k</span>
+                  </label>
+                  <label
+                    class="option-card"
+                    for="fat_69fc04aa36e60e0f65377a8fcb1d14b9"
+                  >
+                    <input
+                      type="radio"
+                      id="fat_69fc04aa36e60e0f65377a8fcb1d14b9"
+                      name="faturamento_mensal"
+                      value="10k – 30k"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">10k – 30k</span>
+                  </label>
+                  <label
+                    class="option-card"
+                    for="fat_f35b318c74300408df5cf1bcde03a7fe"
+                  >
+                    <input
+                      type="radio"
+                      id="fat_f35b318c74300408df5cf1bcde03a7fe"
+                      name="faturamento_mensal"
+                      value="30k – 50k"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">30k – 50k</span>
+                  </label>
+                  <label
+                    class="option-card"
+                    for="fat_4ff3801d9996a12370120fa7b3274027"
+                  >
+                    <input
+                      type="radio"
+                      id="fat_4ff3801d9996a12370120fa7b3274027"
+                      name="faturamento_mensal"
+                      value="50k – 100k"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">50k – 100k</span>
+                  </label>
+                  <label
+                    class="option-card"
+                    for="fat_f5a62b35ef060705c0f080a21918082b"
+                  >
+                    <input
+                      type="radio"
+                      id="fat_f5a62b35ef060705c0f080a21918082b"
+                      name="faturamento_mensal"
+                      value="Acima de 100k"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">Acima de 100k</span>
+                  </label>
+                  <label
+                    class="option-card"
+                    for="fat_2ce13c157057bb27c61292bbe19ee4ac"
+                  >
+                    <input
+                      type="radio"
+                      id="fat_2ce13c157057bb27c61292bbe19ee4ac"
+                      name="faturamento_mensal"
+                      value="Prefiro não informar"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">Prefiro não informar</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Q9 — Orçamento -->
+              <div class="field-group">
+                <p class="field-label" id="orcLabel">
+                  Você já tem um orçamento aproximado em mente?
+                </p>
+                <div
+                  class="options-grid"
+                  role="radiogroup"
+                  aria-labelledby="orcLabel"
+                >
+                  <label
+                    class="option-card"
+                    for="orc_83f6c23bb27fc505b991247455e2a46b"
+                  >
+                    <input
+                      type="radio"
+                      id="orc_83f6c23bb27fc505b991247455e2a46b"
+                      name="orcamento_estimado"
+                      value="R$ 1 mil – R$ 2 mil"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">R$ 1 mil – R$ 2 mil</span>
+                  </label>
+                  <label
+                    class="option-card"
+                    for="orc_1af6f840c135f00112292a4040c10fa6"
+                  >
+                    <input
+                      type="radio"
+                      id="orc_1af6f840c135f00112292a4040c10fa6"
+                      name="orcamento_estimado"
+                      value="R$ 2 mil – R$ 5 mil"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">R$ 2 mil – R$ 5 mil</span>
+                  </label>
+                  <label
+                    class="option-card"
+                    for="orc_84613deaf5b4a30fe0f7c9080a9879a7"
+                  >
+                    <input
+                      type="radio"
+                      id="orc_84613deaf5b4a30fe0f7c9080a9879a7"
+                      name="orcamento_estimado"
+                      value="R$ 5 mil – R$ 15 mil"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">R$ 5 mil – R$ 15 mil</span>
+                  </label>
+                  <label
+                    class="option-card"
+                    for="orc_11d74874e0e56d27b8d283e9404212ba"
+                  >
+                    <input
+                      type="radio"
+                      id="orc_11d74874e0e56d27b8d283e9404212ba"
+                      name="orcamento_estimado"
+                      value="R$ 15 mil – R$ 30 mil"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">R$ 15 mil – R$ 30 mil</span>
+                  </label>
+                  <label
+                    class="option-card"
+                    for="orc_3d70f5d20cd63d41c6a0d4f48d4588a7"
+                  >
+                    <input
+                      type="radio"
+                      id="orc_3d70f5d20cd63d41c6a0d4f48d4588a7"
+                      name="orcamento_estimado"
+                      value="Acima de R$ 30 mil"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">Acima de R$ 30 mil</span>
+                  </label>
+                  <label
+                    class="option-card"
+                    for="orc_4852f2df4e676b31f05d6cd992ef878e"
+                  >
+                    <input
+                      type="radio"
+                      id="orc_4852f2df4e676b31f05d6cd992ef878e"
+                      name="orcamento_estimado"
+                      value="Ainda não tenho essa referência"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text"
+                      >Ainda não tenho essa referência</span
+                    >
+                  </label>
+                </div>
+              </div>
+
+              <!-- Q10 — Decisor -->
+              <div class="field-group">
+                <p class="field-label" id="decisorLabel">
+                  Quem será responsável por decidir a contratação?
+                </p>
+                <div
+                  class="options-grid"
+                  role="radiogroup"
+                  aria-labelledby="decisorLabel"
+                >
+                  <label
+                    class="option-card"
+                    for="dec_8fa42026f992608d9fada2dbda0bf4ac"
+                  >
+                    <input
+                      type="radio"
+                      id="dec_8fa42026f992608d9fada2dbda0bf4ac"
+                      name="decisor_contratacao"
+                      value="Apenas eu"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">Apenas eu</span>
+                  </label>
+                  <label
+                    class="option-card"
+                    for="dec_91ec8b1c3d4e87e5aae795274f5a20fb"
+                  >
+                    <input
+                      type="radio"
+                      id="dec_91ec8b1c3d4e87e5aae795274f5a20fb"
+                      name="decisor_contratacao"
+                      value="Eu com meu(s) sócio(s)"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">Eu com meu(s) sócio(s)</span>
+                  </label>
+                  <label
+                    class="option-card"
+                    for="dec_08f8d367e3be0f0cecf7a053ddcbbc99"
+                  >
+                    <input
+                      type="radio"
+                      id="dec_08f8d367e3be0f0cecf7a053ddcbbc99"
+                      name="decisor_contratacao"
+                      value="Eu preciso apresentar para um superior / diretor"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text"
+                      >Eu preciso apresentar para um superior / diretor</span
+                    >
+                  </label>
+                  <label
+                    class="option-card"
+                    for="dec_35e93d762b0f95610e1fffbae5c5a2f7"
+                  >
+                    <input
+                      type="radio"
+                      id="dec_35e93d762b0f95610e1fffbae5c5a2f7"
+                      name="decisor_contratacao"
+                      value="Decisão em equipe / comitê"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">Decisão em equipe / comitê</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Q11 — Prazo -->
+              <div class="field-group">
+                <p class="field-label" id="prazoLabel">
+                  Qual o prazo ideal para começar o projeto?
+                </p>
+                <div
+                  class="options-grid"
+                  role="radiogroup"
+                  aria-labelledby="prazoLabel"
+                >
+                  <label
+                    class="option-card"
+                    for="prz_d172551300aa887d66edd79e7bf9ab99"
+                  >
+                    <input
+                      type="radio"
+                      id="prz_d172551300aa887d66edd79e7bf9ab99"
+                      name="prazo_inicio"
+                      value="Preciso começar essa semana"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">Preciso começar essa semana</span>
+                  </label>
+                  <label
+                    class="option-card"
+                    for="prz_b3fcc943918a3500c2ddc082879fbe9e"
+                  >
+                    <input
+                      type="radio"
+                      id="prz_b3fcc943918a3500c2ddc082879fbe9e"
+                      name="prazo_inicio"
+                      value="Nos próximos 30 dias"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">Nos próximos 30 dias</span>
+                  </label>
+                  <label
+                    class="option-card"
+                    for="prz_1d0ddd4f9385508efa13168d9583f5aa"
+                  >
+                    <input
+                      type="radio"
+                      id="prz_1d0ddd4f9385508efa13168d9583f5aa"
+                      name="prazo_inicio"
+                      value="Nos próximos 2–3 meses"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text">Nos próximos 2–3 meses</span>
+                  </label>
+                  <label
+                    class="option-card"
+                    for="prz_c18ad8cd578db573fdeff7f8679c0059"
+                  >
+                    <input
+                      type="radio"
+                      id="prz_c18ad8cd578db573fdeff7f8679c0059"
+                      name="prazo_inicio"
+                      value="Ainda estou pesquisando, sem prazo definido"
+                    />
+                    <span class="opt-indicator" aria-hidden="true"></span>
+                    <span class="opt-text"
+                      >Ainda estou pesquisando, sem prazo definido</span
+                    >
+                  </label>
+                </div>
+              </div>
+
+              <!-- Global error -->
+              <div
+                class="global-error"
+                id="globalErr"
+                role="alert"
+                aria-live="polite"
+                hidden=""
+              ></div>
+
+              <!-- Navigation -->
+              <div class="form-nav form-nav--split">
+                <button type="button" class="btn-secondary" id="btnBackStep2">
+                  Voltar
+                </button>
+                <button
+                  type="submit"
+                  class="btn-primary btn-submit"
+                  id="btnSubmit"
+                >
+                  <span class="btn-label">Enviar</span>
+                  <span class="btn-spinner" aria-hidden="true" hidden="">
+                    <span class="spinner"></span>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <!-- /formStep2 -->
+          </form>
+        </div>
+        <!-- /form-wrap -->
+      </main>
+      <!-- /right-panel -->
+    </div>
+    <!-- /app-wrapper -->
+
+    <!-- ═══════════════════════════════════════════════════
+     SUCCESS POPUP
+════════════════════════════════════════════════════ -->
+    <div
+      class="popup-overlay"
+      id="successPopup"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="popupTitle"
+      hidden=""
+    >
+      <div class="popup-card">
+        <div class="popup-check" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none">
+            <circle
+              cx="24"
+              cy="24"
+              r="22"
+              stroke="rgba(245,166,35,0.5)"
+              stroke-width="2"
+            ></circle>
+            <path
+              d="M13 24 L21 32 L35 16"
+              stroke="#f5a623"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </svg>
+        </div>
+
+        <h2 class="popup-title" id="popupTitle">Obrigado pelas informações!</h2>
+        <p class="popup-body">
+          Em breve entraremos em contato pelo WhatsApp para dar início ao seu
+          projeto. Fique de olho!
+        </p>
+        <button
+          type="button"
+          class="btn-primary popup-close-btn"
+          id="popupCloseBtn"
+        >
+          Fechar
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Scripts ─────────────────────────────────────── -->
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/js/intlTelInput.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
