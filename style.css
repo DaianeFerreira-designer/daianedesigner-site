@@ -2394,3 +2394,7 @@ footer .textoAnimado span .charFooter {
   justify-content: center;
   align-items: center;
 }
+
+.construtor p{
+  text-align: center;
+}
