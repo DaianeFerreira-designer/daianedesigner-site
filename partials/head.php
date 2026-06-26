@@ -18,7 +18,7 @@
 <meta name="robots" content="<?= htmlspecialchars($robots, ENT_QUOTES, 'UTF-8') ?>">
 
   <!-- css -->
-     <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="/style.css">
 
   <!-- intl-tel-input CSS -->
     <link

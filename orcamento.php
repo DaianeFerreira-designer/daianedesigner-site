@@ -824,7 +824,7 @@ $robots = "noindex, nofollow";
 
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/js/intlTelInput.min.js"></script>
-    <script src="script.js"></script>
-    <script src="main.js" defer></script>
+    <script src="/script.js"></script>
+    <script src="/main.js" defer></script>
   </body>
 </html>
