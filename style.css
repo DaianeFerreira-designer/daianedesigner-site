@@ -649,6 +649,7 @@ header.scrolled .icone {
   font-style: normal;
   font-weight: 700;
   line-height: 150%; /* 24px */
+  cursor: pointer;
 }
 
 /* =========================
