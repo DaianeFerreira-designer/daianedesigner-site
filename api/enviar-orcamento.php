@@ -258,7 +258,10 @@ try {
 
 } catch (PDOException $e) {
     http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Erro ao salvar no banco de dados.']);
+    echo json_encode([
+        'success' => false,
+        'message' => $e->getMessage()
+    ]);
     exit;
 
 } catch (Exception $e) {
