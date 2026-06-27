@@ -280,7 +280,9 @@ $robots = "noindex, nofollow";
           <div class="form-nav">
             <button type="button" class="btn-primary" id="btnNextStep1">
               <span class="btn-label">Continuar</span>
-              <span class="btn-spinner" hidden></span>
+              <span class="btn-spinner" hidden>
+                <span class="spinner"></span>
+              </span>
             </button>
           </div>
 
