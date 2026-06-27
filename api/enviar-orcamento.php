@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 header('Content-Type: application/json; charset=utf-8');
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -31,6 +33,19 @@ $emailConfig = [
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode(['success' => false, 'message' => 'Método inválido.']);
+    exit;
+}
+
+if (
+    empty($_POST['csrf_token']) ||
+    empty($_SESSION['csrf_token']) ||
+    !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])
+) {
+    http_response_code(403);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Token inválido.'
+    ]);
     exit;
 }
 

@@ -1,7 +1,15 @@
 <?php
+
+session_start();
+
+if (empty($_SESSION['csrf_token'])) {
+  $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 $title = "Formulário de Orçamento | Web Designer";
 $description = "Formulário para solicitar orçamento";
 $robots = "noindex, nofollow";
+
 ?>
 
 <!-- Head Daiane Ferreira -->
@@ -156,7 +164,10 @@ $robots = "noindex, nofollow";
         novalidate=""
         autocomplete="off">
         <!-- Cross-Site Request Forgery -->
-        <input type="hidden" name="csrf_token" value="" />
+        <input
+          type="hidden"
+          name="csrf_token"
+          value="<?= htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8') ?>">
 
         <input type="hidden" name="stage" id="stage" value="draft" />
         <input type="hidden" name="draft_id" id="draft_id" value="" />
