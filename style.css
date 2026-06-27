@@ -639,6 +639,7 @@ header.scrolled .icone {
 }
 
 .ctaServicos {
+  position: relative;
   display: flex;
   justify-content: space-between;
   gap: 8px;
@@ -649,7 +650,30 @@ header.scrolled .icone {
   font-style: normal;
   font-weight: 700;
   line-height: 150%; /* 24px */
+  text-decoration: none;
   cursor: pointer;
+}
+
+.ctaServicos::before {
+  content: "";
+  position: absolute;
+
+  left: 50%;
+  bottom: -4px;
+
+  width: 100%;
+  height: 2px;
+
+  border-radius: 100px;
+  background: var(--gradient-primary);
+
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+.ctaServicos:hover::before {
+  transform: translateX(-50%) scaleX(1);
 }
 
 /* =========================

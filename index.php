@@ -221,7 +221,7 @@ $author = "Daiane Ferreira";
 
             <div class="peq">
               <p>Site otimizado</p>
-              <a href="orcamento.html" class="ctaServicos">
+              <a href="/orcamento" class="ctaServicos">
                 <img
                   class="iconeAnimado"
                   src="/assets/imagens/icon-button-portolio.svg"
@@ -243,7 +243,7 @@ $author = "Daiane Ferreira";
             </div>
             <div class="peq">
               <p>Geração de leads</p>
-              <a href="orcamento.html" class="ctaServicos">
+              <a href="/orcamento" class="ctaServicos">
                 <img
                   class="iconeAnimado"
                   src="/assets/imagens/icon-button-portolio.svg"
@@ -265,7 +265,7 @@ $author = "Daiane Ferreira";
             </div>
             <div class="peq">
               <p>Plataforma</p>
-              <a href="orcamento.html" class="ctaServicos">
+              <a href="/orcamento" class="ctaServicos">
                 <img
                   class="iconeAnimado"
                   src="/assets/imagens/icon-button-portolio.svg"
