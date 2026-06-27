@@ -173,7 +173,7 @@ try {
     if ($stage === 'rascunho') {
         if ($nome === '' || $whatsapp === '' || $email === '' || !$aceitePrivacidade || !emailValido($email)) {
             http_response_code(422);
-            echo json_encode(['success' => false, 'message' => 'Preencha os dados de contato corretamente.']);
+            echo json_encode(['success' => false, 'message' => 'Preencha os dados de e-mail corretamente.']);
             exit;
         }
 
