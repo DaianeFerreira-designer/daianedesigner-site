@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTextFields();
   initChoiceFields();
   initNavigation();
+  preSelecionarProjetoPorURL();
 });
 
 /* ════════════════════════════════════════════
@@ -665,4 +666,30 @@ function showInlineSuccess() {
   formSuccess?.setAttribute('aria-hidden', 'false');
 
   scrollPanelTop();
+}
+
+function preSelecionarProjetoPorURL() {
+  const projeto = new URLSearchParams(window.location.search).get('projeto');
+
+  if (!projeto) return;
+
+  const mapa = {
+    'site-institucional': 'pj_siteinstitucional',
+    'landing-page': 'pj_lp',
+    'loja-virtual': 'pj_lojavirtual',
+    'pagina-captura': 'pj_captura',
+    'area-membros': 'pj_membros',
+    'seo-performance': 'pj_seo'
+  };
+
+  const id = mapa[projeto];
+
+  if (!id) return;
+
+  const checkbox = document.getElementById(id);
+
+  if (checkbox) {
+    checkbox.checked = true;
+    checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+  }
 }

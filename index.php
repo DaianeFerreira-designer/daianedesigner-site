@@ -152,7 +152,7 @@ $author = "Daiane Ferreira";
 
             <div class="peq">
               <p>Site profissional</p>
-              <a href="/orcamento" class="ctaServicos">
+              <a href="/orcamento?projeto=site-institucional" class="ctaServicos">
                 <img class="iconeAnimado" src="/assets/imagens/icon-button-portolio.svg" alt="Icone animado" />
                 <span> Solicitar Orçamento</span>
               </a>
@@ -173,7 +173,7 @@ $author = "Daiane Ferreira";
 
             <div class="peq">
               <p>Foco em vendas</p>
-              <a href="/orcamento" class="ctaServicos">
+              <a href="/orcamento?projeto=landing-page" class="ctaServicos">
                 <img class="iconeAnimado" src="/assets/imagens/icon-button-portolio.svg" alt="Icone animado" />
                 <span> Solicitar Orçamento</span>
               </a>
@@ -194,7 +194,7 @@ $author = "Daiane Ferreira";
 
             <div class="peq">
               <p>E-commerce</p>
-              <a href="/orcamento" class="ctaServicos">
+              <a href="/orcamento?projeto=loja-virtual" class="ctaServicos">
                 <img class="iconeAnimado" src="/assets/imagens/icon-button-portolio.svg" alt="Icone animado" />
                 <span> Solicitar Orçamento</span>
               </a>
@@ -215,7 +215,7 @@ $author = "Daiane Ferreira";
 
             <div class="peq">
               <p>Site otimizado</p>
-              <a href="/orcamento" class="ctaServicos">
+              <a href="/orcamento?projeto=seo-performance" class="ctaServicos">
                 <img class="iconeAnimado" src="/assets/imagens/icon-button-portolio.svg" alt="Icone animado" />
                 <span> Solicitar Orçamento</span>
               </a>
@@ -235,7 +235,7 @@ $author = "Daiane Ferreira";
             </div>
             <div class="peq">
               <p>Geração de leads</p>
-              <a href="/orcamento" class="ctaServicos">
+              <a href="/orcamento?projeto=pagina-captura" class="ctaServicos">
                 <img class="iconeAnimado" src="/assets/imagens/icon-button-portolio.svg" alt="Icone animado" />
                 <span> Solicitar Orçamento</span>
               </a>
@@ -255,7 +255,7 @@ $author = "Daiane Ferreira";
             </div>
             <div class="peq">
               <p>Plataforma</p>
-             <a href="/orcamento" class="ctaServicos">
+             <a href="/orcamento?projeto=area-membros" class="ctaServicos">
                 <img class="iconeAnimado" src="/assets/imagens/icon-button-portolio.svg" alt="Icone animado" />
                 <span> Solicitar Orçamento</span>
               </a>
