@@ -78,8 +78,48 @@ $prazoInicio = trim($_POST['prazo_inicio'] ?? '');
 $instagram = trim($_POST['insta'] ?? '');
 $observacao = trim($_POST['observacao'] ?? '');
 
+
 function e($valor) {
     return htmlspecialchars((string)$valor, ENT_QUOTES, 'UTF-8');
+}
+
+function limparAssunto($valor) {
+    $valor = trim((string)$valor);
+    $valor = str_replace(["\r", "\n"], '', $valor);
+    $valor = strip_tags($valor);
+    return $valor !== '' ? $valor : 'Sem nome';
+}
+
+function emailValido($email) {
+    $email = trim((string)$email);
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return false;
+    }
+
+    $emailLower = strtolower($email);
+
+    $palavrasBloqueadas = [
+        'teste',
+        'test',
+        'exemplo',
+        'example',
+        'email',
+        'fake',
+        'falso'
+    ];
+
+    foreach ($palavrasBloqueadas as $palavra) {
+        if (str_contains($emailLower, $palavra)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function tamanhoValido($valor, $max) {
+    return mb_strlen(trim((string)$valor), 'UTF-8') <= $max;
 }
 
 function enviarEmail($emailConfig, $assunto, $corpoHtml) {
@@ -104,10 +144,34 @@ function enviarEmail($emailConfig, $assunto, $corpoHtml) {
     $mail->send();
 }
 
+$nomeAssunto = limparAssunto($nome);
+
+if (
+    !tamanhoValido($nome, 100) ||
+    !tamanhoValido($whatsapp, 30) ||
+    !tamanhoValido($email, 150) ||
+    !tamanhoValido($empresa, 150) ||
+    !tamanhoValido($presencaSite, 100) ||
+    !tamanhoValido($siteLink, 255) ||
+    !tamanhoValido($tipoProjeto, 1000) ||
+    !tamanhoValido($outroProjeto, 1000) ||
+    !tamanhoValido($investimentoEstimado, 100) ||
+    !tamanhoValido($prazoInicio, 100) ||
+    !tamanhoValido($instagram, 150) ||
+    !tamanhoValido($observacao, 12000)
+) {
+    http_response_code(422);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Algum campo ultrapassou o limite permitido.'
+    ]);
+    exit;
+}
+
 try {
 
     if ($stage === 'rascunho') {
-        if ($nome === '' || $whatsapp === '' || $email === '' || !$aceitePrivacidade) {
+        if ($nome === '' || $whatsapp === '' || $email === '' || !$aceitePrivacidade || !emailValido($email)) {
             http_response_code(422);
             echo json_encode(['success' => false, 'message' => 'Preencha os dados de contato corretamente.']);
             exit;
@@ -152,7 +216,7 @@ try {
             <p><strong>Status:</strong> Rascunho</p>
         ";
 
-        enviarEmail($emailConfig, "Orçamento - {$nome}", $corpo);
+        enviarEmail($emailConfig, "Orçamento - {$nomeAssunto}", $corpo);
 
         echo json_encode([
             'success' => true,
@@ -214,7 +278,7 @@ try {
             <p><strong>Status:</strong> Projeto enviado</p>
         ";
 
-        enviarEmail($emailConfig, "Orçamento - {$nome}", $corpo);
+       enviarEmail($emailConfig, "Orçamento - {$nomeAssunto}", $corpo);
 
         echo json_encode([
             'success' => true,
@@ -257,7 +321,7 @@ try {
             <p><strong>Status:</strong> Confirmado</p>
         ";
 
-        enviarEmail($emailConfig, "Orçamento - {$nome}", $corpo);
+       enviarEmail($emailConfig, "Orçamento - {$nomeAssunto}", $corpo);
 
         echo json_encode([
             'success' => true,
