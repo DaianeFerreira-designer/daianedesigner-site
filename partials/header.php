@@ -2,7 +2,7 @@
   <a href="/">
     <img
       class="logo"
-      src="assets/imagens/logo-daiane-ferreira.svg"
+      src="/assets/imagens/logo-daiane-ferreira.svg"
       alt="Logo Daiane Ferreira" />
   </a>
 
@@ -19,6 +19,6 @@
 
   <img
     class="icone"
-    src="assets/imagens/icon-daiane-ferreira-logo-web-design-sites.svg"
+    src="/assets/imagens/icon-daiane-ferreira-logo-web-design-sites.svg"
     alt="Ícone Daiane Ferreira" />
 </header>

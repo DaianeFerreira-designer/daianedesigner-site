@@ -1,4 +1,3 @@
-
 <?php
 $title = "Formulário de Orçamento | Web Designer";
 $description = "Formulário para solicitar orçamento";
@@ -170,7 +169,6 @@ $robots = "noindex, nofollow";
         <div class="formsConteudo">
           <form
             id="formsOrcamento"
-            action=""
             method="post"
             novalidate=""
             autocomplete="off"

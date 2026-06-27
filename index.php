@@ -1,9 +1,8 @@
-
 <?php
 $title = "Criação de Sites Profissionais | Web Designer";
 $description = "Criação de sites profissionais, landing pages e páginas personalizadas para empresas e negócios que desejam aumentar sua presença online e gerar mais resultados";
 $keywords = "web design, desenvolvimento web, landing page, wordpress";
-$image = "assets/preview.webp";
+$image = "/assets/preview.webp";
 $url = "https://daianedesigner.com.br";
 $author = "Daiane Ferreira";
 ?>
@@ -91,7 +90,7 @@ $author = "Daiane Ferreira";
       <div class="conteudo">
         <div class="webDesigner">
           <img
-            src="assets/imagens/icon-hero.svg"
+            src="/assets/imagens/icon-hero.svg"
             alt="Icone Daiane Ferreira" />
           <p>Web Designer</p>
         </div>
@@ -116,15 +115,15 @@ $author = "Daiane Ferreira";
 
             <img
               class="cta-icon"
-              src="assets/imagens/arrow-button.svg"
+              src="/assets/imagens/arrow-button.svg"
               alt="Icone Botão" />
 
             <span class="text">Solicitar Orçamento</span>
           </a>
-          <a href="portfolio.html" class="portfolioButton">
+          <a href="/portfolio-sites-profissionais" class="portfolioButton">
             <img
               class="iconeAnimado"
-              src="assets/imagens/icon-button-portolio.svg"
+              src="/assets/imagens/icon-button-portolio.svg"
               alt="Icone botão Portfólio" />Ver Portfólio</a>
         </div>
       </div>
@@ -142,7 +141,7 @@ $author = "Daiane Ferreira";
       <div class="trackServicos">
         <div class="cards">
           <img
-            src="assets/imagens/bg-card.webp"
+            src="/assets/imagens/bg-card.webp"
             alt="background dos cards serviços" />
 
           <div class="card">
@@ -153,10 +152,10 @@ $author = "Daiane Ferreira";
 
             <div class="peq">
               <p>Site profissional</p>
-              <a href="orcamento.html" class="ctaServicos">
+              <a href="/orcamento" class="ctaServicos">
                 <img
                   class="iconeAnimado"
-                  src="assets/imagens/icon-button-portolio.svg"
+                  src="/assets/imagens/icon-button-portolio.svg"
                   alt="" />
                 Solicitar Orçamento</a>
             </div>
@@ -165,7 +164,7 @@ $author = "Daiane Ferreira";
 
         <div class="cards">
           <img
-            src="assets/imagens/bg-card.webp"
+            src="/assets/imagens/bg-card.webp"
             alt="background dos cards serviços" />
 
           <div class="card">
@@ -176,10 +175,10 @@ $author = "Daiane Ferreira";
 
             <div class="peq">
               <p>Foco em vendas</p>
-              <a href="orcamento.html" class="ctaServicos">
+              <a href="/orcamento" class="ctaServicos">
                 <img
                   class="iconeAnimado"
-                  src="assets/imagens/icon-button-portolio.svg"
+                  src="/assets/imagens/icon-button-portolio.svg"
                   alt="" />
                 Solicitar Orçamento</a>
             </div>
@@ -188,7 +187,7 @@ $author = "Daiane Ferreira";
 
         <div class="cards">
           <img
-            src="assets/imagens/bg-card.webp"
+            src="/assets/imagens/bg-card.webp"
             alt="background dos cards serviços" />
 
           <div class="card">
@@ -199,10 +198,10 @@ $author = "Daiane Ferreira";
 
             <div class="peq">
               <p>E-commerce</p>
-              <a href="orcamento.html" class="ctaServicos">
+              <a href="/orcamento" class="ctaServicos">
                 <img
                   class="iconeAnimado"
-                  src="assets/imagens/icon-button-portolio.svg"
+                  src="/assets/imagens/icon-button-portolio.svg"
                   alt="" />
                 Solicitar Orçamento</a>
             </div>
@@ -225,7 +224,7 @@ $author = "Daiane Ferreira";
               <a href="orcamento.html" class="ctaServicos">
                 <img
                   class="iconeAnimado"
-                  src="assets/imagens/icon-button-portolio.svg"
+                  src="/assets/imagens/icon-button-portolio.svg"
                   alt="" />
                 Solicitar Orçamento</a>
             </div>
@@ -234,7 +233,7 @@ $author = "Daiane Ferreira";
 
         <div class="cards">
           <img
-            src="assets/imagens/bg-card.webp"
+            src="/assets/imagens/bg-card.webp"
             alt="background dos cards serviços" />
 
           <div class="card">
@@ -247,7 +246,7 @@ $author = "Daiane Ferreira";
               <a href="orcamento.html" class="ctaServicos">
                 <img
                   class="iconeAnimado"
-                  src="assets/imagens/icon-button-portolio.svg"
+                  src="/assets/imagens/icon-button-portolio.svg"
                   alt="" />
                 Solicitar Orçamento</a>
             </div>
@@ -256,7 +255,7 @@ $author = "Daiane Ferreira";
 
         <div class="cards">
           <img
-            src="assets/imagens/bg-card.webp"
+            src="/assets/imagens/bg-card.webp"
             alt="background dos cards serviços" />
 
           <div class="card">
@@ -269,7 +268,7 @@ $author = "Daiane Ferreira";
               <a href="orcamento.html" class="ctaServicos">
                 <img
                   class="iconeAnimado"
-                  src="assets/imagens/icon-button-portolio.svg"
+                  src="/assets/imagens/icon-button-portolio.svg"
                   alt="" />
                 Solicitar Orçamento</a>
             </div>
@@ -282,7 +281,7 @@ $author = "Daiane Ferreira";
   <div class="faixaAnimada">
     <div class="faixaTrack">
       <div class="faixa">
-        <img src="assets/imagens/figma.svg" alt="Icone Figma" />
+        <img src="/assets/imagens/figma.svg" alt="Icone Figma" />
         <div class="textosFaixa">
           <h3>Figma</h3>
           <p>UI/UX Design</p>
@@ -291,7 +290,7 @@ $author = "Daiane Ferreira";
 
       <div class="faixa">
         <img
-          src="assets/imagens/layers.svg"
+          src="/assets/imagens/layers.svg"
           alt="Icone Figmde layouts" />
         <div class="textosFaixa">
           <h3>Layouts</h3>
@@ -301,7 +300,7 @@ $author = "Daiane Ferreira";
 
       <div class="faixa">
         <img
-          src="assets/imagens/wordpress-logo.svg"
+          src="/assets/imagens/wordpress-logo.svg"
           alt="Icone wordpress e elementor" />
         <div class="textosFaixa">
           <h3>Wordpress</h3>
@@ -310,7 +309,7 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="assets/imagens/code.svg" alt="Icone códigos" />
+        <img src="/assets/imagens/code.svg" alt="Icone códigos" />
         <div class="textosFaixa">
           <h3>Código</h3>
           <p>Limpo</p>
@@ -318,7 +317,7 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="assets/imagens/seo.svg" alt="Icone Seo/Google" />
+        <img src="/assets/imagens/seo.svg" alt="Icone Seo/Google" />
         <div class="textosFaixa">
           <h3>Seo</h3>
           <p>Técnicas</p>
@@ -327,7 +326,7 @@ $author = "Daiane Ferreira";
 
       <div class="faixa">
         <img
-          src="assets/imagens/responsive.svg"
+          src="/assets/imagens/responsive.svg"
           alt="Icone responsivo" />
         <div class="textosFaixa">
           <h3>Responsivo</h3>
@@ -337,7 +336,7 @@ $author = "Daiane Ferreira";
 
       <div class="faixa">
         <img
-          src="assets/imagens/perfomance.svg"
+          src="/assets/imagens/perfomance.svg"
           alt="Icone Performance" />
         <div class="textosFaixa">
           <h3>Performance</h3>
@@ -346,7 +345,7 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="assets/imagens/plug.svg" alt="Icone de Automação" />
+        <img src="/assets/imagens/plug.svg" alt="Icone de Automação" />
         <div class="textosFaixa">
           <h3>Integrações</h3>
           <p>e Automações</p>
@@ -354,7 +353,7 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="assets/imagens/figma.svg" alt="Icone Figma" />
+        <img src="/assets/imagens/figma.svg" alt="Icone Figma" />
         <div class="textosFaixa">
           <h3>Figma</h3>
           <p>UI/UX Design</p>
@@ -363,7 +362,7 @@ $author = "Daiane Ferreira";
 
       <div class="faixa">
         <img
-          src="assets/imagens/layers.svg"
+          src="/assets/imagens/layers.svg"
           alt="Icone Figmde layouts" />
         <div class="textosFaixa">
           <h3>Layouts</h3>
@@ -373,7 +372,7 @@ $author = "Daiane Ferreira";
 
       <div class="faixa">
         <img
-          src="assets/imagens/wordpress-logo.svg"
+          src="/assets/imagens/wordpress-logo.svg"
           alt="Icone wordpress e elementor" />
         <div class="textosFaixa">
           <h3>Wordpress</h3>
@@ -382,7 +381,7 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="assets/imagens/code.svg" alt="Icone códigos" />
+        <img src="/assets/imagens/code.svg" alt="Icone códigos" />
         <div class="textosFaixa">
           <h3>Código</h3>
           <p>Limpo</p>
@@ -390,7 +389,7 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="assets/imagens/seo.svg" alt="Icone Seo/Google" />
+        <img src="/assets/imagens/seo.svg" alt="Icone Seo/Google" />
         <div class="textosFaixa">
           <h3>Seo</h3>
           <p>Técnicas</p>
@@ -399,7 +398,7 @@ $author = "Daiane Ferreira";
 
       <div class="faixa">
         <img
-          src="assets/imagens/responsive.svg"
+          src="/assets/imagens/responsive.svg"
           alt="Icone responsivo" />
         <div class="textosFaixa">
           <h3>Responsivo</h3>
@@ -409,7 +408,7 @@ $author = "Daiane Ferreira";
 
       <div class="faixa">
         <img
-          src="assets/imagens/perfomance.svg"
+          src="/assets/imagens/perfomance.svg"
           alt="Icone Performance" />
         <div class="textosFaixa">
           <h3>Performance</h3>
@@ -418,7 +417,7 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="assets/imagens/plug.svg" alt="Icone de Automação" />
+        <img src="/assets/imagens/plug.svg" alt="Icone de Automação" />
         <div class="textosFaixa">
           <h3>Integrações</h3>
           <p>e Automações</p>
@@ -426,7 +425,7 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="assets/imagens/figma.svg" alt="Icone Figma" />
+        <img src="/assets/imagens/figma.svg" alt="Icone Figma" />
         <div class="textosFaixa">
           <h3>Figma</h3>
           <p>UI/UX Design</p>
@@ -435,7 +434,7 @@ $author = "Daiane Ferreira";
 
       <div class="faixa">
         <img
-          src="assets/imagens/layers.svg"
+          src="/assets/imagens/layers.svg"
           alt="Icone Figmde layouts" />
         <div class="textosFaixa">
           <h3>Layouts</h3>
@@ -445,7 +444,7 @@ $author = "Daiane Ferreira";
 
       <div class="faixa">
         <img
-          src="assets/imagens/wordpress-logo.svg"
+          src="/assets/imagens/wordpress-logo.svg"
           alt="Icone wordpress e elementor" />
         <div class="textosFaixa">
           <h3>Wordpress</h3>
@@ -454,7 +453,7 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="assets/imagens/code.svg" alt="Icone códigos" />
+        <img src="/assets/imagens/code.svg" alt="Icone códigos" />
         <div class="textosFaixa">
           <h3>Código</h3>
           <p>Limpo</p>
@@ -462,7 +461,7 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="assets/imagens/seo.svg" alt="Icone Seo/Google" />
+        <img src="/assets/imagens/seo.svg" alt="Icone Seo/Google" />
         <div class="textosFaixa">
           <h3>Seo</h3>
           <p>Técnicas</p>
@@ -471,7 +470,7 @@ $author = "Daiane Ferreira";
 
       <div class="faixa">
         <img
-          src="assets/imagens/responsive.svg"
+          src="/assets/imagens/responsive.svg"
           alt="Icone responsivo" />
         <div class="textosFaixa">
           <h3>Responsivo</h3>
@@ -481,7 +480,7 @@ $author = "Daiane Ferreira";
 
       <div class="faixa">
         <img
-          src="assets/imagens/perfomance.svg"
+          src="/assets/imagens/perfomance.svg"
           alt="Icone Performance" />
         <div class="textosFaixa">
           <h3>Performance</h3>
@@ -490,7 +489,7 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="assets/imagens/plug.svg" alt="Icone de Automação" />
+        <img src="/assets/imagens/plug.svg" alt="Icone de Automação" />
         <div class="textosFaixa">
           <h3>Integrações</h3>
           <p>e Automações</p>
@@ -686,7 +685,7 @@ $author = "Daiane Ferreira";
       </svg>
     </div>
 
-     <p class="faixaDestaque"> <img src="assets/imagens/trending-topic 2.svg" class="icone_webdesign" alt="Icone">Web Design</p>
+     <p class="faixaDestaque"> <img src="/assets/imagens/trending-topic 2.svg" class="icone_webdesign" alt="Icone">Web Design</p>
      <div class="conteudo_portfolio">
       <h2 class="portfolioTexto textoAnimado">
         <span class="animationPortfolio"><strong>Projetos desenvolvidos</span></strong>
@@ -695,7 +694,7 @@ $author = "Daiane Ferreira";
 
       <a href="#" class="verMais"> <img
                   class="iconeAnimado"
-                  src="assets/imagens/icon-button-portolio.svg"
+                  src="/assets/imagens/icon-button-portolio.svg"
                   alt="" />Ver mais projetos</a>
       </div>
   </section>
@@ -715,7 +714,7 @@ $author = "Daiane Ferreira";
             <div class="imgTexto">
               <h2>Treinamento Forkmac</h2>
               <img
-                src="assets/imagens/port-treinamento-forkmac.webp"
+                src="/assets/imagens/port-treinamento-forkmac.webp"
                 alt="" />
             </div>
 
@@ -742,7 +741,7 @@ $author = "Daiane Ferreira";
             <div class="imgTexto">
               <h2>Treinamento Forkmac</h2>
               <img
-                src="assets/imagens/port-treinamento-forkmac.webp"
+                src="/assets/imagens/port-treinamento-forkmac.webp"
                 alt="" />
             </div>
 
@@ -769,7 +768,7 @@ $author = "Daiane Ferreira";
             <div class="imgTexto">
               <h2>Treinamento Forkmac</h2>
               <img
-                src="assets/imagens/port-treinamento-forkmac.webp"
+                src="/assets/imagens/port-treinamento-forkmac.webp"
                 alt="" />
             </div>
 
@@ -796,7 +795,7 @@ $author = "Daiane Ferreira";
             <div class="imgTexto">
               <h2>Treinamento Forkmac</h2>
               <img
-                src="assets/imagens/port-treinamento-forkmac.webp"
+                src="/assets/imagens/port-treinamento-forkmac.webp"
                 alt="" />
             </div>
 
@@ -823,7 +822,7 @@ $author = "Daiane Ferreira";
             <div class="imgTexto">
               <h2>Treinamento Forkmac</h2>
               <img
-                src="assets/imagens/port-treinamento-forkmac.webp"
+                src="/assets/imagens/port-treinamento-forkmac.webp"
                 alt="" />
             </div>
 
@@ -850,7 +849,7 @@ $author = "Daiane Ferreira";
             <div class="imgTexto">
               <h2>Treinamento Forkmac</h2>
               <img
-                src="assets/imagens/port-treinamento-forkmac.webp"
+                src="/assets/imagens/port-treinamento-forkmac.webp"
                 alt="" />
             </div>
 
@@ -877,7 +876,7 @@ $author = "Daiane Ferreira";
             <div class="imgTexto">
               <h2>Treinamento Forkmac</h2>
               <img
-                src="assets/imagens/port-treinamento-forkmac.webp"
+                src="/assets/imagens/port-treinamento-forkmac.webp"
                 alt="" />
             </div>
 
@@ -904,7 +903,7 @@ $author = "Daiane Ferreira";
             <div class="imgTexto">
               <h2>Treinamento Forkmac</h2>
               <img
-                src="assets/imagens/port-treinamento-forkmac.webp"
+                src="/assets/imagens/port-treinamento-forkmac.webp"
                 alt="" />
             </div>
 
@@ -932,36 +931,36 @@ $author = "Daiane Ferreira";
 
     <div class="vr-box">
       <div class="item">
-        <img src="assets/imagens/7-Check.svg" alt="" />
+        <img src="/assets/imagens/7-Check.svg" alt="" />
         <p>Marca mais valorizada</p>
       </div>
       <div class="item">
-        <img src="assets/imagens/7-Check.svg" alt="" />
+        <img src="/assets/imagens/7-Check.svg" alt="" />
         <p>Maior valor percebido</p>
       </div>
       <div class="item">
-        <img src="assets/imagens/7-Check.svg" alt="" />
+        <img src="/assets/imagens/7-Check.svg" alt="" />
         <p>Melhor posicionamento</p>
       </div>
       <div class="item">
-        <img src="assets/imagens/7-Check.svg" alt="" />
+        <img src="/assets/imagens/7-Check.svg" alt="" />
         <p>Mais visibilidade no Google</p>
       </div>
       <div class="item">
-        <img src="assets/imagens/7-Check.svg" alt="" />
+        <img src="/assets/imagens/7-Check.svg" alt="" />
         <p>Maior confiança do público</p>
       </div>
       <div class="item">
-        <img src="assets/imagens/7-Check.svg" alt="" />
+        <img src="/assets/imagens/7-Check.svg" alt="" />
         <p>Mais oportunidades de contato</p>
       </div>
       <div class="item">
-        <img src="assets/imagens/7-Check.svg" alt="" />
+        <img src="/assets/imagens/7-Check.svg" alt="" />
         <p>Presença digital profissional</p>
       </div>
 
       <div class="item-active">
-        <img src="assets/imagens/diamond 1.svg" alt="" />
+        <img src="/assets/imagens/diamond 1.svg" alt="" />
         <p>Mais credibilidade</p>
       </div>
     </div>
@@ -986,7 +985,7 @@ $author = "Daiane Ferreira";
         <div class="frame">
           <h3>fase 01</h3>
           <p>Semana 01</p>
-          <img src="assets/imagens/down 1.svg" alt="Icone" />
+          <img src="/assets/imagens/down 1.svg" alt="Icone" />
         </div>
 
         <div class="conteudoProtocolo">
@@ -1003,7 +1002,7 @@ $author = "Daiane Ferreira";
         <div class="frame">
           <h3>fase 02</h3>
           <p>Semana 02</p>
-          <img src="assets/imagens/down 1.svg" alt="Icone" />
+          <img src="/assets/imagens/down 1.svg" alt="Icone" />
         </div>
 
         <div class="conteudoProtocolo">
@@ -1020,7 +1019,7 @@ $author = "Daiane Ferreira";
         <div class="frame">
           <h3>fase 03</h3>
           <p>Semana 03</p>
-          <img src="assets/imagens/down 1.svg" alt="Icone" />
+          <img src="/assets/imagens/down 1.svg" alt="Icone" />
         </div>
 
         <div class="conteudoProtocolo">
@@ -1036,7 +1035,7 @@ $author = "Daiane Ferreira";
         <div class="frame">
           <h3>fase 04</h3>
           <p>Semana 04</p>
-          <img src="assets/imagens/down 1.svg" alt="Icone" />
+          <img src="/assets/imagens/down 1.svg" alt="Icone" />
         </div>
 
         <div class="conteudoProtocolo">
@@ -1053,7 +1052,7 @@ $author = "Daiane Ferreira";
         <div class="frame">
           <h3>fase 05</h3>
           <p>Semana 05</p>
-          <img src="assets/imagens/down 1.svg" alt="Icone" />
+          <img src="/assets/imagens/down 1.svg" alt="Icone" />
         </div>
 
         <div class="conteudoProtocolo">
@@ -1069,7 +1068,7 @@ $author = "Daiane Ferreira";
         <div class="frame">
           <h3>fase 06</h3>
           <p>Semana 06</p>
-          <img src="assets/imagens/down 1.svg" alt="Icone" />
+          <img src="/assets/imagens/down 1.svg" alt="Icone" />
         </div>
 
         <div class="conteudoProtocolo">

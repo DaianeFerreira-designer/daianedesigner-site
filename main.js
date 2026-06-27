@@ -1,8 +1,5 @@
 'use strict';
 
-
-
-
 /* ═══════════════════════════════════════════════
             Formulário em várias etapas
    ════════════════════════════════════════════ */
@@ -193,33 +190,50 @@ function updateProgress() {
    Navegação entre etapas
    ═══════════════════════════════════════════ */
 function initNavigation() {
-  document.getElementById('btnNextStep1')?.addEventListener('click', () => {
-    if (validateStep1()) transitionTo(2);
+  document.getElementById('btnNextStep1')?.addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    if (!validateStep1()) return;
+
+    const enviado = await enviarEtapa('rascunho', 'btnNextStep1', 'globalErr1');
+
+    if (enviado) {
+      transitionTo(2);
+    }
   });
 
   document.getElementById('btnBackStep2')?.addEventListener('click', () => {
     transitionTo(1, true);
   });
 
-  form.addEventListener('submit', handleSubmit);
-document.getElementById('btnNextStep2')?.addEventListener('click', (e) => {
-  e.preventDefault();
-  if (validateStep2()) {
-    fillReviewStep3();     // preenche a revisão
-    transitionTo(3);       // vai pro step 3
-  }
-});
+  document.getElementById('btnNextStep2')?.addEventListener('click', async (e) => {
+    e.preventDefault();
 
-document.getElementById('btnBackStep3')?.addEventListener('click', () => {
-  transitionTo(2, true);
-});
+    if (!validateStep2()) return;
 
-document.getElementById('btnFinalSubmit')?.addEventListener('click', (e) => {
-  e.preventDefault();
-  showInlineSuccess();
-});
+    const enviado = await enviarEtapa('projeto_enviado', 'btnNextStep2', 'globalErr');
 
+    if (enviado) {
+      fillReviewStep3();
+      transitionTo(3);
+    }
+  });
+
+  document.getElementById('btnBackStep3')?.addEventListener('click', () => {
+    transitionTo(2, true);
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const enviado = await enviarEtapa('confirmado', 'btnFinalSubmit', 'globalErr3');
+
+    if (enviado) {
+      showInlineSuccess();
+    }
+  });
 }
+
 
 function transitionTo(stepNum, reverse = false) {
   currentStep = stepNum;
@@ -374,6 +388,59 @@ function fillReviewStep3() {
   const showOutro = tipos.includes('Outro');
   outroRow.hidden = !showOutro;
   if (showOutro) document.getElementById('rv_outro_projeto').textContent = outroTxt;
+}
+
+async function enviarEtapa(stageValue, btnId, errorId) {
+  const btn = document.getElementById(btnId);
+  const globalEl = document.getElementById(errorId);
+
+  const label = btn?.querySelector('.btn-label');
+  const spinner = btn?.querySelector('.btn-spinner');
+
+  if (btn) btn.disabled = true;
+  if (label) label.hidden = true;
+  if (spinner) spinner.hidden = false;
+  if (globalEl) globalEl.hidden = true;
+
+  const fd = new FormData(form);
+
+  fd.set('stage', stageValue);
+
+  if (itiInstance) {
+    fd.set('whatsapp', itiInstance.getNumber());
+  }
+
+  try {
+    const res = await fetch('/api/enviar-orcamento.php', {
+      method: 'POST',
+      body: fd,
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+    });
+
+    const data = await res.json();
+
+    if (!data.success) {
+      showGlobalError(globalEl, data.message || 'Erro ao enviar. Tente novamente.');
+      return false;
+    }
+
+    if (data.draft_id) {
+      document.getElementById('draft_id').value = data.draft_id;
+    }
+
+    return true;
+
+  } catch (error) {
+    showGlobalError(globalEl, 'Erro de conexão. Tente novamente.');
+    return false;
+
+  } finally {
+    if (btn) btn.disabled = false;
+    if (label) label.hidden = false;
+    if (spinner) spinner.hidden = true;
+  }
 }
 
 /* ════════════════════════════════════════════
@@ -566,63 +633,6 @@ function focusFirstError(container) {
   if (firstErrMsg) firstErrMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
-/* ════════════════════════════════════════════
-   Botão de enviar
-   ═══════════════════════════════════════════ */
-async function handleSubmit(e) {
-  e.preventDefault();
-
-  if (!validateStep2()) return;
-
-  const btn      = document.getElementById('btnSubmit');
-  const label    = btn.querySelector('.btn-label');
-  const spinner  = btn.querySelector('.btn-spinner');
-  const globalEl = document.getElementById('globalErr');
-
-  /* Carregamento */
-  btn.disabled    = true;
-  label.hidden    = true;
-  spinner.hidden  = false;
-  globalEl.hidden = true;
-
-  /*  FormData */
-  const fd = new FormData(form);
-
-  /* valor bruto do telefone  */
-  if (itiInstance) {
-    fd.set('whatsapp', itiInstance.getNumber());
-  }
-
-  try {
-    const res  = await fetch('submit.php', {
-      method:  'POST',
-      body:    fd,
-      headers: { 'X-Requested-With': 'XMLHttpRequest' },
-    });
-
-    if (!res.ok && res.status !== 422) {
-      throw new Error(`HTTP ${res.status}`);
-    }
-
-    const data = await res.json();
-
-    if (data.success) {
-      /* Barra de progresso completa */
-      pf3.style.width = '100%';
-      updateStepCards(3);
-
-      setTimeout(openPopup, 450);
-    } else {
-      showGlobalError(globalEl, data.message || 'Erro ao enviar. Tente novamente.');
-    }
-  } catch {
-    showGlobalError(globalEl, 'Erro de conexão. Verifique sua internet e tente novamente.');
-  } finally {
-    btn.disabled   = false;
-    label.hidden   = false;
-    spinner.hidden = true;
-  }
-}
 
 function showGlobalError(el, msg) {
   el.textContent = msg;
@@ -632,6 +642,11 @@ function showGlobalError(el, msg) {
 
 
 function showInlineSuccess() {
+  // Completa a barra de progresso
+  pf3.style.width = '100%';
+  progressEl.setAttribute('aria-valuenow', '100');
+  updateStepCards(3);
+
   // esconde as etapas
   step1?.classList.add('stepHidden');
   step2?.classList.add('stepHidden');
@@ -641,7 +656,7 @@ function showInlineSuccess() {
   step2?.setAttribute('aria-hidden', 'true');
   step3?.setAttribute('aria-hidden', 'true');
 
-  // esconde o <form> inteiro (pra não sobrar espaçamento)
+  // esconde o form inteiro
   form?.classList.add('stepHidden');
   form?.setAttribute('aria-hidden', 'true');
 
@@ -649,6 +664,5 @@ function showInlineSuccess() {
   formSuccess?.classList.remove('stepHidden');
   formSuccess?.setAttribute('aria-hidden', 'false');
 
-  // scroll pro topo pra ver o bloco
   scrollPanelTop();
 }

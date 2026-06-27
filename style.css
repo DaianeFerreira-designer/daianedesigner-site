@@ -111,9 +111,9 @@
 @font-face {
   font-family: "Roboto Serif";
   src:
-    url("assets/fonts/RobotoSerif-Regular.woff2") format("woff2"),
-    url("assets/fonts/RobotoSerif-Regular.woff") format("woff"),
-    url("assets/fonts/RobotoSerif-Regular.ttf") format("truetype");
+    url("/assets/fonts/RobotoSerif-Regular.woff2") format("woff2"),
+    url("/assets/fonts/RobotoSerif-Regular.woff") format("woff"),
+    url("/assets/fonts/RobotoSerif-Regular.ttf") format("truetype");
 
   font-weight: 400;
   font-style: normal;
@@ -123,9 +123,9 @@
 @font-face {
   font-family: "Roboto Serif";
   src:
-    url("assets/fonts/RobotoSerif-Bold.woff2") format("woff2"),
-    url("assets/fonts/RobotoSerif-Bold.woff") format("woff"),
-    url("assets/fonts/RobotoSerif-Bold.ttf") format("truetype");
+    url("/assets/fonts/RobotoSerif-Bold.woff2") format("woff2"),
+    url("/assets/fonts/RobotoSerif-Bold.woff") format("woff"),
+    url("/assets/fonts/RobotoSerif-Bold.ttf") format("truetype");
 
   font-weight: 700;
   font-style: normal;
@@ -135,9 +135,9 @@
 @font-face {
   font-family: "Satisfy";
   src:
-    url("assets/fonts/Satisfy-Regular.woff2") format("woff2"),
-    url("assets/fonts/Satisfy-Regular.woff") format("woff"),
-    url("assets/fonts/Satisfy-Regular.ttf") format("truetype");
+    url("/assets/fonts/Satisfy-Regular.woff2") format("woff2"),
+    url("/assets/fonts/Satisfy-Regular.woff") format("woff"),
+    url("/assets/fonts/Satisfy-Regular.ttf") format("truetype");
 
   font-weight: 400;
   font-style: normal;
@@ -289,7 +289,7 @@ header.scrolled .icone {
   inset: 0;
   z-index: 2;
 
-  background-image: url(assets/imagens/bghero-webdesign.webp);
+  background-image: url(/assets/imagens/bghero-webdesign.webp);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -576,7 +576,7 @@ header.scrolled .icone {
 }
 
 .card {
-  background-image: url(assets/imagens/card-bg.webp);
+  background-image: url(/assets/imagens/card-bg.webp);
   display: flex;
   width: 408px;
   height: 308px;
@@ -930,7 +930,7 @@ header.scrolled .icone {
 .cardPrincipal {
   display: flex;
   position: relative;
-  background-image: url(assets/imagens/port-treinamento-forkmac.webp);
+  background-image: url(/assets/imagens/port-treinamento-forkmac.webp);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1095,7 +1095,7 @@ header.scrolled .icone {
   align-items: center;
   justify-content: center;
   gap: 56px;
-  background-image: url(assets/imagens/bg-vantagens.webp);
+  background-image: url(/assets/imagens/bg-vantagens.webp);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -1262,7 +1262,7 @@ header.scrolled .icone {
   flex-direction: column;
   gap: 24px;
   padding: 32px 32px;
-  background-image: url(assets/imagens/bg-abas.webp);
+  background-image: url(/assets/imagens/bg-abas.webp);
   background-repeat: no-repeat;
   background-position: center top;
   background-size: 100% 100%;
@@ -1560,7 +1560,7 @@ footer .textoAnimado span .charFooter {
   width: 100%;
   min-height: 100vh;
   position: relative;
-  background-image: url(assets/imagens/bg-forms.webp);
+  background-image: url(/assets/imagens/bg-forms.webp);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -1576,7 +1576,7 @@ footer .textoAnimado span .charFooter {
   display: flex;
   align-items: stretch;
   padding: 80px 0;
-  background-image: url(assets/imagens/bg-div-forms.webp);
+  background-image: url(/assets/imagens/bg-div-forms.webp);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -1658,10 +1658,6 @@ footer .textoAnimado span .charFooter {
   font-size: 16px;
   font-weight: 700;
 }
-.step-card--done .step-badge {
-  background: var(--gold-dark);
-  color: #fff;
-}
 
 .forms-logo {
   display: flex;
@@ -1706,8 +1702,6 @@ footer .textoAnimado span .charFooter {
   justify-content: flex-start;
 
 }
-
-
 
 /* Preogresso barra top */
 
@@ -1800,7 +1794,7 @@ footer .textoAnimado span .charFooter {
 }
 
 .fieldLabel {
-  font-family: "Roboto Serif";
+  font-family: "Roboto Serif", serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -1828,7 +1822,7 @@ footer .textoAnimado span .charFooter {
   color: var(--color-light);
   -webkit-text-fill-color: #000; /* força no WebKit */
   padding: 16px;
-  font-family: "Roboto Serif";
+  font-family: "Roboto Serif", serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -1878,7 +1872,7 @@ footer .textoAnimado span .charFooter {
   border: 1.5px solid transparent !important;
   border-radius: 2px !important;
   padding: 16px !important;
-  font-family: "Roboto Serif";
+  font-family: "Roboto Serif", serif;
   font-size: 14px !important;
   color: var(--color-light) !important;
   width: 100% !important;
@@ -1982,7 +1976,7 @@ footer .textoAnimado span .charFooter {
   align-items: center;
   gap: 12px;
   padding: 14px 20px;
-  background: var(--dark);
+
   border: 1.5px solid var(--color-light);
   border-radius: 4px;
   cursor: pointer;
@@ -2061,7 +2055,7 @@ footer .textoAnimado span .charFooter {
 }
 
 .optText {
-
+  font-family: "Roboto Serif", serif;
   font-size: 14px;
   font-weight: 400;
   color: var(--color-light);
@@ -2140,7 +2134,7 @@ footer .textoAnimado span .charFooter {
   padding: 14px 18px;
   background: rgba(255, 60, 60, 0.1);
   border: 1px solid rgba(255, 80, 80, 0.3);
-  border-radius: var(--radius-in);
+  border-radius: 8px;
   font-size: 14px;
   color: #ff9090;
   text-align: center;
@@ -2195,7 +2189,7 @@ footer .textoAnimado span .charFooter {
   background: rgba(255, 255, 255, 0.027);
   border: 2px solid var(--color-light);
   border-radius: 8px;
-  font-family: var(--font-inter);
+  font-family: "Roboto Serif", serif;
   font-size: 16px;
   font-weight: 500;
   color: var(--color-light);
@@ -2310,7 +2304,7 @@ footer .textoAnimado span .charFooter {
 
 /* Valor da revisão */
 .reviewValue{
-  font-family: "Roboto Serif";
+  font-family: "Roboto Serif", serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 150%;
@@ -2370,7 +2364,7 @@ footer .textoAnimado span .charFooter {
 }
 
 .successTitle{
-  font-family: "Roboto Serif";
+  font-family: "Roboto Serif", serif;
   font-size: 24px;
   font-weight: 700;
   line-height: 110%;
@@ -2379,7 +2373,7 @@ footer .textoAnimado span .charFooter {
 }
 
 .successText{
-  font-family: "Roboto Serif";
+  font-family: "Roboto Serif", serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 150%;
