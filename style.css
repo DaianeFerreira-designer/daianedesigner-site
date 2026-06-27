@@ -690,6 +690,18 @@ header.scrolled .icone {
   pointer-events: none;
 }
 
+.cardSolucoes {
+  pointer-events: none;
+}
+
+.cardSolucoes.ativoMouse {
+  pointer-events: auto;
+}
+
+.hero.semMouse {
+  pointer-events: none;
+}
+
 /* =========================
    Faixa Animada
 ========================= */

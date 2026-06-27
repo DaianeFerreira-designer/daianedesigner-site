@@ -6,47 +6,50 @@ document.addEventListener("DOMContentLoaded", () => {
   ativarMenuAtual();
   animarTextosFooter();
   animarTextoFooter2();
-  
-// Smooth Scroll
+
+  // Smooth Scroll
   let targetScroll = 0;
   let currentScroll = 0;
   let isScrolling = false;
 
   function smoothScroll() {
-      const difference = targetScroll - currentScroll;
-      const distance = difference /15;
+    const difference = targetScroll - currentScroll;
+    const distance = difference / 15;
 
-      currentScroll += distance;
+    currentScroll += distance;
 
-      window.scrollTo(0, currentScroll);
+    window.scrollTo(0, currentScroll);
 
-      if (Math.abs(difference) > 1) {
-          requestAnimationFrame(smoothScroll);
-      } else {
-          isScrolling = false;
-      }
+    if (Math.abs(difference) > 1) {
+      requestAnimationFrame(smoothScroll);
+    } else {
+      isScrolling = false;
+    }
   }
 
-  window.addEventListener('wheel', function(event) {
-
+  window.addEventListener(
+    "wheel",
+    function (event) {
       targetScroll += event.deltaY;
 
-      targetScroll = Math.max(0, Math.min(targetScroll, document.body.scrollHeight - window.innerHeight));
+      targetScroll = Math.max(
+        0,
+        Math.min(targetScroll, document.body.scrollHeight - window.innerHeight),
+      );
 
       if (!isScrolling) {
-          isScrolling = true;
-          requestAnimationFrame(smoothScroll);
+        isScrolling = true;
+        requestAnimationFrame(smoothScroll);
       }
 
       event.preventDefault();
-  }, { passive: false });
+    },
+    { passive: false },
+  );
 
-   // Atualiza TODOS os ScrollTriggers após toda a inicialização
+  // Atualiza TODOS os ScrollTriggers após toda a inicialização
   ScrollTrigger.refresh();
-
 });
-
-
 
 /* -----------------------------------------------------------------
    Ativar menu atual
@@ -83,60 +86,59 @@ function iniciarHeaderScroll() {
    Custom Scrollbar
 ----------------------------------------------------------------- */
 
-const customScrollbar = document.querySelector('.custom-scrollbar');
-    const customScrollThumb = document.querySelector('.custom-scroll-thumb');
+const customScrollbar = document.querySelector(".custom-scrollbar");
+const customScrollThumb = document.querySelector(".custom-scroll-thumb");
 
-    function updateThumbPosition() {
-        const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const thumbHeight = customScrollThumb.offsetHeight;
-        const trackHeight = customScrollbar.offsetHeight - thumbHeight;
-        const scrollPercentage = scrollTop / docHeight;
-        const thumbPosition = trackHeight * scrollPercentage;
-        customScrollThumb.style.top = `${thumbPosition}px`;
-    }
+function updateThumbPosition() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const thumbHeight = customScrollThumb.offsetHeight;
+  const trackHeight = customScrollbar.offsetHeight - thumbHeight;
+  const scrollPercentage = scrollTop / docHeight;
+  const thumbPosition = trackHeight * scrollPercentage;
+  customScrollThumb.style.top = `${thumbPosition}px`;
+}
 
-    window.addEventListener('scroll', updateThumbPosition);
+window.addEventListener("scroll", updateThumbPosition);
 
-    let isDragging = false;
-    let startY;
-    let startScrollY;
+let isDragging = false;
+let startY;
+let startScrollY;
 
-    function startDrag(e) {
-        isDragging = true;
-        startY = e.clientY || e.touches[0].clientY;
-        startScrollY = window.scrollY;
-        document.body.style.userSelect = 'none';
-    }
+function startDrag(e) {
+  isDragging = true;
+  startY = e.clientY || e.touches[0].clientY;
+  startScrollY = window.scrollY;
+  document.body.style.userSelect = "none";
+}
 
-    function onDrag(e) {
-        if (!isDragging) return;
-        const clientY = e.clientY || e.touches[0].clientY;
-        const dy = clientY - startY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const thumbHeight = customScrollThumb.offsetHeight;
-        const trackHeight = customScrollbar.offsetHeight - thumbHeight;
-        const scrollPercentage = dy / trackHeight;
-        window.scrollTo(0, startScrollY + scrollPercentage * docHeight);
-    }
+function onDrag(e) {
+  if (!isDragging) return;
+  const clientY = e.clientY || e.touches[0].clientY;
+  const dy = clientY - startY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const thumbHeight = customScrollThumb.offsetHeight;
+  const trackHeight = customScrollbar.offsetHeight - thumbHeight;
+  const scrollPercentage = dy / trackHeight;
+  window.scrollTo(0, startScrollY + scrollPercentage * docHeight);
+}
 
-    function endDrag() {
-        if (isDragging) {
-            isDragging = false;
-            document.body.style.userSelect = '';
-        }
-    }
+function endDrag() {
+  if (isDragging) {
+    isDragging = false;
+    document.body.style.userSelect = "";
+  }
+}
 
-    customScrollThumb.addEventListener('mousedown', startDrag);
-    document.addEventListener('mousemove', onDrag);
-    document.addEventListener('mouseup', endDrag);
+customScrollThumb.addEventListener("mousedown", startDrag);
+document.addEventListener("mousemove", onDrag);
+document.addEventListener("mouseup", endDrag);
 
-    customScrollThumb.addEventListener('touchstart', startDrag);
-    document.addEventListener('touchmove', onDrag);
-    document.addEventListener('touchend', endDrag);
+customScrollThumb.addEventListener("touchstart", startDrag);
+document.addEventListener("touchmove", onDrag);
+document.addEventListener("touchend", endDrag);
 
-    updateThumbPosition();
-
+updateThumbPosition();
 
 /* -----------------------------------------------------------------
    Transição Hero → Cards + título + scroll horizontal
@@ -195,35 +197,61 @@ if (wrap && track) {
       duration: 1,
     })
 
-    .to(".hero", {
-      opacity: 0,
-      ease: "none",
-      duration: 0.4,
-    }, "-=0.3")
+    .to(
+      ".hero",
+      {
+        opacity: 0,
+        ease: "none",
+        duration: 0.4,
+        onStart: () => {
+          document.querySelector(".hero")?.classList.add("semMouse");
+          document.querySelector(".cardSolucoes")?.classList.add("ativoMouse");
+        },
+        onReverseComplete: () => {
+          document.querySelector(".hero")?.classList.remove("semMouse");
+          document
+            .querySelector(".cardSolucoes")
+            ?.classList.remove("ativoMouse");
+        },
+      },
+      "-=0.3",
+    )
 
-    .to(".cardSolucoes", {
-      opacity: 1,
-      ease: "none",
-      duration: 0.3,
-    }, "-=0.3")
+    .to(
+      ".cardSolucoes",
+      {
+        opacity: 1,
+        ease: "none",
+        duration: 0.3,
+      },
+      "-=0.3",
+    )
 
-    .to(".bolinhas", {
-      opacity: 0,
-      ease: "none",
-      duration: 0.2,
-    }, "-=0.1");
+    .to(
+      ".bolinhas",
+      {
+        opacity: 0,
+        ease: "none",
+        duration: 0.2,
+      },
+      "-=0.1",
+    );
 
   if (charsTituloServicos.length) {
-    tlTransicao.to(charsTituloServicos, {
-      opacity: 1,
-      filter: "blur(0px)",
-      ease: "none",
-      duration: 0.5,
-      stagger: {
-        each: 0.02,
-        from: "random",
+    tlTransicao.to(
+      charsTituloServicos,
+      {
+        opacity: 1,
+        filter: "blur(0px)",
+        ease: "none",
+        duration: 0.5,
+        stagger: {
+          each: 0.02,
+          from: "random",
+        },
       },
-    }, "-=0.1");
+      "-=0.1",
+    );
   }
 
   tlTransicao.to(track, {
@@ -231,9 +259,7 @@ if (wrap && track) {
     ease: "none",
     duration: 4,
   });
-
 }
-
 
 /* -----------------------------------------------------------------
    textoAnimado em MAIN
@@ -262,24 +288,19 @@ document.querySelectorAll("main .textoAnimado").forEach((texto) => {
   });
 });
 
-
 /* -----------------------------------------------------------------
    Abas Portfólio
    ----------------------------------------------------------------- */
 
+$(document).ready(function () {
+  // Barra Ativo
+  $(".action").click(function (e) {
+    e.preventDefault();
 
-
-$(document).ready(function(){
-
-    // Barra Ativo
-    $(".action").click(function(e){
-        e.preventDefault();
-
-        $(".slide").removeClass("active");
-        var slide = $(this).closest(".slide");
-        slide.addClass("active");
-    });
-
+    $(".slide").removeClass("active");
+    var slide = $(this).closest(".slide");
+    slide.addClass("active");
+  });
 });
 
 function checkWidth() {
@@ -289,19 +310,18 @@ function checkWidth() {
     const slideWidth = $(".slide.active").width();
 
     $(".slide.active .slide-content").css({
-      width: slideWidth + "px"
+      width: slideWidth + "px",
     });
   }
 }
 
+$(window).resize(function () {
+  // onresize
+  checkWidth();
 
-$(window).resize(function() {
-    // onresize
-    checkWidth();
-
-    // finish resize
-    clearTimeout(window.resizedFinished);
-    window.resizedFinished = setTimeout( checkWidth , 500);
+  // finish resize
+  clearTimeout(window.resizedFinished);
+  window.resizedFinished = setTimeout(checkWidth, 500);
 });
 
 /* -----------------------------------------------------------------
@@ -314,7 +334,6 @@ abas.forEach((aba) => {
   const frame = aba.querySelector(".frame");
 
   frame.addEventListener("click", () => {
-
     abas.forEach((item) => {
       if (item !== aba) {
         item.classList.remove("active2");
@@ -324,8 +343,6 @@ abas.forEach((aba) => {
     aba.classList.toggle("active2");
   });
 });
-
-
 
 /* -----------------------------------------------------------------
    SVG Portfolio
@@ -361,7 +378,7 @@ animarSVGDesenho(".iconePortfolio_obsoleto", ".dobra03");
 /* -----------------------------------------------------------------
    Hover Vantagens
 ----------------------------------------------------------------- */
-document.querySelectorAll(".item").forEach(item => {
+document.querySelectorAll(".item").forEach((item) => {
   const img = item.querySelector("img");
 
   item.addEventListener("mouseenter", () => {
@@ -401,7 +418,7 @@ if (textoProtocolo) {
           duration: 0.3,
           stagger: 0.02,
           ease: "power2.out",
-        }
+        },
       );
     },
     onEnterBack: () => {
@@ -417,17 +434,15 @@ if (textoProtocolo) {
           duration: 0.3,
           stagger: 0.02,
           ease: "power2.out",
-        }
+        },
       );
     },
   });
 }
 
-
 /* -----------------------------------------------------------------
    Footer — texto animado 1 (h2 .textoAnimado)
 ----------------------------------------------------------------- */
-
 
 function animarTextosFooter() {
   const textoFooter = document.querySelector("footer .textoAnimado");
@@ -490,12 +505,11 @@ function animarTextoFooter2() {
           duration: 0.3,
           stagger: 0.02,
           ease: "power2.out",
-        }
+        },
       );
     }
   });
 }
-
 
 /* -----------------------------------------------------------------
    Preloader
@@ -546,7 +560,7 @@ function animarTextoFooter2() {
         duration: 1,
         ease: "power3.inOut",
       },
-      0.2
+      0.2,
     );
 
     tl.to(
@@ -557,7 +571,7 @@ function animarTextoFooter2() {
         duration: 0.6,
         ease: "power2.out",
       },
-      0.4
+      0.4,
     );
 
     tl.to(
@@ -566,13 +580,10 @@ function animarTextoFooter2() {
         opacity: 0,
         duration: 0.3,
       },
-      "-=0.2"
+      "-=0.2",
     );
   }
 })();
-
-
-
 
 /* -----------------------------------------------------------------
    Reload ao trocar resolução/monitor
