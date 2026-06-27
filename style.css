@@ -639,25 +639,31 @@ header.scrolled .icone {
 }
 
 .ctaServicos {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
+  display: inline-flex;
   align-items: center;
+  gap: 8px;
+
   color: var(--color-dark);
   font-family: "Roboto Serif", serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
-  line-height: 150%; /* 24px */
+  line-height: 150%;
   text-decoration: none;
+
   cursor: pointer;
+  position: relative;
+  z-index: 10;
 }
 
-.ctaServicos::before {
+.ctaServicos span {
+  position: relative;
+  display: inline-block;
+}
+
+.ctaServicos span::before {
   content: "";
   position: absolute;
-
   left: 50%;
   bottom: -4px;
 
@@ -672,8 +678,16 @@ header.scrolled .icone {
   transition: transform 0.5s ease;
 }
 
-.ctaServicos:hover::before {
+.ctaServicos:hover span::before {
   transform: translateX(-50%) scaleX(1);
+}
+.card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.cards > img {
+  pointer-events: none;
 }
 
 /* =========================
