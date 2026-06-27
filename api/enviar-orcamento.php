@@ -6,9 +6,26 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../config/conexao.php';
+$pdo = new PDO(
+    "mysql:host=" . getenv('DB_HOST') . ";port=" . getenv('DB_PORT') . ";dbname=" . getenv('DB_DATABASE') . ";charset=utf8mb4",
+    getenv('DB_USERNAME'),
+    getenv('DB_PASSWORD'),
+    [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    ]
+);
 
-$emailConfig = require __DIR__ . '/../config/email.php';
+$emailConfig = [
+    'host' => getenv('SMTP_HOST'),
+    'port' => getenv('SMTP_PORT'),
+    'username' => getenv('SMTP_USERNAME'),
+    'password' => getenv('SMTP_PASSWORD'),
+    'from_email' => getenv('MAIL_FROM_ADDRESS'),
+    'from_name' => getenv('MAIL_FROM_NAME'),
+    'to_email' => getenv('MAIL_TO_ADDRESS'),
+    'to_name' => getenv('MAIL_TO_NAME'),
+];
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
