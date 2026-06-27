@@ -590,6 +590,7 @@ header.scrolled .icone {
   position: absolute;
 
   top: 20%;
+  z-index: 20;
 }
 
 .textoCard {
@@ -619,6 +620,8 @@ header.scrolled .icone {
 }
 
 .peq {
+  position: relative;
+  z-index: 30;
   display: flex;
   width: 364px;
   padding: 16px;
