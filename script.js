@@ -4,6 +4,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 document.addEventListener("DOMContentLoaded", () => {
   iniciarHeaderScroll();
   ativarMenuAtual();
+  iniciarMenuMobile();
   animarTextosFooter();
   animarTextoFooter2();
 
@@ -79,6 +80,28 @@ function iniciarHeaderScroll() {
     } else {
       header.classList.remove("scrolled");
     }
+  });
+}
+
+function iniciarMenuMobile() {
+  const header = document.querySelector("header");
+  const btn = document.querySelector(".menuMobileBtn");
+  const links = document.querySelectorAll(".principal a");
+
+  if (!header || !btn) return;
+
+  btn.addEventListener("click", () => {
+    header.classList.toggle("menuAberto");
+
+    const aberto = header.classList.contains("menuAberto");
+    btn.setAttribute("aria-label", aberto ? "Fechar menu" : "Abrir menu");
+  });
+
+  links.forEach((link) => {
+    link.addEventListener("click", () => {
+      header.classList.remove("menuAberto");
+      btn.setAttribute("aria-label", "Abrir menu");
+    });
   });
 }
 

@@ -5,6 +5,12 @@
       src="/assets/imagens/logo-daiane-ferreira.svg"
       alt="Logo Daiane Ferreira" />
   </a>
+  
+<button class="menuMobileBtn" type="button" aria-label="Abrir menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
   <nav class="principal">
     <ul>
