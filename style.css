@@ -2467,10 +2467,10 @@ footer .textoAnimado span .charFooter {
     inset: 0 0 auto 0;
     width: 100%;
     height: 72px;
-    padding: 10px 14px;
+    padding: 14px 18px;
     align-items: center;
     justify-content: space-between;
-    background: transparent;
+    background: transparent !important;
     z-index: 9999;
     pointer-events: none;
   }
@@ -2479,17 +2479,17 @@ footer .textoAnimado span .charFooter {
   .iconeMobile {
     position: relative;
     z-index: 10020;
-    width: 50px;
+    width: 54px;
     height: auto;
     pointer-events: auto;
   }
 
   .iconeMobile {
-    width: 50px;
+    width: 58px;
   }
 
   .menu-drop-down {
-     position: fixed;
+    position: fixed;
     left: 50%;
     top: -0.5rem;
 
@@ -2512,9 +2512,13 @@ footer .textoAnimado span .charFooter {
 
   .shape {
     position: absolute;
-    inset: 10px 0 0 0;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+
     width: 100%;
     height: auto;
+
     z-index: 1;
     pointer-events: none;
     display: block;
@@ -2523,25 +2527,31 @@ footer .textoAnimado span .charFooter {
   .menu-links {
     position: absolute;
     z-index: 2;
+
     width: 100%;
     height: 19rem;
+
     padding: 2rem 2rem 0;
+
     display: flex;
     flex-direction: column;
-    .menu-links {
-  background: #ef6500;
 
+    background: #ef6500;
   }
 
   .nav-link {
     display: grid;
     grid-template-columns: 42px 1fr;
     align-items: center;
+
     width: 100%;
     height: 38px;
+
     color: #000;
     text-decoration: none;
+
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
     opacity: 0;
     transform: translateY(40px);
   }
@@ -2558,6 +2568,7 @@ footer .textoAnimado span .charFooter {
     font-family: "Roboto Serif", serif;
     font-size: 15px;
     font-weight: 400;
+    color: #000;
   }
 
   .nav-link.ativo {
@@ -2570,15 +2581,20 @@ footer .textoAnimado span .charFooter {
     position: absolute;
     left: 50%;
     bottom: 0.8rem;
+
     transform: translateX(-50%);
+
     z-index: 5;
+
     width: 1.5rem;
     height: 1.5rem;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 5px;
+
     background: transparent;
     border: 0;
     cursor: pointer;
