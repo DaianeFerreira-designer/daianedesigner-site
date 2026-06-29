@@ -2602,7 +2602,7 @@ footer .textoAnimado span .charFooter {
   .menu-btn {
     position: absolute;
     left: 50%;
-    bottom: 0.9rem;
+    bottom: 0.4rem;
 
     transform: translateX(-50%);
 
