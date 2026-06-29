@@ -83,35 +83,6 @@ function iniciarHeaderScroll() {
   });
 }
 
-function iniciarMenuMobile() {
-  const headerMobile = document.querySelector(".headerMobile");
-  const btn = document.querySelector(".menu-btn");
-  const links = document.querySelectorAll(".menu-links .nav-link");
-
-  if (!headerMobile || !btn) return;
-
-  btn.addEventListener("click", () => {
-    headerMobile.classList.toggle("menuAberto");
-
-    const aberto = headerMobile.classList.contains("menuAberto");
-    btn.setAttribute("aria-label", aberto ? "Fechar menu" : "Abrir menu");
-  });
-
-  const paginaAtual = window.location.pathname.replace(/\/$/, "") || "/";
-
-  links.forEach((link) => {
-    const href = link.getAttribute("href").replace(/\/$/, "") || "/";
-
-    if (href === paginaAtual) {
-      link.classList.add("ativo");
-    }
-
-    link.addEventListener("click", () => {
-      headerMobile.classList.remove("menuAberto");
-      btn.setAttribute("aria-label", "Abrir menu");
-    });
-  });
-}
 
 /* -----------------------------------------------------------------
    Custom Scrollbar
@@ -615,6 +586,112 @@ function animarTextoFooter2() {
     );
   }
 })();
+
+function iniciarMenuMobile() {
+  const headerMobile = document.querySelector(".headerMobile");
+  const menu = document.querySelector(".menu-drop-down");
+  const btn = document.querySelector(".menu-btn");
+  const links = document.querySelectorAll(".menu-links .nav-link");
+  const topLine = document.querySelector(".menu-line.top");
+  const midLine = document.querySelector(".menu-line.mid");
+  const bottomLine = document.querySelector(".menu-line.bottom");
+
+  if (!headerMobile || !menu || !btn) return;
+
+  const paginaAtual = window.location.pathname.replace(/\/$/, "") || "/";
+
+  links.forEach((link) => {
+    const href = link.getAttribute("href").replace(/\/$/, "") || "/";
+
+    if (href === paginaAtual) {
+      link.classList.add("ativo");
+    }
+  });
+
+  gsap.set(menu, {
+    y: "-21rem",
+    xPercent: -50,
+  });
+
+  gsap.set(links, {
+    opacity: 0,
+    y: 40,
+  });
+
+  let aberto = false;
+
+  const tlMenu = gsap.timeline({
+    paused: true,
+    defaults: {
+      ease: "power3.out",
+    },
+  });
+
+  tlMenu
+    .to(menu, {
+      y: 0,
+      duration: 0.55,
+    })
+    .to(
+      links,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.35,
+        stagger: 0.05,
+      },
+      "-=0.25",
+    )
+    .to(
+      topLine,
+      {
+        y: 8,
+        rotate: 45,
+        duration: 0.25,
+      },
+      0,
+    )
+    .to(
+      midLine,
+      {
+        opacity: 0,
+        duration: 0.2,
+      },
+      0,
+    )
+    .to(
+      bottomLine,
+      {
+        y: -8,
+        rotate: -45,
+        duration: 0.25,
+      },
+      0,
+    );
+
+  btn.addEventListener("click", () => {
+    aberto = !aberto;
+
+    headerMobile.classList.toggle("menuAberto", aberto);
+    btn.setAttribute("aria-label", aberto ? "Fechar menu" : "Abrir menu");
+
+    if (aberto) {
+      tlMenu.play();
+    } else {
+      tlMenu.reverse();
+    }
+  });
+
+  links.forEach((link) => {
+    link.addEventListener("click", () => {
+      aberto = false;
+      headerMobile.classList.remove("menuAberto");
+      btn.setAttribute("aria-label", "Abrir menu");
+      tlMenu.reverse();
+    });
+  });
+}
+
 
 /* -----------------------------------------------------------------
    Reload ao trocar resolução/monitor
