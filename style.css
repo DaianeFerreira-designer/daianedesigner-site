@@ -2459,6 +2459,8 @@ footer .textoAnimado span .charFooter {
 @media (max-width: 767px) {
   .headerDesktop {
     display: none;
+    visibility: hidden;
+    
   }
 
   .headerMobile {
