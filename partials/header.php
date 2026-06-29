@@ -50,7 +50,7 @@
       </li>
       <li>
         <a href="/templates-elementor-wordpress-figma">
-          <span class="menuIcon">◇</span>
+          <span class="menuIcon"><img src="/assets/imagens/icone" alt="">◇</span>
           <span>Templates</span>
         </a>
       </li>
