@@ -23,7 +23,6 @@
   z-index: 1000;
   margin: 0;
   padding: 0;
-  
 }
 .custom-scroll-thumb {
   position: absolute;
@@ -42,7 +41,6 @@
   transition: 0.5s;
   margin: 0;
   padding: 0;
-  
 }
 
 .custom-scroll-thumb:hover {
@@ -100,7 +98,7 @@
   --color-accent: #ef6500;
   --transition: 0.22s ease;
 
-   --header-h: 120px; /* fallback */
+  --header-h: 120px; /* fallback */
   --aside-gap: 16px;
 }
 
@@ -1595,10 +1593,10 @@ footer .textoAnimado span .charFooter {
   will-change: opacity, transform;
 }
 
-.rodapeForms{
+.rodapeForms {
   display: flex;
   flex-direction: row;
- justify-content: center;
+  justify-content: center;
   gap: 16px;
   height: 10px;
 }
@@ -1609,7 +1607,7 @@ footer .textoAnimado span .charFooter {
 
 .wrapperForms {
   /* Voltou a ser flex para alinhar a sidebar e o conteúdo lado a lado */
-  display: flex; 
+  display: flex;
   align-items: flex-start; /* Essencial para o funcionamento do sticky */
   width: 100%;
   min-height: 100vh;
@@ -1624,8 +1622,8 @@ footer .textoAnimado span .charFooter {
 
 .barraLateral {
   position: fixed;
-  top:150px;
-  max-width: 600px; 
+  top: 150px;
+  max-width: 600px;
   height: 560px;
   display: flex;
   align-items: stretch;
@@ -1638,9 +1636,8 @@ footer .textoAnimado span .charFooter {
   border-style: solid;
   border-color: var(--color-accent);
   border-width: 2px 2px 2px 0; /* top right bottom left */
- 
+
   z-index: 10;
-  
 }
 
 /* conteudo da barra lateral */
@@ -1745,8 +1742,8 @@ footer .textoAnimado span .charFooter {
 /* Conteúdo main - Formulário */
 
 .container-principal {
-   flex: 1; 
-  width: 100%; 
+  flex: 1;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1754,7 +1751,6 @@ footer .textoAnimado span .charFooter {
   padding: 80px 16px;
   gap: 32px;
   justify-content: flex-start;
-
 }
 
 /* Preogresso barra top */
@@ -1797,7 +1793,6 @@ footer .textoAnimado span .charFooter {
   width: 650px;
   flex-direction: column;
   justify-content: flex-start;
- 
 }
 
 /* Forms por etapa */
@@ -1908,8 +1903,6 @@ footer .textoAnimado span .charFooter {
   box-shadow: 0 0 0 2px rgba(255, 110, 110, 0.781);
 }
 
-
-
 /* telefone */
 
 .phone-wrap {
@@ -1918,7 +1911,7 @@ footer .textoAnimado span .charFooter {
 
 .iti {
   width: 100%;
-   scrollbar-color: rgba(255, 255, 255, 0.829) transparent;
+  scrollbar-color: rgba(255, 255, 255, 0.829) transparent;
 }
 
 .iti__tel-input {
@@ -1954,13 +1947,13 @@ footer .textoAnimado span .charFooter {
 /* Flag button */
 .iti__selected-country {
   background: transparent !important;
-  border-right: 1px solid var(--color-light)!important;
+  border-right: 1px solid var(--color-light) !important;
   padding: 0px 10px !important;
   gap: 0px !important;
 }
 
 .iti__selected-country:hover {
-   background: var(--color-light) !important; 
+  background: var(--color-light) !important;
 }
 
 .iti__selected-dial-code {
@@ -1979,7 +1972,7 @@ footer .textoAnimado span .charFooter {
 }
 
 .iti__search-input {
-  background:var(--color-light) !important;
+  background: var(--color-light) !important;
   border: none !important;
   color: var(--color-dark) !important;
   font-family: "Roboto Serif", serif !important;
@@ -1988,7 +1981,7 @@ footer .textoAnimado span .charFooter {
 
 .iti__country-name,
 .iti__dial-code {
-  color:var(--color-text) !important;
+  color: var(--color-text) !important;
 }
 
 .iti__country:hover,
@@ -2051,14 +2044,13 @@ footer .textoAnimado span .charFooter {
 
 /* Área nativa do input desativada */
 .optionCard input[type="radio"],
-.optionCard input[type="checkbox"]{
+.optionCard input[type="checkbox"] {
   position: absolute;
-  opacity:0;
+  opacity: 0;
   width: 0;
   height: 0;
   pointer-events: none;
 }
-
 
 /* Area do checked */
 .optIndicator {
@@ -2068,7 +2060,7 @@ footer .textoAnimado span .charFooter {
   border: 2px solid rgba(255, 255, 255, 0.137);
   border-radius: 10%;
   position: relative;
-   transition: all 0.22s ease;
+  transition: all 0.22s ease;
 }
 
 /* input personalizado */
@@ -2084,7 +2076,7 @@ footer .textoAnimado span .charFooter {
 
 /* Radio check */
 .optionCard:has(input[type="radio"]:checked) .optIndicator::after {
- content: "";
+  content: "";
   position: absolute;
   top: 1px;
   left: 2px;
@@ -2114,11 +2106,10 @@ footer .textoAnimado span .charFooter {
   font-weight: 400;
   color: var(--color-light);
   line-height: 1.35;
-  
 }
 
 /* Campo aceite */
-.aceiteLabel{
+.aceiteLabel {
   display: flex;
   align-items: flex-start;
   gap: 12px;
@@ -2127,7 +2118,7 @@ footer .textoAnimado span .charFooter {
 }
 
 /* esconde o checkbox nativo, mas mantém acessível */
-.aceiteLabel input[type="checkbox"]{
+.aceiteLabel input[type="checkbox"] {
   position: absolute;
   opacity: 0;
   width: 1px;
@@ -2135,38 +2126,41 @@ footer .textoAnimado span .charFooter {
 }
 
 /* o “quadradinho” */
-.checkUI{
+.checkUI {
   width: 18px;
   height: 18px;
   border-radius: 5px;
-  border: 2px solid rgba(255,255,255,.25);
-  background: rgba(255,255,255,.06);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.06);
   display: inline-grid;
   place-items: center;
   flex: 0 0 18px;
 
-  transition: border-color .22s ease, box-shadow .22s ease, background .22s ease;
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease;
 }
 
 /* estado hover (opcional) */
-.aceiteLabel:hover .checkUI{
-  border-color: rgba(239, 101, 0, .7);
+.aceiteLabel:hover .checkUI {
+  border-color: rgba(239, 101, 0, 0.7);
 }
 
 /* foco do teclado */
-.aceiteLabel input[type="checkbox"]:focus-visible + .checkUI{
-  box-shadow: 0 0 0 3px rgba(239, 101, 0, .25);
-  border-color: rgba(239, 101, 0, .95);
+.aceiteLabel input[type="checkbox"]:focus-visible + .checkUI {
+  box-shadow: 0 0 0 3px rgba(239, 101, 0, 0.25);
+  border-color: rgba(239, 101, 0, 0.95);
 }
 
 /* marcado */
-.aceiteLabel input[type="checkbox"]:checked + .checkUI{
+.aceiteLabel input[type="checkbox"]:checked + .checkUI {
   background: #ef6500;
   border-color: #ef6500;
 }
 
 /* “check” desenhado */
-.aceiteLabel input[type="checkbox"]:checked + .checkUI::after{
+.aceiteLabel input[type="checkbox"]:checked + .checkUI::after {
   content: "";
   width: 9px;
   height: 5px;
@@ -2180,7 +2174,6 @@ footer .textoAnimado span .charFooter {
   font-size: 12px;
   color: var(--color-light);
   font-weight: 400;
-  
 }
 
 /* Global erros */
@@ -2197,7 +2190,6 @@ footer .textoAnimado span .charFooter {
 /* Botão */
 
 .btn-primary {
-
   background: var(--gradient-primary);
   border: none;
   border-radius: 8px;
@@ -2206,7 +2198,10 @@ footer .textoAnimado span .charFooter {
   font-weight: 700;
   color: rgba(0, 0, 0, 0.9);
   cursor: pointer;
-  transition: border-color .22s ease, box-shadow .22s ease, background .22s ease;
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2214,7 +2209,6 @@ footer .textoAnimado span .charFooter {
   width: 212.468px;
   height: 56px;
   padding: 12px 48px;
- 
 }
 
 .btn-primary:hover {
@@ -2248,7 +2242,10 @@ footer .textoAnimado span .charFooter {
   font-weight: 500;
   color: var(--color-light);
   cursor: pointer;
-  transition: border-color .22s ease, box-shadow .22s ease, background .22s ease;
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease;
 }
 
 .btn-secondary:hover {
@@ -2257,12 +2254,11 @@ footer .textoAnimado span .charFooter {
   color: var(--color-text);
 }
 
-.form-nav{
-  display: flex ;
-  width: 100% ;
+.form-nav {
+  display: flex;
+  width: 100%;
   justify-content: flex-end;
 }
-
 
 .navSplit {
   display: flex;
@@ -2272,11 +2268,10 @@ footer .textoAnimado span .charFooter {
   flex: 1;
 }
 
-.form-nav > .btn-primary{
+.form-nav > .btn-primary {
   margin-left: auto !important;
   margin-right: 0 !important;
 }
-
 
 /* Submit loading spinner */
 .spinner {
@@ -2315,7 +2310,7 @@ footer .textoAnimado span .charFooter {
    STEP 03 — Review (mesmo padrão do form)
 ========================================= */
 
-#formsStep3 .stepTitle{
+#formsStep3 .stepTitle {
   font-family: "Roboto Serif";
   font-size: 18px;
   font-weight: 700;
@@ -2325,7 +2320,7 @@ footer .textoAnimado span .charFooter {
 }
 
 /* Caixa de revisão */
-.reviewBox{
+.reviewBox {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -2338,7 +2333,7 @@ footer .textoAnimado span .charFooter {
 }
 
 /* Linha padrão: label + valor */
-.reviewRow{
+.reviewRow {
   width: 100%;
   display: grid;
   grid-template-columns: 170px 1fr;
@@ -2347,7 +2342,7 @@ footer .textoAnimado span .charFooter {
 }
 
 /* Label da revisão */
-.reviewLabel{
+.reviewLabel {
   font-family: "Roboto Serif";
   font-size: 14px;
   font-weight: 700;
@@ -2357,7 +2352,7 @@ footer .textoAnimado span .charFooter {
 }
 
 /* Valor da revisão */
-.reviewValue{
+.reviewValue {
   font-family: "Roboto Serif", serif;
   font-size: 14px;
   font-weight: 400;
@@ -2374,7 +2369,7 @@ footer .textoAnimado span .charFooter {
 }
 
 /* Separador */
-.reviewSep{
+.reviewSep {
   width: 100%;
   border: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.18);
@@ -2382,18 +2377,18 @@ footer .textoAnimado span .charFooter {
 }
 
 /* Quando você usa hidden no HTML */
-.reviewRow[hidden]{
+.reviewRow[hidden] {
   display: none !important;
 }
 
 /* Responsivo */
-@media (max-width: 720px){
-  .reviewRow{
+@media (max-width: 720px) {
+  .reviewRow {
     grid-template-columns: 1fr;
     gap: 8px;
   }
 
-  .reviewBox{
+  .reviewBox {
     padding: 16px;
   }
 }
@@ -2406,8 +2401,8 @@ footer .textoAnimado span .charFooter {
 /* Sucesso com a mesma "cara" e largura do form */
 .formSuccess {
   display: flex;
-  width: 650px;           /* igual .formsConteudo */
-  padding: 32px;          /* igual .formsStep */
+  width: 650px; /* igual .formsConteudo */
+  padding: 32px; /* igual .formsStep */
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -2417,7 +2412,7 @@ footer .textoAnimado span .charFooter {
   display: none !important;
 }
 
-.successTitle{
+.successTitle {
   font-family: "Roboto Serif", serif;
   font-size: 24px;
   font-weight: 700;
@@ -2426,7 +2421,7 @@ footer .textoAnimado span .charFooter {
   margin: 0 0 10px 0;
 }
 
-.successText{
+.successText {
   font-family: "Roboto Serif", serif;
   font-size: 14px;
   font-weight: 400;
@@ -2435,7 +2430,7 @@ footer .textoAnimado span .charFooter {
   margin: 0;
 }
 
-.construtor{
+.construtor {
   display: flex;
   width: 100%;
   height: 100vh;
@@ -2443,17 +2438,16 @@ footer .textoAnimado span .charFooter {
   align-items: center;
 }
 
-.construtor p{
+.construtor p {
   text-align: center;
 }
-
 
 /* =========================
    HEADER MOBILE DROP
 ========================= */
 
 .headerMobile {
- display: none !important;
+  display: none !important;
 }
 
 @media (max-width: 767px) {
@@ -2479,13 +2473,13 @@ footer .textoAnimado span .charFooter {
   .iconeMobile {
     position: relative;
     z-index: 10020;
-    width: 54px;
+    width: 40px;
     height: auto;
     pointer-events: auto;
-  }
-
-  .iconeMobile {
-    width: 58px;
+    pointer-events: auto;
+    transition:
+      opacity 0.25s ease,
+      visibility 0.25s ease;
   }
 
   .menu-drop-down {
@@ -2508,56 +2502,59 @@ footer .textoAnimado span .charFooter {
 
     pointer-events: auto;
     overflow: visible;
-  }.menu-drop-down {
-  position: fixed;
-  left: 50%;
-  top: -0.5rem;
+  }
 
-  width: 90%;
-  max-width: 430px;
-  height: 24rem;
+  .menu-drop-down {
+    position: fixed;
+    left: 50%;
+    top: -0.5rem;
 
-  transform: translate3d(-50%, -21rem, 0);
+    width: 90%;
+    max-width: 430px;
+    height: 24rem;
 
-  z-index: 10010;
-  display: flex;
-  justify-content: center;
+    transform: translate3d(-50%, -21rem, 0);
 
-  background: transparent;
-  border-radius: 0;
+    z-index: 10010;
+    display: flex;
+    justify-content: center;
 
-  pointer-events: auto;
-  overflow: visible;
-}
+    background: transparent;
+    border-radius: 0;
 
-.shape {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
+    pointer-events: auto;
+    overflow: visible;
+  }
 
-  width: 100%;
-  height: auto;
+  .shape {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 5px;
+    bottom: 0;
 
-  z-index: 1;
-  pointer-events: none;
-  display: block;
-}
+    width: 100%;
+    height: auto;
 
- .menu-links {
-  position: absolute;
-  z-index: 2;
+    z-index: 1;
+    pointer-events: none;
+    display: block;
+  }
 
-  width: 100%;
-  height: 19rem;
+  .menu-links {
+    position: absolute;
+    z-index: 2;
 
-  padding: 2rem 2rem 0;
+    width: 100%;
+    height: 19rem;
 
-  display: flex;
-  flex-direction: column;
+    padding: 2rem 2rem 0;
 
-  background: #ef6500;
-}
+    display: flex;
+    flex-direction: column;
+    bottom: 4.65rem;
+    background: #ef6500;
+  }
 
   .nav-link {
     display: grid;
@@ -2584,7 +2581,7 @@ footer .textoAnimado span .charFooter {
   }
 
   .nav-link span {
-    text-align: center;
+    text-align: start;
     font-family: "Roboto Serif", serif;
     font-size: 15px;
     font-weight: 400;
@@ -2598,28 +2595,28 @@ footer .textoAnimado span .charFooter {
   }
 
   .menu-btn {
-  position: absolute;
-  left: 50%;
-  bottom: 0.8rem;
+    position: absolute;
+    left: 50%;
+    bottom: 0.8rem;
 
-  transform: translateX(-50%);
+    transform: translateX(-50%);
 
-  z-index: 5;
+    z-index: 5;
 
-  width: 1.5rem;
-  height: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  padding: 0;
-}
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 0;
+  }
 
   .menu-line {
     width: 24px;
@@ -2627,5 +2624,11 @@ footer .textoAnimado span .charFooter {
     border-radius: 100px;
     background: #000;
     display: block;
+  }
+
+  .headerMobile.menuAberto .logoMobile,
+  .headerMobile.menuAberto .iconeMobile {
+    opacity: 0;
+    visibility: hidden;
   }
 }
