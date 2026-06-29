@@ -2482,9 +2482,8 @@ footer .textoAnimado span .charFooter {
       visibility 0.25s ease;
   }
 
-  .iconeMobile{
+  .iconeMobile {
     width: 38px;
-
   }
 
   .menu-drop-down {
@@ -2535,7 +2534,7 @@ footer .textoAnimado span .charFooter {
     position: absolute;
     left: 0;
     right: 0;
-    
+
     bottom: -8px;
 
     width: 100%;
@@ -2551,13 +2550,13 @@ footer .textoAnimado span .charFooter {
     z-index: 2;
 
     width: 100%;
-    height:calc(19rem + 48px);
+    height: calc(19rem + 48px);
 
-    padding:2rem 2rem 48px;
+    padding: 2rem 2rem 48px;
 
     display: flex;
     flex-direction: column;
-     
+  border-radius: 0 0 20px 20px;
     background: #ef6500;
   }
 
