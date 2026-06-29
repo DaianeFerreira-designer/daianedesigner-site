@@ -609,7 +609,7 @@ function iniciarMenuMobile() {
   });
 
   gsap.set(menu, {
-    y: "-21rem",
+    y: "-19rem",
     xPercent: -50,
   });
 
