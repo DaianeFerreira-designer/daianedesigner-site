@@ -4,7 +4,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 document.addEventListener("DOMContentLoaded", () => {
   iniciarHeaderScroll();
   ativarMenuAtual();
-  iniciarMenuMobile();
+ iniciarMenuMobile();
   animarTextosFooter();
   animarTextoFooter2();
 
@@ -84,22 +84,30 @@ function iniciarHeaderScroll() {
 }
 
 function iniciarMenuMobile() {
-  const header = document.querySelector("header");
-  const btn = document.querySelector(".menuMobileBtn");
-  const links = document.querySelectorAll(".principal a");
+  const headerMobile = document.querySelector(".headerMobile");
+  const btn = document.querySelector(".menu-btn");
+  const links = document.querySelectorAll(".menu-links .nav-link");
 
-  if (!header || !btn) return;
+  if (!headerMobile || !btn) return;
 
   btn.addEventListener("click", () => {
-    header.classList.toggle("menuAberto");
+    headerMobile.classList.toggle("menuAberto");
 
-    const aberto = header.classList.contains("menuAberto");
+    const aberto = headerMobile.classList.contains("menuAberto");
     btn.setAttribute("aria-label", aberto ? "Fechar menu" : "Abrir menu");
   });
 
+  const paginaAtual = window.location.pathname.replace(/\/$/, "") || "/";
+
   links.forEach((link) => {
+    const href = link.getAttribute("href").replace(/\/$/, "") || "/";
+
+    if (href === paginaAtual) {
+      link.classList.add("ativo");
+    }
+
     link.addEventListener("click", () => {
-      header.classList.remove("menuAberto");
+      headerMobile.classList.remove("menuAberto");
       btn.setAttribute("aria-label", "Abrir menu");
     });
   });
