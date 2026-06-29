@@ -28,51 +28,46 @@
     <img class="logoMobile" src="/assets/imagens/logo-daiane-ferreira.svg" alt="Logo Daiane Ferreira" />
   </a>
 
-  <button class="menuMobileToggle" type="button" aria-label="Abrir menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+  <nav class="menu-drop-down">
+    <button class="menu-btn" type="button" aria-label="Abrir menu">
+      <span class="menu-line top"></span>
+      <span class="menu-line mid"></span>
+      <span class="menu-line bottom"></span>
+    </button>
 
-  <nav class="menuMobileDrop">
-    <ul>
-      <li>
-        <a href="/">
-          <span class="menuIcon">⌂</span>
-          <span>Home</span>
-        </a>
-      </li>
-      <li>
-        <a href="/criacao-de-sites-profissionais">
-          <span class="menuIcon">◈</span>
-          <span>Serviços</span>
-        </a>
-      </li>
-      <li>
-        <a href="/templates-elementor-wordpress-figma">
-          <span class="menuIcon"><img src="/assets/imagens/icone" alt="">◇</span>
-          <span>Templates</span>
-        </a>
-      </li>
-      <li>
-        <a href="/portfolio-sites-profissionais">
-          <span class="menuIcon">⌘</span>
-          <span>Portfólio</span>
-        </a>
-      </li>
-      <li>
-        <a href="/sobre-daiane-ferreira-web-designer">
-          <span class="menuIcon">♙</span>
-          <span>Sobre</span>
-        </a>
-      </li>
-      <li>
-        <a href="/contato-criacao-de-sites">
-          <span class="menuIcon">✉</span>
-          <span>Contato</span>
-        </a>
-      </li>
-    </ul>
+    <div class="menu-links">
+      <a href="/" class="nav-link">
+        <img src="/assets/imagens/icon-menu-home.svg" alt="" />
+        <span>Home</span>
+      </a>
+
+      <a href="/criacao-de-sites-profissionais" class="nav-link">
+        <img src="/assets/imagens/icon-menu-servicos.svg" alt="" />
+        <span>Serviços</span>
+      </a>
+
+      <a href="/templates-elementor-wordpress-figma" class="nav-link">
+        <img src="/assets/imagens/icon-menu-templates.svg" alt="" />
+        <span>Templates</span>
+      </a>
+
+      <a href="/portfolio-sites-profissionais" class="nav-link">
+        <img src="/assets/imagens/icon-menu-portfolio.svg" alt="" />
+        <span>Portfólio</span>
+      </a>
+
+      <a href="/sobre-daiane-ferreira-web-designer" class="nav-link">
+        <img src="/assets/imagens/icon-menu-sobre.svg" alt="" />
+        <span>Sobre</span>
+      </a>
+
+      <a href="/contato-criacao-de-sites" class="nav-link">
+        <img src="/assets/imagens/icon-menu-contato.svg" alt="" />
+        <span>Contato</span>
+      </a>
+    </div>
+
+    <img class="shape" src="/assets/imagens/mobile_menu_drop.svg" alt="" />
   </nav>
 
   <img class="iconeMobile" src="/assets/imagens/icon-daiane-ferreira-logo-web-design-sites.svg" alt="Ícone Daiane Ferreira" />
