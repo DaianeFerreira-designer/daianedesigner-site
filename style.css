@@ -2453,7 +2453,7 @@ footer .textoAnimado span .charFooter {
 ========================= */
 
 .headerMobile {
-  display: none;
+ display: none !important;
 }
 
 @media (max-width: 767px) {
@@ -2485,25 +2485,34 @@ footer .textoAnimado span .charFooter {
   }
 
   .iconeMobile {
-    width: 54px;
+    width: 50px;
   }
 
   .menu-drop-down {
-    position: fixed;
+     position: fixed;
     left: 50%;
     top: -0.5rem;
+
     width: 90%;
+    max-width: 430px;
     height: 24rem;
+
     transform: translate3d(-50%, -21rem, 0);
+
     z-index: 10010;
     display: flex;
     justify-content: center;
+
+    background: #ef6500;
+    border-radius: 0 0 42px 42px;
+
     pointer-events: auto;
+    overflow: visible;
   }
 
   .shape {
     position: absolute;
-    inset: auto 0 0 0;
+    inset: 10px 0 0 0;
     width: 100%;
     height: auto;
     z-index: 1;
@@ -2519,6 +2528,9 @@ footer .textoAnimado span .charFooter {
     padding: 2rem 2rem 0;
     display: flex;
     flex-direction: column;
+    .menu-links {
+  background: #ef6500;
+
   }
 
   .nav-link {
