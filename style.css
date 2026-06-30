@@ -2531,40 +2531,39 @@ footer .textoAnimado span .charFooter {
   }
 
   .menu-links {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
 
-  width: 100%;
- 
+    width: 100%;
 
-  padding: 2rem 2rem 4.10rem;
+    padding: 2rem 2rem 4.1rem;
 
-  display: flex;
-  flex-direction: column;
-  border-radius: 0 0px 20px 20px;
-  background: #ef6500;
-  transform: translateY(-4.10rem);
-}
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 0px 20px 20px;
+    background: #ef6500;
+    transform: translateY(-4.1rem);
+  }
 
   .menu-links {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
 
-  width: 100%;
- 
+    width: 100%;
+    gap: 24px;
 
-  padding: 2rem 2rem 4.8rem;
+    padding: 2rem 2rem 4.1rem;
 
-  display: flex;
-  flex-direction: column;
-  border-radius: 0 0px 20px 20px;
-  background: #ef6500;
-  transform: translateY(-4.8rem);
-}
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 0px 20px 20px;
+    background: #ef6500;
+    transform: translateY(-4.1rem);
+  }
   .shape {
     position: absolute;
     left: 0;
@@ -2577,14 +2576,11 @@ footer .textoAnimado span .charFooter {
 
     z-index: 3;
     pointer-events: none;
-   
   }
 
-
-
-.headerMobile.menuAberto .menu-links {
-  transform: translateY(0);
-}
+  .headerMobile.menuAberto .menu-links {
+    transform: translateY(0);
+  }
 
   .nav-link {
     display: grid;
