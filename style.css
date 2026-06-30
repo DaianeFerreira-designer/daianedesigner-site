@@ -2461,7 +2461,7 @@ footer .textoAnimado span .charFooter {
     inset: 0 0 auto 0;
     width: 100%;
     height: 72px;
-    padding: 14px 18px;
+    padding: 16px 16px;
     align-items: center;
     justify-content: space-between;
     background: transparent !important;
@@ -2487,55 +2487,55 @@ footer .textoAnimado span .charFooter {
   }
 
   .menu-drop-down {
-  position: fixed;
-  left: 50%;
-  top: -0.5rem;
+    position: fixed;
+    left: 50%;
+    top: -0.5rem;
 
-  width: 90%;
-  max-width: 430px;
-  height: auto;
+    width: 90%;
+    max-width: 430px;
+    height: auto;
 
-  transform: translate3d(-50%, -21rem, 0);
+    transform: translate3d(-50%, -21rem, 0);
 
-  z-index: 10010;
-  display: flex;
-  flex-direction: column;
+    z-index: 10010;
+    display: flex;
+    flex-direction: column;
 
-  background: transparent;
-  border-radius: 0;
+    background: transparent;
+    border-radius: 0;
 
-  pointer-events: auto;
-  overflow: visible;
-}
+    pointer-events: auto;
+    overflow: visible;
+  }
 
-.menu-links {
-  position: relative;
-  z-index: 2;
+  .menu-links {
+    position: relative;
+    z-index: 2;
 
-  width: 100%;
-  gap: 16px;
+    width: 100%;
+    gap: 16px;
 
-  padding: 2rem 2rem 4.8rem;
-  border-radius: 0 0 20px 20px;
-  display: flex;
-  flex-direction: column;
+    padding: 2rem 2rem 4.8rem;
+    border-radius: 0 0 20px 20px;
+    display: flex;
+    flex-direction: column;
 
-  background: #ef6500;
-  transform: none;
-}
+    background: #ef6500;
+    transform: none;
+  }
 
-.shape {
-  position: relative;
-  z-index: 3;
+  .shape {
+    position: relative;
+    z-index: 3;
 
-  width: 100%;
-  height: auto;
+    width: 100%;
+    height: auto;
 
-  margin-top: -8px;
+    margin-top: -10px;
 
-  pointer-events: none;
-  display: block;
-}
+    pointer-events: none;
+    display: block;
+  }
 
   .nav-link {
     display: grid;
@@ -2564,7 +2564,7 @@ footer .textoAnimado span .charFooter {
   .nav-link span {
     text-align: start;
     font-family: "Roboto Serif", serif;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 400;
     color: #000;
   }
@@ -2612,6 +2612,9 @@ footer .textoAnimado span .charFooter {
     opacity: 0;
     visibility: hidden;
   }
+  .headerMobile.scrolled {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(0, 0, 0, 0.705) !important;
+  }
 }
-
- 

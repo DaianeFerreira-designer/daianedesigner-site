@@ -71,18 +71,20 @@ function ativarMenuAtual() {
 ----------------------------------------------------------------- */
 
 function iniciarHeaderScroll() {
-  window.addEventListener("scroll", () => {
-    const header = document.querySelector("header");
-    if (!header) return;
+  const headers = document.querySelectorAll("header");
 
-    if (window.scrollY > 100) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
+  if (!headers.length) return;
+
+  window.addEventListener("scroll", () => {
+    headers.forEach((header) => {
+      if (window.scrollY > 100) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
   });
 }
-
 /* -----------------------------------------------------------------
    Custom Scrollbar
 ----------------------------------------------------------------- */
