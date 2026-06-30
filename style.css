@@ -2455,7 +2455,7 @@ footer .textoAnimado span .charFooter {
     display: none !important;
   }
 
-  .headerMobile {
+ .headerMobile {
     display: flex !important;
     position: fixed;
     inset: 0 0 auto 0;
@@ -2476,36 +2476,17 @@ footer .textoAnimado span .charFooter {
     width: 40px;
     height: auto;
     pointer-events: auto;
-    pointer-events: auto;
-    transition:
-      opacity 0.25s ease,
-      visibility 0.25s ease;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
   }
 
   .iconeMobile {
     width: 38px;
   }
 
-  .menu-drop-down {
-    position: fixed;
-    left: 50%;
-    top: -0.5rem;
-
-    width: 90%;
-    max-width: 430px;
-    height: 24rem;
-
-    transform: translate3d(-50%, -21rem, 0);
-
-    z-index: 10010;
-    display: flex;
-    justify-content: center;
-
-    background: #ef6500;
-    border-radius: 0 0 42px 42px;
-
-    pointer-events: auto;
-    overflow: visible;
+  .headerMobile.menuAberto .logoMobile,
+  .headerMobile.menuAberto .iconeMobile {
+    opacity: 0;
+    visibility: hidden;
   }
 
   .menu-drop-down {
@@ -2525,16 +2506,39 @@ footer .textoAnimado span .charFooter {
 
     background: transparent;
     border-radius: 0;
-
     pointer-events: auto;
     overflow: visible;
+  }
+
+  .menu-links {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: -8px;
+    z-index: 2;
+
+    width: 100%;
+
+    padding: 2rem 2rem 5.5rem;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #ef6500;
+
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .headerMobile.menuAberto .menu-links {
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .shape {
     position: absolute;
     left: 0;
     right: 0;
-
     bottom: -8px;
 
     width: 100%;
@@ -2543,28 +2547,6 @@ footer .textoAnimado span .charFooter {
     z-index: 3;
     pointer-events: none;
     display: block;
-  }
-
-  .menu-links {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 2;
-
-    width: 100%;
-
-    padding: 2rem 2rem 5.5rem;
-    opacity: 0;
-    display: flex;
-    flex-direction: column;
-    border-radius: 0 0px 20px 20px;
-    background: #ef6500;
-    transform: translateY(-4.8rem);
-  }
-
-  .headerMobile.menuAberto .menu-links {
-    opacity: 1;
-    pointer-events: auto;
   }
 
   .nav-link {
@@ -2577,7 +2559,6 @@ footer .textoAnimado span .charFooter {
 
     color: #000;
     text-decoration: none;
-
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
     opacity: 0;
@@ -2608,7 +2589,7 @@ footer .textoAnimado span .charFooter {
   .menu-btn {
     position: absolute;
     left: 50%;
-    bottom: 0.4rem;
+    bottom: 0.8rem;
 
     transform: translateX(-50%);
 
@@ -2635,11 +2616,5 @@ footer .textoAnimado span .charFooter {
     border-radius: 100px;
     background: #000;
     display: block;
-  }
-
-  .headerMobile.menuAberto .logoMobile,
-  .headerMobile.menuAberto .iconeMobile {
-    opacity: 0;
-    visibility: hidden;
   }
 }
