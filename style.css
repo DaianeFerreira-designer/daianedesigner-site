@@ -2547,7 +2547,21 @@ footer .textoAnimado span .charFooter {
     transform: translateY(-4.1rem);
   }
 
-  .menu-links {
+ 
+  .shape {
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    bottom: -8px;
+
+    width: 100%;
+    height: auto;
+
+    z-index: 3;
+    pointer-events: none;
+  }
+ .menu-links {
     position: absolute;
     left: 0;
     top: 0;
@@ -2564,19 +2578,7 @@ footer .textoAnimado span .charFooter {
     background: #ef6500;
     transform: translateY(-5rem);
   }
-  .shape {
-    position: absolute;
-    left: 0;
-    right: 0;
-
-    bottom: -8px;
-
-    width: 100%;
-    height: auto;
-
-    z-index: 3;
-    pointer-events: none;
-  }
+  
 
   .headerMobile.menuAberto .menu-links {
     transform: translateY(0);
