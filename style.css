@@ -2538,13 +2538,13 @@ footer .textoAnimado span .charFooter {
 
     width: 100%;
 
-    padding: 2rem 2rem 4.1rem;
+    padding: 2rem 2rem 4.8rem;
 
     display: flex;
     flex-direction: column;
     border-radius: 0 0px 20px 20px;
     background: #ef6500;
-    transform: translateY(-4.1rem);
+    transform: translateY(-4.8rem);
   }
 
  
@@ -2558,9 +2558,10 @@ footer .textoAnimado span .charFooter {
     width: 100%;
     height: auto;
 
-    z-index: 3;
+    z-index: 1;
     pointer-events: none;
   }
+
 
  .menu-links {
     position: absolute;
