@@ -2546,26 +2546,26 @@ footer .textoAnimado span .charFooter {
   }
 
   .menu-links {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 2;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
 
-    width: 100%;
+  width: 100%;
+ 
 
-    padding: 2rem 2rem 5.5rem;
-    opacity: 0;
-    display: flex;
-    flex-direction: column;
-    border-radius: 0 0px 20px 20px;
-    background: #ef6500;
-    transform: translateY(-4.8rem);
-  }
+  padding: 2rem 2rem 4.8rem;
 
-  .headerMobile.menuAberto .menu-links {
-    opacity: 1;
-    pointer-events: auto;
-  }
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 0px 20px 20px;
+  background: #ef6500;
+  transform: translateY(-4.8rem);
+}
+
+.headerMobile.menuAberto .menu-links {
+  transform: translateY(0);
+}
 
   .nav-link {
     display: grid;
