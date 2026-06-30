@@ -2530,23 +2530,6 @@ footer .textoAnimado span .charFooter {
     overflow: visible;
   }
 
-  .menu-links {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 2;
-
-    width: 100%;
-
-    padding: 2rem 2rem 4.8rem;
-
-    display: flex;
-    flex-direction: column;
-    border-radius: 0 0px 20px 20px;
-    background: #ef6500;
-    transform: translateY(-4.8rem);
-  }
-
  
   .shape {
     position: absolute;
@@ -2560,29 +2543,27 @@ footer .textoAnimado span .charFooter {
 
     z-index: 3;
     pointer-events: none;
+    display: block;
   }
 
+  .menu-links {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
 
- .menu-links {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 2;
+  width: 100%;
+  gap: 16px;
 
-    width: 100%;
-    gap: 16px;
+  padding: 2rem 2rem 4.8rem;
 
-    padding: 2rem 2rem 4.8rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 0 20px 20px;
+  background: #ef6500;
+  transform: translateY(-4.8rem);
+}
 
-    display: flex;
-    flex-direction: column;
-    border-radius: 0 0 20px 20px;
-    background: #ef6500;
-    transform: translateY(-4.8rem);
-  }
-  
-
- 
   .nav-link {
     display: grid;
     grid-template-columns: 42px 1fr;
