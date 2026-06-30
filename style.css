@@ -2511,7 +2511,7 @@ footer .textoAnimado span .charFooter {
     top: 0;
     width: 100%;
     height: 19rem;
-    padding: 2rem 2rem 5.2rem;
+    padding: 2rem 2rem 3.8rem;
     display: flex;
     flex-direction: column;
     gap: 0;
@@ -2563,7 +2563,7 @@ footer .textoAnimado span .charFooter {
   .nav-link {
     display: grid;
     grid-template-columns: 42px 1fr;
-    align-items: center;
+    align-items: start;
     width: 100%;
     height: 38px;
     color: #000;
