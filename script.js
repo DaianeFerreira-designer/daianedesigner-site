@@ -586,6 +586,10 @@ function animarTextoFooter2() {
   }
 })();
 
+/* -----------------------------------------------------------------
+   Menu mobile
+----------------------------------------------------------------- */
+
 function iniciarMenuMobile() {
   const headerMobile = document.querySelector(".headerMobile");
   const menu = document.querySelector(".menu-drop-down");
@@ -608,13 +612,11 @@ function iniciarMenuMobile() {
     }
   });
 
-  gsap.set(menu, {
-    y: "-21rem",
-    xPercent: -50,
-  });
+  const fecharY = -menuLinks.offsetHeight;
 
-  gsap.set(menuLinks, {
-    y: "-4.8rem",
+  gsap.set(menu, {
+    y: fecharY,
+    xPercent: -50,
   });
 
   gsap.set(links, {
@@ -632,58 +634,11 @@ function iniciarMenuMobile() {
   });
 
   tlMenu
-    .to(
-      menu,
-      {
-        y: -8,
-        duration: 0.55,
-      },
-      0,
-    )
-    .to(
-      menuLinks,
-      {
-        y: 0,
-        duration: 0.55,
-      },
-      0,
-    )
-    .to(
-      links,
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.35,
-        stagger: 0.05,
-      },
-      0.18,
-    )
-    .to(
-      topLine,
-      {
-        y: 8,
-        rotate: 45,
-        duration: 0.25,
-      },
-      0,
-    )
-    .to(
-      midLine,
-      {
-        opacity: 0,
-        duration: 0.2,
-      },
-      0,
-    )
-    .to(
-      bottomLine,
-      {
-        y: -8,
-        rotate: -45,
-        duration: 0.25,
-      },
-      0,
-    );
+    .to(menu, { y: -8, duration: 0.55 }, 0)
+    .to(links, { opacity: 1, y: 0, duration: 0.35, stagger: 0.05 }, 0.18)
+    .to(topLine, { y: 8, rotate: 45, duration: 0.25 }, 0)
+    .to(midLine, { opacity: 0, duration: 0.2 }, 0)
+    .to(bottomLine, { y: -8, rotate: -45, duration: 0.25 }, 0);
 
   btn.addEventListener("click", () => {
     aberto = !aberto;
@@ -691,11 +646,7 @@ function iniciarMenuMobile() {
     headerMobile.classList.toggle("menuAberto", aberto);
     btn.setAttribute("aria-label", aberto ? "Fechar menu" : "Abrir menu");
 
-    if (aberto) {
-      tlMenu.play();
-    } else {
-      tlMenu.reverse();
-    }
+    aberto ? tlMenu.play() : tlMenu.reverse();
   });
 
   links.forEach((link) => {
