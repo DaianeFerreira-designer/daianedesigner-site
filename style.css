@@ -2561,6 +2561,7 @@ footer .textoAnimado span .charFooter {
     z-index: 3;
     pointer-events: none;
   }
+
  .menu-links {
     position: absolute;
     left: 0;
@@ -2580,10 +2581,7 @@ footer .textoAnimado span .charFooter {
   }
   
 
-  .headerMobile.menuAberto .menu-links {
-    transform: translateY(0);
-  }
-
+ 
   .nav-link {
     display: grid;
     grid-template-columns: 42px 1fr;
