@@ -2539,29 +2539,14 @@ footer .textoAnimado span .charFooter {
   width: 100%;
  
 
-  padding: 2rem 2rem 4.9rem;
+  padding: 2rem 2rem 4.10rem;
 
   display: flex;
   flex-direction: column;
   border-radius: 0 0px 20px 20px;
   background: #ef6500;
-  transform: translateY(-4.9rem);
+  transform: translateY(-4.10rem);
 }
-
-  .shape {
-    position: absolute;
-    left: 0;
-    right: 0;
-
-    bottom: -8px;
-
-    width: 100%;
-    height: auto;
-
-    z-index: 3;
-    pointer-events: none;
-   
-  }
 
   .menu-links {
   position: absolute;
@@ -2580,6 +2565,22 @@ footer .textoAnimado span .charFooter {
   background: #ef6500;
   transform: translateY(-4.8rem);
 }
+  .shape {
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    bottom: -8px;
+
+    width: 100%;
+    height: auto;
+
+    z-index: 3;
+    pointer-events: none;
+   
+  }
+
+
 
 .headerMobile.menuAberto .menu-links {
   transform: translateY(0);
