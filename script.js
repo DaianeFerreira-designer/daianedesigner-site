@@ -590,12 +590,13 @@ function iniciarMenuMobile() {
   const headerMobile = document.querySelector(".headerMobile");
   const menu = document.querySelector(".menu-drop-down");
   const btn = document.querySelector(".menu-btn");
+  const links = document.querySelectorAll(".menu-links .nav-link");
   const menuLinks = document.querySelector(".menu-links");
   const topLine = document.querySelector(".menu-line.top");
   const midLine = document.querySelector(".menu-line.mid");
   const bottomLine = document.querySelector(".menu-line.bottom");
 
-  if (!headerMobile || !menu || !btn) return;
+  if (!headerMobile || !menu || !btn || !menuLinks) return;
 
   const paginaAtual = window.location.pathname.replace(/\/$/, "") || "/";
 
@@ -611,7 +612,10 @@ function iniciarMenuMobile() {
     y: "-21rem",
     xPercent: -50,
   });
-  
+
+  gsap.set(menuLinks, {
+    y: "-4.8rem",
+  });
 
   gsap.set(links, {
     opacity: 0,
@@ -628,23 +632,31 @@ function iniciarMenuMobile() {
   });
 
   tlMenu
-  .to(menu, {
-    y: -8,
-    duration: 0.55,
-  }, 0)
-  .to(menuLinks, {
-    y: 0,
-    duration: 0.55,
-  }, 0)
-  .to(
-    links,
+    .to(
+      menu,
+      {
+        y: -8,
+        duration: 0.55,
+      },
+      0,
+    )
+    .to(
+      menuLinks,
+      {
+        y: 0,
+        duration: 0.55,
+      },
+      0,
+    )
+    .to(
+      links,
       {
         opacity: 1,
         y: 0,
         duration: 0.35,
         stagger: 0.05,
       },
-      "-=0.25",
+      0.18,
     )
     .to(
       topLine,
