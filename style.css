@@ -2574,7 +2574,7 @@ footer .textoAnimado span .charFooter {
 
     display: flex;
     flex-direction: column;
-    border-radius: 0 0px 20px 20px;
+    border-radius: 0 0 20px 20px;
     background: #ef6500;
     transform: translateY(-4.8rem);
   }

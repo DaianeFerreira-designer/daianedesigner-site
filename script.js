@@ -4,7 +4,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 document.addEventListener("DOMContentLoaded", () => {
   iniciarHeaderScroll();
   ativarMenuAtual();
- iniciarMenuMobile();
+  iniciarMenuMobile();
   animarTextosFooter();
   animarTextoFooter2();
 
@@ -82,7 +82,6 @@ function iniciarHeaderScroll() {
     }
   });
 }
-
 
 /* -----------------------------------------------------------------
    Custom Scrollbar
@@ -629,7 +628,7 @@ function iniciarMenuMobile() {
 
   tlMenu
     .to(menu, {
-      y: 0,
+      y: -8,
       duration: 0.55,
     })
     .to(
@@ -691,7 +690,6 @@ function iniciarMenuMobile() {
     });
   });
 }
-
 
 /* -----------------------------------------------------------------
    Reload ao trocar resolução/monitor
