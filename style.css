@@ -2554,15 +2554,15 @@ footer .textoAnimado span .charFooter {
     z-index: 2;
 
     width: 100%;
-    gap: 24px;
+    gap: 16px;
 
-    padding: 2rem 2rem 4.1rem;
+    padding: 2rem 2rem 5rem;
 
     display: flex;
     flex-direction: column;
     border-radius: 0 0px 20px 20px;
     background: #ef6500;
-    transform: translateY(-4.1rem);
+    transform: translateY(-5rem);
   }
   .shape {
     position: absolute;
