@@ -37,32 +37,32 @@
 
     <div class="menu-links">
       <a href="/" class="nav-link">
-        <img src="/assets/imagens/icon-menu-home.svg" alt="" />
+        <img src="/assets/imagens/mobile-home.svg" alt="" />
         <span>Home</span>
       </a>
 
       <a href="/criacao-de-sites-profissionais" class="nav-link">
-        <img src="/assets/imagens/icon-menu-servicos.svg" alt="" />
+        <img src="/assets/imagens/mobile-servicos.svg" alt="" />
         <span>Serviços</span>
       </a>
 
       <a href="/templates-elementor-wordpress-figma" class="nav-link">
-        <img src="/assets/imagens/icon-menu-templates.svg" alt="" />
+        <img src="/assets/imagens/mobile-templates.svg" alt="" />
         <span>Templates</span>
       </a>
 
       <a href="/portfolio-sites-profissionais" class="nav-link">
-        <img src="/assets/imagens/icon-menu-portfolio.svg" alt="" />
+        <img src="/assets/imagens/mobile-portfolio.svg" alt="" />
         <span>Portfólio</span>
       </a>
 
       <a href="/sobre-daiane-ferreira-web-designer" class="nav-link">
-        <img src="/assets/imagens/icon-menu-sobre.svg" alt="" />
+        <img src="/assets/imagens/mobile-sobre.svg" alt="" />
         <span>Sobre</span>
       </a>
 
       <a href="/contato-criacao-de-sites" class="nav-link">
-        <img src="/assets/imagens/icon-menu-contato.svg" alt="" />
+        <img src="/assets/imagens/mobile-contato.svg" alt="" />
         <span>Contato</span>
       </a>
     </div>
