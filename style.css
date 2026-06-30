@@ -2516,7 +2516,7 @@ footer .textoAnimado span .charFooter {
   gap: 16px;
 
   padding: 2rem 2rem 4.8rem;
-
+  border-radius: 0 0 20px 20px;
   display: flex;
   flex-direction: column;
 
