@@ -2637,20 +2637,18 @@ footer .textoAnimado span .charFooter {
     line-height: 130% !important;
   }
 
-  .hero h1::after {
-    content: "•••" !important;
-    position: absolute !important;
+ .hero h1::after {
+  content: "•••";
+  position: absolute;
 
-    right: 8% !important;
-    top: 12% !important;
+  right: clamp(96px, 27vw, 118px);
+  top: 15px;
 
-    display: block !important;
-    color: #ef6500 !important;
-    font-size: 28px !important;
-    letter-spacing: 8px !important;
-    line-height: 1 !important;
-    z-index: 999 !important;
-  }
+  color: #ef6500;
+  font-size: 28px;
+  letter-spacing: 8px;
+  line-height: 1;
+}
 
   .paragrafo {
     font-size: 16px;
