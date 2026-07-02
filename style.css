@@ -2641,7 +2641,7 @@ footer .textoAnimado span .charFooter {
     content: "•••" !important;
     position: absolute !important;
 
-    right: 18% !important;
+    right: 8% !important;
     top: 12% !important;
 
     display: block !important;
@@ -2668,7 +2668,7 @@ footer .textoAnimado span .charFooter {
   .portfolioButton {
     display: flex;
     width: 310.92px;
-    height: 56px;
+    height: 64px;
     padding: 24px 48px;
     justify-content: center;
     align-items: center;
