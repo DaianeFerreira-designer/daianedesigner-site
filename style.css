@@ -2641,8 +2641,8 @@ footer .textoAnimado span .charFooter {
   content: "•••";
   position: absolute;
 
-  right: clamp(96px, 27vw, 118px);
-  top: 15px;
+  right: clamp(98px, 20vw, 118px);
+  top: 10px;
 
   color: #ef6500;
   font-size: 28px;
