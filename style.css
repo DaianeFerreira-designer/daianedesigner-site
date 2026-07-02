@@ -49,17 +49,9 @@
 }
 
 @media (max-width: 767px) {
-  .custom-scrollbar {
-    transform: translate(-100%, -50%);
-    right: 0;
-    top: 50%;
-    width: 10px;
-    height: 300px;
-  }
+  .custom-scrollbar,
   .custom-scroll-thumb {
-    top: 0;
-    width: 100%;
-    height: 80px;
+    display: none;
   }
 }
 
