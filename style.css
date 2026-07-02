@@ -2623,7 +2623,7 @@ footer .textoAnimado span .charFooter {
 
   .conteudo {
     width: 100%;
-    gap: 24px;
+    gap: 32px;
   }
 
   .texto {
@@ -2662,6 +2662,7 @@ footer .textoAnimado span .charFooter {
     flex-direction: column;
     width: 100%;
     gap: 24px;
+    margin-top: 16px;
   }
 
   .portfolioButton {
