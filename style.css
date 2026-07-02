@@ -2640,6 +2640,16 @@ footer .textoAnimado span .charFooter {
     font-size: 32px;
   }
 
+  .hero h1::after {
+    position: absolute;
+    right: 163.758px;
+    top: 18px;
+
+    width: 10px;
+    height: 10px;
+    aspect-ratio: 1/1;
+  }
+
   .paragrafo {
     font-size: 16px;
     width: 100%;
