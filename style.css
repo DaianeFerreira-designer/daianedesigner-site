@@ -2617,4 +2617,33 @@ footer .textoAnimado span .charFooter {
     -webkit-backdrop-filter: blur(20px);
     background: rgba(0, 0, 0, 0.705) !important;
   }
+  .hero {
+    padding: 80px 16px;
+  }
+
+  .conteudo {
+    width: 100%;
+  }
+
+  .texto {
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+    background-image: url(/assets/imagens/mobile_BG_hero.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .paragrafo {
+    font-size: 16px;
+  }
+
+  .botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
 }
