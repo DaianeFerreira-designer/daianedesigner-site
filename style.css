@@ -2619,6 +2619,10 @@ footer .textoAnimado span .charFooter {
   }
   .hero {
     padding: 80px 16px;
+    background-image: url(/assets/imagens/mobile_BG_hero.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
   }
 
   .conteudo {
@@ -2631,10 +2635,7 @@ footer .textoAnimado span .charFooter {
 
   .hero h1 {
     font-size: 32px;
-    background-image: url(/assets/imagens/mobile_BG_hero.webp);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+   
   }
 
   .paragrafo {
