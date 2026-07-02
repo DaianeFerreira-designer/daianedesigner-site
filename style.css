@@ -2638,6 +2638,7 @@ footer .textoAnimado span .charFooter {
 
   .hero h1 {
     font-size: 32px;
+    position: relative;
   }
 
   .hero h1::after {
