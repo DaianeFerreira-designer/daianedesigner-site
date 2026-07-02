@@ -2636,7 +2636,6 @@ footer .textoAnimado span .charFooter {
 
   .hero h1 {
     font-size: 32px;
-   
   }
 
   .paragrafo {
@@ -2651,7 +2650,13 @@ footer .textoAnimado span .charFooter {
     gap: 24px;
   }
 
-  .portfolioButton{
-    width: 310.92;
+  .portfolioButton {
+    display: flex;
+    width: 310.92px;
+    height: 56px;
+    padding: 12px 48px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
   }
 }
