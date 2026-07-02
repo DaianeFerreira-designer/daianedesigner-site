@@ -2638,12 +2638,13 @@ footer .textoAnimado span .charFooter {
   }
 
   .hero h1 {
-    font-size: 32px;
-    position: relative;
-    line-height: 130%;
+    width: 100% !important;
+    font-size: 32px !important;
+    position: relative !important;
+    line-height: 130% !important;
   }
 
- .hero h1::after {
+  .hero h1::after {
     content: "•••" !important;
     position: absolute !important;
 
