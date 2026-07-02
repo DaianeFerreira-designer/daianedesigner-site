@@ -2643,16 +2643,19 @@ footer .textoAnimado span .charFooter {
     line-height: 130%;
   }
 
-  .hero h1::after {
-    content: "•••";
-    position: absolute;
-    right: 0px;
-    top: 10px;
+ .hero h1::after {
+    content: "•••" !important;
+    position: absolute !important;
 
-    color: #ef6500;
-    font-size: 28px;
-    letter-spacing: 8px;
-    line-height: 1;
+    right: 0 !important;
+    top: 10px !important;
+
+    display: block !important;
+    color: #ef6500 !important;
+    font-size: 28px !important;
+    letter-spacing: 8px !important;
+    line-height: 1 !important;
+    z-index: 999 !important;
   }
 
   .paragrafo {
