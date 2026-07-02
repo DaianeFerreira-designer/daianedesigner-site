@@ -2640,13 +2640,14 @@ footer .textoAnimado span .charFooter {
   .hero h1 {
     font-size: 32px;
     position: relative;
+    line-height: 130%;
   }
 
   .hero h1::after {
     content: "•••";
     position: absolute;
-    right: 78px;
-    top: 8px;
+    right: 92px;
+    top: 10px;
 
     color: #ef6500;
     font-size: 28px;
