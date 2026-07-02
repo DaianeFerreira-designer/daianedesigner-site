@@ -2625,7 +2625,7 @@ footer .textoAnimado span .charFooter {
     background-position: center;
     background-size: cover;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .conteudo {
