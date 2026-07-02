@@ -2611,6 +2611,7 @@ footer .textoAnimado span .charFooter {
   }
 
   .hero {
+    width: 100%;
     padding: 104px 16px;
     background-image: url(/assets/imagens/mobile_BG_hero.webp);
     background-repeat: no-repeat;
