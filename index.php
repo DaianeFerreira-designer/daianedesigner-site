@@ -102,10 +102,7 @@ $author = "Daiane Ferreira";
           </h1>
 
           <p class="paragrafo">
-            Projetos desenvolvidos com foco em design, estratégia e
-            performance para transmitir mais confiança, fortalecer sua
-            marca e criar uma presença digital alinhada ao valor do seu
-            negócio.
+            Sua empresa merece uma presença digital que combina design, estratégia e performance para transmitir confiança, fortalecer sua marca e gerar mais oportunidades de negócio.
           </p>
         </div>
 
