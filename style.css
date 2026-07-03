@@ -529,15 +529,6 @@ header.scrolled .icone {
   gap: 16px;
 }
 
-.headServicos p {
-  position: relative;
-  padding: 8px 56px;
-  border: 1px solid var(--color-accent);
-  border-radius: 1000px;
-  font-size: 12px;
-  letter-spacing: 4px;
-}
-
 .headServicos h2 {
   text-align: center;
   font-size: 104px;
@@ -2610,6 +2601,7 @@ footer .textoAnimado span .charFooter {
     background: rgba(0, 0, 0, 0.705) !important;
   }
 
+  /* Hero */
   .hero {
     width: 100%;
     padding: 104px 16px;
@@ -2673,6 +2665,31 @@ footer .textoAnimado span .charFooter {
     align-items: center;
     gap: 16px;
   }
+
+  /* Serviços */
+
+.cardSolucoes{
+padding: 32px 16px;
+gap: 16px;
+}
+
+.headServicos h2 {
+  text-align: center;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 110%; /* 61.6px */
+}
+
+.trackServicos {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+  gap: 24px;
+ 
+
+}
+
 }
 
 /* 320px até 365px */
