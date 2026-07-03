@@ -137,15 +137,11 @@ $author = "Daiane Ferreira";
       </div>
       <div class="trackServicos">
         <div class="cards">
-          <picture>
-            <source
-              media="(max-width: 767px)"
-              srcset="/assets/imagens/bg-card-mobile.webp" />
 
-            <img
-              src="/assets/imagens/bg-card.webp"
-              alt="Background dos cards serviços" />
-          </picture>
+          <img
+            src="/assets/imagens/bg-card.webp"
+            alt="Background dos cards serviços" />
+
 
           <div class="card">
             <div class="textoCard">
@@ -164,15 +160,9 @@ $author = "Daiane Ferreira";
         </div>
 
         <div class="cards">
-          <picture>
-            <source
-              media="(max-width: 767px)"
-              srcset="/assets/imagens/bg-card-mobile.webp" />
-
-            <img
-              src="/assets/imagens/bg-card.webp"
-              alt="Background dos cards serviços" />
-          </picture>
+          <img
+            src="/assets/imagens/bg-card.webp"
+            alt="Background dos cards serviços" />
 
           <div class="card">
             <div class="textoCard">
@@ -191,15 +181,9 @@ $author = "Daiane Ferreira";
         </div>
 
         <div class="cards">
-          <picture>
-            <source
-              media="(max-width: 767px)"
-              srcset="/assets/imagens/bg-card-mobile.webp" />
-
-            <img
-              src="/assets/imagens/bg-card.webp"
-              alt="Background dos cards serviços" />
-          </picture>
+          <img
+            src="/assets/imagens/bg-card.webp"
+            alt="Background dos cards serviços" />
 
           <div class="card">
             <div class="textoCard">
@@ -218,15 +202,9 @@ $author = "Daiane Ferreira";
         </div>
 
         <div class="cards">
-          <picture>
-            <source
-              media="(max-width: 767px)"
-              srcset="/assets/imagens/bg-card-mobile.webp" />
-
-            <img
-              src="/assets/imagens/bg-card.webp"
-              alt="Background dos cards serviços" />
-          </picture>
+          <img
+            src="/assets/imagens/bg-card.webp"
+            alt="Background dos cards serviços" />
 
           <div class="card">
             <div class="textoCard">
@@ -245,15 +223,9 @@ $author = "Daiane Ferreira";
         </div>
 
         <div class="cards">
-          <picture>
-            <source
-              media="(max-width: 767px)"
-              srcset="/assets/imagens/bg-card-mobile.webp" />
-
-            <img
-              src="/assets/imagens/bg-card.webp"
-              alt="Background dos cards serviços" />
-          </picture>
+          <img
+            src="/assets/imagens/bg-card.webp"
+            alt="Background dos cards serviços" />
 
           <div class="card">
             <div class="textoCard">
@@ -271,15 +243,9 @@ $author = "Daiane Ferreira";
         </div>
 
         <div class="cards">
-          <picture>
-            <source
-              media="(max-width: 767px)"
-              srcset="/assets/imagens/bg-card-mobile.webp" />
-
-            <img
-              src="/assets/imagens/bg-card.webp"
-              alt="Background dos cards serviços" />
-          </picture>
+          <img
+            src="/assets/imagens/bg-card.webp"
+            alt="Background dos cards serviços" />
 
           <div class="card">
             <div class="textoCard">
