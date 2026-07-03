@@ -867,25 +867,28 @@ header.scrolled .icone {
 
 .conteudo_portfolio .verMais {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
   width: 300px;
   height: 56px;
-  padding: 12px 48px;
-  gap: 24px;
-  align-items: center;
-  flex-shrink: 0;
+  padding: 0 24px;
 
   border-radius: 10px;
-
   box-shadow: 0 0 8px 0 rgba(255, 255, 255, 0.25) inset;
   backdrop-filter: blur(3px);
 
   color: var(--color-text);
-  text-align: center;
   font-family: "Satisfy", cursive;
   font-size: 18px;
-  font-style: normal;
   font-weight: 400;
-  line-height: 150%; /* 27px */
+  line-height: 150%;
+}
+.conteudo_portfolio .verMais img {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
 
 .conteudo_portfolio .verMais:hover {
@@ -2657,7 +2660,7 @@ footer .textoAnimado span .charFooter {
   /* Serviços */
 
   .cardSolucoes {
-    padding: 80px 16px;
+    padding: 80px 16px 40px;
     gap: 16px;
     justify-content: flex-start;
   }
@@ -2685,7 +2688,7 @@ footer .textoAnimado span .charFooter {
   /* Portfólio */
 
   .dobra03 {
-    padding: 80px 16px;
+    padding: 40px 16px;
   }
 
   .dobra03 .faixaDestaque {
@@ -2719,7 +2722,7 @@ footer .textoAnimado span .charFooter {
   /* portfolio sanfona */
 
   .dobra04 {
-    padding: 0 16px 80px;
+    padding: 40px 16px;
   }
 
   .slides {
@@ -2803,7 +2806,7 @@ footer .textoAnimado span .charFooter {
   /* Dobra 05 - Benefícios mobile */
 
   .dobra05 {
-    padding: 80px 16px;
+    padding: 40px 16px;
     gap: 32px;
   }
 
