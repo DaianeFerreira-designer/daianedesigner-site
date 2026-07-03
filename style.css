@@ -2802,18 +2802,72 @@ footer .textoAnimado span .charFooter {
 
   /* portfolio Dobra 05 */
 
-  .dobra05 h2 {
-    
-    width: 100px;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 130%; /* 61.6px */
-    text-align: center;
-    overflow-wrap: normal;
-    word-break: normal;
-    hyphens: none;
-  }
+  /* Dobra 05 - Benefícios mobile */
+
+.dobra05 {
+  padding: 80px 16px;
+  gap: 32px;
+}
+
+.dobra05 h2 {
+  width: 100%;
+  font-size: 32px;
+  line-height: 130%;
+}
+
+.vr-box {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 20px;
+}
+
+.item,
+.item-active {
+  position: static;
+  transform: none;
+  width: 100%;
+  height: auto;
+  min-height: 88px;
+  padding: 20px;
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+  text-align: left;
+}
+
+.item {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.item img,
+.item-active img {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+}
+
+.item p,
+.item-active p {
+  font-size: 16px;
+  line-height: 130%;
+}
+
+.item-active {
+  order: -1;
+  background: var(--gradient-primary);
+}
+
+.item-active p {
+  font-size: 18px;
+}
 }
 
 /* 320px até 365px */
