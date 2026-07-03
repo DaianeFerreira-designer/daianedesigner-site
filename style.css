@@ -2704,12 +2704,12 @@ footer .textoAnimado span .charFooter {
   .dobra03 {
     padding: 80px 16px;
   }
+
   .dobra03 .faixaDestaque {
     top: 25%;
   }
   .conteudo_portfolio {
     width: 100%;
-    padding: 0 16px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -2733,7 +2733,8 @@ footer .textoAnimado span .charFooter {
     font-weight: 400;
   }
 
-@media (max-width: 480px) {
+  /* portfolio sanfona */
+
   .dobra04 {
     padding: 0 16px;
   }
@@ -2747,7 +2748,8 @@ footer .textoAnimado span .charFooter {
     overflow: visible;
   }
 
-  .slide {
+  .slide,
+  .slide:last-child {
     width: 100% !important;
     height: 72px;
     border-radius: 14px;
@@ -2757,7 +2759,6 @@ footer .textoAnimado span .charFooter {
   }
 
   .slide.active {
-    width: 100% !important;
     height: auto;
     min-height: 520px;
   }
@@ -2790,12 +2791,17 @@ footer .textoAnimado span .charFooter {
     min-height: 520px;
     padding: 24px;
     gap: 24px;
+    justify-content: space-between;
   }
 
   .imgTexto img {
     width: 100%;
     height: auto;
     border-radius: 12px;
+  }
+
+  .tech {
+    margin-top: auto;
   }
 
   .tech ul {
@@ -2805,10 +2811,8 @@ footer .textoAnimado span .charFooter {
   }
 
   .ctaProjeto {
-    align-self: flex-start;
+    align-self: flex-end;
   }
-}
-
 }
 
 /* 320px até 365px */
