@@ -27,9 +27,9 @@
     href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/css/intlTelInput.css" />
 
   <!-- Favicon -->
-  <link rel="icon" href="assets/imagens/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/assets/imagens/favicon.svg" type="image/svg+xml">
 
- <!-- Preload -->
+  <!-- Preload -->
 
   <link
     rel="preload"
