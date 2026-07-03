@@ -2702,7 +2702,7 @@ footer .textoAnimado span .charFooter {
   .conteudo_portfolio h2 {
     margin-top: 24px;
     width: 100%;
-    font-size: 32px;
+    font-size: 24px;
     font-style: normal;
     font-weight: 400;
     line-height: 130%; /* 61.6px */
@@ -2800,84 +2800,158 @@ footer .textoAnimado span .charFooter {
     align-self: flex-end;
   }
 
-
   /* Dobra 05 - Benefícios mobile */
 
-.dobra05 {
-  padding: 80px 16px;
-  gap: 32px;
-}
+  .dobra05 {
+    padding: 80px 16px;
+    gap: 32px;
+  }
 
-.dobra05 h2 {
-  width: 100%;
-  font-size: 32px;
-  line-height: 130%;
-  text-align: center;
-}
+  .dobra05 h2 {
+    width: 100%;
+    font-size: 32px;
+    line-height: 130%;
+    text-align: center;
+  }
 
-.dobra05 h2 span {
-  display: block;
-  margin-top: 8px;
-}
+  .dobra05 h2 span {
+    display: block;
+    margin-top: 8px;
+  }
 
-.vr-box {
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 16px;
-  border-radius: 20px;
-}
+  .vr-box {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 20px;
+  }
 
-.item,
-.item-active {
-  position: static !important;
-  inset: auto !important;
-  left: auto !important;
-  right: auto !important;
-  top: auto !important;
-  bottom: auto !important;
-  transform: none !important;
+  .item,
+  .item-active {
+    position: static !important;
+    inset: auto !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    transform: none !important;
 
-  width: 100%;
-  height: auto;
-  min-height: 88px;
-  padding: 20px;
-  border-radius: 16px;
+    width: 100%;
+    height: auto;
+    min-height: 88px;
+    padding: 20px;
+    border-radius: 16px;
 
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 16px;
-  text-align: left;
-}
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+  }
 
-.item {
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.04);
-}
+  .item {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.04);
+  }
 
-.item img,
-.item-active img {
-  width: 28px;
-  height: 28px;
-  flex: 0 0 28px;
-}
+  .item img,
+  .item-active img {
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+  }
 
-.item p,
-.item-active p {
-  font-size: 16px;
-  line-height: 130%;
-}
+  .item p,
+  .item-active p {
+    font-size: 16px;
+    line-height: 130%;
+  }
 
-.item-active {
-  order: -1;
-  background: var(--gradient-primary);
-}
+  .item-active {
+    order: -1;
+    background: var(--gradient-primary);
+  }
 
-.item-active p {
-  font-size: 18px;
-}
+  .item-active p {
+    font-size: 18px;
+  }
+  /* Dobra 06 - Protocolo mobile */
+
+  .dobra06 {
+    padding: 80px 16px;
+    gap: 32px;
+  }
+
+  .protocolo {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .protocolo p {
+    width: 100%;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: center;
+  }
+
+  .protocolo h2 {
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+    line-height: 130%;
+    letter-spacing: 0;
+  }
+
+  .protocolo h2 span {
+    display: block;
+  }
+
+  .abasProtocolo {
+    width: 100%;
+    padding: 16px;
+    gap: 16px;
+    background-size: cover;
+    border-radius: 20px;
+  }
+
+  .abas {
+    width: 100%;
+  }
+
+  .frame {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .frame h3 {
+    font-size: 14px;
+  }
+
+  .frame p {
+    font-size: 18px;
+  }
+
+  .conteudoProtocolo {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .abas.active2 .conteudoProtocolo {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .conteudoProtocolo h2 {
+    font-size: 20px;
+  }
+
+  .conteudoProtocolo p {
+    font-size: 15px;
+  }
 }
 
 /* 320px até 365px */
