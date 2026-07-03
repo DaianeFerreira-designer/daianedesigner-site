@@ -10,8 +10,8 @@ $author = "Daiane Ferreira";
 
 <!-- Head Daiane Ferreira -->
 <?php include 'partials/head.php'; ?>
-      
-    
+
+
 <div id="preloader" aria-hidden="true">
   <div class="preloader-bg"></div>
 
@@ -137,9 +137,15 @@ $author = "Daiane Ferreira";
       </div>
       <div class="trackServicos">
         <div class="cards">
-          <img
-            src="/assets/imagens/bg-card.webp"
-            alt="background dos cards serviços" />
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              srcset="/assets/imagens/bg-card-mobile.webp" />
+
+            <img
+              src="/assets/imagens/bg-card.webp"
+              alt="Background dos cards serviços" />
+          </picture>
 
           <div class="card">
             <div class="textoCard">
@@ -158,9 +164,15 @@ $author = "Daiane Ferreira";
         </div>
 
         <div class="cards">
-          <img
-            src="/assets/imagens/bg-card.webp"
-            alt="background dos cards serviços" />
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              srcset="/assets/imagens/bg-card-mobile.webp" />
+
+            <img
+              src="/assets/imagens/bg-card.webp"
+              alt="Background dos cards serviços" />
+          </picture>
 
           <div class="card">
             <div class="textoCard">
@@ -179,9 +191,15 @@ $author = "Daiane Ferreira";
         </div>
 
         <div class="cards">
-          <img
-            src="/assets/imagens/bg-card.webp"
-            alt="background dos cards serviços" />
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              srcset="/assets/imagens/bg-card-mobile.webp" />
+
+            <img
+              src="/assets/imagens/bg-card.webp"
+              alt="Background dos cards serviços" />
+          </picture>
 
           <div class="card">
             <div class="textoCard">
@@ -200,9 +218,15 @@ $author = "Daiane Ferreira";
         </div>
 
         <div class="cards">
-          <img
-            src="assets/imagens/bg-card.webp"
-            alt="background dos cards serviços" />
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              srcset="/assets/imagens/bg-card-mobile.webp" />
+
+            <img
+              src="/assets/imagens/bg-card.webp"
+              alt="Background dos cards serviços" />
+          </picture>
 
           <div class="card">
             <div class="textoCard">
@@ -221,9 +245,15 @@ $author = "Daiane Ferreira";
         </div>
 
         <div class="cards">
-          <img
-            src="/assets/imagens/bg-card.webp"
-            alt="background dos cards serviços" />
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              srcset="/assets/imagens/bg-card-mobile.webp" />
+
+            <img
+              src="/assets/imagens/bg-card.webp"
+              alt="Background dos cards serviços" />
+          </picture>
 
           <div class="card">
             <div class="textoCard">
@@ -241,9 +271,15 @@ $author = "Daiane Ferreira";
         </div>
 
         <div class="cards">
-          <img
-            src="/assets/imagens/bg-card.webp"
-            alt="background dos cards serviços" />
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              srcset="/assets/imagens/bg-card-mobile.webp" />
+
+            <img
+              src="/assets/imagens/bg-card.webp"
+              alt="Background dos cards serviços" />
+          </picture>
 
           <div class="card">
             <div class="textoCard">
@@ -252,7 +288,7 @@ $author = "Daiane Ferreira";
             </div>
             <div class="peq">
               <p>Plataforma</p>
-             <a href="/orcamento?projeto=area-membros" class="ctaServicos">
+              <a href="/orcamento?projeto=area-membros" class="ctaServicos">
                 <img class="iconeAnimado" src="/assets/imagens/icon-button-portolio.svg" alt="Icone animado" />
                 <span> Solicitar Orçamento</span>
               </a>
@@ -670,18 +706,18 @@ $author = "Daiane Ferreira";
       </svg>
     </div>
 
-     <p class="faixaDestaque"> <img src="/assets/imagens/trending-topic 2.svg" class="icone_webdesign" alt="Icone">Web Design</p>
-     <div class="conteudo_portfolio">
+    <p class="faixaDestaque"> <img src="/assets/imagens/trending-topic 2.svg" class="icone_webdesign" alt="Icone">Web Design</p>
+    <div class="conteudo_portfolio">
       <h2 class="portfolioTexto textoAnimado">
         <span class="animationPortfolio"><strong>Projetos desenvolvidos</strong></span>
         para diferentes áreas de atuação:
       </h2>
 
       <a href="#" class="verMais"> <img
-                  class="iconeAnimado"
-                  src="/assets/imagens/icon-button-portolio.svg"
-                  alt="" />Ver mais projetos</a>
-      </div>
+          class="iconeAnimado"
+          src="/assets/imagens/icon-button-portolio.svg"
+          alt="" />Ver mais projetos</a>
+    </div>
   </section>
 
   <!--                 Seção Slides Portfolio                          -->

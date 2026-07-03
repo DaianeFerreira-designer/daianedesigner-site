@@ -672,6 +672,8 @@ header.scrolled .icone {
 
 .cards > img {
   pointer-events: none;
+  width: 320px;
+  height: 430px;
 }
 
 .cardSolucoes {
