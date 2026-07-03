@@ -2726,13 +2726,13 @@ footer .textoAnimado span .charFooter {
   }
 
   .conteudo_portfolio h2 .animationPortfolio {
-  font-weight: 400;
-
-  .charAnimada {
+  font-weight: 400
+}
+ .charAnimada {
   display: inline-block;
    white-space: nowrap;
 }
-}
+
 
 }
 
