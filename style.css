@@ -2732,6 +2732,83 @@ footer .textoAnimado span .charFooter {
   .conteudo_portfolio h2 .animationPortfolio {
     font-weight: 400;
   }
+
+@media (max-width: 480px) {
+  .dobra04 {
+    padding: 0 16px;
+  }
+
+  .slides {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+  }
+
+  .slide {
+    width: 100% !important;
+    height: 72px;
+    border-radius: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.247);
+    overflow: hidden;
+    transition: height 300ms ease;
+  }
+
+  .slide.active {
+    width: 100% !important;
+    height: auto;
+    min-height: 520px;
+  }
+
+  .slide .action {
+    height: 72px;
+    padding: 0 20px;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+
+  .slide .action p {
+    font-size: 20px;
+  }
+
+  .slide .action h2 {
+    position: static;
+    transform: none;
+    font-size: 18px;
+    white-space: nowrap;
+  }
+
+  .slide.active .action {
+    display: none;
+  }
+
+  .slide-content {
+    width: 100% !important;
+    min-height: 520px;
+    padding: 24px;
+    gap: 24px;
+  }
+
+  .imgTexto img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .tech ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .ctaProjeto {
+    align-self: flex-start;
+  }
+}
+
 }
 
 /* 320px até 365px */
