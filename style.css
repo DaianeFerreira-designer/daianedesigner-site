@@ -2570,7 +2570,7 @@ footer .textoAnimado span .charFooter {
   .menu-btn {
     position: absolute;
     left: 50%;
-    bottom: 0.4rem;
+    bottom: 0.10rem;
 
     transform: translateX(-50%);
 
@@ -2595,7 +2595,7 @@ footer .textoAnimado span .charFooter {
     width: 24px;
     height: 3px;
     border-radius: 100px;
-    background: #f10000;
+    background: #000000;
     display: block;
   }
 
