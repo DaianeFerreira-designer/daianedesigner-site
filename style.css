@@ -2675,16 +2675,30 @@ footer .textoAnimado span .charFooter {
   }
 }
 
-/* 360px e 375px */
-@media (max-width: 375px) {
+/* 320px até 365px */
+@media (max-width: 365px) {
+  .hero h1::after {
+    right: 80px;
+  }
+}
+
+/* 366px até 375px */
+@media (min-width: 366px) and (max-width: 375px) {
   .hero h1::after {
     right: 100px;
+  }
+}
+
+/* 376px até 429px (390, 393, 412...) */
+@media (min-width: 376px) and (max-width: 429px) {
+  .hero h1::after {
+    right: 110px;
   }
 }
 
 /* 430px até 767px */
 @media (min-width: 430px) and (max-width: 767px) {
   .hero h1::after {
-    right: 150px;
+    right: 140px;
   }
 }
