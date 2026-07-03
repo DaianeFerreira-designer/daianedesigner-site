@@ -673,7 +673,7 @@ $author = "Daiane Ferreira";
      <p class="faixaDestaque"> <img src="/assets/imagens/trending-topic 2.svg" class="icone_webdesign" alt="Icone">Web Design</p>
      <div class="conteudo_portfolio">
       <h2 class="portfolioTexto textoAnimado">
-        <span class="animationPortfolio"><strong>Projetos desenvolvidos</span></strong>
+        <span class="animationPortfolio"><strong>Projetos desenvolvidos</strong></span>
         para diferentes áreas de atuação:
       </h2>
 

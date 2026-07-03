@@ -2720,11 +2720,18 @@ footer .textoAnimado span .charFooter {
     font-weight: 400;
     line-height: 130%; /* 61.6px */
     text-align: center;
+     overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
   }
 
   .conteudo_portfolio h2 .animationPortfolio {
-     
   font-weight: 400;
+
+  .charAnimada {
+  display: inline-block;
+   white-space: nowrap;
+}
 }
 
 }
