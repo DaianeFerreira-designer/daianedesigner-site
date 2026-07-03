@@ -2723,6 +2723,7 @@ footer .textoAnimado span .charFooter {
      overflow-wrap: normal;
     word-break: normal;
     hyphens: none;
+    white-space: nowrap;
   }
 
   .conteudo_portfolio h2 .animationPortfolio {
