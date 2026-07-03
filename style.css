@@ -2671,6 +2671,8 @@ footer .textoAnimado span .charFooter {
 .cardSolucoes{
 padding: 80px 16px;
 gap: 16px;
+justify-content: flex-start;
+
 }
 
 .headServicos h2 {
