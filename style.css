@@ -2803,6 +2803,8 @@ footer .textoAnimado span .charFooter {
   /* portfolio Dobra 05 */
 
   .dobra05 h2 {
+    display: block;
+    width: 100px;
     font-size: 24px;
     font-style: normal;
     font-weight: 400;
