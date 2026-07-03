@@ -58,14 +58,24 @@ document.addEventListener("DOMContentLoaded", () => {
 function ativarMenuAtual() {
   const paginaAtual = window.location.pathname.replace(/\/$/, "") || "/";
 
-  document.querySelectorAll(".principal a").forEach((link) => {
+  document.querySelectorAll(".principal a, .menu-links .nav-link").forEach((link) => {
     const href = link.getAttribute("href").replace(/\/$/, "") || "/";
 
     if (href === paginaAtual) {
       link.closest("li")?.classList.add("ativo");
+      link.classList.add("ativo");
+
+      const img = link.querySelector("img");
+      const activeSrc = img?.dataset.activeSrc;
+
+      if (img && activeSrc) {
+        img.src = activeSrc;
+      }
     }
   });
 }
+
+
 /* -----------------------------------------------------------------
    Header com blur no scroll
 ----------------------------------------------------------------- */
