@@ -58,23 +58,24 @@ document.addEventListener("DOMContentLoaded", () => {
 function ativarMenuAtual() {
   const paginaAtual = window.location.pathname.replace(/\/$/, "") || "/";
 
-  document.querySelectorAll(".principal a, .menu-links .nav-link").forEach((link) => {
-    const href = link.getAttribute("href").replace(/\/$/, "") || "/";
+  document
+    .querySelectorAll(".principal a, .menu-links .nav-link")
+    .forEach((link) => {
+      const href = link.getAttribute("href").replace(/\/$/, "") || "/";
 
-    if (href === paginaAtual) {
-      link.closest("li")?.classList.add("ativo");
-      link.classList.add("ativo");
+      if (href === paginaAtual) {
+        link.closest("li")?.classList.add("ativo");
+        link.classList.add("ativo");
 
-      const img = link.querySelector("img");
-      const activeSrc = img?.dataset.activeSrc;
+        const img = link.querySelector("img");
+        const activeSrc = img?.dataset.activeSrc;
 
-      if (img && activeSrc) {
-        img.src = activeSrc;
+        if (img && activeSrc) {
+          img.src = activeSrc;
+        }
       }
-    }
-  });
+    });
 }
-
 
 /* -----------------------------------------------------------------
    Header com blur no scroll
@@ -284,6 +285,7 @@ document.querySelectorAll("main .textoAnimado").forEach((texto) => {
     wordsClass: "wordAnimada",
     charsClass: "charAnimada",
     deepSlice: true,
+    aria: "none",
   });
 
   gsap.from(split.chars, {
@@ -413,6 +415,7 @@ const textoProtocolo = document.querySelector(".textoAnimado2");
 if (textoProtocolo) {
   const split2 = new SplitText(textoProtocolo, {
     type: "chars",
+    aria: "none",
   });
 
   ScrollTrigger.create({
@@ -496,6 +499,7 @@ function animarTextoFooter2() {
   requestAnimationFrame(() => {
     const split = new SplitText(texto, {
       type: "chars",
+      aria: "none",
     });
 
     ScrollTrigger.create({
