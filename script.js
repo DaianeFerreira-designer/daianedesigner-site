@@ -402,7 +402,7 @@ const textoProtocolo = document.querySelector(".textoAnimado2");
 
 if (textoProtocolo) {
   const split2 = new SplitText(textoProtocolo, {
-    type: "words",
+    type: "chars",
   });
 
   ScrollTrigger.create({
@@ -411,7 +411,7 @@ if (textoProtocolo) {
     end: "bottom 20%",
     onEnter: () => {
       gsap.fromTo(
-        split2.words,
+        split2.chars,
         {
           yPercent: 100,
           opacity: 0,
@@ -427,7 +427,7 @@ if (textoProtocolo) {
     },
     onEnterBack: () => {
       gsap.fromTo(
-        split2.words,
+        split2.chars,
         {
           yPercent: 100,
           opacity: 0,
