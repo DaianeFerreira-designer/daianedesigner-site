@@ -2800,7 +2800,6 @@ footer .textoAnimado span .charFooter {
     align-self: flex-end;
   }
 
-  /* portfolio Dobra 05 */
 
   /* Dobra 05 - Benefícios mobile */
 
@@ -2813,6 +2812,12 @@ footer .textoAnimado span .charFooter {
   width: 100%;
   font-size: 32px;
   line-height: 130%;
+  text-align: center;
+}
+
+.dobra05 h2 span {
+  display: block;
+  margin-top: 8px;
 }
 
 .vr-box {
@@ -2826,8 +2831,14 @@ footer .textoAnimado span .charFooter {
 
 .item,
 .item-active {
-  position: static;
-  transform: none;
+  position: static !important;
+  inset: auto !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+
   width: 100%;
   height: auto;
   min-height: 88px;
@@ -2836,7 +2847,6 @@ footer .textoAnimado span .charFooter {
 
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
   align-items: center;
   gap: 16px;
   text-align: left;
