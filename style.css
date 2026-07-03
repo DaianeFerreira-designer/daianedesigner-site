@@ -2667,6 +2667,10 @@ footer .textoAnimado span .charFooter {
     justify-content: flex-start;
   }
 
+  .cards {
+    width: 320px;
+  }
+
   .headServicos h2 {
     text-align: center;
     font-size: 56px;
