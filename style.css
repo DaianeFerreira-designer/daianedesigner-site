@@ -2630,18 +2630,18 @@ footer .textoAnimado span .charFooter {
     line-height: 130% !important;
   }
 
- .hero h1::after {
-  content: "•••";
-  position: absolute;
+  .hero h1::after {
+    content: "•••";
+    position: absolute;
 
-  right: 140px;
-  top: 13px;
+    right: 140px;
+    top: 13px;
 
-  color: #ef6500;
-  font-size: 28px;
-  letter-spacing: 8px;
-  line-height: 1;
-}
+    color: #ef6500;
+    font-size: 28px;
+    letter-spacing: 8px;
+    line-height: 1;
+  }
 
   .paragrafo {
     font-size: 16px;
@@ -2668,29 +2668,58 @@ footer .textoAnimado span .charFooter {
 
   /* Serviços */
 
-.cardSolucoes{
-padding: 80px 16px;
-gap: 16px;
-justify-content: flex-start;
+  .cardSolucoes {
+    padding: 80px 16px;
+    gap: 16px;
+    justify-content: flex-start;
+    align-items: center;
+  }
 
-}
+  .headServicos h2 {
+    text-align: center;
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 110%; /* 61.6px */
+  }
 
-.headServicos h2 {
-  text-align: center;
-  font-size: 56px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 110%; /* 61.6px */
-}
+  .trackServicos {
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content;
+    gap: 24px;
+  }
 
-.trackServicos {
-  display: flex;
-  flex-wrap: nowrap;
-  width: max-content;
-  gap: 24px;
+  /* Faixa animada */
+  .faixaAnimada {
+    margin-bottom: 32px;
+  }
 
-}
+  /* Portfólio */
 
+  .dobra03 {
+    padding: 80px 16px;
+  }
+  .dobra03 .faixaDestaque {
+    top: 30%;
+  }
+  .conteudo_portfolio {
+    width: 100%;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .conteudo_portfolio h2 {
+    width: 100%;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 61.6px */
+    text-align: center;
+  }
 }
 
 /* 320px até 365px */
