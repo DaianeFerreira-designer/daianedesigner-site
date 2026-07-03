@@ -2898,6 +2898,21 @@ footer .textoAnimado span .charFooter {
     text-align: center;
   }
 
+  .protocolo p.textoAnimado2 {
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 150%;
+    word-break: normal;
+    overflow-wrap: normal;
+    white-space: normal;
+  }
+
+  .protocolo p.textoAnimado2 > div,
+  .protocolo p.textoAnimado2 > span {
+    display: inline !important;
+  }
   .protocolo h2 {
     width: 100%;
     text-align: center;
