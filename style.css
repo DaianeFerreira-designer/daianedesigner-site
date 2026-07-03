@@ -2701,7 +2701,7 @@ footer .textoAnimado span .charFooter {
     padding: 80px 16px;
   }
   .dobra03 .faixaDestaque {
-    top: 30%;
+    top: 20%;
   }
   .conteudo_portfolio {
     width: 100%;
@@ -2720,6 +2720,12 @@ footer .textoAnimado span .charFooter {
     line-height: 130%; /* 61.6px */
     text-align: center;
   }
+
+.animationPortfolio {
+  display: block;
+ 
+}
+
 }
 
 /* 320px até 365px */
