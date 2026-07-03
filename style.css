@@ -2967,6 +2967,70 @@ footer .textoAnimado span .charFooter {
   .conteudoProtocolo p {
     font-size: 15px;
   }
+
+  /* Footer mobile */
+
+  footer {
+    padding: 80px 16px 40px;
+    gap: 56px;
+  }
+
+  .iconesFooter {
+    width: 100%;
+  }
+
+  .iconesFooter > img {
+    width: 72px;
+  }
+
+  .iconesRedesociais img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .meioFooter h2 {
+    font-size: 42px;
+    text-align: center;
+  }
+
+  .direitos {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .finalFooter {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .finalFooter p.textoAnimado2 {
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 140%;
+    letter-spacing: 0;
+  }
+
+  .finalFooter p.textoAnimado2 * {
+    display: inline !important;
+  }
+
+  .botoesFooter {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .botoesFooter .cta,
+  .botoesFooter .portfolioButton {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
 }
 
 /* 320px até 365px */
