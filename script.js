@@ -270,12 +270,13 @@ if (wrap && track) {
 
 document.querySelectorAll("main .textoAnimado").forEach((texto) => {
   const split = new SplitText(texto, {
-    type: "chars",
+    type: "words,chars",
+    wordsClass: "wordAnimada",
     charsClass: "charAnimada",
     deepSlice: true,
   });
 
-  gsap.from(texto.querySelectorAll(".charAnimada"), {
+  gsap.from(split.chars, {
     filter: "blur(20px)",
     opacity: 0,
     duration: 0.3,
