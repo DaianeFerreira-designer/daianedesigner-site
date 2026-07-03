@@ -2642,7 +2642,7 @@ footer .textoAnimado span .charFooter {
   content: "•••";
   position: absolute;
 
-  right: clamp(102px, 50px, 100px);
+  right: 110px;
   top: 13px;
 
   color: #ef6500;
@@ -2672,5 +2672,19 @@ footer .textoAnimado span .charFooter {
     justify-content: center;
     align-items: center;
     gap: 16px;
+  }
+}
+
+/* 360px e 375px */
+@media (max-width: 375px) {
+  .hero h1::after {
+    right: 80px;
+  }
+}
+
+/* 430px até 767px */
+@media (min-width: 430px) and (max-width: 767px) {
+  .hero h1::after {
+    right: 140px;
   }
 }
