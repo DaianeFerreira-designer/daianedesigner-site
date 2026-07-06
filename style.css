@@ -3303,24 +3303,6 @@ footer .textoAnimado span .charFooter {
     font-size: 14px;
     line-height: 150%;
   }
-}
-
-@media (max-width: 380px) {
-  .frameSteps {
-    gap: 6px;
-  }
-
-  .stepCard {
-    padding: 10px 6px;
-  }
-
-  .stepCard p {
-    font-size: 11px;
-  }
-
-  .forms-logo h1 {
-    font-size: 18px;
-  }
 /* Rodapé */
 
 .rodapeForms {
@@ -3341,5 +3323,25 @@ footer .textoAnimado span .charFooter {
   line-height: 150%;
   color: var(--color-light);
 }
+
+}
+
+@media (max-width: 380px) {
+  .frameSteps {
+    gap: 6px;
+  }
+
+  .stepCard {
+    padding: 10px 6px;
+  }
+
+  .stepCard p {
+    font-size: 11px;
+  }
+
+  .forms-logo h1 {
+    font-size: 18px;
+  }
+
 
 }
