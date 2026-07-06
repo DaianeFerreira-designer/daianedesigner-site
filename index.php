@@ -1070,6 +1070,15 @@ $author = "Daiane Ferreira";
   </section>
 </main>
 
+<a
+  href="https://wa.me/5511947055638?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20um%20orçamento."
+  class="whatsappFloat"
+  target="_blank"
+  rel="noopener"
+  aria-label="Chamar no WhatsApp">
+  <img src="/assets/imagens/whatsapp.svg" alt="" />
+</a>
+
 <!-- Rodapé Daiane Ferreira -->
 
 <?php include 'partials/footer.php'; ?>

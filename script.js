@@ -679,6 +679,22 @@ function iniciarMenuMobile() {
 }
 
 /* -----------------------------------------------------------------
+   Botão flutuante WhatsApp
+----------------------------------------------------------------- */
+
+const whatsappFloat = document.querySelector(".whatsappFloat");
+const secao02 = document.querySelector(".cardSolucoes");
+
+if (whatsappFloat && secao02) {
+  ScrollTrigger.create({
+    trigger: secao02,
+    start: "top 70%",
+    onEnter: () => whatsappFloat.classList.add("ativo"),
+    onLeaveBack: () => whatsappFloat.classList.remove("ativo"),
+  });
+}
+
+/* -----------------------------------------------------------------
    Reload ao trocar resolução/monitor
 ----------------------------------------------------------------- */
 
