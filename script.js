@@ -164,7 +164,9 @@ const tituloServicos = document.querySelector(".cardSolucoes .headServicos h2");
 
 if (wrap && track) {
   const scrollCards = () => {
-    return track.scrollWidth - wrap.clientWidth + 120;
+    const extra = window.innerWidth <= 767 ? 24 : 120;
+
+  return track.scrollWidth - wrap.clientWidth + extra;
   };
 
   let charsTituloServicos = [];
