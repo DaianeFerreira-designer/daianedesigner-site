@@ -1571,7 +1571,7 @@ footer .textoAnimado span .charFooter {
 
 .rodapeForms {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   gap: 16px;
   height: 10px;
