@@ -3069,3 +3069,256 @@ footer .textoAnimado span .charFooter {
     right: 140px;
   }
 }
+
+
+/* =========================================
+   ORÇAMENTO / FORMS - MOBILE
+========================================= */
+
+@media (max-width: 767px) {
+  .wrapperForms {
+    width: 100%;
+    min-height: 100vh;
+    padding: 96px 16px 56px;
+    flex-direction: column;
+    gap: 32px;
+    background-position: center top;
+    background-size: cover;
+  }
+
+  .barraLateral {
+    position: relative;
+    top: auto;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    padding: 24px 16px;
+    border-width: 2px;
+    border-radius: 20px;
+  }
+
+  .containerInfo {
+    gap: 24px;
+  }
+
+  .frameSteps {
+    width: 100%;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .stepCard {
+    width: 100%;
+    min-height: 72px;
+    padding: 12px 8px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    border-width: 1.5px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .stepCard p {
+    font-size: 12px;
+    line-height: 120%;
+  }
+
+  .stepBadge {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .stepActive {
+    border-width: 1.5px;
+    border-radius: 10px;
+  }
+
+  .forms-logo {
+    gap: 12px;
+  }
+
+  .forms-logo img {
+    width: 40px;
+    height: auto;
+  }
+
+  .forms-logo h1 {
+    width: 100%;
+    padding: 0;
+    font-size: 20px;
+    line-height: 130%;
+    letter-spacing: 0;
+  }
+
+  .forms-logo h1 span {
+    display: block;
+  }
+
+  .container-principal {
+    width: 100%;
+    margin-left: 0;
+    padding: 0;
+    gap: 24px;
+  }
+
+  .progressoWrap {
+    width: 100%;
+    gap: 12px;
+  }
+
+  .pSeta {
+    font-size: 20px;
+    color: var(--color-light);
+  }
+
+  .prog-seg {
+    height: 3px;
+  }
+
+  .formsConteudo {
+    width: 100%;
+  }
+
+  .formsStep {
+    width: 100%;
+    padding: 24px 0;
+    gap: 24px;
+  }
+
+  .fieldGroup {
+    gap: 8px;
+  }
+
+  .fieldLabel {
+    font-size: 15px;
+    line-height: 140%;
+  }
+
+  .labelHint {
+    display: block;
+    margin-left: 0;
+    margin-top: 4px;
+    font-size: 12px;
+  }
+
+  .field-input,
+  .iti__tel-input {
+    min-height: 48px !important;
+    height: auto;
+    font-size: 16px !important;
+    padding: 14px 16px !important;
+  }
+
+  #phone {
+    padding-left: 108px !important;
+  }
+
+  textarea.field-input {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .optionsGrid,
+  .optionsGrid--2col {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .optionCard {
+    width: 100%;
+    min-height: 56px;
+    padding: 14px 16px;
+    align-items: center;
+  }
+
+  .optText {
+    font-size: 14px;
+    line-height: 140%;
+  }
+
+  .aceiteLabel {
+    gap: 10px;
+  }
+
+  .aceiteText {
+    font-size: 12px;
+    line-height: 150%;
+  }
+
+  .form-nav,
+  .navSplit {
+    width: 100%;
+    display: flex;
+    gap: 12px;
+  }
+
+  .navSplit {
+    flex-direction: column-reverse;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    min-width: 0;
+    height: 56px;
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+
+  .form-nav > .btn-primary {
+    margin-left: 0 !important;
+  }
+
+  .reviewBox {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .reviewRow {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .reviewLabel,
+  .reviewValue {
+    font-size: 13px;
+  }
+
+  .formSuccess {
+    width: 100%;
+    padding: 32px 0;
+    text-align: center;
+  }
+
+  .successTitle {
+    font-size: 22px;
+  }
+
+  .successText {
+    font-size: 14px;
+    line-height: 150%;
+  }
+}
+
+@media (max-width: 380px) {
+  .frameSteps {
+    gap: 6px;
+  }
+
+  .stepCard {
+    padding: 10px 6px;
+  }
+
+  .stepCard p {
+    font-size: 11px;
+  }
+
+  .forms-logo h1 {
+    font-size: 18px;
+  }
+}
