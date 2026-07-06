@@ -754,7 +754,7 @@ $robots = "noindex, nofollow";
 <!-- Rodapé Daiane Ferreira -->
 <footer class="rodapeForms">
   <p>© 2026 Daiane Ferreira</p>
-  | <p>Todos os Direitos Reservados</p>
+  <p> | Todos os Direitos Reservados</p>
 </footer>
 
 
