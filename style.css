@@ -3345,3 +3345,263 @@ footer .textoAnimado span .charFooter {
 
 
 }
+
+/* =========================
+   BREAKPOINTS DESKTOP/TABLET
+========================= */
+
+/* até 880px */
+@media (min-width: 768px) and (max-width: 880px) {
+  .hero h1 {
+    font-size: 48px;
+    width: 100%;
+  }
+
+  .conteudo,
+  .texto {
+    width: 100%;
+  }
+
+  .headServicos h2 {
+    font-size: 64px;
+  }
+
+  .cards {
+    width: 400px;
+    flex: 0 0 400px;
+  }
+
+  .conteudo_portfolio {
+    flex-direction: column;
+  }
+
+  .conteudo_portfolio h2 {
+    width: 100%;
+    font-size: 40px;
+  }
+
+  .protocolo {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 32px;
+    text-align: center;
+  }
+
+  .protocolo p,
+  .protocolo h2 {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* até 1024px */
+@media (min-width: 881px) and (max-width: 1024px) {
+  .hero h1 {
+    font-size: 56px;
+  }
+
+  .headServicos h2 {
+    font-size: 72px;
+  }
+
+  .conteudo_portfolio h2 {
+    width: 680px;
+    font-size: 44px;
+  }
+
+  .slide {
+    height: 640px;
+  }
+
+  .protocolo p {
+    width: 460px;
+  }
+
+  .protocolo h2 {
+    font-size: 44px;
+  }
+}
+
+/* até 1200px */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .hero h1 {
+    font-size: 64px;
+  }
+
+  .headServicos h2 {
+    font-size: 84px;
+  }
+
+  .conteudo_portfolio h2 {
+    width: 760px;
+    font-size: 48px;
+  }
+
+  .slide {
+    height: 680px;
+  }
+
+  .protocolo h2 {
+    font-size: 48px;
+  }
+}
+
+/* até 1366px */
+@media (min-width: 1201px) and (max-width: 1366px) {
+  .hero h1 {
+    font-size: 72px;
+  }
+
+  .headServicos h2 {
+    font-size: 92px;
+  }
+
+  .conteudo_portfolio h2 {
+    width: 820px;
+    font-size: 52px;
+  }
+
+  .slide {
+    height: 700px;
+  }
+}
+
+/* telas grandes até 2400px */
+@media (min-width: 1367px) and (max-width: 2400px) {
+  .hero h1 {
+    font-size: clamp(80px, 4.7vw, 104px);
+  }
+
+  .headServicos h2 {
+    font-size: clamp(104px, 5.5vw, 128px);
+  }
+
+  .conteudo_portfolio h2 {
+    font-size: clamp(56px, 3vw, 72px);
+  }
+}
+
+/* ==================================================
+   BREAKPOINTS - PÁGINA ORÇAMENTO
+================================================== */
+
+/* 768 até 880px */
+@media (min-width:768px) and (max-width:880px){
+
+  .barraLateral{
+    width:320px;
+  }
+
+  .stepCard{
+    width:280px;
+  }
+
+  .forms-logo h1{
+    width:280px;
+    font-size:20px;
+  }
+
+  .container-principal{
+    margin-left:330px;
+    padding:60px 24px;
+  }
+
+  .formsConteudo,
+  .formSuccess{
+    width:100%;
+    max-width:520px;
+  }
+
+  .progressoWrap{
+    width:100%;
+    max-width:520px;
+  }
+
+  .optionsGrid--2col{
+    grid-template-columns:1fr;
+  }
+
+}
+
+/* 881 até 1024px */
+@media (min-width:881px) and (max-width:1024px){
+
+  .barraLateral{
+    width:360px;
+  }
+
+  .stepCard{
+    width:310px;
+  }
+
+  .forms-logo h1{
+    width:320px;
+    font-size:22px;
+  }
+
+  .container-principal{
+    margin-left:370px;
+  }
+
+  .formsConteudo,
+  .formSuccess{
+    width:100%;
+    max-width:580px;
+  }
+
+  .progressoWrap{
+    width:100%;
+    max-width:580px;
+  }
+
+}
+
+/* 1025 até 1200px */
+@media (min-width:1025px) and (max-width:1200px){
+
+  .barraLateral{
+    width:390px;
+  }
+
+  .stepCard{
+    width:340px;
+  }
+
+  .container-principal{
+    margin-left:400px;
+  }
+
+  .formsConteudo,
+  .formSuccess{
+    max-width:620px;
+  }
+
+}
+
+/* 1201 até 1366px */
+@media (min-width:1201px) and (max-width:1366px){
+
+  .barraLateral{
+    width:420px;
+  }
+
+  .container-principal{
+    margin-left:430px;
+  }
+
+}
+
+/* 1367 até 2400px */
+@media (min-width:1367px) and (max-width:2400px){
+
+  .wrapperForms{
+    max-width:1920px;
+    margin:auto;
+  }
+
+  .formsConteudo,
+  .formSuccess{
+    width:650px;
+  }
+
+}
