@@ -2,8 +2,12 @@
   <div class="meioFooter">
     <div class="iconesFooter">
       <div class="iconesRedesociais">
-        <a href="#"><img src="assets/imagens/github.svg" alt="GitHub" /></a>
-        <a href="#"><img src="assets/imagens/sinal-do-linkedin.svg" alt="GitHub" /></a>
+        <a href="https://github.com/DaianeFerreira-designer" target="_blank"
+          rel="noopener"
+          aria-label="GitHub"><img src="assets/imagens/github.svg" alt="GitHub" /></a>
+        <a href="https://www.linkedin.com/in/daiane-ferreira-araujo/" target="_blank"
+          rel="noopener"
+          aria-label="Linkedin"><img src="assets/imagens/sinal-do-linkedin.svg" alt="Linkedin" /></a>
       </div>
 
       <img
@@ -11,8 +15,12 @@
         alt="Lodo Daiane Ferreira" />
 
       <div class="iconesRedesociais">
-        <a href="#"><img src="assets/imagens/instagram.svg" alt="GitHub" /></a>
-        <a href="#"><img src="assets/imagens/behance.svg" alt="GitHub" /></a>
+        <a href="https://www.instagram.com/designer.daiane/" target="_blank"
+          rel="noopener"
+          aria-label="Instagram"><img src="assets/imagens/instagram.svg" alt="Instagram" /></a>
+        <a href="https://www.behance.net/daiane_ferreira" target="_blank"
+          rel="noopener"
+          aria-label="Behance"><img src="assets/imagens/behance.svg" alt="Behance" /></a>
       </div>
     </div>
 
