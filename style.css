@@ -219,7 +219,7 @@ header.scrolled .icone {
 
   padding: 5px;
   gap: 12px;
-  border: 1px solid #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 10px;
 
   background: rgba(0, 0, 0, 0.25);
@@ -278,8 +278,8 @@ header.scrolled .icone {
 }
 
 .headerDesktop .principal a img {
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
   flex: 0 0 17px;
   object-fit: contain;
 }
