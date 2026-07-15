@@ -6,14 +6,67 @@
       alt="Logo Daiane Ferreira" />
   </a>
 
-  <nav class="principal">
+  <nav class="principal" aria-label="Navegação principal">
     <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/criacao-de-sites-profissionais">Serviços</a></li>
-      <li><a href="/templates-elementor-wordpress-figma">Templates</a></li>
-      <li><a href="/portfolio-sites-profissionais">Portfólio</a></li>
-      <li><a href="/sobre-daiane-ferreira-web-designer">Sobre</a></li>
-      <li><a href="/contato-criacao-de-sites">Contato</a></li>
+      <li>
+        <a href="/">
+          <img
+            src="/assets/imagens/mobile-home.svg"
+            data-active-src="/assets/imagens/mobile-home-ativo.svg"
+            alt="" />
+          <span>Home</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="/criacao-de-sites-profissionais">
+          <img
+            src="/assets/imagens/mobile-servicos.svg"
+            data-active-src="/assets/imagens/mobile-servicos-ativo.svg"
+            alt="" />
+          <span>Serviços</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="/templates-elementor-wordpress-figma">
+          <img
+            src="/assets/imagens/mobile-templates.svg"
+            data-active-src="/assets/imagens/mobile-templates-ativo.svg"
+            alt="" />
+          <span>Templates</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="/portfolio-sites-profissionais">
+          <img
+            src="/assets/imagens/mobile-portfolio.svg"
+            data-active-src="/assets/imagens/mobile-portfolio-ativo.svg"
+            alt="" />
+          <span>Portfólio</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="/sobre-daiane-ferreira-web-designer">
+          <img
+            src="/assets/imagens/mobile-sobre.svg"
+            data-active-src="/assets/imagens/mobile-sobre-ativo.svg"
+            alt="" />
+          <span>Sobre</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="/contato-criacao-de-sites">
+          <img
+            src="/assets/imagens/mobile-contato.svg"
+            data-active-src="/assets/imagens/mobile-contato-ativo.svg"
+            alt="" />
+          <span>Contato</span>
+        </a>
+      </li>
     </ul>
   </nav>
 
@@ -64,7 +117,7 @@
       </a>
 
       <a href="/contato-criacao-de-sites" class="nav-link">
-       <img src="/assets/imagens/mobile-contato.svg" data-active-src="/assets/imagens/mobile-contato-ativo.svg" alt="" />
+        <img src="/assets/imagens/mobile-contato.svg" data-active-src="/assets/imagens/mobile-contato-ativo.svg" alt="" />
         <span>Contato</span>
       </a>
     </div>

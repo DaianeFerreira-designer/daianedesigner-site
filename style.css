@@ -209,53 +209,82 @@ header.scrolled .icone {
   height: auto;
 }
 
-.principal ul {
+.headerDesktop .principal {
   display: flex;
   align-items: center;
-  gap: 32px;
+  padding: 5px;
+  border: 1px solid var(--color-light);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.headerDesktop .principal ul {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
   list-style: none;
-  color: var(--color-text);
 }
 
-.principal ul a {
-  font-size: 1.125rem;
-}
-
-.principal ul li {
+.headerDesktop .principal ul li {
   position: relative;
 }
 
-.principal ul li::before {
+.headerDesktop .principal ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 8px 14px;
+  border-radius: 7px;
+  color: var(--color-text);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+  transition:
+    color 0.3s ease,
+    background 0.3s ease;
+}
+
+.headerDesktop .principal ul li a img {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  object-fit: contain;
+}
+
+.headerDesktop .principal ul li::before {
   content: "";
   position: absolute;
-
   left: 50%;
-  bottom: -8px;
-
-  width: 100%;
+  bottom: 3px;
+  width: calc(100% - 28px);
   height: 2px;
-
   border-radius: 100px;
   background: var(--gradient-primary);
-
   transform: translateX(-50%) scaleX(0);
   transform-origin: left;
-  transition: transform 0.5s ease;
+  transition: transform 0.4s ease;
 }
 
-.principal ul li:hover::before {
+.headerDesktop .principal ul li:not(.ativo):hover::before {
   transform: translateX(-50%) scaleX(1);
 }
 
-.principal ul li.ativo::before {
-  transform: translateX(-50%) scaleX(1);
+.headerDesktop .principal ul li.ativo::before {
+  display: none;
 }
 
-.principal ul li.ativo a {
-  background: var(--gradient-primary);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.headerDesktop .principal ul li.ativo a {
+  background: var(--color-accent);
+  color: var(--color-dark);
+  background-clip: border-box;
+  -webkit-background-clip: border-box;
+  -webkit-text-fill-color: var(--color-dark);
   font-weight: 700;
 }
 
