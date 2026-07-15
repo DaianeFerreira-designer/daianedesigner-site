@@ -11,8 +11,8 @@
       <li>
         <a href="/">
           <img
-            src="/assets/imagens/mobile-home.svg"
-            data-active-src="/assets/imagens/mobile-home-ativo.svg"
+            src="/assets/imagens/home-desktop.svg"
+            data-active-src="/assets/imagens/home-desktop-ativo.svg"
             alt="" />
           <span>Home</span>
         </a>
@@ -21,8 +21,8 @@
       <li>
         <a href="/criacao-de-sites-profissionais">
           <img
-            src="/assets/imagens/mobile-servicos.svg"
-            data-active-src="/assets/imagens/mobile-servicos-ativo.svg"
+            src="/assets/imagens/servicos-desktop.svg"
+            data-active-src="/assets/imagens/servicos-desktop-ativo.svg"
             alt="" />
           <span>Serviços</span>
         </a>
@@ -31,8 +31,8 @@
       <li>
         <a href="/templates-elementor-wordpress-figma">
           <img
-            src="/assets/imagens/mobile-templates.svg"
-            data-active-src="/assets/imagens/mobile-templates-ativo.svg"
+            src="/assets/imagens/templates-desktop.svg"
+            data-active-src="/assets/imagens/templates-desktop-ativo.svg"
             alt="" />
           <span>Templates</span>
         </a>
@@ -41,8 +41,8 @@
       <li>
         <a href="/portfolio-sites-profissionais">
           <img
-            src="/assets/imagens/mobile-portfolio.svg"
-            data-active-src="/assets/imagens/mobile-portfolio-ativo.svg"
+            src="/assets/imagens/portfolio-desktop.svg"
+            data-active-src="/assets/imagens/portfolio-desktop-ativo.svg"
             alt="" />
           <span>Portfólio</span>
         </a>
@@ -51,8 +51,8 @@
       <li>
         <a href="/sobre-daiane-ferreira-web-designer">
           <img
-            src="/assets/imagens/mobile-sobre.svg"
-            data-active-src="/assets/imagens/mobile-sobre-ativo.svg"
+            src="/assets/imagens/sobre-desktop.svg"
+            data-active-src="/assets/imagens/sobre-desktop-ativo.svg"
             alt="" />
           <span>Sobre</span>
         </a>
@@ -61,8 +61,8 @@
       <li>
         <a href="/contato-criacao-de-sites">
           <img
-            src="/assets/imagens/mobile-contato.svg"
-            data-active-src="/assets/imagens/mobile-contato-ativo.svg"
+            src="/assets/imagens/contato-desktop.svg"
+            data-active-src="/assets/imagens/contato-desktop-ativo.svg"
             alt="" />
           <span>Contato</span>
         </a>

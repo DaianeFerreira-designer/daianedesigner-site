@@ -209,13 +209,21 @@ header.scrolled .icone {
   height: auto;
 }
 
+/* =========================
+   MENU DESKTOP
+========================= */
+
 .headerDesktop .principal {
   display: flex;
   align-items: center;
+
   padding: 5px;
-  border: 1px solid var(--color-light);
+
+  border: 1px solid #ffffff;
   border-radius: 10px;
+
   background: rgba(0, 0, 0, 0.25);
+
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
@@ -224,68 +232,100 @@ header.scrolled .icone {
   display: flex;
   align-items: center;
   gap: 4px;
+
   margin: 0;
   padding: 0;
+
   list-style: none;
 }
 
-.headerDesktop .principal ul li {
+.headerDesktop .principal li {
   position: relative;
 }
 
-.headerDesktop .principal ul li a {
+/* Remove completamente a linha antiga do LI */
+
+.headerDesktop .principal li::before {
+  content: none;
+  display: none;
+}
+
+.headerDesktop .principal a {
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+
   min-height: 42px;
   padding: 8px 14px;
+
   border-radius: 7px;
-  color: var(--color-text);
-  font-size: 16px;
+
+  background: transparent;
+
+  color: #fffefd;
+  -webkit-text-fill-color: #fffefd;
+
+  font-size: 14px;
   font-weight: 400;
   line-height: 150%;
+
   transition:
-    color 0.3s ease,
-    background 0.3s ease;
+    background 0.3s ease,
+    color 0.3s ease;
 }
 
-.headerDesktop .principal ul li a img {
-  width: 17px;
-  height: 17px;
+.headerDesktop .principal a img {
+  width: 24px;
+  height: 24px;
   flex: 0 0 17px;
   object-fit: contain;
 }
 
-.headerDesktop .principal ul li::before {
+/* Linha somente no hover */
+
+.headerDesktop .principal a::after {
   content: "";
   position: absolute;
-  left: 50%;
-  bottom: 3px;
-  width: calc(100% - 28px);
+
+  left: 14px;
+  right: 14px;
+  bottom: 4px;
+
   height: 2px;
+
   border-radius: 100px;
   background: var(--gradient-primary);
-  transform: translateX(-50%) scaleX(0);
+
+  transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s ease;
 }
 
-.headerDesktop .principal ul li:not(.ativo):hover::before {
-  transform: translateX(-50%) scaleX(1);
+.headerDesktop .principal a:hover::after {
+  transform: scaleX(1);
 }
 
-.headerDesktop .principal ul li.ativo::before {
-  display: none;
-}
+/* Ativo — funciona com classe no LI ou diretamente no link */
 
-.headerDesktop .principal ul li.ativo a {
-  background: var(--color-accent);
-  color: var(--color-dark);
-  background-clip: border-box;
-  -webkit-background-clip: border-box;
-  -webkit-text-fill-color: var(--color-dark);
+.headerDesktop .principal li.ativo a,
+.headerDesktop .principal a.ativo {
+  background: #ef6500;
+
+  color: #000000;
+  -webkit-text-fill-color: #000000;
+
   font-weight: 700;
+}
+
+/* Remove a linha do ativo */
+
+.headerDesktop .principal li.ativo a::after,
+.headerDesktop .principal a.ativo::after {
+  content: none;
+  display: none;
 }
 
 /* =========================
