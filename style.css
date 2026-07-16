@@ -265,7 +265,7 @@ header.scrolled .icone {
 
   background: transparent;
 
-  color:rgba(255, 255, 255, 0.2);
+  color:rgba(255, 255, 255, 0.4);
  
 
   font-size: 14px;
@@ -387,7 +387,7 @@ header.scrolled .icone {
 
 .webDesigner p {
   color: var(--color-light);
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 24px */
@@ -425,7 +425,7 @@ header.scrolled .icone {
 .paragrafo {
   color: var(--color-light);
   width: 780px;
-  font-size: 18px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 27px */
