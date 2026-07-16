@@ -265,8 +265,8 @@ header.scrolled .icone {
 
   background: transparent;
 
-  color: #fffefd;
-  -webkit-text-fill-color: #fffefd;
+  color:rgba(255, 255, 255, 0.2);
+ 
 
   font-size: 14px;
   font-weight: 400;
