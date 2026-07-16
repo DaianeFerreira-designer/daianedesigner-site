@@ -282,7 +282,7 @@ header.scrolled .icone {
   height: 16px;
   flex: 0 0 17px;
   object-fit: contain;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 /* Linha somente no hover */
