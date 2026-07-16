@@ -89,6 +89,7 @@
   --color-hover: #fdf0e6;
   --color-accent: #ef6500;
   --transition: 0.22s ease;
+  --color-border:rgba(255, 255, 255, 0.2);
 
   --header-h: 120px; /* fallback */
   --aside-gap: 16px;
@@ -993,7 +994,7 @@ header.scrolled .icone {
   transition: all 300ms ease-in; /* acelera no início */
   position: relative;
   cursor: pointer;
-  border-right: 2px solid rgba(255, 255, 255, 0.247);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .slide:last-child {
@@ -1215,7 +1216,7 @@ header.scrolled .icone {
   position: relative;
   width: 100%;
   height: 560px;
-  border: 2px solid rgba(255, 255, 255, 0.247);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 28px;
   background: rgba(255, 255, 255, 0.02);
 }
