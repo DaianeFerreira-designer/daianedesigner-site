@@ -166,7 +166,7 @@ if (wrap && track) {
   const scrollCards = () => {
     const extra = window.innerWidth <= 767 ? 24 : 120;
 
-  return track.scrollWidth - wrap.clientWidth + extra;
+    return track.scrollWidth - wrap.clientWidth + extra;
   };
 
   let charsTituloServicos = [];
@@ -193,11 +193,19 @@ if (wrap && track) {
     x: 0,
   });
 
+  /* Distância extra da animação */
+  const distanciaExtra = () => {
+    return window.innerWidth <= 767 ? 400 : 1800;
+  };
+
   const tlTransicao = gsap.timeline({
     scrollTrigger: {
       trigger: ".transicao",
       start: "top top",
-      end: () => `+=${scrollCards() + 1800}`,
+
+      /* Reduz o espaço prolongado somente no mobile */
+      end: () => `+=${scrollCards() + distanciaExtra()}`,
+
       scrub: 2,
       pin: true,
       anticipatePin: 1,
