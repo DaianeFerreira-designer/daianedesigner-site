@@ -38,7 +38,7 @@
     </p>
 
     <div class="botoesFooter">
-      <a href="orcamento.php" class="cta">
+      <a href="/orcamento" class="cta">
         <span class="circle-bg"></span>
 
         <img
@@ -69,7 +69,7 @@
 
 <!-- JS -->
 
-<script defer src="/script.js"></script>
+<script src="/script.js?v=2" defer></script>
 
 </body>
 

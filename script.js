@@ -548,14 +548,16 @@ function animarTextoFooter2() {
 
   gsap.to(progressObj, {
     val: 100,
-    duration: 2,
-    ease: "power2.out",
+    duration: 0.35,
+    ease: "power1.out",
+
     onUpdate: () => {
       const v = Math.round(progressObj.val);
 
-      preloaderPercent.textContent = v + "%";
+      preloaderPercent.textContent = `${v}%`;
       preloaderFill.style.clipPath = `inset(${100 - v}% 0 0 0)`;
     },
+
     onComplete: finishPreloader,
   });
 
@@ -566,41 +568,45 @@ function animarTextoFooter2() {
       },
     });
 
-    tl.to(preloaderPercent, {
-      opacity: 0,
-      y: 10,
-      duration: 0.3,
-      ease: "power2.out",
-    });
+    tl.to(
+      preloaderPercent,
+      {
+        opacity: 0,
+        y: 8,
+        duration: 0.1,
+        ease: "power1.out",
+      },
+      0,
+    );
 
     tl.to(
       preloaderBg,
       {
-        y: "-100%",
-        duration: 1,
-        ease: "power3.inOut",
+        yPercent: -100,
+        duration: 0.35,
+        ease: "power2.inOut",
       },
-      0.2,
+      0,
     );
 
     tl.to(
       preloaderLogo,
       {
-        scale: 0.6,
+        scale: 0.7,
         opacity: 0,
-        duration: 0.6,
-        ease: "power2.out",
+        duration: 0.2,
+        ease: "power1.out",
       },
-      0.4,
+      0,
     );
 
     tl.to(
       preloader,
       {
         opacity: 0,
-        duration: 0.3,
+        duration: 0.1,
       },
-      "-=0.2",
+      0.25,
     );
   }
 })();
