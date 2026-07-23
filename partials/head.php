@@ -18,13 +18,45 @@
   ?>
   <meta name="robots" content="<?= htmlspecialchars($robots, ENT_QUOTES, 'UTF-8') ?>">
 
-  <!-- css -->
+  <!-- Preload das fontes usadas na primeira tela -->
+  <link
+    rel="preload"
+    href="/assets/fonts/RobotoSerif-Regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin>
+
+  <link
+    rel="preload"
+    href="/assets/fonts/RobotoSerif-Bold.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin>
+
+  <link
+    rel="preload"
+    href="/assets/fonts/Satisfy-Regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin>
+
+
+
+  <!-- CSS principal -->
   <link rel="stylesheet" href="/style.css">
 
-  <!-- intl-tel-input CSS -->
+  <!-- CSS do campo de telefone sem bloquear a renderização -->
   <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/css/intlTelInput.css" />
+    rel="preload"
+    href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/css/intlTelInput.css"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/css/intlTelInput.css">
+  </noscript>
 
   <!-- Favicon -->
   <link rel="icon" href="/assets/imagens/favicon.svg" type="image/svg+xml">
