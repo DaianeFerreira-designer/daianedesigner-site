@@ -1,3 +1,8 @@
+/* ==================================================
+   ESTILOS BASE
+   Aplicados em todas as resoluções antes dos ajustes responsivos.
+================================================== */
+
 /* =========================
    RESET
 ========================= */
@@ -48,12 +53,6 @@
   box-shadow: 0px 0px 50px 5px #ef6500;
 }
 
-@media (max-width: 767px) {
-  .custom-scrollbar,
-  .custom-scroll-thumb {
-    display: none;
-  }
-}
 
 /* =========================
    ROOT
@@ -2433,16 +2432,7 @@ footer .textoAnimado span .charFooter {
 }
 
 /* Responsivo */
-@media (max-width: 720px) {
-  .reviewRow {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
 
-  .reviewBox {
-    padding: 16px;
-  }
-}
 
 /* Quando estiver no estado de sucesso, não empurra o conteúdo pro fim */
 .container-principal.is-success {
@@ -2493,6 +2483,7 @@ footer .textoAnimado span .charFooter {
   text-align: center;
 }
 
+
 /* =========================
    HEADER MOBILE DROP
 ========================= */
@@ -2501,1153 +2492,6 @@ footer .textoAnimado span .charFooter {
   display: none !important;
 }
 
-@media (max-width: 767px) {
-  .headerDesktop {
-    display: none !important;
-  }
-
-  .headerMobile {
-    display: flex !important;
-    position: fixed;
-    inset: 0 0 auto 0;
-    width: 100%;
-    height: 72px;
-    padding: 16px 16px;
-    align-items: center;
-    justify-content: space-between;
-    background: transparent !important;
-    z-index: 9999;
-    pointer-events: none;
-  }
-
-  .logoMobile,
-  .iconeMobile {
-    position: relative;
-    z-index: 10020;
-    width: 40px;
-    height: auto;
-    pointer-events: auto;
-    pointer-events: auto;
-    transition:
-      opacity 0.25s ease,
-      visibility 0.25s ease;
-  }
-
-  .iconeMobile {
-    width: 38px;
-  }
-
-  .menu-drop-down {
-    position: fixed;
-    left: 50%;
-    top: -0.5rem;
-
-    width: 100%;
-    max-width: 430px;
-    height: auto;
-
-    transform: translate3d(-50%, -21rem, 0);
-
-    z-index: 10010;
-    display: flex;
-    flex-direction: column;
-
-    background: transparent;
-    border-radius: 0;
-
-    pointer-events: auto;
-    overflow: visible;
-  }
-
-  .menu-links {
-    position: relative;
-    z-index: 2;
-
-    width: 100%;
-    gap: 16px;
-
-    padding: 2rem 2rem 4.8rem;
-    border-radius: 0 0 20px 20px;
-    display: flex;
-    flex-direction: column;
-
-    background: #ef6500;
-    transform: none;
-  }
-
-  .shape {
-    position: relative;
-    z-index: 3;
-
-    width: 100%;
-    height: auto;
-
-    margin-top: -2px;
-
-    pointer-events: none;
-    display: block;
-  }
-
-  .nav-link {
-    display: grid;
-    grid-template-columns: 42px 1fr;
-    align-items: center;
-
-    width: 100%;
-    height: 38px;
-
-    color: #000;
-    text-decoration: none;
-
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-
-    opacity: 0;
-    transform: translateY(40px);
-  }
-
-  .nav-link img {
-    width: 16px;
-    height: 16px;
-    object-fit: contain;
-    justify-self: center;
-  }
-
-  .nav-link span {
-    text-align: start;
-    font-family: "Roboto Serif", serif;
-    font-size: 16px;
-    font-weight: 400;
-    color: #000;
-  }
-
-  .nav-link.ativo {
-    background: #fffefd;
-    border-radius: 6px;
-    border-bottom-color: transparent;
-  }
-
-  .menu-btn {
-    position: absolute;
-    left: 50%;
-    bottom: 10px;
-
-    transform: translateX(-50%);
-
-    z-index: 5;
-
-    width: 1.5rem;
-    height: 1.5rem;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    padding: 0;
-  }
-
-  .menu-line {
-    width: 24px;
-    height: 3px;
-    border-radius: 100px;
-    background: #000000;
-    display: block;
-  }
-
-  .headerMobile.menuAberto .logoMobile,
-  .headerMobile.menuAberto .iconeMobile {
-    opacity: 0;
-    visibility: hidden;
-  }
-  .headerMobile.scrolled {
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    background: rgba(0, 0, 0, 0.705) !important;
-  }
-
-  /* Hero */
-  .hero {
-    width: 100%;
-    padding: 80px 16px;
-    background-image: url(/assets/imagens/mobile_BG_hero.webp);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    align-items: flex-start;
-    justify-content: center;
-    height: 100%;
-  }
-
-  .conteudo {
-    width: 100%;
-    gap: 32px;
-  }
-
-  .texto {
-    width: 100%;
-  }
-
-  .hero h1 {
-    width: 100% !important;
-    font-size: 32px !important;
-    position: relative !important;
-    line-height: 130% !important;
-  }
-
-  .hero h1::after {
-    content: "•••";
-    position: absolute;
-
-    right: 140px;
-    top: 13px;
-
-    color: #ef6500;
-    font-size: 28px;
-    letter-spacing: 8px;
-    line-height: 1;
-  }
-
-  .paragrafo {
-    font-size: 16px;
-    width: 100%;
-  }
-
-  .botoes {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 24px;
-    margin-top: 16px;
-  }
-
-  .portfolioButton {
-    display: flex;
-    width: 310.92px;
-    height: 64px;
-    padding: 24px 48px;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-  }
-
-  /* Serviços */
-
-  .cardSolucoes {
-    padding: 80px 16px 40px;
-    gap: 16px;
-    justify-content: flex-start;
-  }
-
-  .cards {
-    width: 320px;
-  }
-
-  .headServicos h2 {
-    text-align: center;
-    font-size: 56px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 110%; /* 61.6px */
-  }
-
-  .trackServicos {
-    display: flex;
-    flex-wrap: nowrap;
-    width: max-content;
-    gap: 24px;
-  }
-
-  /* Faixa animada */
-  .faixaAnimada {
-    margin-bottom: 32px;
-  }
-
-  /* Portfólio */
-
-  .dobra03 {
-    padding: 80px 16px 40px;
-  }
-
-  .dobra03 .faixaDestaque {
-    top: 30%;
-  }
-  .conteudo_portfolio {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .conteudo_portfolio h2 {
-    margin-top: 24px;
-    width: 100%;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 130%; /* 61.6px */
-    text-align: center;
-    overflow-wrap: normal;
-    word-break: normal;
-    hyphens: none;
-  }
-
-  .conteudo_portfolio h2 .animationPortfolio {
-    font-weight: 400;
-  }
-
-  /* portfolio sanfona */
-
-  .dobra04 {
-    padding: 40px 16px;
-  }
-
-  .slides {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    border: none;
-    border-radius: 0;
-    overflow: visible;
-  }
-
-  .slide,
-  .slide:last-child {
-    width: 100% !important;
-    height: 72px;
-    border-radius: 14px;
-    border: 2px solid rgba(255, 255, 255, 0.247);
-    overflow: hidden;
-    transition: height 300ms ease;
-  }
-
-  .slide.active {
-    height: auto;
-    min-height: 520px;
-  }
-
-  .slide .action {
-    height: 72px;
-    padding: 0 20px;
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 16px;
-  }
-
-  .slide .action p {
-    font-size: 20px;
-  }
-
-  .slide .action h2 {
-    position: static;
-    transform: none;
-    font-size: 18px;
-    white-space: nowrap;
-  }
-
-  .slide.active .action {
-    display: none;
-  }
-
-  .slide-content {
-    width: 100% !important;
-    min-height: 620px;
-    padding: 24px;
-    gap: 24px;
-    justify-content: space-between;
-  }
-
-  .imgTexto img {
-    width: 100%;
-    height: 240px;
-    object-fit: cover;
-    object-position: top center;
-    border-radius: 12px;
-    border-radius: 12px;
-  }
-
-  .tech {
-    margin-top: auto;
-  }
-
-  .tech ul {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .ctaProjeto {
-    align-self: flex-end;
-  }
-
-  /* Dobra 05 - Benefícios mobile */
-
-  .dobra05 {
-    padding: 40px 16px;
-    gap: 32px;
-  }
-
-  .dobra05 h2 {
-    width: 100%;
-    font-size: 32px;
-    line-height: 130%;
-    text-align: center;
-  }
-
-  .dobra05 h2 span {
-    display: block;
-    margin-top: 8px;
-  }
-
-  .vr-box {
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 16px;
-    border-radius: 20px;
-  }
-
-  .item,
-  .item-active {
-    position: static !important;
-    inset: auto !important;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-    bottom: auto !important;
-    transform: none !important;
-
-    width: 100%;
-    height: auto;
-    min-height: 88px;
-    padding: 20px;
-    border-radius: 16px;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 16px;
-    text-align: left;
-  }
-
-  .item {
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    background: rgba(255, 255, 255, 0.04);
-  }
-
-  .item img,
-  .item-active img {
-    width: 28px;
-    height: 28px;
-    flex: 0 0 28px;
-  }
-
-  .item p,
-  .item-active p {
-    font-size: 16px;
-    line-height: 130%;
-  }
-
-  .item-active {
-    order: -1;
-    background: var(--gradient-primary);
-  }
-
-  .item-active p {
-    font-size: 18px;
-  }
-  /* Dobra 06 - Protocolo mobile */
-
-  .dobra06 {
-    padding: 56px 16px;
-    gap: 32px;
-  }
-
-  .protocolo {
-    flex-direction: column-reverse;
-    align-items: center;
-    gap: 24px;
-    text-align: center;
-  }
-
-  .protocolo p {
-    width: 100%;
-    font-size: 16px;
-    line-height: 150%;
-    text-align: center;
-  }
-
-  .protocolo p.textoAnimado2 {
-    width: 100%;
-    max-width: 360px;
-    text-align: center;
-    font-size: 16px;
-    line-height: 150%;
-    word-break: normal;
-    overflow-wrap: normal;
-    white-space: normal;
-  }
-
-  .protocolo p.textoAnimado2 > div,
-  .protocolo p.textoAnimado2 > span {
-    display: inline !important;
-  }
-  .protocolo h2 {
-    width: 100%;
-    text-align: center;
-    font-size: 32px;
-    line-height: 130%;
-    letter-spacing: 0;
-  }
-
-  .protocolo h2 span {
-    display: block;
-  }
-
-  .abasProtocolo {
-    width: 100%;
-    padding: 16px;
-    gap: 16px;
-    background-size: cover;
-    border-radius: 20px;
-  }
-
-  .abas {
-    width: 100%;
-  }
-
-  .frame {
-    padding: 16px;
-    gap: 16px;
-  }
-
-  .frame h3 {
-    font-size: 14px;
-  }
-
-  .frame p {
-    font-size: 18px;
-  }
-
-  .conteudoProtocolo {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .abas.active2 .conteudoProtocolo {
-    padding-top: 24px;
-    padding-bottom: 24px;
-  }
-
-  .conteudoProtocolo h2 {
-    font-size: 20px;
-  }
-
-  .conteudoProtocolo p {
-    font-size: 15px;
-  }
-
-  /* Footer mobile */
-
-  footer {
-    padding: 40px 16px;
-    gap: 32px;
-  }
-
-  .iconesFooter {
-    width: 100%;
-  }
-
-  .iconesFooter > img {
-    width: 72px;
-  }
-
-  .iconesRedesociais img {
-    width: 22px;
-    height: 22px;
-  }
-
-  .meioFooter h2 {
-    font-size: 42px;
-    text-align: center;
-  }
-
-  .direitos {
-    flex-direction: column;
-    gap: 4px;
-    text-align: center;
-  }
-
-  .finalFooter {
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-  }
-
-  .finalFooter p.textoAnimado2 {
-    width: 100%;
-    max-width: 360px;
-    text-align: center;
-    font-size: 20px;
-    line-height: 140%;
-    letter-spacing: 0;
-  }
-
-  .finalFooter p.textoAnimado2 * {
-    display: inline !important;
-  }
-
-  .botoesFooter {
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-  }
-
-  .botoesFooter .cta,
-  .botoesFooter .portfolioButton {
-    width: 100%;
-    max-width: 320px;
-    justify-content: center;
-  }
-}
-
-/* 320px até 365px */
-@media (max-width: 365px) {
-  .hero h1::after {
-    right: 80px;
-  }
-}
-
-/* 366px até 375px */
-@media (min-width: 366px) and (max-width: 375px) {
-  .hero h1::after {
-    right: 100px;
-  }
-}
-
-/* 376px até 429px (390, 393, 412...) */
-@media (min-width: 376px) and (max-width: 429px) {
-  .hero h1::after {
-    right: 110px;
-  }
-}
-
-/* 430px até 767px */
-@media (min-width: 430px) and (max-width: 767px) {
-  .hero h1::after {
-    right: 140px;
-  }
-}
-
-
-/* =========================================
-   ORÇAMENTO / FORMS - MOBILE
-========================================= */
-
-@media (max-width: 767px) {
-  .wrapperForms {
-    width: 100%;
-    min-height: 100vh;
-    padding: 96px 16px 56px;
-    flex-direction: column;
-    gap: 32px;
-    background-position: center top;
-    background-size: cover;
-  }
-
-  .barraLateral {
-    position: relative;
-    top: auto;
-    width: 100%;
-    max-width: none;
-    height: auto;
-    padding: 24px 16px;
-    border-width: 2px;
-    border-radius: 20px;
-  }
-
-  .containerInfo {
-    gap: 24px;
-  }
-
-  .frameSteps {
-    width: 100%;
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  .stepCard {
-    width: 100%;
-    min-height: 72px;
-    padding: 12px 8px;
-    flex-direction: column;
-    justify-content: center;
-    gap: 6px;
-    border-width: 1.5px;
-    border-radius: 10px;
-    text-align: center;
-  }
-
-  .stepCard p {
-    font-size: 12px;
-    line-height: 120%;
-  }
-
-  .stepBadge {
-    font-size: 14px;
-    font-weight: 700;
-  }
-
-  .stepActive {
-    border-width: 1.5px;
-    border-radius: 10px;
-  }
-
-  .forms-logo {
-    gap: 12px;
-  }
-
-  .forms-logo img {
-    width: 40px;
-    height: auto;
-  }
-
-  .forms-logo h1 {
-    width: 100%;
-    padding: 0;
-    font-size: 20px;
-    line-height: 130%;
-    letter-spacing: 0;
-  }
-
-  .forms-logo h1 span {
-    display: block;
-  }
-
-  .container-principal {
-    width: 100%;
-    margin-left: 0;
-    padding: 0;
-    gap: 24px;
-  }
-
-  .progressoWrap {
-    width: 100%;
-    gap: 12px;
-  }
-
-  .pSeta {
-    font-size: 20px;
-    color: var(--color-light);
-  }
-
-  .prog-seg {
-    height: 3px;
-  }
-
-  .formsConteudo {
-    width: 100%;
-  }
-
-  .formsStep {
-    width: 100%;
-    padding: 24px 0;
-    gap: 24px;
-  }
-
-  .fieldGroup {
-    gap: 8px;
-  }
-
-  .fieldLabel {
-    font-size: 15px;
-    line-height: 140%;
-  }
-
-  .labelHint {
-    display: block;
-    margin-left: 0;
-    margin-top: 4px;
-    font-size: 12px;
-  }
-
-  .field-input,
-  .iti__tel-input {
-    min-height: 48px !important;
-    height: auto;
-    font-size: 16px !important;
-    padding: 14px 16px !important;
-  }
-
-  #phone {
-    padding-left: 108px !important;
-  }
-
-  textarea.field-input {
-    min-height: 120px;
-    resize: vertical;
-  }
-
-  .optionsGrid,
-  .optionsGrid--2col {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .optionCard {
-    width: 100%;
-    min-height: 56px;
-    padding: 14px 16px;
-    align-items: center;
-  }
-
-  .optText {
-    font-size: 14px;
-    line-height: 140%;
-  }
-
-  .aceiteLabel {
-    gap: 10px;
-  }
-
-  .aceiteText {
-    font-size: 12px;
-    line-height: 150%;
-  }
-
-  .form-nav,
-  .navSplit {
-    width: 100%;
-    display: flex;
-    gap: 12px;
-  }
-
-  .navSplit {
-    flex-direction: column-reverse;
-  }
-
-  .btn-primary,
-  .btn-secondary {
-    width: 100%;
-    min-width: 0;
-    height: 56px;
-    padding: 12px 20px;
-    font-size: 15px;
-  }
-
-  .form-nav > .btn-primary {
-    margin-left: 0 !important;
-  }
-
-  .reviewBox {
-    padding: 16px;
-    gap: 12px;
-  }
-
-  .reviewRow {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-
-  .reviewLabel,
-  .reviewValue {
-    font-size: 13px;
-  }
-
-  .formSuccess {
-    width: 100%;
-    padding: 32px 0;
-    text-align: center;
-  }
-
-  .successTitle {
-    font-size: 22px;
-  }
-
-  .successText {
-    font-size: 14px;
-    line-height: 150%;
-  }
-/* Rodapé */
-
-.rodapeForms {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-
-  padding: 24px 16px 40px;
-
-  text-align: center;
-}
-
-.rodapeForms p {
-  margin: 0;
-  font-size: 13px;
-  line-height: 150%;
-  color: var(--color-light);
-}
-
-}
-
-@media (max-width: 380px) {
-  .frameSteps {
-    gap: 6px;
-  }
-
-  .stepCard {
-    padding: 10px 6px;
-  }
-
-  .stepCard p {
-    font-size: 11px;
-  }
-
-  .forms-logo h1 {
-    font-size: 18px;
-  }
-
-
-}
-
-/* =========================
-   BREAKPOINTS DESKTOP/TABLET
-========================= */
-
-/* até 880px */
-@media (min-width: 768px) and (max-width: 880px) {
-  .hero h1 {
-    font-size: 48px;
-    width: 100%;
-  }
-
-  .conteudo,
-  .texto {
-    width: 100%;
-  }
-
-  .headServicos h2 {
-    font-size: 64px;
-  }
-
-  .cards {
-    width: 400px;
-    flex: 0 0 400px;
-  }
-
-  .conteudo_portfolio {
-    flex-direction: column;
-  }
-
-  .conteudo_portfolio h2 {
-    width: 100%;
-    font-size: 40px;
-  }
-
-  .protocolo {
-    flex-direction: column-reverse;
-    align-items: center;
-    gap: 32px;
-    text-align: center;
-  }
-
-  .protocolo p,
-  .protocolo h2 {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-/* até 1024px */
-@media (min-width: 881px) and (max-width: 1024px) {
-  .hero h1 {
-    font-size: 56px;
-  }
-
-  .headServicos h2 {
-    font-size: 72px;
-  }
-
-  .conteudo_portfolio h2 {
-    width: 680px;
-    font-size: 44px;
-  }
-
-  .slide {
-    height: 640px;
-  }
-
-  .protocolo p {
-    width: 460px;
-  }
-
-  .protocolo h2 {
-    font-size: 44px;
-  }
-}
-
-/* até 1200px */
-@media (min-width: 1025px) and (max-width: 1200px) {
-  .hero h1 {
-    font-size: 64px;
-  }
-
-  .headServicos h2 {
-    font-size: 84px;
-  }
-
-  .conteudo_portfolio h2 {
-    width: 760px;
-    font-size: 48px;
-  }
-
-  .slide {
-    height: 680px;
-  }
-
-  .protocolo h2 {
-    font-size: 48px;
-  }
-}
-
-
-
-
-/* ==================================================
-   BREAKPOINTS - PÁGINA ORÇAMENTO
-================================================== */
-
-/* 768 até 880px */
-@media (min-width:768px) and (max-width:880px){
-
-  .barraLateral{
-    width:320px;
-  }
-
-  .stepCard{
-    width:280px;
-  }
-
-  .forms-logo h1{
-    width:280px;
-    font-size:20px;
-  }
-
-  .container-principal{
-    margin-left:330px;
-    padding:60px 24px;
-  }
-
-  .formsConteudo,
-  .formSuccess{
-    width:100%;
-    max-width:520px;
-  }
-
-  .progressoWrap{
-    width:100%;
-    max-width:520px;
-  }
-
-  .optionsGrid--2col{
-    grid-template-columns:1fr;
-  }
-
-}
-
-/* 881 até 1024px */
-@media (min-width:881px) and (max-width:1024px){
-
-  .barraLateral{
-    width:360px;
-  }
-
-  .stepCard{
-    width:310px;
-  }
-
-  .forms-logo h1{
-    width:320px;
-    font-size:22px;
-  }
-
-  .container-principal{
-    margin-left:370px;
-  }
-
-  .formsConteudo,
-  .formSuccess{
-    width:100%;
-    max-width:580px;
-  }
-
-  .progressoWrap{
-    width:100%;
-    max-width:580px;
-  }
-
-}
-
-/* 1025 até 1200px */
-@media (min-width:1025px) and (max-width:1200px){
-
-  .barraLateral{
-    width:390px;
-  }
-
-  .stepCard{
-    width:340px;
-  }
-
-  .container-principal{
-    margin-left:400px;
-  }
-
-  .formsConteudo,
-  .formSuccess{
-    max-width:620px;
-  }
-
-}
-
-/* 1201 até 1366px */
-@media (min-width:1201px) and (max-width:1366px){
-
-  .barraLateral{
-    width:420px;
-  }
-
-  .container-principal{
-    margin-left:430px;
-  }
-
-}
-
-/* 1367 até 2400px */
-@media (min-width:1367px) and (max-width:2400px){
-
-  .wrapperForms{
-    max-width:1920px;
-    margin:auto;
-  }
-
-  .formsConteudo,
-  .formSuccess{
-    width:650px;
-  }
-
-}
 /* -----------------------------------------------------------------
    Botão flutuante WhatsApp
 ----------------------------------------------------------------- */
@@ -3689,16 +2533,1243 @@ footer .textoAnimado span .charFooter {
   pointer-events: auto;
 }
 
+/* ==================================================
+   BREAKPOINTS — ORDEM DESKTOP FIRST
+   Da maior resolução para a menor resolução.
+   Cada subtítulo informa exatamente qual área está sendo alterada.
+================================================== */
+
+/* --------------------------------------------------
+   DESKTOP GRANDE — 1367px a 2400px
+-------------------------------------------------- */
+
+@media (min-width:1367px) and (max-width:2400px) {
+
+  /* ===== Página de orçamento ===== */
+
+  .wrapperForms{
+      max-width:1920px;
+      margin:auto;
+    }
+
+    .formsConteudo,
+    .formSuccess{
+      width:650px;
+    }
+
+}
+
+/* --------------------------------------------------
+   DESKTOP — 1201px a 1366px
+-------------------------------------------------- */
+
+@media (min-width:1201px) and (max-width:1366px) {
+
+  /* ===== Página de orçamento ===== */
+
+  .barraLateral{
+      width:420px;
+    }
+
+    .container-principal{
+      margin-left:430px;
+    }
+
+}
+
+/* --------------------------------------------------
+   NOTEBOOK — 1025px a 1200px
+-------------------------------------------------- */
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+
+  /* ===== Site geral: Hero, serviços, portfólio e protocolo ===== */
+
+  .hero h1 {
+      font-size: 64px;
+    }
+
+    .headServicos h2 {
+      font-size: 84px;
+    }
+
+    .conteudo_portfolio h2 {
+      width: 760px;
+      font-size: 48px;
+    }
+
+    .slide {
+      height: 680px;
+    }
+
+    .protocolo h2 {
+      font-size: 48px;
+    }
+
+  /* ===== Página de orçamento ===== */
+
+  .barraLateral{
+      width:390px;
+    }
+
+    .stepCard{
+      width:340px;
+    }
+
+    .container-principal{
+      margin-left:400px;
+    }
+
+    .formsConteudo,
+    .formSuccess{
+      max-width:620px;
+    }
+
+}
+
+/* --------------------------------------------------
+   TABLET HORIZONTAL — 881px a 1024px
+-------------------------------------------------- */
+
+@media (min-width: 881px) and (max-width: 1024px) {
+
+  /* ===== Site geral: Hero, serviços, portfólio e protocolo ===== */
+
+  .hero h1 {
+      font-size: 56px;
+    }
+
+    .headServicos h2 {
+      font-size: 72px;
+    }
+
+    .conteudo_portfolio h2 {
+      width: 680px;
+      font-size: 44px;
+    }
+
+    .slide {
+      height: 640px;
+    }
+
+    .protocolo p {
+      width: 460px;
+    }
+
+    .protocolo h2 {
+      font-size: 44px;
+    }
+
+  /* ===== Página de orçamento ===== */
+
+  .barraLateral{
+      width:360px;
+    }
+
+    .stepCard{
+      width:310px;
+    }
+
+    .forms-logo h1{
+      width:320px;
+      font-size:22px;
+    }
+
+    .container-principal{
+      margin-left:370px;
+    }
+
+    .formsConteudo,
+    .formSuccess{
+      width:100%;
+      max-width:580px;
+    }
+
+    .progressoWrap{
+      width:100%;
+      max-width:580px;
+    }
+
+}
+
+/* --------------------------------------------------
+   TABLET — 768px a 880px
+-------------------------------------------------- */
+
+@media (min-width: 768px) and (max-width: 880px) {
+
+  /* ===== Site geral: Hero, serviços, portfólio e protocolo ===== */
+
+  .hero h1 {
+      font-size: 48px;
+      width: 100%;
+    }
+
+    .conteudo,
+    .texto {
+      width: 100%;
+    }
+
+    .headServicos h2 {
+      font-size: 64px;
+    }
+
+    .cards {
+      width: 400px;
+      flex: 0 0 400px;
+    }
+
+    .conteudo_portfolio {
+      flex-direction: column;
+    }
+
+    .conteudo_portfolio h2 {
+      width: 100%;
+      font-size: 40px;
+    }
+
+    .protocolo {
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 32px;
+      text-align: center;
+    }
+
+    .protocolo p,
+    .protocolo h2 {
+      width: 100%;
+      text-align: center;
+    }
+
+  /* ===== Página de orçamento ===== */
+
+  .barraLateral{
+      width:320px;
+    }
+
+    .stepCard{
+      width:280px;
+    }
+
+    .forms-logo h1{
+      width:280px;
+      font-size:20px;
+    }
+
+    .container-principal{
+      margin-left:330px;
+      padding:60px 24px;
+    }
+
+    .formsConteudo,
+    .formSuccess{
+      width:100%;
+      max-width:520px;
+    }
+
+    .progressoWrap{
+      width:100%;
+      max-width:520px;
+    }
+
+    .optionsGrid--2col{
+      grid-template-columns:1fr;
+    }
+
+}
+
+/* --------------------------------------------------
+   MOBILE GERAL — até 767px
+-------------------------------------------------- */
+
 @media (max-width: 767px) {
-  .whatsappFloat {
-    right: 16px;
-    bottom: 20px;
-    width: 54px;
-    height: 54px;
+
+  /* ===== Barra de rolagem personalizada ===== */
+
+  .custom-scrollbar,
+    .custom-scroll-thumb {
+      display: none;
+    }
+
+  /* ===== Site geral no mobile: header, Hero, seções e footer ===== */
+
+  .headerDesktop {
+      display: none !important;
+    }
+
+    .headerMobile {
+      display: flex !important;
+      position: fixed;
+      inset: 0 0 auto 0;
+      width: 100%;
+      height: 72px;
+      padding: 16px 16px;
+      align-items: center;
+      justify-content: space-between;
+      background: transparent !important;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    .logoMobile,
+    .iconeMobile {
+      position: relative;
+      z-index: 10020;
+      width: 40px;
+      height: auto;
+      pointer-events: auto;
+      pointer-events: auto;
+      transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+    }
+
+    .iconeMobile {
+      width: 38px;
+    }
+
+    .menu-drop-down {
+      position: fixed;
+      left: 50%;
+      top: -0.5rem;
+
+      width: 100%;
+      max-width: 430px;
+      height: auto;
+
+      transform: translate3d(-50%, -21rem, 0);
+
+      z-index: 10010;
+      display: flex;
+      flex-direction: column;
+
+      background: transparent;
+      border-radius: 0;
+
+      pointer-events: auto;
+      overflow: visible;
+    }
+
+    .menu-links {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      gap: 16px;
+
+      padding: 2rem 2rem 4.8rem;
+      border-radius: 0 0 20px 20px;
+      display: flex;
+      flex-direction: column;
+
+      background: #ef6500;
+      transform: none;
+    }
+
+    .shape {
+      position: relative;
+      z-index: 3;
+
+      width: 100%;
+      height: auto;
+
+      margin-top: -2px;
+
+      pointer-events: none;
+      display: block;
+    }
+
+    .nav-link {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      align-items: center;
+
+      width: 100%;
+      height: 38px;
+
+      color: #000;
+      text-decoration: none;
+
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .nav-link img {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+      justify-self: center;
+    }
+
+    .nav-link span {
+      text-align: start;
+      font-family: "Roboto Serif", serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: #000;
+    }
+
+    .nav-link.ativo {
+      background: #fffefd;
+      border-radius: 6px;
+      border-bottom-color: transparent;
+    }
+
+    .menu-btn {
+      position: absolute;
+      left: 50%;
+      bottom: 10px;
+
+      transform: translateX(-50%);
+
+      z-index: 5;
+
+      width: 1.5rem;
+      height: 1.5rem;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .menu-line {
+      width: 24px;
+      height: 3px;
+      border-radius: 100px;
+      background: #000000;
+      display: block;
+    }
+
+    .headerMobile.menuAberto .logoMobile,
+    .headerMobile.menuAberto .iconeMobile {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .headerMobile.scrolled {
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(0, 0, 0, 0.705) !important;
+    }
+
+    /* Hero */
+    .hero {
+      width: 100%;
+      padding: 80px 16px;
+      background-image: url(/assets/imagens/mobile_BG_hero.webp);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      align-items: flex-start;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .conteudo {
+      width: 100%;
+      gap: 32px;
+    }
+
+    .texto {
+      width: 100%;
+    }
+
+    .hero h1 {
+      width: 100% !important;
+      font-size: 32px !important;
+      position: relative !important;
+      line-height: 130% !important;
+    }
+
+    .hero h1::after {
+      content: "•••";
+      position: absolute;
+
+      right: 140px;
+      top: 13px;
+
+      color: #ef6500;
+      font-size: 28px;
+      letter-spacing: 8px;
+      line-height: 1;
+    }
+
+    .paragrafo {
+      font-size: 16px;
+      width: 100%;
+    }
+
+    .botoes {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 24px;
+      margin-top: 16px;
+    }
+
+    .portfolioButton {
+      display: flex;
+      width: 310.92px;
+      height: 64px;
+      padding: 24px 48px;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* Serviços */
+
+    .cardSolucoes {
+      padding: 80px 16px 40px;
+      gap: 16px;
+      justify-content: flex-start;
+    }
+
+    .cards {
+      width: 320px;
+    }
+
+    .headServicos h2 {
+      text-align: center;
+      font-size: 56px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 110%; /* 61.6px */
+    }
+
+    .trackServicos {
+      display: flex;
+      flex-wrap: nowrap;
+      width: max-content;
+      gap: 24px;
+    }
+
+    /* Faixa animada */
+    .faixaAnimada {
+      margin-bottom: 32px;
+    }
+
+    /* Portfólio */
+
+    .dobra03 {
+      padding: 80px 16px 40px;
+    }
+
+    .dobra03 .faixaDestaque {
+      top: 30%;
+    }
+    .conteudo_portfolio {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .conteudo_portfolio h2 {
+      margin-top: 24px;
+      width: 100%;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 130%; /* 61.6px */
+      text-align: center;
+      overflow-wrap: normal;
+      word-break: normal;
+      hyphens: none;
+    }
+
+    .conteudo_portfolio h2 .animationPortfolio {
+      font-weight: 400;
+    }
+
+    /* portfolio sanfona */
+
+    .dobra04 {
+      padding: 40px 16px;
+    }
+
+    .slides {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      border: none;
+      border-radius: 0;
+      overflow: visible;
+    }
+
+    .slide,
+    .slide:last-child {
+      width: 100% !important;
+      height: 72px;
+      border-radius: 14px;
+      border: 2px solid rgba(255, 255, 255, 0.247);
+      overflow: hidden;
+      transition: height 300ms ease;
+    }
+
+    .slide.active {
+      height: auto;
+      min-height: 520px;
+    }
+
+    .slide .action {
+      height: 72px;
+      padding: 0 20px;
+      flex-direction: row;
+      justify-content: flex-start;
+      gap: 16px;
+    }
+
+    .slide .action p {
+      font-size: 20px;
+    }
+
+    .slide .action h2 {
+      position: static;
+      transform: none;
+      font-size: 18px;
+      white-space: nowrap;
+    }
+
+    .slide.active .action {
+      display: none;
+    }
+
+    .slide-content {
+      width: 100% !important;
+      min-height: 620px;
+      padding: 24px;
+      gap: 24px;
+      justify-content: space-between;
+    }
+
+    .imgTexto img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 12px;
+      border-radius: 12px;
+    }
+
+    .tech {
+      margin-top: auto;
+    }
+
+    .tech ul {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .ctaProjeto {
+      align-self: flex-end;
+    }
+
+    /* Dobra 05 - Benefícios mobile */
+
+    .dobra05 {
+      padding: 40px 16px;
+      gap: 32px;
+    }
+
+    .dobra05 h2 {
+      width: 100%;
+      font-size: 32px;
+      line-height: 130%;
+      text-align: center;
+    }
+
+    .dobra05 h2 span {
+      display: block;
+      margin-top: 8px;
+    }
+
+    .vr-box {
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 16px;
+      border-radius: 20px;
+    }
+
+    .item,
+    .item-active {
+      position: static !important;
+      inset: auto !important;
+      left: auto !important;
+      right: auto !important;
+      top: auto !important;
+      bottom: auto !important;
+      transform: none !important;
+
+      width: 100%;
+      height: auto;
+      min-height: 88px;
+      padding: 20px;
+      border-radius: 16px;
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+      text-align: left;
+    }
+
+    .item {
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .item img,
+    .item-active img {
+      width: 28px;
+      height: 28px;
+      flex: 0 0 28px;
+    }
+
+    .item p,
+    .item-active p {
+      font-size: 16px;
+      line-height: 130%;
+    }
+
+    .item-active {
+      order: -1;
+      background: var(--gradient-primary);
+    }
+
+    .item-active p {
+      font-size: 18px;
+    }
+    /* Dobra 06 - Protocolo mobile */
+
+    .dobra06 {
+      padding: 56px 16px;
+      gap: 32px;
+    }
+
+    .protocolo {
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 24px;
+      text-align: center;
+    }
+
+    .protocolo p {
+      width: 100%;
+      font-size: 16px;
+      line-height: 150%;
+      text-align: center;
+    }
+
+    .protocolo p.textoAnimado2 {
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
+      font-size: 16px;
+      line-height: 150%;
+      word-break: normal;
+      overflow-wrap: normal;
+      white-space: normal;
+    }
+
+    .protocolo p.textoAnimado2 > div,
+    .protocolo p.textoAnimado2 > span {
+      display: inline !important;
+    }
+    .protocolo h2 {
+      width: 100%;
+      text-align: center;
+      font-size: 32px;
+      line-height: 130%;
+      letter-spacing: 0;
+    }
+
+    .protocolo h2 span {
+      display: block;
+    }
+
+    .abasProtocolo {
+      width: 100%;
+      padding: 16px;
+      gap: 16px;
+      background-size: cover;
+      border-radius: 20px;
+    }
+
+    .abas {
+      width: 100%;
+    }
+
+    .frame {
+      padding: 16px;
+      gap: 16px;
+    }
+
+    .frame h3 {
+      font-size: 14px;
+    }
+
+    .frame p {
+      font-size: 18px;
+    }
+
+    .conteudoProtocolo {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .abas.active2 .conteudoProtocolo {
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+
+    .conteudoProtocolo h2 {
+      font-size: 20px;
+    }
+
+    .conteudoProtocolo p {
+      font-size: 15px;
+    }
+
+    /* Footer mobile */
+
+    footer {
+      padding: 40px 16px;
+      gap: 32px;
+    }
+
+    .iconesFooter {
+      width: 100%;
+    }
+
+    .iconesFooter > img {
+      width: 72px;
+    }
+
+    .iconesRedesociais img {
+      width: 22px;
+      height: 22px;
+    }
+
+    .meioFooter h2 {
+      font-size: 42px;
+      text-align: center;
+    }
+
+    .direitos {
+      flex-direction: column;
+      gap: 4px;
+      text-align: center;
+    }
+
+    .finalFooter {
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .finalFooter p.textoAnimado2 {
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
+      font-size: 16px;
+      line-height: 140%;
+      letter-spacing: 0;
+    }
+
+    .finalFooter p.textoAnimado2 * {
+      display: inline !important;
+    }
+
+    .botoesFooter {
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .botoesFooter .cta,
+    .botoesFooter .portfolioButton {
+      width: 100%;
+      max-width: 320px;
+      justify-content: center;
+    }
+
+  /* ===== Página de orçamento no mobile ===== */
+
+  .wrapperForms {
+      width: 100%;
+      min-height: 100vh;
+      padding: 96px 16px 56px;
+      flex-direction: column;
+      gap: 32px;
+      background-position: center top;
+      background-size: cover;
+    }
+
+    .barraLateral {
+      position: relative;
+      top: auto;
+      width: 100%;
+      max-width: none;
+      height: auto;
+      padding: 24px 16px;
+      border-width: 2px;
+      border-radius: 20px;
+    }
+
+    .containerInfo {
+      gap: 24px;
+    }
+
+    .frameSteps {
+      width: 100%;
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .stepCard {
+      width: 100%;
+      min-height: 72px;
+      padding: 12px 8px;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      border-width: 1.5px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .stepCard p {
+      font-size: 12px;
+      line-height: 120%;
+    }
+
+    .stepBadge {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .stepActive {
+      border-width: 1.5px;
+      border-radius: 10px;
+    }
+
+    .forms-logo {
+      gap: 12px;
+    }
+
+    .forms-logo img {
+      width: 40px;
+      height: auto;
+    }
+
+    .forms-logo h1 {
+      width: 100%;
+      padding: 0;
+      font-size: 20px;
+      line-height: 130%;
+      letter-spacing: 0;
+    }
+
+    .forms-logo h1 span {
+      display: block;
+    }
+
+    .container-principal {
+      width: 100%;
+      margin-left: 0;
+      padding: 0;
+      gap: 24px;
+    }
+
+    .progressoWrap {
+      width: 100%;
+      gap: 12px;
+    }
+
+    .pSeta {
+      font-size: 20px;
+      color: var(--color-light);
+    }
+
+    .prog-seg {
+      height: 3px;
+    }
+
+    .formsConteudo {
+      width: 100%;
+    }
+
+    .formsStep {
+      width: 100%;
+      padding: 24px 0;
+      gap: 24px;
+    }
+
+    .fieldGroup {
+      gap: 8px;
+    }
+
+    .fieldLabel {
+      font-size: 15px;
+      line-height: 140%;
+    }
+
+    .labelHint {
+      display: block;
+      margin-left: 0;
+      margin-top: 4px;
+      font-size: 12px;
+    }
+
+    .field-input,
+    .iti__tel-input {
+      min-height: 48px !important;
+      height: auto;
+      font-size: 16px !important;
+      padding: 14px 16px !important;
+    }
+
+    #phone {
+      padding-left: 108px !important;
+    }
+
+    textarea.field-input {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .optionsGrid,
+    .optionsGrid--2col {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .optionCard {
+      width: 100%;
+      min-height: 56px;
+      padding: 14px 16px;
+      align-items: center;
+    }
+
+    .optText {
+      font-size: 14px;
+      line-height: 140%;
+    }
+
+    .aceiteLabel {
+      gap: 10px;
+    }
+
+    .aceiteText {
+      font-size: 12px;
+      line-height: 150%;
+    }
+
+    .form-nav,
+    .navSplit {
+      width: 100%;
+      display: flex;
+      gap: 12px;
+    }
+
+    .navSplit {
+      flex-direction: column-reverse;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      min-width: 0;
+      height: 56px;
+      padding: 12px 20px;
+      font-size: 15px;
+    }
+
+    .form-nav > .btn-primary {
+      margin-left: 0 !important;
+    }
+
+    .reviewBox {
+      padding: 16px;
+      gap: 12px;
+    }
+
+    .reviewRow {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .reviewLabel,
+    .reviewValue {
+      font-size: 13px;
+    }
+
+    .formSuccess {
+      width: 100%;
+      padding: 32px 0;
+      text-align: center;
+    }
+
+    .successTitle {
+      font-size: 22px;
+    }
+
+    .successText {
+      font-size: 14px;
+      line-height: 150%;
+    }
+  /* Rodapé */
+
+  .rodapeForms {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+
+    padding: 24px 16px 40px;
+
+    text-align: center;
   }
 
-  .whatsappFloat img {
-    width: 26px;
-    height: 26px;
+  .rodapeForms p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 150%;
+    color: var(--color-light);
   }
+
+  /* ===== Botão flutuante do WhatsApp ===== */
+
+  .whatsappFloat {
+      right: 16px;
+      bottom: 20px;
+      width: 54px;
+      height: 54px;
+    }
+
+    .whatsappFloat img {
+      width: 26px;
+      height: 26px;
+    }
+
+}
+
+/* --------------------------------------------------
+   MOBILE — até 720px
+-------------------------------------------------- */
+
+@media (max-width: 720px) {
+
+  /* ===== Caixa de revisão do formulário ===== */
+
+  .reviewRow {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .reviewBox {
+      padding: 16px;
+    }
+
+}
+
+/* --------------------------------------------------
+   MOBILE GRANDE — 430px a 767px
+-------------------------------------------------- */
+
+@media (min-width: 430px) and (max-width: 767px) {
+
+  /* ===== Ajuste da decoração do H1 da Hero ===== */
+
+  .hero h1::after {
+      right: 140px;
+    }
+
+}
+
+/* --------------------------------------------------
+   MOBILE MÉDIO — 376px a 429px
+-------------------------------------------------- */
+
+@media (min-width: 376px) and (max-width: 429px) {
+
+  /* ===== Ajuste da decoração do H1 da Hero ===== */
+
+  .hero h1::after {
+      right: 110px;
+    }
+
+}
+
+/* --------------------------------------------------
+   MOBILE PEQUENO — até 380px
+-------------------------------------------------- */
+
+@media (max-width: 380px) {
+
+  /* ===== Página de orçamento em celulares pequenos ===== */
+
+  .frameSteps {
+      gap: 6px;
+    }
+
+    .stepCard {
+      padding: 10px 6px;
+    }
+
+    .stepCard p {
+      font-size: 11px;
+    }
+
+    .forms-logo h1 {
+      font-size: 18px;
+    }
+
+}
+
+/* --------------------------------------------------
+   MOBILE — 366px a 375px
+-------------------------------------------------- */
+
+@media (min-width: 366px) and (max-width: 375px) {
+
+  /* ===== Ajuste da decoração do H1 da Hero ===== */
+
+  .hero h1::after {
+      right: 100px;
+    }
+
+}
+
+/* --------------------------------------------------
+   MOBILE MUITO PEQUENO — até 365px
+-------------------------------------------------- */
+
+@media (max-width: 365px) {
+
+  /* ===== Decoração do H1 da Hero ===== */
+
+  .hero h1::after {
+      right: 80px;
+    }
+
 }
