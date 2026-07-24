@@ -353,6 +353,167 @@
       backdrop-filter: blur(3px);
     }
 
+    /* =========================================
+   PRELOADER — ESTADO INICIAL
+========================================= */
+
+    #preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      height: 100%;
+
+      background: #000;
+    }
+
+    .preloader-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+    }
+
+    .preloader-logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      width: 80px;
+      height: 82px;
+
+      transform: translate(-50%, -50%);
+    }
+
+    .preloader-logo svg {
+      position: absolute;
+      inset: 0;
+
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .preloader-logo-empty path {
+      fill: rgba(255, 254, 253, 0.15);
+    }
+
+    .preloader-logo-fill {
+      clip-path: inset(100% 0 0 0);
+    }
+
+    .preloader-percent {
+      position: absolute;
+      top: calc(50% + 56px);
+      left: 50%;
+      z-index: 2;
+
+      color: rgba(255, 255, 255, 0.9);
+
+      font-family: "Roboto Serif", serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 150%;
+      letter-spacing: 2px;
+      font-variant-numeric: tabular-nums;
+
+      transform: translateX(-50%);
+      will-change: opacity, transform;
+    }
+
+
+    /* =========================================
+   TRANSIÇÃO HERO → SERVIÇOS
+========================================= */
+
+    .bolinhas {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 5;
+
+      width: 120px;
+      height: 120px;
+
+      border-radius: 50%;
+      background: var(--gradient-primary);
+
+      opacity: 0;
+      pointer-events: none;
+
+      transform: translate(-50%, -50%) scale(0);
+      transform-origin: center;
+      will-change: transform, opacity;
+    }
+
+
+    /* Estado inicial da seção de serviços */
+
+    .cardSolucoes {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      width: 100%;
+      height: 100%;
+      padding: 56px 4vw;
+      gap: 24px;
+
+      overflow: hidden;
+      background: var(--color-dark);
+
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .cardSolucoes.ativoMouse {
+      pointer-events: auto;
+    }
+
+    .hero.semMouse {
+      pointer-events: none;
+    }
+
+    .headServicos {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      gap: 16px;
+      text-align: center;
+    }
+
+    .headServicos h2 {
+      font-size: 104px;
+      font-weight: 400;
+      line-height: 110%;
+      text-align: center;
+    }
+
+    .trackServicos {
+      position: relative;
+      z-index: 2;
+
+      display: flex;
+      flex-wrap: nowrap;
+
+      width: max-content;
+      gap: 32px;
+
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
+    }
+
     /* Notebook */
 
     @media (min-width: 1025px) and (max-width: 1200px) {
@@ -406,17 +567,17 @@
       }
 
       .menu-drop-down {
-  position: fixed;
-  top: -0.5rem;
-  left: 50%;
-  width: 100%;
-  max-width: 430px;
-  transform: translate3d(-50%, -21rem, 0);
-}
+        position: fixed;
+        top: -0.5rem;
+        left: 50%;
+        width: 100%;
+        max-width: 430px;
+        transform: translate3d(-50%, -21rem, 0);
+      }
 
-.nav-link {
-  opacity: 0;
-}
+      .nav-link {
+        opacity: 0;
+      }
 
       .logoMobile {
         width: 40px;
@@ -484,6 +645,17 @@
         padding: 24px 48px;
         gap: 16px;
       }
+
+      .cardSolucoes {
+        padding: 72px 16px 40px;
+        gap: 16px;
+        justify-content: center;
+      }
+
+      .headServicos h2 {
+        font-size: 56px;
+        font-weight: 700;
+      }
     }
 
     @media (min-width: 376px) and (max-width: 429px) {
@@ -512,7 +684,7 @@
     onload="this.onload=null;this.rel='stylesheet'">
 
   <noscript>
-    <link rel="stylesheet" href="/style.css?v=5">
+    <link rel="stylesheet" href="/style.css?v=6">
   </noscript>
 
   <!-- CSS do campo de telefone sem bloquear a renderização -->
