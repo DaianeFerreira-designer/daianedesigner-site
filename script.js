@@ -160,13 +160,18 @@ updateThumbPosition();
 
 const wrap = document.querySelector(".cardSolucoes");
 const track = document.querySelector(".trackServicos");
-const tituloServicos = document.querySelector(".cardSolucoes .headServicos h2");
+const tituloServicos = document.querySelector(
+  ".cardSolucoes .headServicos h2",
+);
 
 if (wrap && track) {
   const scrollCards = () => {
-    const extra = window.innerWidth <= 767 ? 24 : 120;
+    const distancia = track.scrollWidth - wrap.clientWidth;
+    return Math.max(0, distancia);
+  };
 
-    return track.scrollWidth - wrap.clientWidth + extra;
+  const distanciaExtra = () => {
+    return window.innerWidth <= 767 ? 0 : 1800;
   };
 
   let charsTituloServicos = [];
@@ -193,19 +198,11 @@ if (wrap && track) {
     x: 0,
   });
 
-  /* Distância extra da animação */
-  const distanciaExtra = () => {
-    return window.innerWidth <= 767 ? 400 : 1800;
-  };
-
   const tlTransicao = gsap.timeline({
     scrollTrigger: {
       trigger: ".transicao",
       start: "top top",
-
-      /* Reduz o espaço prolongado somente no mobile */
       end: () => `+=${scrollCards() + distanciaExtra()}`,
-
       scrub: 2,
       pin: true,
       anticipatePin: 1,
@@ -227,10 +224,12 @@ if (wrap && track) {
         opacity: 0,
         ease: "none",
         duration: 0.4,
+
         onStart: () => {
           document.querySelector(".hero")?.classList.add("semMouse");
           document.querySelector(".cardSolucoes")?.classList.add("ativoMouse");
         },
+
         onReverseComplete: () => {
           document.querySelector(".hero")?.classList.remove("semMouse");
           document
@@ -269,6 +268,7 @@ if (wrap && track) {
         filter: "blur(0px)",
         ease: "none",
         duration: 0.5,
+
         stagger: {
           each: 0.02,
           from: "random",
