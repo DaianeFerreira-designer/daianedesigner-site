@@ -283,7 +283,21 @@ if (wrap && track) {
     x: () => -(track.scrollWidth - wrap.clientWidth + 40),
     ease: "none",
     duration: 4,
-  });
+  });/* Scroll horizontal com espaço final somente no desktop */
+tlTransicao.to(track, {
+  x: () => {
+    const espacoFinalDesktop = window.innerWidth > 767 ? 40 : 0;
+
+    return -(
+      track.scrollWidth -
+      wrap.clientWidth +
+      espacoFinalDesktop
+    );
+  },
+  ease: "none",
+  duration: 4,
+});
+
 }
 
 /* -----------------------------------------------------------------
