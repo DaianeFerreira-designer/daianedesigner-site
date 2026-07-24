@@ -292,6 +292,9 @@ tlTransicao.to(track, {
 ----------------------------------------------------------------- */
 
 document.querySelectorAll("main .textoAnimado").forEach((texto) => {
+  // Usa a seção como gatilho para começar assim que ela entra na tela
+  const secao = texto.closest("section") || texto;
+
   const split = new SplitText(texto, {
     type: "words,chars",
     wordsClass: "wordAnimada",
@@ -303,14 +306,20 @@ document.querySelectorAll("main .textoAnimado").forEach((texto) => {
   gsap.from(split.chars, {
     filter: "blur(20px)",
     opacity: 0,
-    duration: 0.3,
+
+    // Animação mais rápida
+    duration: 0.2,
+
     stagger: {
-      each: 0.02,
+      // Intervalo menor entre os caracteres
+      each: 0.008,
       from: "random",
     },
+
     scrollTrigger: {
-      trigger: texto,
-      start: "top 85%",
+      // Começa quando a seção entra na tela
+      trigger: secao,
+      start: "top 95%",
       toggleActions: "play reverse play reverse",
     },
   });
