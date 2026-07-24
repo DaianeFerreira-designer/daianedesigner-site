@@ -280,7 +280,7 @@ if (wrap && track) {
 
  /* Scroll horizontal exatamente como no código do Thor */
 tlTransicao.to(track, {
-  x: () => -(track.scrollWidth - wrap.clientWidth + 40),
+  x: () => -(track.scrollWidth - wrap.clientWidth + 150),
   ease: "none",
   duration: 4,
 });

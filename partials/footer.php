@@ -69,7 +69,7 @@
 
 <!-- JS -->
 
-<script src="/script.js?v=13" defer></script>
+<script src="/script.js?v=14" defer></script>
 
 </body>
 
