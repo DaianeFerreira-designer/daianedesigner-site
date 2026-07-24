@@ -104,6 +104,81 @@
       text-decoration: none;
     }
 
+    /* =========================================
+   PRELOADER — ESTADO INICIAL
+========================================= */
+
+    #preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      height: 100%;
+
+      background: #000;
+    }
+
+    .preloader-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+    }
+
+    .preloader-logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      width: 80px;
+      height: 82px;
+
+      transform: translate(-50%, -50%);
+    }
+
+    .preloader-logo svg {
+      position: absolute;
+      inset: 0;
+
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .preloader-logo-empty path {
+      fill: rgba(255, 254, 253, 0.15);
+    }
+
+    .preloader-logo-fill {
+      clip-path: inset(100% 0 0 0);
+    }
+
+    .preloader-percent {
+      position: absolute;
+      top: calc(50% + 56px);
+      left: 50%;
+      z-index: 2;
+
+      color: rgba(255, 255, 255, 0.9);
+
+      font-family: "Roboto Serif", serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 150%;
+      letter-spacing: 2px;
+      font-variant-numeric: tabular-nums;
+
+      transform: translateX(-50%);
+      will-change: opacity, transform;
+    }
+
+
     /* Header inicial */
 
     header {
@@ -353,80 +428,6 @@
       backdrop-filter: blur(3px);
     }
 
-    /* =========================================
-   PRELOADER — ESTADO INICIAL
-========================================= */
-
-    #preloader {
-      position: fixed;
-      inset: 0;
-      z-index: 99999;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      width: 100%;
-      height: 100%;
-
-      background: #000;
-    }
-
-    .preloader-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      background: #000;
-    }
-
-    .preloader-logo {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-
-      width: 80px;
-      height: 82px;
-
-      transform: translate(-50%, -50%);
-    }
-
-    .preloader-logo svg {
-      position: absolute;
-      inset: 0;
-
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    .preloader-logo-empty path {
-      fill: rgba(255, 254, 253, 0.15);
-    }
-
-    .preloader-logo-fill {
-      clip-path: inset(100% 0 0 0);
-    }
-
-    .preloader-percent {
-      position: absolute;
-      top: calc(50% + 56px);
-      left: 50%;
-      z-index: 2;
-
-      color: rgba(255, 255, 255, 0.9);
-
-      font-family: "Roboto Serif", serif;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 150%;
-      letter-spacing: 2px;
-      font-variant-numeric: tabular-nums;
-
-      transform: translateX(-50%);
-      will-change: opacity, transform;
-    }
-
 
     /* =========================================
    TRANSIÇÃO HERO → SERVIÇOS
@@ -547,59 +548,194 @@
     /* Mobile */
 
     @media (max-width: 767px) {
+      /* ===== Barra de rolagem personalizada ===== */
+
+      .custom-scrollbar,
+      .custom-scroll-thumb {
+        display: none;
+      }
+
+      /* ===== Site geral no mobile: header, Hero, seções e footer ===== */
+
       .headerDesktop {
         display: none !important;
       }
 
       .headerMobile {
+        display: flex !important;
         position: fixed;
         inset: 0 0 auto 0;
-        z-index: 9999;
-
-        display: flex !important;
-        justify-content: space-between;
-        align-items: center;
-
         width: 100%;
         height: 72px;
-        padding: 16px;
-        background: transparent;
+        padding: 16px 16px;
+        align-items: center;
+        justify-content: space-between;
+        background: transparent !important;
+        z-index: 9999;
+        pointer-events: none;
       }
 
-      .menu-drop-down {
-        position: fixed;
-        top: -0.5rem;
-        left: 50%;
-        width: 100%;
-        max-width: 430px;
-        transform: translate3d(-50%, -21rem, 0);
-      }
-
-      .nav-link {
-        opacity: 0;
-      }
-
-      .logoMobile {
+      .logoMobile,
+      .iconeMobile {
+        position: relative;
+        z-index: 10020;
         width: 40px;
         height: auto;
+        pointer-events: auto;
+        pointer-events: auto;
+        transition:
+          opacity 0.25s ease,
+          visibility 0.25s ease;
       }
 
       .iconeMobile {
         width: 38px;
-        height: auto;
       }
 
+      .menu-drop-down {
+        position: fixed;
+        left: 50%;
+        top: -0.5rem;
+
+        width: 100%;
+        max-width: 430px;
+        height: auto;
+
+        transform: translate3d(-50%, -21rem, 0);
+
+        z-index: 10010;
+        display: flex;
+        flex-direction: column;
+
+        background: transparent;
+        border-radius: 0;
+
+        pointer-events: auto;
+        overflow: visible;
+      }
+
+      .menu-links {
+        position: relative;
+        z-index: 2;
+
+        width: 100%;
+        gap: 16px;
+
+        padding: 2rem 2rem 4.8rem;
+        border-radius: 0 0 20px 20px;
+        display: flex;
+        flex-direction: column;
+
+        background: #ef6500;
+        transform: none;
+      }
+
+      .shape {
+        position: relative;
+        z-index: 3;
+
+        width: 100%;
+        height: auto;
+
+        margin-top: -2px;
+
+        pointer-events: none;
+        display: block;
+      }
+
+      .nav-link {
+        display: grid;
+        grid-template-columns: 42px 1fr;
+        align-items: center;
+
+        width: 100%;
+        height: 38px;
+
+        color: #000;
+        text-decoration: none;
+
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      .nav-link img {
+        width: 16px;
+        height: 16px;
+        object-fit: contain;
+        justify-self: center;
+      }
+
+      .nav-link span {
+        text-align: start;
+        font-family: "Roboto Serif", serif;
+        font-size: 16px;
+        font-weight: 400;
+        color: #000;
+      }
+
+      .nav-link.ativo {
+        background: #fffefd;
+        border-radius: 6px;
+        border-bottom-color: transparent;
+      }
+
+      .menu-btn {
+        position: absolute;
+        left: 50%;
+        bottom: 10px;
+
+        transform: translateX(-50%);
+
+        z-index: 5;
+
+        width: 1.5rem;
+        height: 1.5rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        padding: 0;
+      }
+
+      .menu-line {
+        width: 24px;
+        height: 3px;
+        border-radius: 100px;
+        background: #000000;
+        display: block;
+      }
+
+      .headerMobile.menuAberto .logoMobile,
+      .headerMobile.menuAberto .iconeMobile {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .headerMobile.scrolled {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        background: rgba(0, 0, 0, 0.705) !important;
+      }
+
+      /* Hero */
       .hero {
         width: 100%;
-        height: 100%;
-        padding: 40px 16px;
-
-        align-items: flex-start;
-        justify-content: center;
-
-        background-image: url("/assets/imagens/mobile_BG_hero.webp");
+        padding: 80px 16px;
+        background-image: url(/assets/imagens/mobile_BG_hero.webp);
+        background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+        align-items: flex-start;
+        justify-content: center;
+        height: 100%;
       }
 
       .conteudo {
@@ -612,39 +748,49 @@
       }
 
       .hero h1 {
-        position: relative;
-        width: 100%;
-        font-size: 32px;
-        line-height: 130%;
+        width: 100% !important;
+        font-size: 32px !important;
+        position: relative !important;
+        line-height: 130% !important;
       }
 
       .hero h1::after {
-        top: 13px;
+        content: "•••";
+        position: absolute;
+
         right: 140px;
+        top: 13px;
+
+        color: #ef6500;
         font-size: 28px;
+        letter-spacing: 8px;
+        line-height: 1;
       }
 
       .paragrafo {
-        width: 100%;
         font-size: 16px;
+        width: 100%;
       }
 
       .botoes {
         display: flex;
         flex-direction: column;
-
         width: 100%;
         gap: 24px;
         margin-top: 16px;
       }
 
       .portfolioButton {
-        justify-content: center;
+        display: flex;
         width: 310.92px;
         height: 64px;
         padding: 24px 48px;
+        justify-content: center;
+        align-items: center;
         gap: 16px;
       }
+
+      /* Serviços */
 
       .cardSolucoes {
         padding: 72px 16px 40px;
@@ -664,6 +810,13 @@
         font-weight: 700;
         line-height: 110%;
         /* 61.6px */
+      }
+
+      .trackServicos {
+        display: flex;
+        flex-wrap: nowrap;
+        width: max-content;
+        gap: 24px;
       }
     }
 
@@ -685,12 +838,6 @@
       }
     }
   </style>
-
-  <link
-    rel="preload"
-    href="/style.css?v=7"
-    as="style"
-    onload="this.onload=null;this.rel='stylesheet'">
 
   <noscript>
     <link rel="stylesheet" href="/style.css?v=7">
