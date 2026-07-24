@@ -63,13 +63,14 @@
 
 
 <!-- GSAP -->
+<script defer src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js"></script>
 
 <!-- JS -->
 
-<script src="/script.js?v=14" defer></script>
+<script src="/script.js?v=24" defer></script>
 
 </body>
 

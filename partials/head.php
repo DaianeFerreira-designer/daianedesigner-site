@@ -57,7 +57,7 @@
 
 
   <!-- CSS principal -->
-  <link rel="stylesheet" href="/style.css?v=10">
+  <link rel="stylesheet" href="/style.css?v=20">
 
   <!-- CSS do campo de telefone sem bloquear a renderização -->
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/css/intlTelInput.css" as="style" onload="this.onload=null;this.rel='stylesheet'">

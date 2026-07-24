@@ -497,6 +497,9 @@ header.scrolled .icone {
 }
 
 .portfolioButton {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   display: flex;
   width: 212.468px;
   height: 56px;
@@ -509,6 +512,14 @@ header.scrolled .icone {
 
   box-shadow: 0 0 8px 0 rgba(255, 255, 255, 0.25) inset;
   backdrop-filter: blur(3px);
+  background-image: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(239, 101, 0, 0.14) 48%,
+    rgba(248, 184, 138, 0.12) 100%
+  );
+  background-size: 200% auto;
+  background-position: left center;
 
   color: rgba(255, 255, 255, 0.25);
 
@@ -517,11 +528,29 @@ header.scrolled .icone {
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 27px */
+  transition:
+    background-position 0.55s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.portfolioButton::before {
+  content: none;
 }
 
 .portfolioButton:hover {
-  background: var(--gradient-light);
-  color: var(--color-dark);
+  color: rgba(255, 255, 255, 0.72);
+  background-position: right center;
+  text-decoration: none;
+  box-shadow:
+    0 0 18px rgba(255, 255, 255, 0.12),
+    0 0 8px rgba(255, 255, 255, 0.2) inset;
+}
+
+.portfolioButton:hover .iconeAnimado {
+  filter:
+    drop-shadow(0 0 7px rgba(255, 255, 255, 0.55))
+    drop-shadow(0 0 12px rgba(239, 101, 0, 0.3));
 }
 
 /* =========================
@@ -746,6 +775,29 @@ header.scrolled .icone {
   pointer-events: none;
   width: 320px;
   height: 430px;
+  position: relative;
+  z-index: 0;
+  opacity: 1;
+  filter: none;
+}
+
+.cards::after {
+  content: "";
+  position: absolute;
+  top: 42px;
+  left: 50%;
+  z-index: 1;
+  width: 320px;
+  height: 430px;
+  border-radius: 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.62) 0%,
+    rgba(0, 0, 0, 0.2) 48%,
+    rgba(0, 0, 0, 0.72) 100%
+  );
+  transform: translateX(-50%);
+  pointer-events: none;
 }
 
 .cardSolucoes {
@@ -939,7 +991,29 @@ header.scrolled .icone {
   transform-origin: center center;
 }
 
+.motion-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.metodologia-line {
+  display: block;
+  transform-origin: center center;
+  will-change: transform, opacity, filter, color, text-shadow;
+}
+
+.portfolioTexto .animationPortfolio .motion-char {
+  display: inline-block;
+  background: var(--gradient-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .conteudo_portfolio .verMais {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -952,12 +1026,24 @@ header.scrolled .icone {
   border-radius: 10px;
   box-shadow: 0 0 8px 0 rgba(255, 255, 255, 0.25) inset;
   backdrop-filter: blur(3px);
+  background-image: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(239, 101, 0, 0.14) 48%,
+    rgba(248, 184, 138, 0.12) 100%
+  );
+  background-size: 200% auto;
+  background-position: left center;
 
-  color: var(--color-text);
+  color: rgba(255, 255, 255, 0.25);
   font-family: "Satisfy", cursive;
   font-size: 18px;
   font-weight: 400;
   line-height: 150%;
+  transition:
+    background-position 0.55s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 .conteudo_portfolio .verMais img {
   width: 18px;
@@ -966,8 +1052,18 @@ header.scrolled .icone {
 }
 
 .conteudo_portfolio .verMais:hover {
-  background: var(--gradient-light);
-  color: var(--color-dark);
+  color: rgba(255, 255, 255, 0.72);
+  background-position: right center;
+  text-decoration: none;
+  box-shadow:
+    0 0 18px rgba(255, 255, 255, 0.12),
+    0 0 8px rgba(255, 255, 255, 0.2) inset;
+}
+
+.conteudo_portfolio .verMais:hover img {
+  filter:
+    drop-shadow(0 0 7px rgba(255, 255, 255, 0.55))
+    drop-shadow(0 0 12px rgba(239, 101, 0, 0.3));
 }
 
 /* =========================
@@ -992,7 +1088,8 @@ header.scrolled .icone {
   height: 730px;
   width: 5%;
   overflow: hidden;
-  transition: all 300ms ease-in; /* acelera no início */
+  /* Evita disputar opacity/transform com a animação GSAP de entrada. */
+  transition: width 300ms ease-in;
   position: relative;
   cursor: pointer;
   border-right: 2px solid rgba(255, 255, 255, 0.2);
@@ -1150,6 +1247,9 @@ header.scrolled .icone {
   font-weight: 700;
 }
 .ctaProjeto {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   display: flex;
   padding: 8px 24px;
 
@@ -1168,6 +1268,33 @@ header.scrolled .icone {
   font-style: normal;
   font-weight: 700;
   line-height: 150%; /* 24px */
+  border: 1px solid transparent;
+  transition:
+    color 0.35s ease,
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.ctaProjeto::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-primary);
+  transform: translateX(-102%);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: -1;
+}
+
+.ctaProjeto:hover {
+  color: #07100b;
+  border-color: rgba(248, 184, 138, 0.7);
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 12px 28px rgba(239, 101, 0, 0.28);
+}
+
+.ctaProjeto:hover::before {
+  transform: translateX(0);
 }
 
 .slide.active {
@@ -1207,6 +1334,15 @@ header.scrolled .icone {
 
 .dobra05 h2 span {
   font-weight: 700;
+  background: var(--gradient-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dobra05 h2 span .motion-char,
+.protocolo h2 span .motion-char {
+  display: inline-block;
   background: var(--gradient-primary);
   background-clip: text;
   -webkit-background-clip: text;
@@ -1350,6 +1486,10 @@ header.scrolled .icone {
   -webkit-text-fill-color: transparent;
 }
 
+.motion-line {
+  display: block;
+}
+
 .abasProtocolo {
   display: flex;
   width: 100%;
@@ -1384,6 +1524,27 @@ header.scrolled .icone {
   border: 1px solid rgba(248, 184, 138, 0.1);
   background: rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  transition:
+    border-color 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.abas.active2 .frame {
+  border-color: rgba(239, 101, 0, 0.62);
+  background: linear-gradient(
+    100deg,
+    rgba(239, 101, 0, 0.2),
+    rgba(248, 184, 138, 0.08)
+  );
+  box-shadow:
+    inset 0 0 24px rgba(239, 101, 0, 0.08),
+    0 8px 28px rgba(239, 101, 0, 0.1);
+}
+
+.abas.active2 .frame h3,
+.abas.active2 .frame p {
+  color: var(--color-text);
 }
 
 .frame h3 {
@@ -1447,6 +1608,13 @@ header.scrolled .icone {
   letter-spacing: -0.64px;
 }
 
+.abas.active2 .conteudoProtocolo h2 {
+  display: inline-block;
+  color: var(--color-text);
+  background: none;
+  -webkit-text-fill-color: var(--color-text);
+}
+
 .conteudoProtocolo p {
   color: var(--color-light);
   font-family: "Roboto Serif";
@@ -1506,6 +1674,35 @@ footer {
 .iconesRedesociais {
   display: flex;
   gap: 16px;
+}
+
+.iconesRedesociais a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.iconesRedesociais a img {
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.iconesRedesociais a:hover {
+  background: rgba(239, 101, 0, 0.14);
+  transform: translateY(-5px) scale(1.12);
+  box-shadow: 0 8px 24px rgba(239, 101, 0, 0.22);
+}
+
+.iconesRedesociais a:hover img {
+  transform: rotate(-8deg);
+  filter: brightness(0) saturate(100%) invert(48%) sepia(97%) saturate(3174%)
+    hue-rotate(1deg) brightness(102%) contrast(104%);
 }
 
 .meioFooter h2 {
@@ -1584,6 +1781,10 @@ footer .textoAnimado span .charFooter {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.footerCalloutChar {
+  display: inline-block;
 }
 
 #preloader {
@@ -2517,9 +2718,20 @@ footer .textoAnimado span .charFooter {
   z-index: 9998;
 }
 
+.whatsappFloat::before {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border: 2px solid rgba(37, 211, 102, 0.65);
+  border-radius: inherit;
+  opacity: 0;
+  transform: scale(0.82);
+}
+
 .whatsappFloat img {
   width: 28px;
   height: 28px;
+  transition: transform 0.3s ease;
 }
 
 .whatsappFloat.ativo {
@@ -2527,6 +2739,34 @@ footer .textoAnimado span .charFooter {
   visibility: visible;
   transform: translateY(0) scale(1);
   pointer-events: auto;
+}
+
+.whatsappFloat.ativo::before {
+  animation: whatsappPulse 1.8s ease-out infinite;
+}
+
+.whatsappFloat.ativo:hover {
+  transform: translateY(-5px) scale(1.1);
+  background: #1fbd59;
+  box-shadow:
+    0 12px 32px rgba(37, 211, 102, 0.35),
+    0 0 0 8px rgba(37, 211, 102, 0.1);
+}
+
+.whatsappFloat.ativo:hover img {
+  transform: rotate(-10deg) scale(1.08);
+}
+
+@keyframes whatsappPulse {
+  0% {
+    opacity: 0.75;
+    transform: scale(0.82);
+  }
+  75%,
+  100% {
+    opacity: 0;
+    transform: scale(1.45);
+  }
 }
 
 /* ==================================================
@@ -3376,7 +3616,7 @@ footer .textoAnimado span .charFooter {
   }
 
   .finalFooter p.textoAnimado2 * {
-    display: inline !important;
+    display: inline-block !important;
   }
 
   .botoesFooter {
