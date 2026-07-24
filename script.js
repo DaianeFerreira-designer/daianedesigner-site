@@ -278,22 +278,9 @@ if (wrap && track) {
     );
   }
 
-  /* Scroll horizontal igual ao código do Thor */
-  tlTransicao.to(track, {
-    x: () => -(track.scrollWidth - wrap.clientWidth + 40),
-    ease: "none",
-    duration: 4,
-  });/* Scroll horizontal com espaço final somente no desktop */
+ /* Scroll horizontal exatamente como no código do Thor */
 tlTransicao.to(track, {
-  x: () => {
-    const espacoFinalDesktop = window.innerWidth > 767 ? 40 : 0;
-
-    return -(
-      track.scrollWidth -
-      wrap.clientWidth +
-      espacoFinalDesktop
-    );
-  },
+  x: () => -(track.scrollWidth - wrap.clientWidth + 40),
   ease: "none",
   duration: 4,
 });
