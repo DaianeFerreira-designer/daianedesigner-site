@@ -34,7 +34,7 @@
   <div class="finalFooter">
     <p class="textoAnimado2">
       Você merece um site profissional que apresenta seus serviços com
-      clareza e autoridade!
+      clareza e <span class="footer-nowrap">autoridade!</span>
     </p>
 
     <div class="botoesFooter">
@@ -70,7 +70,7 @@
 
 <!-- JS -->
 
-<script src="/script.js?v=24" defer></script>
+<script src="/script.js?v=26" defer></script>
 
 </body>
 

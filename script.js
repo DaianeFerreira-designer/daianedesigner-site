@@ -1,5 +1,12 @@
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
+const ehSafari =
+  /Safari/i.test(navigator.userAgent) &&
+  !/(Chrome|Chromium|CriOS|Edg|OPR|Android)/i.test(navigator.userAgent) &&
+  /Apple/i.test(navigator.vendor);
+
+document.documentElement.classList.toggle("safari-only", ehSafari);
+
 iniciarScrollSuave();
 
 //  (PHP inclui header/footer), então só inicializa:
@@ -22,6 +29,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (document.fonts?.ready) {
     document.fonts.ready.then(() => ScrollTrigger.refresh());
+  }
+
+  if (ehSafari) {
+    const imagensProntas = Array.from(document.images).map((imagem) => {
+      if (imagem.complete) {
+        return imagem.decode?.().catch(() => undefined) ?? Promise.resolve();
+      }
+
+      return new Promise((resolve) => {
+        imagem.addEventListener("load", resolve, { once: true });
+        imagem.addEventListener("error", resolve, { once: true });
+      }).then(() => imagem.decode?.().catch(() => undefined));
+    });
+
+    Promise.all(imagensProntas).then(() => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => ScrollTrigger.refresh());
+      });
+    });
   }
 });
 
@@ -99,6 +125,7 @@ function iniciarHeaderScroll() {
 const customScrollbar = document.querySelector(".custom-scrollbar");
 const customScrollThumb = document.querySelector(".custom-scroll-thumb");
 
+if (!ehSafari && customScrollbar && customScrollThumb) {
 function updateThumbPosition() {
   const scrollTop = window.scrollY;
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -149,6 +176,7 @@ document.addEventListener("touchmove", onDrag);
 document.addEventListener("touchend", endDrag);
 
 updateThumbPosition();
+}
 
 /* -----------------------------------------------------------------
    Transição Hero → Cards + título + scroll horizontal
@@ -161,6 +189,31 @@ const tituloServicos = document.querySelector(
 );
 
 if (wrap && track) {
+  const cardsServicos = track.querySelectorAll(".cards");
+  let entradaCardsSafariExecutada = false;
+  let tlEntradaCardsSafari;
+
+  if (ehSafari) {
+    gsap.set(cardsServicos, {
+      y: 70,
+      scale: 0.92,
+      rotation: (indice) => (indice % 2 ? 2.5 : -2.5),
+      autoAlpha: 0,
+      force3D: true,
+    });
+
+    tlEntradaCardsSafari = gsap.timeline({ paused: true }).to(cardsServicos, {
+      y: 0,
+      scale: 1,
+      rotation: 0,
+      autoAlpha: 1,
+      duration: 0.52,
+      stagger: 0.08,
+      ease: "power3.out",
+      force3D: true,
+    });
+  }
+
   const scrollCards = () => {
     const distancia = track.scrollWidth - wrap.clientWidth;
     return Math.max(0, distancia);
@@ -242,6 +295,16 @@ if (wrap && track) {
         opacity: 1,
         ease: "none",
         duration: 0.3,
+        onComplete: () => {
+          if (
+            ehSafari &&
+            tlEntradaCardsSafari &&
+            !entradaCardsSafariExecutada
+          ) {
+            entradaCardsSafariExecutada = true;
+            tlEntradaCardsSafari.play(0);
+          }
+        },
       },
       "-=0.3",
     )
@@ -275,21 +338,23 @@ if (wrap && track) {
   }
 
  /* Scroll horizontal exatamente como no código do Thor */
-tlTransicao.from(
-  track.querySelectorAll(".cards"),
-  {
-    y: 70,
-    scale: 0.92,
-    rotation: (indice) => (indice % 2 ? 2.5 : -2.5),
-    filter: "saturate(0.2)",
-    autoAlpha: 0,
-    duration: 0.75,
-    stagger: 0.1,
-    ease: "power3.out",
-    clearProps: "filter",
-  },
-  "-=0.1",
-);
+if (!ehSafari) {
+  tlTransicao.from(
+    cardsServicos,
+    {
+      y: 70,
+      scale: 0.92,
+      rotation: (indice) => (indice % 2 ? 2.5 : -2.5),
+      filter: "saturate(0.2)",
+      autoAlpha: 0,
+      duration: 0.75,
+      stagger: 0.1,
+      ease: "power3.out",
+      clearProps: "filter",
+    },
+    "-=0.1",
+  );
+}
 
 tlTransicao.to(track, {
   x: () => -(track.scrollWidth - wrap.clientWidth + 150),
@@ -613,6 +678,7 @@ function animarTextoFooter2() {
       type: "chars",
       charsClass: "footerCalloutChar",
       aria: "none",
+      deepSlice: false,
     });
 
     ScrollTrigger.create({
@@ -836,6 +902,9 @@ function iniciarMotionPrincipal() {
       const usarEfeitoProtocolo =
         titulo.matches(".portfolioTexto") ||
         Boolean(titulo.closest(".dobra06"));
+      const portfolioMobile =
+        titulo.matches(".portfolioTexto") &&
+        window.matchMedia("(max-width: 767px)").matches;
 
       animarTexto(
         titulo,
@@ -844,15 +913,24 @@ function iniciarMotionPrincipal() {
           ? titulo.matches(".portfolioTexto")
             ? {
                 ...efeitosTitulo[2],
-                duration: 0.46,
-                stagger: { amount: 0.38, from: "random" },
+                duration: portfolioMobile ? 0.3 : 0.46,
+                stagger: {
+                  amount: portfolioMobile ? 0.2 : 0.38,
+                  from: "random",
+                },
               }
             : efeitosTitulo[2]
           : efeitosTitulo[indice % efeitosTitulo.length],
-        titulo.matches(".portfolioTexto")
+        portfolioMobile
+          ? titulo
+          : titulo.matches(".portfolioTexto")
           ? titulo.closest("section")?.querySelector(".iconePortfolio_obsoleto")
           : titulo.closest("section"),
-        titulo.matches(".portfolioTexto") ? "center 56%" : "top 86%",
+        portfolioMobile
+          ? "top 55%"
+          : titulo.matches(".portfolioTexto")
+            ? "center 56%"
+            : "top 86%",
       );
     });
 
