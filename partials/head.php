@@ -43,7 +43,7 @@
 
 
   <!-- CSS principal -->
-  <link rel="stylesheet" href="/style.css?v=3">
+  <link rel="stylesheet" href="/style.css?v=4">
 
   <!-- CSS do campo de telefone sem bloquear a renderização -->
   <link
