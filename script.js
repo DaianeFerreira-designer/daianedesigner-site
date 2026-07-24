@@ -220,7 +220,7 @@ if (wrap && track) {
   };
 
   const distanciaExtra = () => {
-    return window.innerWidth <= 767 ? 150 : 1800;
+    return window.innerWidth <= 767 ? 40 : 1800;
   };
 
   let charsTituloServicos = [];
@@ -649,20 +649,35 @@ function animarTextosFooter() {
     deepSlice: true,
   });
 
-  gsap.from(splitFooter.chars, {
+  const charsDesigner = Array.from(
+    textoFooter.querySelectorAll("span .charFooter"),
+  );
+  const charsDaiane = splitFooter.chars.filter(
+    (char) => !char.closest("span"),
+  );
+
+  const animacaoGrupoFooter = {
     filter: "blur(20px)",
-    opacity: 0,
-    duration: 0.3,
+    autoAlpha: 0,
+    duration: 0.38,
     stagger: {
-      each: 0.02,
+      each: 0.025,
       from: "random",
     },
+    ease: "power2.out",
+  };
+
+  const timelineTextoFooter = gsap.timeline({
     scrollTrigger: {
       trigger: textoFooter,
       start: "top 85%",
       toggleActions: "play reverse play reverse",
     },
   });
+
+  timelineTextoFooter
+    .from(charsDaiane, animacaoGrupoFooter, 0)
+    .from(charsDesigner, { ...animacaoGrupoFooter }, 0);
 }
 
 /* -----------------------------------------------------------------
@@ -913,21 +928,19 @@ function iniciarMotionPrincipal() {
           ? titulo.matches(".portfolioTexto")
             ? {
                 ...efeitosTitulo[2],
-                duration: portfolioMobile ? 0.3 : 0.46,
+                duration: portfolioMobile ? 0.24 : 0.46,
                 stagger: {
-                  amount: portfolioMobile ? 0.2 : 0.38,
+                  amount: portfolioMobile ? 0.12 : 0.38,
                   from: "random",
                 },
               }
             : efeitosTitulo[2]
           : efeitosTitulo[indice % efeitosTitulo.length],
-        portfolioMobile
-          ? titulo
-          : titulo.matches(".portfolioTexto")
+        titulo.matches(".portfolioTexto")
           ? titulo.closest("section")?.querySelector(".iconePortfolio_obsoleto")
           : titulo.closest("section"),
         portfolioMobile
-          ? "top 55%"
+          ? "center 56%"
           : titulo.matches(".portfolioTexto")
             ? "center 56%"
             : "top 86%",
