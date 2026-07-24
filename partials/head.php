@@ -592,7 +592,7 @@
       .hero {
         width: 100%;
         height: 100%;
-        padding: 80px 16px;
+        padding: 40px 16px;
 
         align-items: flex-start;
         justify-content: center;
@@ -652,9 +652,18 @@
         justify-content: center;
       }
 
+      .cards {
+        width: 320px;
+
+      }
+
       .headServicos h2 {
+        text-align: center;
         font-size: 56px;
+        font-style: normal;
         font-weight: 700;
+        line-height: 110%;
+        /* 61.6px */
       }
     }
 
@@ -679,12 +688,12 @@
 
   <link
     rel="preload"
-    href="/style.css?v=5"
+    href="/style.css?v=7"
     as="style"
     onload="this.onload=null;this.rel='stylesheet'">
 
   <noscript>
-    <link rel="stylesheet" href="/style.css?v=6">
+    <link rel="stylesheet" href="/style.css?v=7">
   </noscript>
 
   <!-- CSS do campo de telefone sem bloquear a renderização -->
