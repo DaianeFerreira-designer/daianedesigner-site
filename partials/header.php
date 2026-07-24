@@ -77,10 +77,7 @@
 </header>
 
 <header class="headerMobile">
-  <a href="/">
-    <img class="logoMobile" src="/assets/imagens/logo-daiane-ferreira.svg" alt="Logo Daiane Ferreira" />
-  </a>
-
+  
   <nav class="menu-drop-down">
     <button class="menu-btn" type="button" aria-label="Abrir menu">
       <span class="menu-line top"></span>
@@ -125,5 +122,5 @@
     <img class="shape" src="/assets/imagens/mobile_menu_drop.svg" alt="" />
   </nav>
 
-  <img class="iconeMobile" src="/assets/imagens/icon-daiane-ferreira-logo-web-design-sites.svg" alt="Ícone Daiane Ferreira" />
+  
 </header>
