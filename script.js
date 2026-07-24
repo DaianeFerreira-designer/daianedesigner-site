@@ -278,8 +278,9 @@ if (wrap && track) {
     );
   }
 
+  /* Scroll horizontal igual ao código do Thor */
   tlTransicao.to(track, {
-    x: () => -scrollCards(),
+    x: () => -(track.scrollWidth - wrap.clientWidth + 40),
     ease: "none",
     duration: 4,
   });
