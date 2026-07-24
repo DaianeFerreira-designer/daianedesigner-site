@@ -312,7 +312,7 @@ document.querySelectorAll("main .textoAnimado").forEach((texto) => {
 
     stagger: {
       // Intervalo menor entre os caracteres
-      each: 0.008,
+      each: 0.001,
       from: "random",
     },
 
