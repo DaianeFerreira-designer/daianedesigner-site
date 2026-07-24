@@ -171,7 +171,7 @@ if (wrap && track) {
   };
 
   const distanciaExtra = () => {
-    return window.innerWidth <= 767 ? 0 : 1800;
+    return window.innerWidth <= 767 ? 150 : 1800;
   };
 
   let charsTituloServicos = [];

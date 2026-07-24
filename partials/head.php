@@ -39,6 +39,21 @@
     as="font"
     type="font/woff2"
     crossorigin>
+ <!-- Preload -->
+
+  <link
+    rel="preload"
+    as="image"
+    href="/assets/imagens/mobile_BG_hero.webp"
+    media="(max-width: 767px)"
+    fetchpriority="high">
+
+  <link
+    rel="preload"
+    as="image"
+    href="/assets/imagens/bghero-webdesign.webp"
+    media="(min-width: 768px)"
+    fetchpriority="high">
 
 
   <!-- CSS principal -->
@@ -54,21 +69,6 @@
   <!-- Favicon -->
   <link rel="icon" href="/assets/imagens/favicon.svg" type="image/svg+xml">
 
-  <!-- Preload -->
-
-  <link
-    rel="preload"
-    as="image"
-    href="/assets/imagens/mobile_BG_hero.webp"
-    media="(max-width: 767px)"
-    fetchpriority="high">
-
-  <link
-    rel="preload"
-    as="image"
-    href="/assets/imagens/bghero-webdesign.webp"
-    media="(min-width: 768px)"
-    fetchpriority="high">
 
 
 </head>
