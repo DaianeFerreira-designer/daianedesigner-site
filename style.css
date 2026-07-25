@@ -1296,7 +1296,16 @@ html.safari-only .trackServicos {
   gap: 10px;
 
   border-radius: 24px;
-  background: var(--gradient-light);
+  background-image: linear-gradient(
+    110deg,
+    #fffefd 0%,
+    #f8d8c1 34%,
+    #f8b88a 50%,
+    #fffefd 72%,
+    #f8d8c1 100%
+  );
+  background-size: 240% auto;
+  background-position: left center;
 
   color: var(--color-dark);
 
@@ -1307,33 +1316,51 @@ html.safari-only .trackServicos {
   font-style: normal;
   font-weight: 700;
   line-height: 150%; /* 24px */
-  border: 1px solid transparent;
+  border: 0;
+  outline: 0;
   transition:
     color 0.35s ease,
-    transform 0.35s ease,
-    box-shadow 0.35s ease,
-    border-color 0.35s ease;
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    background-position 0.75s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .ctaProjeto::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: var(--gradient-primary);
-  transform: translateX(-102%);
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  z-index: -1;
+  top: -35%;
+  bottom: -35%;
+  left: -90px;
+  width: 64px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.72) 0%,
+    rgba(255, 255, 255, 0.22) 42%,
+    transparent 72%
+  );
+  filter: blur(4px);
+  opacity: 0;
+  transform: translateX(0) skewX(-12deg);
+  transition:
+    opacity 0.25s ease,
+    transform 0.78s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .ctaProjeto:hover {
   color: #07100b;
-  border-color: rgba(248, 184, 138, 0.7);
-  transform: translateY(-4px) scale(1.04);
-  box-shadow: 0 12px 28px rgba(239, 101, 0, 0.28);
+  background-position: right center;
+  transform: translateY(-1px);
+  box-shadow:
+    0 7px 18px rgba(239, 101, 0, 0.13),
+    0 0 16px rgba(248, 184, 138, 0.08);
 }
 
 .ctaProjeto:hover::before {
-  transform: translateX(0);
+  opacity: 0.58;
+  transform: translateX(260px) skewX(-12deg);
 }
 
 .slide.active {
@@ -1839,14 +1866,12 @@ footer .textoAnimado span .charFooter {
     background-position 0.5s ease,
     color 0.3s ease,
     border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    transform 0.3s ease;
+    box-shadow 0.3s ease;
 }
 
 .hero .portfolioButton:hover,
 .botoesFooter .portfolioButton:hover,
 .conteudo_portfolio .verMais:hover {
-  transform: translateY(-2px);
   border-color: rgba(248, 184, 138, 0.3);
   box-shadow:
     0 0 24px rgba(239, 101, 0, 0.16),
@@ -4067,8 +4092,8 @@ footer .textoAnimado span .charFooter {
   }
 }
 
-/* Mantém as bolinhas sempre a 16px do fim de "Criação de" no mobile. */
-@media (max-width: 767px) {
+/* Mantém as bolinhas a 16px do fim de "Criação de" sem mudar a altura original. */
+@media (max-width: 1200px) {
   .hero h1 {
     display: inline-grid;
     grid-template-columns: max-content max-content;
@@ -4090,6 +4115,19 @@ footer .textoAnimado span .charFooter {
     align-self: center;
     margin-left: 16px;
     inset: auto;
+    transform: translateY(28px);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero h1::after {
+    transform: translateY(32px);
+  }
+}
+
+@media (max-width: 767px) {
+  .hero h1::after {
+    transform: translateY(6px);
   }
 }
 

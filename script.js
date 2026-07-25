@@ -220,7 +220,12 @@ if (wrap && track) {
   };
 
   const distanciaExtra = () => {
-    return window.innerWidth <= 767 ? 40 : 1800;
+    return window.innerWidth <= 767 ? 32 : 1800;
+  };
+
+  const folgaFinalCards = () => {
+    // No mobile, soma os 16px de padding inicial para restarem 32px visíveis.
+    return window.innerWidth <= 767 ? 48 : 150;
   };
 
   let charsTituloServicos = [];
@@ -357,7 +362,7 @@ if (!ehSafari) {
 }
 
 tlTransicao.to(track, {
-  x: () => -(track.scrollWidth - wrap.clientWidth + 150),
+  x: () => -(track.scrollWidth - wrap.clientWidth + folgaFinalCards()),
   ease: "none",
   duration: 4,
 });
@@ -870,13 +875,12 @@ function iniciarMotionPrincipal() {
       "-=0.4",
     )
     .from(
-      ".hero .botoes > *",
+      ".hero .botoes",
       {
         y: 28,
         scale: 0.96,
         autoAlpha: 0,
         duration: 0.5,
-        stagger: 0.1,
       },
       "-=0.3",
     );
