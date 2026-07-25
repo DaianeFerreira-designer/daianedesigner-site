@@ -8,6 +8,7 @@ if (empty($_SESSION['csrf_token'])) {
 
 $title = "Formulário de Orçamento | Web Designer";
 $description = "Formulário para solicitar orçamento";
+$url = "https://daianedesigner.com.br/orcamento";
 $robots = "noindex, nofollow";
 
 ?>

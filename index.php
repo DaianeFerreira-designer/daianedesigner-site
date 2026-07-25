@@ -3,7 +3,7 @@ $title = "Criação de Sites Profissionais | Web Designer";
 $description = "Criação de sites profissionais, landing pages e páginas personalizadas para empresas e negócios que desejam aumentar sua presença online e gerar mais resultados";
 $keywords = "web design, desenvolvimento web, landing page, wordpress";
 $image = "/assets/preview.webp";
-$url = "https://daianedesigner.com.br";
+$url = "https://daianedesigner.com.br/";
 $author = "Daiane Ferreira";
 ?>
 

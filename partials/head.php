@@ -8,6 +8,12 @@
   <title><?= $title ?? 'Site' ?></title>
   <meta name="description" content="<?= $description ?? '' ?>">
 
+  <?php if (!empty($url)): ?>
+    <link
+      rel="canonical"
+      href="<?= htmlspecialchars($url, ENT_QUOTES, 'UTF-8') ?>">
+  <?php endif; ?>
+
   <!-- Open Graph -->
   <meta property="og:title" content="<?= $title ?? '' ?>">
   <meta property="og:description" content="<?= $description ?? '' ?>">

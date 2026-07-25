@@ -3,7 +3,7 @@ $title = "Contato | Criação de Sites Profissionais";
 $description = "Fale com uma web designer especializada em criação de sites profissionais. Tire dúvidas e solicite um projeto alinhado à identidade e objetivos do seu negócio.";
 $keywords = "contato web designer, contato criação de sites, orçamento de site, solicite site profissional, web design, landing page, desenvolvimento web, wordpress, elementor";
 $image = "assets/preview.webp";
-$url = "https://seudominio.com";
+$url = "https://daianedesigner.com.br/contato-criacao-de-sites";
 $robots = "noindex, follow";
 $author = "Daiane Ferreira";
 ?>

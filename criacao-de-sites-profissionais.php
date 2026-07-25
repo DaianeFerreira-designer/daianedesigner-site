@@ -3,7 +3,7 @@ $title = "Serviços de Criação de Sites Profissionais | Web Design Estratégic
 $description = "Serviços de web design e criação de sites profissionais, landing pages e páginas de captura. Estrutura, identidade visual e experiência do usuário pensadas para transmitir valor e credibilidade.";
 $keywords = "serviços de criação de sites, criação de landing pages, criação de loja virtual, criação de e-commerce, criação de área de membros, serviços de web design, desenvolvimento web, wordpress, elementor, figma";
 $image = "assets/preview.webp";
-$url = "https://seudominio.com";
+$url = "https://daianedesigner.com.br/criacao-de-sites-profissionais";
 $robots = "noindex, follow";
 $author = "Daiane Ferreira";
 ?>
