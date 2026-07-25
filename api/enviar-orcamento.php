@@ -63,6 +63,7 @@ $whatsapp = trim($_POST['whatsapp'] ?? '');
 $email = trim($_POST['email'] ?? '');
 $empresa = trim($_POST['empresaOpcional'] ?? '');
 $aceitePrivacidade = isset($_POST['aceitePrivacidade']) ? 1 : 0;
+$newsletterOptIn = isset($_POST['newsletterOptIn']) ? 1 : 0;
 
 $presencaSite = trim($_POST['presenca_site'] ?? '');
 $siteLink = trim($_POST['site_link'] ?? '');
@@ -169,6 +170,14 @@ if (
 }
 
 try {
+    $colunaNewsletter = $pdo->query("SHOW COLUMNS FROM orcamentos LIKE 'newsletter_opt_in'");
+    if (!$colunaNewsletter->fetch()) {
+        $pdo->exec(
+            "ALTER TABLE orcamentos
+             ADD COLUMN newsletter_opt_in TINYINT(1) NOT NULL DEFAULT 0
+             AFTER aceite_privacidade"
+        );
+    }
 
     if ($stage === 'rascunho') {
         if ($nome === '' || $whatsapp === '' || $email === '' || !$aceitePrivacidade || !emailValido($email)) {
@@ -183,6 +192,7 @@ try {
             email,
             empresa,
             aceite_privacidade,
+            newsletter_opt_in,
             status_solicitacao
         ) VALUES (
             :nome,
@@ -190,6 +200,7 @@ try {
             :email,
             :empresa,
             :aceite_privacidade,
+            :newsletter_opt_in,
             'rascunho'
         )";
 
@@ -200,7 +211,8 @@ try {
             ':whatsapp' => $whatsapp,
             ':email' => $email,
             ':empresa' => $empresa !== '' ? $empresa : null,
-            ':aceite_privacidade' => $aceitePrivacidade
+            ':aceite_privacidade' => $aceitePrivacidade,
+            ':newsletter_opt_in' => $newsletterOptIn
         ]);
 
         $draftId = $pdo->lastInsertId();
@@ -213,6 +225,7 @@ try {
             <p><strong>E-mail:</strong> " . e($email) . "</p>
             <p><strong>Empresa:</strong> " . e($empresa ?: 'Não informado') . "</p>
             <p><strong>Aceite privacidade:</strong> Sim</p>
+            <p><strong>Newsletter:</strong> " . ($newsletterOptIn ? 'Sim' : 'Não') . "</p>
             <p><strong>Status:</strong> Rascunho</p>
         ";
 
@@ -234,6 +247,7 @@ try {
         }
 
         $sql = "UPDATE orcamentos SET
+            newsletter_opt_in = :newsletter_opt_in,
             presenca_site = :presenca_site,
             site_link = :site_link,
             tipo_projeto = :tipo_projeto,
@@ -248,6 +262,7 @@ try {
         $stmt = $pdo->prepare($sql);
 
         $stmt->execute([
+            ':newsletter_opt_in' => $newsletterOptIn,
             ':presenca_site' => $presencaSite,
             ':site_link' => $siteLink !== '' ? $siteLink : null,
             ':tipo_projeto' => $tipoProjeto,
@@ -266,6 +281,7 @@ try {
             <p><strong>WhatsApp:</strong> " . e($whatsapp) . "</p>
             <p><strong>E-mail:</strong> " . e($email) . "</p>
             <p><strong>Empresa:</strong> " . e($empresa ?: 'Não informado') . "</p>
+            <p><strong>Newsletter:</strong> " . ($newsletterOptIn ? 'Sim' : 'Não') . "</p>
             <hr>
             <p><strong>Já tem site?</strong> " . e($presencaSite) . "</p>
             <p><strong>Link:</strong> " . e($siteLink ?: 'Não informado') . "</p>
@@ -296,11 +312,15 @@ try {
         }
 
         $sql = "UPDATE orcamentos SET
+            newsletter_opt_in = :newsletter_opt_in,
             status_solicitacao = 'confirmado'
         WHERE id = :id";
 
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([':id' => $draftId]);
+        $stmt->execute([
+            ':newsletter_opt_in' => $newsletterOptIn,
+            ':id' => $draftId
+        ]);
 
         $corpo = "
             <h2>Orçamento Confirmado</h2>
@@ -309,6 +329,7 @@ try {
             <p><strong>WhatsApp:</strong> " . e($whatsapp) . "</p>
             <p><strong>E-mail:</strong> " . e($email) . "</p>
             <p><strong>Empresa:</strong> " . e($empresa ?: 'Não informado') . "</p>
+            <p><strong>Newsletter:</strong> " . ($newsletterOptIn ? 'Sim' : 'Não') . "</p>
             <hr>
             <p><strong>Já tem site?</strong> " . e($presencaSite) . "</p>
             <p><strong>Link:</strong> " . e($siteLink ?: 'Não informado') . "</p>

@@ -2191,6 +2191,7 @@ footer .textoAnimado span .charFooter {
 
 .fieldGroup {
   display: flex;
+  position: relative;
   width: 100%;
   flex-direction: column;
   gap: 8px;
@@ -2253,8 +2254,10 @@ footer .textoAnimado span .charFooter {
 }
 
 .field-input.field-input--error {
-  border-color: rgba(255, 0, 0, 0.7);
-  box-shadow: 0 0 0 2px rgba(255, 110, 110, 0.781);
+  border-color: var(--color-accent);
+  box-shadow:
+    0 0 0 2px rgba(239, 101, 0, 0.38),
+    0 0 18px rgba(239, 101, 0, 0.12);
 }
 
 /* telefone */
@@ -2293,9 +2296,12 @@ footer .textoAnimado span .charFooter {
   background: var(--color-light) !important;
 }
 
-.iti__tel-input.iti__tel-input--error {
-  border-color: rgba(255, 0, 0, 0.7);
-  box-shadow: 0 0 0 2px rgba(255, 110, 110, 0.781);
+.iti__tel-input.iti__tel-input--error,
+.iti__tel-input.field-input--error {
+  border-color: var(--color-accent) !important;
+  box-shadow:
+    0 0 0 2px rgba(239, 101, 0, 0.38),
+    0 0 18px rgba(239, 101, 0, 0.12) !important;
 }
 
 /* Flag button */
@@ -2343,16 +2349,119 @@ footer .textoAnimado span .charFooter {
   background: rgba(65, 65, 65, 0.1) !important;
 }
 
-.field-error {
+.wrapperForms .fieldError,
+.wrapperForms .field-error {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 10px;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  max-width: min(380px, calc(100% - 20px));
+  min-height: 52px;
+  padding: 11px 16px 11px 52px;
+  border: 1px solid rgba(248, 184, 138, 0.55);
+  border-radius: 8px;
+  background:
+    linear-gradient(115deg, rgba(239, 101, 0, 0.1), transparent 42%),
+    #100d0b;
+  color: rgba(255, 254, 253, 0.92);
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.42),
+    0 0 18px rgba(239, 101, 0, 0.1);
+  font-family: "Roboto Serif", serif;
   font-size: 14px;
-  color: #ff7070;
-  min-height: 16px;
-  line-height: 1.3;
-  display: none;
+  font-weight: 500;
+  line-height: 1.35;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px) scale(0.98);
+  transform-origin: 20px top;
+  transition:
+    opacity 0.22s ease,
+    visibility 0.22s ease,
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.field-error.visible {
-  display: block;
+.wrapperForms .fieldError::before,
+.wrapperForms .field-error::before {
+  content: "!";
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 31px;
+  border-radius: 4px;
+  background: var(--color-accent);
+  color: #fffefd;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  transform: translateY(-50%);
+  box-shadow: 0 5px 12px rgba(239, 101, 0, 0.24);
+}
+
+.wrapperForms .fieldError::after,
+.wrapperForms .field-error::after {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 18px;
+  width: 12px;
+  height: 12px;
+  border-top: 1px solid rgba(248, 184, 138, 0.55);
+  border-left: 1px solid rgba(248, 184, 138, 0.55);
+  background: #160f0b;
+  transform: rotate(45deg);
+}
+
+.wrapperForms .fieldError.visible,
+.wrapperForms .field-error.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+@media (max-width: 767px) {
+  .wrapperForms .fieldError,
+  .wrapperForms .field-error {
+    left: 6px;
+    max-width: calc(100% - 12px);
+    min-height: 48px;
+    padding: 10px 12px 10px 47px;
+    font-size: 13px;
+  }
+
+  .wrapperForms .fieldError::before,
+  .wrapperForms .field-error::before {
+    left: 11px;
+    width: 25px;
+    height: 29px;
+    font-size: 18px;
+  }
+}
+
+/* Impede o zoom automático dos campos somente no Safari do iPhone/iPad.
+   A fonte precisa ter no mínimo 16px renderizados para o WebKit não ampliar a página. */
+@media (max-width: 767px) {
+  html.ios-safari-budget {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  html.ios-safari-budget .wrapperForms input,
+  html.ios-safari-budget .wrapperForms textarea,
+  html.ios-safari-budget .wrapperForms select,
+  html.ios-safari-budget .wrapperForms .field-input,
+  html.ios-safari-budget .wrapperForms .iti__tel-input {
+    font-size: 16px !important;
+    -webkit-text-size-adjust: 100%;
+    transform: none;
+    zoom: 1;
+  }
 }
 
 .textareaLabel {
@@ -2528,6 +2637,27 @@ footer .textoAnimado span .charFooter {
   font-size: 12px;
   color: var(--color-light);
   font-weight: 400;
+}
+
+.aceiteText a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition:
+    color 0.22s ease,
+    text-decoration-color 0.22s ease;
+}
+
+.aceiteText a:hover,
+.aceiteText a:focus-visible {
+  color: var(--color-accent);
+  text-decoration-color: currentColor;
+}
+
+.divNewsletter {
+  margin-top: -2px;
 }
 
 /* Global erros */

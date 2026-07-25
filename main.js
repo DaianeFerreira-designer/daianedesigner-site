@@ -34,12 +34,50 @@ const S2_KEYS = ['presenca_site','tipo_projeto','investimento_estimado',
    BOOT
    ═══════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
+  initIOSSafariFormFix();
   initPhoneInput();
   initTextFields();
   initChoiceFields();
+  initValidationBubbles();
   initNavigation();
   preSelecionarProjetoPorURL();
 });
+
+function initIOSSafariFormFix() {
+  const userAgent = navigator.userAgent;
+  const isIOS =
+    /iPad|iPhone|iPod/.test(userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const isSafari =
+    /Safari/.test(userAgent) &&
+    !/CriOS|FxiOS|EdgiOS|OPiOS/.test(userAgent);
+
+  if (isIOS && isSafari) {
+    document.documentElement.classList.add('ios-safari-budget');
+  }
+}
+
+function initValidationBubbles() {
+  if (!form) return;
+
+  form.querySelectorAll('.fieldError').forEach((erro) => {
+    erro.setAttribute('aria-hidden', 'true');
+  });
+
+  form.querySelectorAll('input, textarea').forEach((campo) => {
+    const fecharErroDoCampo = () => {
+      campo.classList.remove('field-input--error');
+
+      const grupo = campo.closest('.fieldGroup');
+      grupo?.querySelectorAll('.fieldError.visible').forEach((erro) => {
+        hideErr(erro);
+      });
+    };
+
+    campo.addEventListener('input', fecharErroDoCampo);
+    campo.addEventListener('change', fecharErroDoCampo);
+  });
+}
 
 /* ════════════════════════════════════════════
    Telefone com DDI
@@ -344,6 +382,7 @@ function fillReviewStep3() {
   const nome    = document.getElementById('nome')?.value.trim() || '—';
   const email   = document.getElementById('email')?.value.trim() || '—';
   const empresa = document.getElementById('empresaOpcional')?.value.trim() || '—';
+  const newsletter = document.getElementById('newsletterOptIn')?.checked ? 'Sim' : 'Não';
   const insta   = document.getElementById('insta')?.value.trim() || '—';
   const obs     = document.getElementById('observacao')?.value.trim() || '—';
 
@@ -370,6 +409,7 @@ function fillReviewStep3() {
   document.getElementById('rv_whatsapp').textContent = whatsapp;
   document.getElementById('rv_email').textContent = email;
   document.getElementById('rv_empresa').textContent = empresa;
+  document.getElementById('rv_newsletter').textContent = newsletter;
 
   document.getElementById('rv_presenca_site').textContent = presenca;
   document.getElementById('rv_tipo_projeto').textContent = tipoTxt;
@@ -615,12 +655,14 @@ function showErr(el, msg) {
   if (!el) return;
   el.textContent = msg;
   el.classList.add('visible');
+  el.setAttribute('aria-hidden', 'false');
 }
 
 function hideErr(el) {
   if (!el) return;
   el.textContent = '';
   el.classList.remove('visible');
+  el.setAttribute('aria-hidden', 'true');
 }
 
 function focusFirstError(container) {
@@ -630,7 +672,9 @@ function focusFirstError(container) {
     firstErrInput.focus();
     return;
   }
-  const firstErrMsg = container.querySelector('.field-error.visible');
+  const firstErrMsg = container.querySelector(
+    '.fieldError.visible, .field-error.visible'
+  );
   if (firstErrMsg) firstErrMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 

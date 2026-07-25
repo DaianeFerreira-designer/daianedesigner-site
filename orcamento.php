@@ -14,6 +14,7 @@ $robots = "noindex, nofollow";
 
 <!-- Head Daiane Ferreira -->
 <?php include 'partials/head.php'; ?>
+<link rel="stylesheet" href="/style.css?v=31">
 
 <div id="preloader" aria-hidden="true">
   <div class="preloader-bg"></div>
@@ -277,6 +278,22 @@ $robots = "noindex, nofollow";
               </span>
             </label>
             <span class="fieldError" id="privErr" role="alert"></span>
+          </div>
+
+          <!-- Newsletter (opcional) -->
+          <div class="fieldGroup divAceite divNewsletter">
+            <label class="aceiteLabel" for="newsletterOptIn">
+              <input
+                type="checkbox"
+                id="newsletterOptIn"
+                name="newsletterOptIn"
+                value="1" />
+              <span class="checkUI" aria-hidden="true"></span>
+
+              <span class="fieldLabel aceiteText">
+                Gostaria de receber novidades, ofertas e conteúdos exclusivos por e-mail (Newsletter).
+              </span>
+            </label>
           </div>
 
           <!-- Global erro sep 01 -->
@@ -665,6 +682,11 @@ $robots = "noindex, nofollow";
               <div class="reviewValue" id="rv_empresa">—</div>
             </div>
 
+            <div class="reviewRow">
+              <div class="reviewLabel">Newsletter</div>
+              <div class="reviewValue" id="rv_newsletter">—</div>
+            </div>
+
             <hr class="reviewSep" aria-hidden="true" />
 
             <div class="reviewRow">
@@ -770,7 +792,7 @@ $robots = "noindex, nofollow";
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/js/intlTelInput.min.js"></script>
 <script src="/script.js"></script>
-<script src="/main.js" defer></script>
+<script src="/main.js?v=4" defer></script>
 </body>
 
 </html>
