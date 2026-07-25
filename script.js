@@ -1,4 +1,7 @@
 gsap.registerPlugin(ScrollTrigger, SplitText);
+ScrollTrigger.config({
+  autoRefreshEvents: "DOMContentLoaded,visibilitychange",
+});
 
 const ehSafari =
   /Safari/i.test(navigator.userAgent) &&
@@ -8,6 +11,18 @@ const ehSafari =
 document.documentElement.classList.toggle("safari-only", ehSafari);
 
 iniciarScrollSuave();
+
+let refreshScrollTriggerPendente = 0;
+
+function agendarRefreshScrollTrigger() {
+  cancelAnimationFrame(refreshScrollTriggerPendente);
+  refreshScrollTriggerPendente = requestAnimationFrame(() => {
+    refreshScrollTriggerPendente = requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+      refreshScrollTriggerPendente = 0;
+    });
+  });
+}
 
 //  (PHP inclui header/footer), então só inicializa:
 document.addEventListener("DOMContentLoaded", () => {
@@ -19,18 +34,10 @@ document.addEventListener("DOMContentLoaded", () => {
   iniciarMotionPrincipal();
 
   // Atualiza TODOS os ScrollTriggers após toda a inicialização
-  ScrollTrigger.refresh();
+  agendarRefreshScrollTrigger();
 
   // Imagens e fontes alteram a altura das dobras depois do DOMContentLoaded.
   // Recalcula os gatilhos quando o layout estiver realmente estabilizado.
-  window.addEventListener("load", () => ScrollTrigger.refresh(), {
-    once: true,
-  });
-
-  if (document.fonts?.ready) {
-    document.fonts.ready.then(() => ScrollTrigger.refresh());
-  }
-
   if (ehSafari) {
     const imagensProntas = Array.from(document.images).map((imagem) => {
       if (imagem.complete) {
@@ -44,9 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     Promise.all(imagensProntas).then(() => {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => ScrollTrigger.refresh());
-      });
+      agendarRefreshScrollTrigger();
     });
   }
 });
@@ -411,15 +416,18 @@ document.querySelectorAll("main .textoAnimadoLegado").forEach((texto) => {
    Abas Portfólio
    ----------------------------------------------------------------- */
 
-$(document).ready(function () {
-  // Barra Ativo
-  $(".action").click(function (e) {
+document.querySelectorAll(".action").forEach((acao) => {
+  acao.addEventListener("click", (e) => {
     e.preventDefault();
 
-    $(".slide").removeClass("active");
-    var slide = $(this).closest(".slide");
-    slide.addClass("active");
-    animarProjetoAberto(slide.get(0));
+    document
+      .querySelectorAll(".slide.active")
+      .forEach((slideAtivo) => slideAtivo.classList.remove("active"));
+
+    const slide = acao.closest(".slide");
+    slide?.classList.add("active");
+    animarProjetoAberto(slide);
+    checkWidth();
   });
 });
 
@@ -461,18 +469,21 @@ function animarProjetoAberto(slide) {
 }
 
 function checkWidth() {
-  if ($(window).width() > 480) {
-    $(".slide-content").css("width", "");
+  if (window.innerWidth <= 480) return;
 
-    const slideWidth = $(".slide.active").width();
+  document
+    .querySelectorAll(".slide-content")
+    .forEach((conteudo) => conteudo.style.removeProperty("width"));
 
-    $(".slide.active .slide-content").css({
-      width: slideWidth + "px",
-    });
+  const slideAtivo = document.querySelector(".slide.active");
+  const conteudoAtivo = slideAtivo?.querySelector(".slide-content");
+
+  if (slideAtivo && conteudoAtivo) {
+    conteudoAtivo.style.width = `${slideAtivo.getBoundingClientRect().width}px`;
   }
 }
 
-$(window).resize(function () {
+window.addEventListener("resize", () => {
   // onresize
   checkWidth();
 
@@ -738,7 +749,7 @@ function animarTextoFooter2() {
 
 (function () {
   const preloader = document.getElementById("preloader");
-  if (!preloader) return;
+  if (!preloader || getComputedStyle(preloader).display === "none") return;
 
   const preloaderBg = preloader.querySelector(".preloader-bg");
   const preloaderLogo = preloader.querySelector(".preloader-logo");
@@ -749,7 +760,7 @@ function animarTextoFooter2() {
 
   gsap.to(progressObj, {
     val: 100,
-    duration: 2,
+    duration: 0.72,
     ease: "power2.out",
     onUpdate: () => {
       const v = Math.round(progressObj.val);
@@ -770,7 +781,7 @@ function animarTextoFooter2() {
     tl.to(preloaderPercent, {
       opacity: 0,
       y: 10,
-      duration: 0.3,
+      duration: 0.18,
       ease: "power2.out",
     });
 
@@ -778,10 +789,10 @@ function animarTextoFooter2() {
       preloaderBg,
       {
         y: "-100%",
-        duration: 1,
+        duration: 0.55,
         ease: "power3.inOut",
       },
-      0.2,
+      0.1,
     );
 
     tl.to(
@@ -789,17 +800,17 @@ function animarTextoFooter2() {
       {
         scale: 0.6,
         opacity: 0,
-        duration: 0.6,
+        duration: 0.38,
         ease: "power2.out",
       },
-      0.4,
+      0.18,
     );
 
     tl.to(
       preloader,
       {
         opacity: 0,
-        duration: 0.3,
+        duration: 0.18,
       },
       "-=0.2",
     );
@@ -852,9 +863,13 @@ function iniciarMotionPrincipal() {
     });
   }
 
+  const preloader = document.querySelector("#preloader");
+  const preloaderVisivel =
+    preloader && getComputedStyle(preloader).display !== "none";
+
   const heroTimeline = gsap.timeline({
     defaults: { ease: "power3.out" },
-    delay: document.querySelector("#preloader") ? 2.15 : 0.1,
+    delay: preloaderVisivel ? 0.82 : 0.1,
   });
 
   heroTimeline
@@ -863,27 +878,29 @@ function iniciarMotionPrincipal() {
       autoAlpha: 0,
       duration: 0.55,
     })
-    .from(".hero h1", { y: 70, autoAlpha: 0, duration: 0.85 }, "-=0.25")
-    .from(
+    .from(".hero h1", { y: 70, autoAlpha: 0, duration: 0.85 }, "-=0.25");
+
+  if (!window.matchMedia("(max-width: 767px)").matches) {
+    heroTimeline.from(
       ".hero .paragrafo",
       {
-        filter: "blur(14px)",
-        y: 32,
-        autoAlpha: 0,
-        duration: 0.7,
+        y: 24,
+        duration: 0.55,
       },
       "-=0.4",
-    )
-    .from(
-      ".hero .botoes",
-      {
-        y: 28,
-        scale: 0.96,
-        autoAlpha: 0,
-        duration: 0.5,
-      },
-      "-=0.3",
     );
+  }
+
+  heroTimeline.from(
+    ".hero .botoes",
+    {
+      y: 28,
+      scale: 0.96,
+      autoAlpha: 0,
+      duration: 0.5,
+    },
+    "-=0.3",
+  );
 
   const efeitosTitulo = [
     {
@@ -1233,9 +1250,10 @@ if (whatsappFloat && secao02) {
       const diferenca = Math.abs(window.innerWidth - larguraInicial);
 
       if (diferenca >= 100) {
-        window.scrollTo(0, 0);
-        window.location.reload();
+        larguraInicial = window.innerWidth;
+        checkWidth();
+        agendarRefreshScrollTrigger();
       }
-    }, 300);
+    }, 220);
   });
 })();
