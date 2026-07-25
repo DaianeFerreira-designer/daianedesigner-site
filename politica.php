@@ -1,10 +1,10 @@
 <?php
-$title = "Sobre Daiane Ferreira | Web Designer";
-$description = "Conheça Daiane Ferreira, web designer especializada em criação de sites, landing pages e experiências digitais que comunicam valor, autoridade e profissionalismo.";
-$keywords = "sobre web designer, sobre Daiane Ferreira, criação de sites, web design, experiências digitais, landing page, desenvolvimento web, wordpress";
+$title = "Política de Privacidade | Daiane Ferreira";
+$description = "Política de Privacidade e tratamento de dados pessoais do site Daiane Ferreira.";
+$keywords = "política de privacidade, proteção de dados, privacidade";
 $image = "assets/preview.webp";
-$url = "https://daianedesigner.com.br/";
-$robots = "noindex, nofollow";
+$url = "https://daianedesigner.com.br/politica-de-privacidade";
+$robots = "noindex, follow";
 $author = "Daiane Ferreira";
 ?>
 

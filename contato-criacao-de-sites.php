@@ -4,6 +4,7 @@ $description = "Fale com uma web designer especializada em criação de sites pr
 $keywords = "contato web designer, contato criação de sites, orçamento de site, solicite site profissional, web design, landing page, desenvolvimento web, wordpress, elementor";
 $image = "assets/preview.webp";
 $url = "https://seudominio.com";
+$robots = "noindex, follow";
 $author = "Daiane Ferreira";
 ?>
 

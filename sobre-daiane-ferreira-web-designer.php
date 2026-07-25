@@ -4,6 +4,7 @@ $description = "Conheça Daiane Ferreira, web designer especializada em criaçã
 $keywords = "sobre web designer, sobre Daiane Ferreira, criação de sites, web design, experiências digitais, landing page, desenvolvimento web, wordpress";
 $image = "assets/preview.webp";
 $url = "https://daianedesigner.com.br/";
+$robots = "noindex, follow";
 $author = "Daiane Ferreira";
 ?>
 

@@ -4,6 +4,7 @@ $description = "Portfólio de projetos de criação de sites, landing pages e in
 $keywords = "portfólio web designer, portfólio criação de sites, projetos de sites, web design, interfaces, landing page, desenvolvimento web, wordpress";
 $image = "assets/preview.webp";
 $url = "https://seudominio.com";
+$robots = "noindex, follow";
 $author = "Daiane Ferreira";
 ?>
 

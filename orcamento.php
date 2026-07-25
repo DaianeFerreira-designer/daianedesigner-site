@@ -269,7 +269,7 @@ $robots = "noindex, nofollow";
               <span class="fieldLabel aceiteText">
                 Aceito a
                 <a
-                  href="politica-de-privacidade.html"
+                  href="/politica.php"
                   target="_blank"
                   rel="noopener">
                   Política de Privacidade

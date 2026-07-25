@@ -4,6 +4,7 @@ $description = "Templates profissionais de páginas e sites, prontos para custom
 $keywords = "templates para sites, layouts prontos, templates de landing page, web design, criação de sites, páginas personalizadas, desenvolvimento web, wordpress, templates figma";
 $image = "assets/preview.webp";
 $url = "https://seudominio.com";
+$robots = "noindex, follow";
 $author = "Daiane Ferreira";
 ?>
 

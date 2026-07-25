@@ -4,6 +4,7 @@ $description = "Serviços de web design e criação de sites profissionais, land
 $keywords = "serviços de criação de sites, criação de landing pages, criação de loja virtual, criação de e-commerce, criação de área de membros, serviços de web design, desenvolvimento web, wordpress, elementor, figma";
 $image = "assets/preview.webp";
 $url = "https://seudominio.com";
+$robots = "noindex, follow";
 $author = "Daiane Ferreira";
 ?>
 
