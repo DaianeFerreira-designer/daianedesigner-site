@@ -14,7 +14,7 @@ $robots = "noindex, nofollow";
 
 <!-- Head Daiane Ferreira -->
 <?php include 'partials/head.php'; ?>
-<link rel="stylesheet" href="/style.css?v=31">
+<link rel="stylesheet" href="/style.css?v=32">
 
 <div id="preloader" aria-hidden="true">
   <div class="preloader-bg"></div>
@@ -792,7 +792,7 @@ $robots = "noindex, nofollow";
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/js/intlTelInput.min.js"></script>
 <script src="/script.js"></script>
-<script src="/main.js?v=4" defer></script>
+<script src="/main.js?v=5" defer></script>
 </body>
 
 </html>

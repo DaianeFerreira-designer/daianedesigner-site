@@ -2459,6 +2459,7 @@ footer .textoAnimado span .charFooter {
   html.ios-safari-budget .wrapperForms .iti__tel-input {
     font-size: 16px !important;
     -webkit-text-size-adjust: 100%;
+    touch-action: manipulation;
     transform: none;
     zoom: 1;
   }
