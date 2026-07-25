@@ -995,7 +995,7 @@ function iniciarMotionPrincipal() {
       type: "lines",
       linesClass: "motion-line metodologia-line",
       deepSlice: true,
-      aria: "auto",
+      aria: "none",
     });
 
     gsap.set(textoMetodologia, { perspective: 900 });

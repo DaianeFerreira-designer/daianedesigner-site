@@ -60,7 +60,7 @@
 
         <span class="text">Solicitar Orçamento</span>
       </a>
-      <a href="/portfolio-sites-profissionais.php" class="portfolioButton">
+      <a href="/portfolio-sites-profissionais" class="portfolioButton">
         <img
           class="iconeAnimado"
           src="assets/imagens/icon-button-portolio.svg"
@@ -84,7 +84,7 @@
 
 <!-- JS -->
 
-<script src="/script.js?v=31" defer></script>
+<script src="/script.js?v=32" defer></script>
 
 </body>
 

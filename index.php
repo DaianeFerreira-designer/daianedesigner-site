@@ -210,6 +210,8 @@ $structuredData = [
 
           <img
             src="/assets/imagens/bg-card.webp"
+            srcset="/assets/imagens/bg-card.webp 320w, /assets/imagens/bg-card-mobile@2x.webp 640w"
+            sizes="(max-width: 767px) 320px, 1px"
             alt=""
           width="320" height="430" />
 
@@ -234,6 +236,8 @@ $structuredData = [
         <div class="cards">
           <img
             src="/assets/imagens/bg-card.webp"
+            srcset="/assets/imagens/bg-card.webp 320w, /assets/imagens/bg-card-mobile@2x.webp 640w"
+            sizes="(max-width: 767px) 320px, 1px"
             alt=""
           width="320" height="430" />
 
@@ -257,6 +261,8 @@ $structuredData = [
         <div class="cards">
           <img
             src="/assets/imagens/bg-card.webp"
+            srcset="/assets/imagens/bg-card.webp 320w, /assets/imagens/bg-card-mobile@2x.webp 640w"
+            sizes="(max-width: 767px) 320px, 1px"
             alt=""
           width="320" height="430" />
 
@@ -280,6 +286,8 @@ $structuredData = [
         <div class="cards">
           <img
             src="/assets/imagens/bg-card.webp"
+            srcset="/assets/imagens/bg-card.webp 320w, /assets/imagens/bg-card-mobile@2x.webp 640w"
+            sizes="(max-width: 767px) 320px, 1px"
             alt=""
           width="320" height="430" />
 
@@ -303,6 +311,8 @@ $structuredData = [
         <div class="cards">
           <img
             src="/assets/imagens/bg-card.webp"
+            srcset="/assets/imagens/bg-card.webp 320w, /assets/imagens/bg-card-mobile@2x.webp 640w"
+            sizes="(max-width: 767px) 320px, 1px"
             alt=""
           width="320" height="430" />
 
@@ -325,6 +335,8 @@ $structuredData = [
         <div class="cards">
           <img
             src="/assets/imagens/bg-card.webp"
+            srcset="/assets/imagens/bg-card.webp 320w, /assets/imagens/bg-card-mobile@2x.webp 640w"
+            sizes="(max-width: 767px) 320px, 1px"
             alt=""
           width="320" height="430" />
 
