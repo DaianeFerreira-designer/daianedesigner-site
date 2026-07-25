@@ -71,6 +71,11 @@
   </div>
 
 </footer>
+<!-- jQuery -->
+
+<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
 <!-- GSAP -->
 <script defer src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
@@ -79,7 +84,7 @@
 
 <!-- JS -->
 
-<script src="/script.js?v=40" defer></script>
+<script src="/script.js?v=32" defer></script>
 
 </body>
 

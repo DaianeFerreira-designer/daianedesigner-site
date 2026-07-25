@@ -2427,10 +2427,6 @@ footer .textoAnimado span .charFooter {
 }
 
 @media (max-width: 767px) {
-  #preloader {
-    display: none !important;
-  }
-
   .wrapperForms .fieldError,
   .wrapperForms .field-error {
     left: 6px;
