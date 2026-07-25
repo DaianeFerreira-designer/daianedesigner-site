@@ -110,7 +110,8 @@ $robots = "noindex, nofollow";
       <div class="forms-logo" aria-label="Icone Daiane Ferreira">
         <img
           src="assets/imagens/icon-daiane-ferreira-logo-web-design-sites.svg"
-          alt="Icone Daiane Ferreira" />
+          alt="Icone Daiane Ferreira"
+          width="42" height="41" />
         <!-- Título -->
         <h1 class="tituloOrcamento">
           Preencha o formulário ao lado para

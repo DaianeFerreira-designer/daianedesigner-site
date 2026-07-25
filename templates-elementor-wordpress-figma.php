@@ -2,7 +2,7 @@
 $title = "Templates para Sites Profissionais | Layouts Prontos de Web Design";
 $description = "Templates profissionais de páginas e sites, prontos para customização. Layouts criados por web designer com foco em estética, clareza da mensagem e experiência do usuário.";
 $keywords = "templates para sites, layouts prontos, templates de landing page, web design, criação de sites, páginas personalizadas, desenvolvimento web, wordpress, templates figma";
-$image = "assets/preview.webp";
+$image = "https://daianedesigner.com.br/assets/imagens/hero-web-design.webp";
 $url = "https://daianedesigner.com.br/templates-elementor-wordpress-figma";
 $robots = "noindex, follow";
 $author = "Daiane Ferreira";

@@ -2,7 +2,7 @@
 $title = "Política de Privacidade | Daiane Ferreira";
 $description = "Política de Privacidade e tratamento de dados pessoais do site Daiane Ferreira.";
 $keywords = "política de privacidade, proteção de dados, privacidade";
-$image = "assets/preview.webp";
+$image = "https://daianedesigner.com.br/assets/imagens/hero-web-design.webp";
 $url = "https://daianedesigner.com.br/politica-de-privacidade";
 $robots = "noindex, follow";
 $author = "Daiane Ferreira";

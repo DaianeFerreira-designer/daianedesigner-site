@@ -2,9 +2,76 @@
 $title = "Criação de Sites Profissionais | Web Designer";
 $description = "Criação de sites profissionais, landing pages e páginas personalizadas para empresas e negócios que desejam aumentar sua presença online e gerar mais resultados";
 $keywords = "web design, desenvolvimento web, landing page, wordpress";
-$image = "/assets/preview.webp";
+$image = "https://daianedesigner.com.br/assets/imagens/hero-web-design.webp";
 $url = "https://daianedesigner.com.br/";
 $author = "Daiane Ferreira";
+$structuredData = [
+  '@context' => 'https://schema.org',
+  '@graph' => [
+    [
+      '@type' => 'WebSite',
+      '@id' => 'https://daianedesigner.com.br/#website',
+      'url' => 'https://daianedesigner.com.br/',
+      'name' => 'Daiane Ferreira — Web Designer',
+      'inLanguage' => 'pt-BR'
+    ],
+    [
+      '@type' => 'Person',
+      '@id' => 'https://daianedesigner.com.br/#daiane-ferreira',
+      'name' => 'Daiane Ferreira',
+      'url' => 'https://daianedesigner.com.br/',
+      'jobTitle' => 'Web Designer',
+      'sameAs' => [
+        'https://www.instagram.com/designer.daiane/',
+        'https://www.linkedin.com/in/daiane-ferreira-araujo/',
+        'https://www.behance.net/daiane_ferreira',
+        'https://github.com/DaianeFerreira-designer'
+      ]
+    ],
+    [
+      '@type' => 'ProfessionalService',
+      '@id' => 'https://daianedesigner.com.br/#professional-service',
+      'name' => 'Daiane Ferreira — Web Designer',
+      'url' => 'https://daianedesigner.com.br/',
+      'image' => 'https://daianedesigner.com.br/assets/imagens/hero-web-design.webp',
+      'description' => $description,
+      'areaServed' => [
+        '@type' => 'Country',
+        'name' => 'Brasil'
+      ],
+      'founder' => [
+        '@id' => 'https://daianedesigner.com.br/#daiane-ferreira'
+      ],
+      'hasOfferCatalog' => [
+        '@type' => 'OfferCatalog',
+        'name' => 'Serviços de Web Design',
+        'itemListElement' => [
+          [
+            '@type' => 'Offer',
+            'itemOffered' => [
+              '@type' => 'Service',
+              'name' => 'Criação de Site Institucional'
+            ]
+          ],
+          [
+            '@type' => 'Offer',
+            'itemOffered' => [
+              '@type' => 'Service',
+              'name' => 'Criação de Landing Page'
+            ]
+          ],
+          [
+            '@type' => 'Offer',
+            'itemOffered' => [
+              '@type' => 'Service',
+              'name' => 'Criação de Loja Virtual'
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+];
 ?>
 
 
@@ -91,7 +158,8 @@ $author = "Daiane Ferreira";
         <div class="webDesigner">
           <img
             src="/assets/imagens/icon-hero.svg"
-            alt="Icone Daiane Ferreira" />
+            alt=""
+          width="25" height="24" />
           <p>Web Designer</p>
         </div>
 
@@ -113,7 +181,8 @@ $author = "Daiane Ferreira";
             <img
               class="cta-icon"
               src="/assets/imagens/arrow-button.svg"
-              alt="Icone Botão" />
+              alt=""
+          width="17" height="15" />
 
             <span class="text">Solicitar Orçamento</span>
           </a>
@@ -121,7 +190,8 @@ $author = "Daiane Ferreira";
             <img
               class="iconeAnimado"
               src="/assets/imagens/icon-button-portolio.svg"
-              alt="Icone botão Portfólio" />Ver Portfólio</a>
+              alt=""
+          width="14" height="14" />Ver Portfólio</a>
         </div>
       </div>
 
@@ -140,7 +210,8 @@ $author = "Daiane Ferreira";
 
           <img
             src="/assets/imagens/bg-card.webp"
-            alt="Background dos cards serviços" />
+            alt=""
+          width="320" height="430" />
 
 
           <div class="card">
@@ -152,7 +223,8 @@ $author = "Daiane Ferreira";
             <div class="peq">
               <p>Site profissional</p>
               <a href="/orcamento?projeto=site-institucional" class="ctaServicos">
-                <img class="iconeAnimado" src="/assets/imagens/icon-button-portolio.svg" alt="Icone animado" />
+                <img class="iconeAnimado" src="/assets/imagens/icon-button-portolio.svg" alt=""
+          width="14" height="14" />
                 <span> Solicitar Orçamento</span>
               </a>
             </div>
@@ -162,7 +234,8 @@ $author = "Daiane Ferreira";
         <div class="cards">
           <img
             src="/assets/imagens/bg-card.webp"
-            alt="Background dos cards serviços" />
+            alt=""
+          width="320" height="430" />
 
           <div class="card">
             <div class="textoCard">
@@ -173,7 +246,8 @@ $author = "Daiane Ferreira";
             <div class="peq">
               <p>Foco em vendas</p>
               <a href="/orcamento?projeto=landing-page" class="ctaServicos">
-                <img class="iconeAnimado" src="/assets/imagens/icon-button-portolio.svg" alt="Icone animado" />
+                <img class="iconeAnimado" src="/assets/imagens/icon-button-portolio.svg" alt=""
+          width="14" height="14" />
                 <span> Solicitar Orçamento</span>
               </a>
             </div>
@@ -183,7 +257,8 @@ $author = "Daiane Ferreira";
         <div class="cards">
           <img
             src="/assets/imagens/bg-card.webp"
-            alt="Background dos cards serviços" />
+            alt=""
+          width="320" height="430" />
 
           <div class="card">
             <div class="textoCard">
@@ -194,7 +269,8 @@ $author = "Daiane Ferreira";
             <div class="peq">
               <p>E-commerce</p>
               <a href="/orcamento?projeto=loja-virtual" class="ctaServicos">
-                <img class="iconeAnimado" src="/assets/imagens/icon-button-portolio.svg" alt="Icone animado" />
+                <img class="iconeAnimado" src="/assets/imagens/icon-button-portolio.svg" alt=""
+          width="14" height="14" />
                 <span> Solicitar Orçamento</span>
               </a>
             </div>
@@ -204,7 +280,8 @@ $author = "Daiane Ferreira";
         <div class="cards">
           <img
             src="/assets/imagens/bg-card.webp"
-            alt="Background dos cards serviços" />
+            alt=""
+          width="320" height="430" />
 
           <div class="card">
             <div class="textoCard">
@@ -215,7 +292,8 @@ $author = "Daiane Ferreira";
             <div class="peq">
               <p>Site otimizado</p>
               <a href="/orcamento?projeto=seo-performance" class="ctaServicos">
-                <img class="iconeAnimado" src="/assets/imagens/icon-button-portolio.svg" alt="Icone animado" />
+                <img class="iconeAnimado" src="/assets/imagens/icon-button-portolio.svg" alt=""
+          width="14" height="14" />
                 <span> Solicitar Orçamento</span>
               </a>
             </div>
@@ -225,7 +303,8 @@ $author = "Daiane Ferreira";
         <div class="cards">
           <img
             src="/assets/imagens/bg-card.webp"
-            alt="Background dos cards serviços" />
+            alt=""
+          width="320" height="430" />
 
           <div class="card">
             <div class="textoCard">
@@ -235,7 +314,8 @@ $author = "Daiane Ferreira";
             <div class="peq">
               <p>Geração de leads</p>
               <a href="/orcamento?projeto=pagina-captura" class="ctaServicos">
-                <img class="iconeAnimado" src="/assets/imagens/icon-button-portolio.svg" alt="Icone animado" />
+                <img class="iconeAnimado" src="/assets/imagens/icon-button-portolio.svg" alt=""
+          width="14" height="14" />
                 <span> Solicitar Orçamento</span>
               </a>
             </div>
@@ -245,7 +325,8 @@ $author = "Daiane Ferreira";
         <div class="cards">
           <img
             src="/assets/imagens/bg-card.webp"
-            alt="Background dos cards serviços" />
+            alt=""
+          width="320" height="430" />
 
           <div class="card">
             <div class="textoCard">
@@ -255,7 +336,8 @@ $author = "Daiane Ferreira";
             <div class="peq">
               <p>Plataforma</p>
               <a href="/orcamento?projeto=area-membros" class="ctaServicos">
-                <img class="iconeAnimado" src="/assets/imagens/icon-button-portolio.svg" alt="Icone animado" />
+                <img class="iconeAnimado" src="/assets/imagens/icon-button-portolio.svg" alt=""
+          width="14" height="14" />
                 <span> Solicitar Orçamento</span>
               </a>
             </div>
@@ -268,7 +350,9 @@ $author = "Daiane Ferreira";
   <div class="faixaAnimada">
     <div class="faixaTrack">
       <div class="faixa">
-        <img src="/assets/imagens/figma.svg" alt="Icone Figma" />
+        <img src="/assets/imagens/figma.svg" alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Figma</h3>
           <p>UI/UX Design</p>
@@ -278,7 +362,9 @@ $author = "Daiane Ferreira";
       <div class="faixa">
         <img
           src="/assets/imagens/layers.svg"
-          alt="Icone Figmde layouts" />
+          alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Layouts</h3>
           <p>Estratégicos</p>
@@ -288,7 +374,9 @@ $author = "Daiane Ferreira";
       <div class="faixa">
         <img
           src="/assets/imagens/wordpress-logo.svg"
-          alt="Icone wordpress e elementor" />
+          alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Wordpress</h3>
           <p>+Elementor</p>
@@ -296,7 +384,9 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="/assets/imagens/code.svg" alt="Icone códigos" />
+        <img src="/assets/imagens/code.svg" alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Código</h3>
           <p>Limpo</p>
@@ -304,7 +394,9 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="/assets/imagens/seo.svg" alt="Icone Seo/Google" />
+        <img src="/assets/imagens/seo.svg" alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Seo</h3>
           <p>Técnicas</p>
@@ -314,7 +406,9 @@ $author = "Daiane Ferreira";
       <div class="faixa">
         <img
           src="/assets/imagens/responsive.svg"
-          alt="Icone responsivo" />
+          alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Responsivo</h3>
           <p>Premium</p>
@@ -324,7 +418,9 @@ $author = "Daiane Ferreira";
       <div class="faixa">
         <img
           src="/assets/imagens/perfomance.svg"
-          alt="Icone Performance" />
+          alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Performance</h3>
           <p>Otimizada</p>
@@ -332,7 +428,9 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="/assets/imagens/plug.svg" alt="Icone de Automação" />
+        <img src="/assets/imagens/plug.svg" alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Integrações</h3>
           <p>e Automações</p>
@@ -340,7 +438,9 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="/assets/imagens/figma.svg" alt="Icone Figma" />
+        <img src="/assets/imagens/figma.svg" alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Figma</h3>
           <p>UI/UX Design</p>
@@ -350,7 +450,9 @@ $author = "Daiane Ferreira";
       <div class="faixa">
         <img
           src="/assets/imagens/layers.svg"
-          alt="Icone Figmde layouts" />
+          alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Layouts</h3>
           <p>Estratégicos</p>
@@ -360,7 +462,9 @@ $author = "Daiane Ferreira";
       <div class="faixa">
         <img
           src="/assets/imagens/wordpress-logo.svg"
-          alt="Icone wordpress e elementor" />
+          alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Wordpress</h3>
           <p>+Elementor</p>
@@ -368,7 +472,9 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="/assets/imagens/code.svg" alt="Icone códigos" />
+        <img src="/assets/imagens/code.svg" alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Código</h3>
           <p>Limpo</p>
@@ -376,7 +482,9 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="/assets/imagens/seo.svg" alt="Icone Seo/Google" />
+        <img src="/assets/imagens/seo.svg" alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Seo</h3>
           <p>Técnicas</p>
@@ -386,7 +494,9 @@ $author = "Daiane Ferreira";
       <div class="faixa">
         <img
           src="/assets/imagens/responsive.svg"
-          alt="Icone responsivo" />
+          alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Responsivo</h3>
           <p>Premium</p>
@@ -396,7 +506,9 @@ $author = "Daiane Ferreira";
       <div class="faixa">
         <img
           src="/assets/imagens/perfomance.svg"
-          alt="Icone Performance" />
+          alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Performance</h3>
           <p>Otimizada</p>
@@ -404,7 +516,9 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="/assets/imagens/plug.svg" alt="Icone de Automação" />
+        <img src="/assets/imagens/plug.svg" alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Integrações</h3>
           <p>e Automações</p>
@@ -412,7 +526,9 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="/assets/imagens/figma.svg" alt="Icone Figma" />
+        <img src="/assets/imagens/figma.svg" alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Figma</h3>
           <p>UI/UX Design</p>
@@ -422,7 +538,9 @@ $author = "Daiane Ferreira";
       <div class="faixa">
         <img
           src="/assets/imagens/layers.svg"
-          alt="Icone Figmde layouts" />
+          alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Layouts</h3>
           <p>Estratégicos</p>
@@ -432,7 +550,9 @@ $author = "Daiane Ferreira";
       <div class="faixa">
         <img
           src="/assets/imagens/wordpress-logo.svg"
-          alt="Icone wordpress e elementor" />
+          alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Wordpress</h3>
           <p>+Elementor</p>
@@ -440,7 +560,9 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="/assets/imagens/code.svg" alt="Icone códigos" />
+        <img src="/assets/imagens/code.svg" alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Código</h3>
           <p>Limpo</p>
@@ -448,7 +570,9 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="/assets/imagens/seo.svg" alt="Icone Seo/Google" />
+        <img src="/assets/imagens/seo.svg" alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Seo</h3>
           <p>Técnicas</p>
@@ -458,7 +582,9 @@ $author = "Daiane Ferreira";
       <div class="faixa">
         <img
           src="/assets/imagens/responsive.svg"
-          alt="Icone responsivo" />
+          alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Responsivo</h3>
           <p>Premium</p>
@@ -468,7 +594,9 @@ $author = "Daiane Ferreira";
       <div class="faixa">
         <img
           src="/assets/imagens/perfomance.svg"
-          alt="Icone Performance" />
+          alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Performance</h3>
           <p>Otimizada</p>
@@ -476,7 +604,9 @@ $author = "Daiane Ferreira";
       </div>
 
       <div class="faixa">
-        <img src="/assets/imagens/plug.svg" alt="Icone de Automação" />
+        <img src="/assets/imagens/plug.svg" alt=""
+          width="48" height="48"
+          loading="lazy" decoding="async" />
         <div class="textosFaixa">
           <h3>Integrações</h3>
           <p>e Automações</p>
@@ -672,7 +802,9 @@ $author = "Daiane Ferreira";
       </svg>
     </div>
 
-    <p class="faixaDestaque"> <img src="/assets/imagens/trending-topic 2.svg" class="icone_webdesign" alt="Icone">Web Design</p>
+    <p class="faixaDestaque"> <img src="/assets/imagens/trending-topic 2.svg" class="icone_webdesign" alt=""
+          width="40" height="40"
+          loading="lazy" decoding="async" />Web Design</p>
     <div class="conteudo_portfolio">
       <h2 class="portfolioTexto textoAnimado">
         <span class="animationPortfolio"><strong>Projetos desenvolvidos</strong></span>
@@ -682,7 +814,8 @@ $author = "Daiane Ferreira";
       <a href="#" class="verMais"> <img
           class="iconeAnimado"
           src="/assets/imagens/icon-button-portolio.svg"
-          alt="" />Ver mais projetos</a>
+          alt=""
+          width="14" height="14" />Ver mais projetos</a>
     </div>
   </section>
 
@@ -702,7 +835,9 @@ $author = "Daiane Ferreira";
               <h2>Treinamento Forkmac</h2>
               <img
                 src="/assets/imagens/port-treinamento-forkmac.webp"
-                alt="" />
+                alt="Projeto de site Treinamento Forkmac"
+          width="811" height="348"
+          loading="lazy" decoding="async" />
             </div>
 
             <div class="tech">
@@ -729,7 +864,9 @@ $author = "Daiane Ferreira";
               <h2>Treinamento Forkmac</h2>
               <img
                 src="/assets/imagens/port-treinamento-forkmac.webp"
-                alt="" />
+                alt="Projeto de site Treinamento Forkmac"
+          width="811" height="348"
+          loading="lazy" decoding="async" />
             </div>
 
             <div class="tech">
@@ -756,7 +893,9 @@ $author = "Daiane Ferreira";
               <h2>Treinamento Forkmac</h2>
               <img
                 src="/assets/imagens/port-treinamento-forkmac.webp"
-                alt="" />
+                alt="Projeto de site Treinamento Forkmac"
+          width="811" height="348"
+          loading="lazy" decoding="async" />
             </div>
 
             <div class="tech">
@@ -783,7 +922,9 @@ $author = "Daiane Ferreira";
               <h2>Treinamento Forkmac</h2>
               <img
                 src="/assets/imagens/port-treinamento-forkmac.webp"
-                alt="" />
+                alt="Projeto de site Treinamento Forkmac"
+          width="811" height="348"
+          loading="lazy" decoding="async" />
             </div>
 
             <div class="tech">
@@ -810,7 +951,9 @@ $author = "Daiane Ferreira";
               <h2>Treinamento Forkmac</h2>
               <img
                 src="/assets/imagens/port-treinamento-forkmac.webp"
-                alt="" />
+                alt="Projeto de site Treinamento Forkmac"
+          width="811" height="348"
+          loading="lazy" decoding="async" />
             </div>
 
             <div class="tech">
@@ -837,7 +980,9 @@ $author = "Daiane Ferreira";
               <h2>Treinamento Forkmac</h2>
               <img
                 src="/assets/imagens/port-treinamento-forkmac.webp"
-                alt="" />
+                alt="Projeto de site Treinamento Forkmac"
+          width="811" height="348"
+          loading="lazy" decoding="async" />
             </div>
 
             <div class="tech">
@@ -864,7 +1009,9 @@ $author = "Daiane Ferreira";
               <h2>Treinamento Forkmac</h2>
               <img
                 src="/assets/imagens/port-treinamento-forkmac.webp"
-                alt="" />
+                alt="Projeto de site Treinamento Forkmac"
+          width="811" height="348"
+          loading="lazy" decoding="async" />
             </div>
 
             <div class="tech">
@@ -891,7 +1038,9 @@ $author = "Daiane Ferreira";
               <h2>Treinamento Forkmac</h2>
               <img
                 src="/assets/imagens/port-treinamento-forkmac.webp"
-                alt="" />
+                alt="Projeto de site Treinamento Forkmac"
+          width="811" height="348"
+          loading="lazy" decoding="async" />
             </div>
 
             <div class="tech">
@@ -918,36 +1067,52 @@ $author = "Daiane Ferreira";
 
     <div class="vr-box">
       <div class="item">
-        <img src="/assets/imagens/7-Check.svg" alt="" />
+        <img src="/assets/imagens/7-Check.svg" alt=""
+          width="36" height="35"
+          loading="lazy" decoding="async" />
         <p>Marca mais valorizada</p>
       </div>
       <div class="item">
-        <img src="/assets/imagens/7-Check.svg" alt="" />
+        <img src="/assets/imagens/7-Check.svg" alt=""
+          width="36" height="35"
+          loading="lazy" decoding="async" />
         <p>Maior valor percebido</p>
       </div>
       <div class="item">
-        <img src="/assets/imagens/7-Check.svg" alt="" />
+        <img src="/assets/imagens/7-Check.svg" alt=""
+          width="36" height="35"
+          loading="lazy" decoding="async" />
         <p>Melhor posicionamento</p>
       </div>
       <div class="item">
-        <img src="/assets/imagens/7-Check.svg" alt="" />
+        <img src="/assets/imagens/7-Check.svg" alt=""
+          width="36" height="35"
+          loading="lazy" decoding="async" />
         <p>Mais visibilidade no Google</p>
       </div>
       <div class="item">
-        <img src="/assets/imagens/7-Check.svg" alt="" />
+        <img src="/assets/imagens/7-Check.svg" alt=""
+          width="36" height="35"
+          loading="lazy" decoding="async" />
         <p>Maior confiança do público</p>
       </div>
       <div class="item">
-        <img src="/assets/imagens/7-Check.svg" alt="" />
+        <img src="/assets/imagens/7-Check.svg" alt=""
+          width="36" height="35"
+          loading="lazy" decoding="async" />
         <p>Mais oportunidades de contato</p>
       </div>
       <div class="item">
-        <img src="/assets/imagens/7-Check.svg" alt="" />
+        <img src="/assets/imagens/7-Check.svg" alt=""
+          width="36" height="35"
+          loading="lazy" decoding="async" />
         <p>Presença digital profissional</p>
       </div>
 
       <div class="item-active">
-        <img src="/assets/imagens/diamond 1.svg" alt="" />
+        <img src="/assets/imagens/diamond 1.svg" alt=""
+          width="40" height="40"
+          loading="lazy" decoding="async" />
         <p>Mais credibilidade</p>
       </div>
     </div>
@@ -972,7 +1137,9 @@ $author = "Daiane Ferreira";
         <div class="frame">
           <h3>fase 01</h3>
           <p>Semana 01</p>
-          <img src="/assets/imagens/down 1.svg" alt="Icone" />
+          <img src="/assets/imagens/down 1.svg" alt=""
+          width="24" height="24"
+          loading="lazy" decoding="async" />
         </div>
 
         <div class="conteudoProtocolo">
@@ -989,7 +1156,9 @@ $author = "Daiane Ferreira";
         <div class="frame">
           <h3>fase 02</h3>
           <p>Semana 02</p>
-          <img src="/assets/imagens/down 1.svg" alt="Icone" />
+          <img src="/assets/imagens/down 1.svg" alt=""
+          width="24" height="24"
+          loading="lazy" decoding="async" />
         </div>
 
         <div class="conteudoProtocolo">
@@ -1006,7 +1175,9 @@ $author = "Daiane Ferreira";
         <div class="frame">
           <h3>fase 03</h3>
           <p>Semana 03</p>
-          <img src="/assets/imagens/down 1.svg" alt="Icone" />
+          <img src="/assets/imagens/down 1.svg" alt=""
+          width="24" height="24"
+          loading="lazy" decoding="async" />
         </div>
 
         <div class="conteudoProtocolo">
@@ -1022,7 +1193,9 @@ $author = "Daiane Ferreira";
         <div class="frame">
           <h3>fase 04</h3>
           <p>Semana 04</p>
-          <img src="/assets/imagens/down 1.svg" alt="Icone" />
+          <img src="/assets/imagens/down 1.svg" alt=""
+          width="24" height="24"
+          loading="lazy" decoding="async" />
         </div>
 
         <div class="conteudoProtocolo">
@@ -1039,7 +1212,9 @@ $author = "Daiane Ferreira";
         <div class="frame">
           <h3>fase 05</h3>
           <p>Semana 05</p>
-          <img src="/assets/imagens/down 1.svg" alt="Icone" />
+          <img src="/assets/imagens/down 1.svg" alt=""
+          width="24" height="24"
+          loading="lazy" decoding="async" />
         </div>
 
         <div class="conteudoProtocolo">
@@ -1055,7 +1230,9 @@ $author = "Daiane Ferreira";
         <div class="frame">
           <h3>fase 06</h3>
           <p>Semana 06</p>
-          <img src="/assets/imagens/down 1.svg" alt="Icone" />
+          <img src="/assets/imagens/down 1.svg" alt=""
+          width="24" height="24"
+          loading="lazy" decoding="async" />
         </div>
 
         <div class="conteudoProtocolo">
@@ -1076,7 +1253,8 @@ $author = "Daiane Ferreira";
   target="_blank"
   rel="noopener"
   aria-label="Chamar no WhatsApp">
-  <img src="/assets/imagens/whatsapp.svg" alt="" />
+  <img src="/assets/imagens/whatsapp.svg" alt=""
+          width="150" height="150" />
 </a>
 
 <!-- Rodapé Daiane Ferreira -->

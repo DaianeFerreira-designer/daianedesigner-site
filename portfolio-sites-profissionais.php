@@ -2,7 +2,7 @@
 $title = "Portfólio de Web Designer | Projetos de Criação de Sites";
 $description = "Portfólio de projetos de criação de sites, landing pages e interfaces. Trabalhos de web design desenvolvidos para diferentes nichos, com foco em posicionamento e credibilidade.";
 $keywords = "portfólio web designer, portfólio criação de sites, projetos de sites, web design, interfaces, landing page, desenvolvimento web, wordpress";
-$image = "assets/preview.webp";
+$image = "https://daianedesigner.com.br/assets/imagens/hero-web-design.webp";
 $url = "https://daianedesigner.com.br/portfolio-sites-profissionais";
 $robots = "noindex, follow";
 $author = "Daiane Ferreira";

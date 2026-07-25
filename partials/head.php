@@ -14,10 +14,40 @@
       href="<?= htmlspecialchars($url, ENT_QUOTES, 'UTF-8') ?>">
   <?php endif; ?>
 
+  <?php
+  $socialTitle = $title ?? 'Daiane Ferreira — Web Designer';
+  $socialDescription = $description ?? '';
+  $socialUrl = $url ?? 'https://daianedesigner.com.br/';
+  $socialImage = $image ?? 'https://daianedesigner.com.br/assets/imagens/hero-web-design.webp';
+  $socialImageAlt = 'Criação de sites profissionais por Daiane Ferreira';
+  ?>
+
   <!-- Open Graph -->
-  <meta property="og:title" content="<?= $title ?? '' ?>">
-  <meta property="og:description" content="<?= $description ?? '' ?>">
-  <meta property="og:image" content="<?= $image ?? '' ?>">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Daiane Ferreira — Web Designer">
+  <meta property="og:title" content="<?= htmlspecialchars($socialTitle, ENT_QUOTES, 'UTF-8') ?>">
+  <meta property="og:description" content="<?= htmlspecialchars($socialDescription, ENT_QUOTES, 'UTF-8') ?>">
+  <meta property="og:url" content="<?= htmlspecialchars($socialUrl, ENT_QUOTES, 'UTF-8') ?>">
+  <meta property="og:image" content="<?= htmlspecialchars($socialImage, ENT_QUOTES, 'UTF-8') ?>">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1001">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:image:alt" content="<?= htmlspecialchars($socialImageAlt, ENT_QUOTES, 'UTF-8') ?>">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<?= htmlspecialchars($socialTitle, ENT_QUOTES, 'UTF-8') ?>">
+  <meta name="twitter:description" content="<?= htmlspecialchars($socialDescription, ENT_QUOTES, 'UTF-8') ?>">
+  <meta name="twitter:image" content="<?= htmlspecialchars($socialImage, ENT_QUOTES, 'UTF-8') ?>">
+  <meta name="twitter:image:alt" content="<?= htmlspecialchars($socialImageAlt, ENT_QUOTES, 'UTF-8') ?>">
+
+  <?php if (!empty($structuredData)): ?>
+    <script type="application/ld+json"><?= json_encode(
+      $structuredData,
+      JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP
+    ) ?></script>
+  <?php endif; ?>
 
   <?php
   $robots = $robots ?? 'index, follow';
