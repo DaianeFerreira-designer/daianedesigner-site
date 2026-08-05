@@ -868,17 +868,15 @@ $structuredData = [
         <div class="slide card2">
           <div class="action">
             <p>02</p>
-            <h2>Treinamento Formac</h2>
+            <h2>Lumio (Landing Page)</h2>
           </div>
 
           <div class="slide-content content02">
             <div class="imgTexto">
-              <h2>Treinamento Forkmac</h2>
+              <h2>02 Lumio - Domine Sua Rotina</h2>
               <img
-                src="/assets/imagens/port-treinamento-forkmac.webp"
-                alt="Projeto de site Treinamento Forkmac"
-          width="811" height="348"
-          loading="lazy" decoding="async" />
+                src="/assets/imagens/lumio_portfolio_daiane_designer_banner_desktop.webp"
+                alt="Projeto de Lumio" loading="lazy" decoding="async" />
             </div>
 
             <div class="tech">

@@ -971,6 +971,13 @@ html.safari-only .trackServicos {
   z-index: 0;
   pointer-events: none;
 }
+
+@media (min-width: 1025px) {
+  .iconePortfolio_obsoleto {
+    width: 64vw;
+  }
+}
+
 .iconePortfolio_obsoleto path {
   opacity: 0.4;
   stroke: #fdf0e6;
@@ -995,7 +1002,7 @@ html.safari-only .trackServicos {
   white-space: nowrap;
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
-  top: 50%;
+  top: 45%;
   border: 2px solid var(--color-accent);
 }
 
@@ -3026,6 +3033,42 @@ footer .textoAnimado span .charFooter {
   .formsConteudo,
   .formSuccess {
     width: 650px;
+  }
+}
+
+/* Desktop ultrawide: mantem a proporcao natural da imagem e organiza
+   tecnologias e botao na mesma faixa inferior do projeto aberto. */
+@media (min-width: 1600px) {
+  .slide.active .slide-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "projeto projeto"
+      "tecnologias botao";
+    align-content: center;
+    align-items: end;
+  }
+
+  .slide.active .imgTexto {
+    grid-area: projeto;
+    min-width: 0;
+  }
+
+  .slide.active .imgTexto img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .slide.active .tech {
+    grid-area: tecnologias;
+    min-width: 0;
+  }
+
+  .slide.active .ctaProjeto {
+    grid-area: botao;
+    align-self: end;
+    justify-self: end;
   }
 }
 
