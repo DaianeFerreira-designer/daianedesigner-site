@@ -861,18 +861,18 @@ function iniciarMotionPrincipal() {
     .from(".hero .webDesigner", {
       y: 24,
       autoAlpha: 0,
-      duration: 0.55,
+      duration: 0.1,
     })
-    .from(".hero h1", { y: 70, autoAlpha: 0, duration: 0.85 }, "-=0.25")
+    .from(".hero h1", { y: 35, autoAlpha: 0, duration: 0.2 }, "-=0.2")
     .from(
       ".hero .paragrafo",
       {
         filter: "blur(14px)",
-        y: 32,
+        y: 18,
         autoAlpha: 0,
-        duration: 0.7,
+        duration: 0.2,
       },
-      "-=0.4",
+      "-=0.3",
     )
     .from(
       ".hero .botoes",
@@ -882,7 +882,7 @@ function iniciarMotionPrincipal() {
         autoAlpha: 0,
         duration: 0.5,
       },
-      "-=0.3",
+      "-=0.25",
     );
 
   const efeitosTitulo = [

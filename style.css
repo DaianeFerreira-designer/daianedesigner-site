@@ -581,6 +581,13 @@ header.scrolled .icone {
     drop-shadow(0 0 12px rgba(239, 101, 0, 0.3));
 }
 
+.hero h1,
+.hero .paragrafo {
+  opacity: 1;
+  visibility: visible;
+  filter: none;
+}
+
 /* =========================
    Animações de seções
 ========================= */
