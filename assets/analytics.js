@@ -144,12 +144,19 @@
     + '<a href="/politica-de-cookies" target="_blank" rel="noopener noreferrer">Saiba mais</a>.</span>'
     + '<label class="cookies-opcao"><input type="checkbox" id="cookies-analise"> Permitir cookies de análise</label>'
     + '<div class="cookies-acoes"><button type="button" data-consent="rejected">Recusar</button>'
-    + '<button type="button" data-save-preferences>Guardar preferências</button></div>';
+    + '<button type="button" data-save-preferences>Aceitar cookies</button></div>';
   document.body.append(banner);
+
+  function updateSaveLabel() {
+    banner.querySelector('[data-save-preferences]').textContent = banner.querySelector('#cookies-analise').checked
+      ? 'Aceitar cookies' : 'Guardar preferências';
+  }
+  banner.querySelector('#cookies-analise').addEventListener('change', updateSaveLabel);
 
   function showPreferences(visible) {
     if (visible) banner.querySelector('#cookies-analise').checked = consent === 'accepted'
       || !['rejected', 'dismissed'].includes(consent);
+    if (visible) updateSaveLabel();
     banner.hidden = !visible;
     settings.setAttribute('aria-expanded', String(visible));
   }

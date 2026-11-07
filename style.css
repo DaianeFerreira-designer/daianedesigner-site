@@ -11275,6 +11275,6 @@ footer .analytics-preferencias {
   background: transparent;
   color: var(--color-light);
   font: inherit !important;
-  text-decoration: underline;
+  text-decoration: none;
   cursor: pointer;
 }
