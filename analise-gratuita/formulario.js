@@ -86,7 +86,7 @@ function iniciarFormularioAnaliseLanding() {
 
         return termosBloqueados.some(
             termo =>
-                texto.includes(termo)
+                texto === termo
         );
     }
 

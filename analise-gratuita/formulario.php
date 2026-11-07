@@ -31,7 +31,7 @@ function possuiTermoBloqueado(string $valor): bool
 {
     $texto = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $valor);
     $texto = preg_replace("/['`^~\"]+/", '', $texto === false ? $valor : $texto);
-    return preg_match('/teste|test|fake|falso|example|exemplo|demo|sample|asdf|qwerty/i', $texto ?? $valor) === 1;
+    return preg_match('/\A(?:teste|test|fake|falso|example|exemplo|demo|sample|asdf|qwerty)\z/i', trim($texto ?? $valor)) === 1;
 }
 
 /** Guarda apenas identificadores derivados e prazos fora da pasta pública. */
@@ -191,27 +191,13 @@ try {
         responder(403, ['message' => 'A sessão expirou. Atualize a página e tente novamente.']);
     }
 
-    $chaveIp = 'ip:' . hash_hmac('sha256', $_SERVER['REMOTE_ADDR'] ?? '', hash('sha256', __FILE__));
-    $permitido = atualizarLimites(static function (array &$estado, int $agora) use ($chaveIp): bool {
-        $estado[$chaveIp] ??= ['ate' => $agora + 600, 'total' => 0];
-        if ($estado[$chaveIp]['total'] >= 12) {
-            return false;
-        }
-
-        $estado[$chaveIp]['total']++;
-        return true;
-    });
-    if (!$permitido) {
-        responder(429, ['message' => 'Muitas tentativas. Aguarde alguns minutos antes de tentar novamente.']);
-    }
-
     $nome = campo('nome');
     $email = campo('email');
     $url = campo('url');
 
-    if (campo('empresa_confirmacao') !== '' || possuiTermoBloqueado($nome)
+    if (campo('form_guard') !== '' || possuiTermoBloqueado($nome)
         || possuiTermoBloqueado($email) || possuiTermoBloqueado(rawurldecode($url))) {
-        responder(422, ['message' => 'Informe seus dados reais para solicitar a análise.']);
+        responder(422, ['message' => 'Não foi possível validar o formulário. Atualize a página e tente novamente.']);
     }
 
     if (!preg_match("/\A[\p{L}\p{M}'’.\- ]{2,80}\z/u", $nome) || !preg_match('/\p{L}/u', $nome)) {
@@ -230,6 +216,29 @@ try {
         || !str_contains($host, '.') || filter_var(trim($host, '[]'), FILTER_VALIDATE_IP)
         || isset($partes['user']) || isset($partes['pass'])) {
         responder(422, ['message' => 'Digite uma URL válida para sua Landing Page.']);
+    }
+
+    // Correções de campos inválidos não gastam a cota de solicitações.
+    // A cota individual usa a sessão para não misturar visitantes atrás do mesmo proxy.
+    $chaveIp = 'ip-v2:' . hash_hmac('sha256', $_SERVER['REMOTE_ADDR'] ?? '', hash('sha256', __FILE__));
+    $chaveSessao = 'sessao:' . hash_hmac('sha256', $csrf, hash('sha256', __FILE__));
+    $espera = 0;
+    $permitido = atualizarLimites(static function (array &$estado, int $agora) use ($chaveIp, $chaveSessao, &$espera): bool {
+        foreach ([$chaveSessao => 12, $chaveIp => 120] as $chave => $limite) {
+            $estado[$chave] ??= ['ate' => $agora + 600, 'total' => 0];
+            if ($estado[$chave]['total'] >= $limite) {
+                $espera = max($espera, $estado[$chave]['ate'] - $agora);
+            }
+        }
+        if ($espera > 0) return false;
+        $estado[$chaveSessao]['total']++;
+        $estado[$chaveIp]['total']++;
+        return true;
+    });
+    if (!$permitido) {
+        header('Retry-After: ' . $espera);
+        $minutos = (int) ceil($espera / 60);
+        responder(429, ['message' => "Muitas solicitações nesta conexão. Aguarde $minutos minuto(s) antes de tentar novamente.", 'retry_after' => $espera]);
     }
 
     $pdo = conectarBancoAnalise();
