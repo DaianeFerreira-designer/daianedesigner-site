@@ -763,11 +763,11 @@ $turnstileSiteKey = getenv('TURNSTILE_SITE_KEY') ?: '';
 
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/js/intlTelInput.min.js"></script>
-<script src="/script.js"></script>
+<script src="/script.js?v=20261107-2"></script>
 <?php if ($turnstileSiteKey !== ''): ?>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
 <?php endif; ?>
-<script src="/assets/analytics.js" defer></script>
+<script src="/assets/analytics.js?v=20261107-2" defer></script>
 <script src="/main.js?v=8" defer></script>
 </body>
 

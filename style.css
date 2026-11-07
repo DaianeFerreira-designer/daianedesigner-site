@@ -11281,29 +11281,43 @@ html.portfolio-preview-open .custom-scrollbar { visibility: hidden; }
 #analytics-cookies {
   position: fixed;
   z-index: 9990;
-  inset: auto 16px 16px auto;
-  width: min(380px, calc(100% - 32px));
-  padding: 16px;
-  border: 1px solid var(--color-secondary);
-  border-radius: 12px;
-  background: var(--color-dark);
+  inset: auto auto 20px 20px;
+  width: min(390px, calc(100% - 124px));
+  padding: 18px 20px;
+  border: 1px solid rgba(248, 184, 138, .24);
+  border-radius: 14px;
+  background: rgba(13, 10, 8, .97);
   color: var(--color-text);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, .22);
+  font-family: "Work Sans", sans-serif;
 }
-#analytics-cookies p { margin: 0 0 12px; font-size: 14px !important; }
-#analytics-cookies div { display: flex; flex-wrap: wrap; gap: 8px; }
+#analytics-cookies[hidden] { display: none !important; }
+#analytics-cookies p { margin: 0 0 5px; font-size: 14px !important; font-weight: 600; line-height: 1.4; }
+#analytics-cookies .cookies-descricao { display: block; color: #bcb5af; font-size: 13px; line-height: 1.5; }
+#analytics-cookies a { color: var(--color-secondary); text-decoration: underline; }
+#analytics-cookies .cookies-opcao { display: flex; align-items: center; gap: 8px; margin: 12px 0; font-size: 13px; line-height: 1.4; cursor: pointer; }
+#analytics-cookies input { width: 16px; height: 16px; flex: 0 0 16px; accent-color: var(--color-accent); }
+#analytics-cookies .cookies-acoes { display: flex; flex-wrap: wrap; gap: 8px; }
 #analytics-cookies button {
-  padding: 8px 12px;
-  border: 1px solid var(--color-secondary);
-  border-radius: 6px;
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 1px solid rgba(248, 184, 138, .35);
+  border-radius: 8px;
   background: transparent;
   color: inherit;
   font: inherit !important;
-  font-size: 14px !important;
+  font-size: 12px !important;
+  line-height: 1.4;
+  letter-spacing: 0;
   cursor: pointer;
 }
-#analytics-cookies button[data-consent="accepted"] {
-  background: var(--color-accent);
-  color: var(--color-dark);
+#analytics-cookies button[data-save-preferences] {
+  background: rgba(255, 108, 0, .12);
+  color: var(--color-secondary);
+}
+#analytics-cookies :focus-visible { outline: 2px solid var(--color-secondary); outline-offset: 3px; }
+@media (max-width: 767px) {
+  #analytics-cookies { left: 12px; bottom: 12px; width: calc(100% - 106px); padding: 14px; }
 }
 footer .analytics-preferencias {
   padding: 0;

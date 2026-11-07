@@ -135,14 +135,18 @@
 
   const banner = document.createElement('aside');
   banner.id = 'analytics-cookies';
-  banner.setAttribute('aria-label', 'Cookies de análise');
+  banner.setAttribute('aria-label', 'Preferências de cookies');
   banner.hidden = true;
-  banner.innerHTML = '<p>Podemos usar cookies do Google Analytics para entender como o site é usado?</p>'
-    + '<div><button type="button" data-consent="rejected">Recusar</button>'
-    + '<button type="button" data-consent="accepted">Aceitar análise</button></div>';
+  banner.innerHTML = '<p>Seus cookies, sua escolha</p>'
+    + '<span class="cookies-descricao">Cookies opcionais ajudam a entender a navegação. '
+    + '<a href="/politica-de-cookies" target="_blank" rel="noopener noreferrer">Saiba mais</a>.</span>'
+    + '<label class="cookies-opcao"><input type="checkbox" id="cookies-analise"> Permitir cookies de análise</label>'
+    + '<div class="cookies-acoes"><button type="button" data-consent="rejected">Recusar</button>'
+    + '<button type="button" data-save-preferences>Guardar preferências</button></div>';
   document.body.append(banner);
 
   function showPreferences(visible) {
+    if (visible) banner.querySelector('#cookies-analise').checked = consent === 'accepted';
     banner.hidden = !visible;
     settings.setAttribute('aria-expanded', String(visible));
   }
@@ -153,10 +157,13 @@
   });
 
   banner.addEventListener('click', event => {
-    const button = event.target.closest('button[data-consent]');
+    const button = event.target.closest('button[data-consent], button[data-save-preferences]');
     if (!button) return;
 
-    setConsent(button.dataset.consent);
+    const choice = button.hasAttribute('data-save-preferences')
+      ? (banner.querySelector('#cookies-analise').checked ? 'accepted' : 'rejected')
+      : button.dataset.consent;
+    setConsent(choice);
     showPreferences(false);
     if (settings.getBoundingClientRect().top < innerHeight) settings.focus({ preventScroll: true });
   });
