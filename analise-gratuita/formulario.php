@@ -149,9 +149,14 @@ function enviarAnalise(string $id, string $nome, string $email, string $url): vo
     $host = getenv('SMTP_HOST');
     $usuario = getenv('SMTP_USERNAME');
     $senha = getenv('SMTP_PASSWORD');
+    $remetente = getenv('MAIL_FROM_ADDRESS') ?: '';
+    $destinatario = getenv('MAIL_TO_ADDRESS') ?: '';
     $porta = filter_var(getenv('SMTP_PORT'), FILTER_VALIDATE_INT, ['options' => ['min_range' => 1, 'max_range' => 65535]]);
     if (!$host || !$usuario || !$senha || $porta === false) {
         throw new RuntimeException('SMTP indisponível.');
+    }
+    if (!filter_var($remetente, FILTER_VALIDATE_EMAIL) || !filter_var($destinatario, FILTER_VALIDATE_EMAIL)) {
+        throw new RuntimeException('Remetente ou destinatário de e-mail indisponível.');
     }
 
     $mail = new PHPMailer(true);
@@ -164,8 +169,8 @@ function enviarAnalise(string $id, string $nome, string $email, string $url): vo
     $mail->Port = $porta;
     $mail->Timeout = 12;
     $mail->CharSet = 'UTF-8';
-    $mail->setFrom('admin@daianeferreira.com.br', getenv('MAIL_FROM_NAME') ?: 'Daiane Designer');
-    $mail->addAddress('newsletter@daianeferreira.com.br');
+    $mail->setFrom($remetente, getenv('MAIL_FROM_NAME') ?: 'Daiane Designer');
+    $mail->addAddress($destinatario, getenv('MAIL_TO_NAME') ?: '');
     $mail->addReplyTo($email, $nome);
     $mail->Subject = 'Nova solicitação de análise gratuita';
     $mail->Body = "Solicitação: #$id\nNome: $nome\nE-mail: $email\nLanding page: $url\n";
