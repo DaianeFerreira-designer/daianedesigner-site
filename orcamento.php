@@ -768,7 +768,7 @@ $turnstileSiteKey = getenv('TURNSTILE_SITE_KEY') ?: '';
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
 <?php endif; ?>
 <script src="/assets/analytics.js?v=20261107-4" defer></script>
-<script src="/main.js?v=8" defer></script>
+<script src="/main.js?v=9" defer></script>
 </body>
 
 </html>

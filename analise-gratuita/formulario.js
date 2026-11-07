@@ -514,7 +514,27 @@ function iniciarFormularioAnaliseLanding() {
                             "dark",
 
                         appearance:
-                            "interaction-only",
+                            "always",
+
+                        language: "pt-BR",
+                        callback: () => {
+                            if (erro.dataset.protecao === "true") {
+                                erro.classList.remove("ativo");
+                                delete erro.dataset.protecao;
+                            }
+                        },
+                        "error-callback": code => {
+                            console.warn("Turnstile análise: falha de verificação", code);
+                            erro.textContent = "A verificação de segurança não conseguiu concluir. Confira o aviso da Cloudflare abaixo dos campos.";
+                            erro.dataset.protecao = "true";
+                            erro.classList.add("ativo");
+                        },
+                        "expired-callback": () => {
+                            if (turnstileWidgetId !== null) window.turnstile.reset(turnstileWidgetId);
+                        },
+                        "timeout-callback": () => {
+                            if (turnstileWidgetId !== null) window.turnstile.reset(turnstileWidgetId);
+                        },
 
                         action:
                             "analise_landing"
@@ -605,7 +625,10 @@ function iniciarFormularioAnaliseLanding() {
             ) {
 
                 erro.textContent =
-                    "Conclua a verificação de segurança.";
+                    "Aguarde a verificação de segurança. Se aparecer uma caixa de confirmação, conclua-a antes de enviar.";
+
+                erro.dataset.protecao = "true";
+                document.getElementById("turnstileAnalise")?.scrollIntoView({ block: "center", behavior: "smooth" });
 
                 erro.classList.add(
                     "ativo"

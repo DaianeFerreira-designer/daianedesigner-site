@@ -24,6 +24,7 @@ const formSuccess = document.getElementById('formSuccess');
 let currentStep = 1;
 let itiInstance = null;
 let orcamentoWidgetId = null;
+let erroProtecaoOrcamento = '';
 const filled    = new Set();
 
 /* ── cálculo do progresso ───────────── */
@@ -449,8 +450,31 @@ function iniciarProtecaoOrcamento() {
   orcamentoWidgetId = window.turnstile.render(widget, {
     sitekey: widget.dataset.sitekey,
     action: 'orcamento',
-    appearance: 'interaction-only',
-    theme: 'dark'
+    appearance: 'always',
+    theme: 'dark',
+    language: 'pt-BR',
+    callback: () => {
+      erroProtecaoOrcamento = '';
+      const erro = document.getElementById('globalErr1');
+      if (erro?.dataset.protecao === 'true') {
+        erro.hidden = true;
+        delete erro.dataset.protecao;
+      }
+    },
+    'error-callback': code => {
+      erroProtecaoOrcamento = 'A verificação de segurança não conseguiu concluir. Confira o aviso da Cloudflare abaixo dos campos.';
+      console.warn('Turnstile orçamento: falha de verificação', code);
+      const erro = document.getElementById('globalErr1');
+      showGlobalError(erro, erroProtecaoOrcamento);
+      if (erro) erro.dataset.protecao = 'true';
+    },
+    'expired-callback': () => {
+      erroProtecaoOrcamento = '';
+      if (orcamentoWidgetId !== null) window.turnstile.reset(orcamentoWidgetId);
+    },
+    'timeout-callback': () => {
+      if (orcamentoWidgetId !== null) window.turnstile.reset(orcamentoWidgetId);
+    }
   });
 }
 
@@ -468,7 +492,9 @@ async function enviarEtapa(stageValue, btnId, errorId) {
 
     token = window.turnstile.getResponse(orcamentoWidgetId);
     if (!token) {
-      showGlobalError(globalEl, 'Conclua a verificação de segurança e tente novamente.');
+      showGlobalError(globalEl, erroProtecaoOrcamento || 'Aguarde a verificação de segurança abaixo dos campos. Se aparecer uma caixa de confirmação, conclua-a antes de continuar.');
+      if (globalEl) globalEl.dataset.protecao = 'true';
+      document.getElementById('turnstileOrcamento')?.scrollIntoView({ block: 'center', behavior: 'smooth' });
       return false;
     }
   }
