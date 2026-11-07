@@ -148,7 +148,8 @@
   document.body.append(banner);
 
   function showPreferences(visible) {
-    if (visible) banner.querySelector('#cookies-analise').checked = consent === 'accepted';
+    if (visible) banner.querySelector('#cookies-analise').checked = consent === 'accepted'
+      || !['rejected', 'dismissed'].includes(consent);
     banner.hidden = !visible;
     settings.setAttribute('aria-expanded', String(visible));
   }

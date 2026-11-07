@@ -11284,16 +11284,15 @@ html.portfolio-preview-open .custom-scrollbar { visibility: hidden; }
   inset: auto auto 20px 20px;
   width: min(390px, calc(100% - 124px));
   padding: 18px 20px;
-  border: 1px solid rgba(248, 184, 138, .24);
+  border: 1px solid var(--color-secondary);
   border-radius: 14px;
-  background: rgba(13, 10, 8, .97);
+  background: var(--color-dark);
   color: var(--color-text);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, .22);
   font-family: "Work Sans", sans-serif;
 }
 #analytics-cookies[hidden] { display: none !important; }
 #analytics-cookies p { margin: 0 0 5px; padding-right: 25px; font-size: 14px !important; font-weight: 600; line-height: 1.4; }
-#analytics-cookies .cookies-descricao { display: block; color: #bcb5af; font-size: 13px; line-height: 1.5; }
+#analytics-cookies .cookies-descricao { display: block; color: var(--color-light); font-size: 13px; line-height: 1.5; }
 #analytics-cookies a { color: var(--color-secondary); text-decoration: underline; }
 #analytics-cookies .cookies-opcao { display: flex; align-items: center; gap: 8px; margin: 12px 0; font-size: 13px; line-height: 1.4; cursor: pointer; }
 #analytics-cookies input { width: 16px; height: 16px; flex: 0 0 16px; accent-color: var(--color-accent); }
@@ -11301,7 +11300,7 @@ html.portfolio-preview-open .custom-scrollbar { visibility: hidden; }
 #analytics-cookies button {
   min-height: 36px;
   padding: 7px 12px;
-  border: 1px solid rgba(248, 184, 138, .35);
+  border: 1px solid var(--color-secondary);
   border-radius: 8px;
   background: transparent;
   color: inherit;
@@ -11312,8 +11311,9 @@ html.portfolio-preview-open .custom-scrollbar { visibility: hidden; }
   cursor: pointer;
 }
 #analytics-cookies button[data-save-preferences] {
-  background: rgba(255, 108, 0, .12);
-  color: var(--color-secondary);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-dark);
 }
 #analytics-cookies .cookies-fechar {
   position: absolute;
@@ -11325,9 +11325,9 @@ html.portfolio-preview-open .custom-scrollbar { visibility: hidden; }
   min-height: 30px;
   padding: 0;
   border: 0;
-  color: #bcb5af;
+  color: var(--color-light);
 }
-#analytics-cookies .cookies-fechar:hover { color: var(--color-text); background: rgba(255, 255, 255, .07); }
+#analytics-cookies .cookies-fechar:hover { color: var(--color-text); }
 #analytics-cookies :focus-visible { outline: 2px solid var(--color-secondary); outline-offset: 3px; }
 @media (max-width: 767px) {
   #analytics-cookies { left: 12px; bottom: 12px; width: calc(100% - 106px); padding: 14px; }
