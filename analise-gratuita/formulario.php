@@ -252,7 +252,15 @@ try {
         enviarAnalise($id, $nome, $email, $url);
         $notificado = true;
     } catch (Throwable $erro) {
-        error_log('Análise gratuita #' . $id . ': falha ao enviar aviso (' . get_class($erro) . ').');
+        $detalhe = $erro->getMessage();
+        foreach (['SMTP_PASSWORD', 'DB_PASSWORD'] as $variavel) {
+            $segredo = getenv($variavel);
+            if (is_string($segredo) && $segredo !== '') {
+                $detalhe = str_replace($segredo, '[oculto]', $detalhe);
+            }
+        }
+        $detalhe = substr(str_replace(["\r", "\n"], ' ', $detalhe), 0, 1500);
+        error_log('Análise gratuita #' . $id . ': falha ao enviar aviso (' . get_class($erro) . '): ' . $detalhe);
     }
 
     try {
