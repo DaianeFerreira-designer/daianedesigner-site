@@ -3977,18 +3977,6 @@ footer .textoAnimado .charFooter {
 }
 
 /* =========================================
-   TURNSTILE
-========================================= */
-
-.turnstileAnalise {
-  display: flex;
-
-  justify-content: center;
-
-  margin-top: 16px;
-}
-
-/* =========================================
    BOTÃO
 ========================================= */
 
@@ -7374,47 +7362,10 @@ body {
     overflow-wrap: anywhere;
   }
 
-  /* =====================================================
-     TURNSTILE
-  ===================================================== */
-
-.turnstileAnalise,
 .btnAnalise {
   align-items: center;
   justify-content: center;
 }
-
-  .turnstileAnalise {
-    width: 100%;
-    height: auto;
-    min-height: 0;
-
-    margin: 14px 0 0;
-
-    display: flex;
-
-    overflow: visible;
-  }
-
-  /*
-    Se o Turnstile não carregar, não mantém
-    um espaço vazio antes do botão.
-  */
-
-  .turnstileAnalise:empty {
-    display: none;
-
-    width: 0;
-    height: 0;
-    min-height: 0;
-
-    margin: 0;
-    padding: 0;
-  }
-
-  .turnstileAnalise iframe {
-    max-width: 100%;
-  }
 
   /* =====================================================
      BOTÃO
@@ -7524,15 +7475,6 @@ body {
     padding-right: 12px;
   }
 
-  .turnstileAnalise:not(:empty) {
-    min-height: 56px;
-  }
-
-  .turnstileAnalise > div {
-    transform: scale(0.84);
-    transform-origin: center center;
-  }
-
   .btnAnalise {
     font-size: 0.8125rem;
   }
@@ -7543,10 +7485,6 @@ body {
 ========================================================= */
 
 @media (max-width: 340px) {
-  .turnstileAnalise > div {
-    transform: scale(0.76);
-  }
-
   .campoAnaliseCheck {
     margin-right: 7px;
   }
@@ -10185,7 +10123,6 @@ body.portfolio-preview-open {
 .newsletter .campoAnalise input::placeholder { color: var(--color-light); font-size: inherit; opacity: 1; }
 .newsletter .privacidadeAnalise { width: min(918px, calc(100% - 48px)); margin: 24px auto 0; color: var(--color-light); font-size: 12px; line-height: 1.5; text-align: center; }
 .newsletter .privacidadeAnalise a { color: inherit; }
-.newsletter .turnstileAnalise:empty { margin: 0; }
 .newsletter .btnAnalise { width: min(375px, calc(100% - 48px)); height: 73px; margin: 28px auto 0; border-radius: 12px; background: var(--color-accent); color: var(--color-text); font: 600 18px/1.3 "Work Sans", sans-serif; letter-spacing: -.02em; box-shadow: 0 10px 28px rgba(255,108,0,.12); }
 .newsletter .btnAnalise:disabled { opacity: .65; }
 .newsletter .btnAnaliseIcone { transform: rotate(180deg); }
