@@ -84,7 +84,7 @@ if (is_array($tipoProjetoRecebido) && count(array_filter($tipoProjetoRecebido, '
     responderOrcamento(422, 'Confira os dados enviados.');
 }
 foreach (['nome', 'whatsapp', 'email', 'empresaOpcional', 'presenca_site', 'site_link', 'outro_projeto',
-    'investimento_estimado', 'prazo_inicio', 'insta', 'observacao', 'cf-turnstile-response'] as $campo) {
+    'investimento_estimado', 'prazo_inicio', 'insta', 'observacao'] as $campo) {
     if (isset($_POST[$campo]) && !is_string($_POST[$campo])) {
         responderOrcamento(422, 'Confira os dados enviados.');
     }
@@ -208,7 +208,7 @@ try {
         }
 
         if ($rascunhoExistente === null) {
-            validarNovoRascunho($_POST['cf-turnstile-response'] ?? '');
+            validarNovoRascunho();
         }
     }
 

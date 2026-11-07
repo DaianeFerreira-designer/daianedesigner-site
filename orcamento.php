@@ -12,7 +12,6 @@ $url = "https://daianedesigner.com.br/orcamento";
 $robots = "noindex, nofollow";
 $isBudgetPage = true;
 $orcamentoRequestId = bin2hex(random_bytes(16));
-$turnstileSiteKey = getenv('TURNSTILE_SITE_KEY') ?: '';
 
 ?>
 
@@ -242,7 +241,6 @@ $turnstileSiteKey = getenv('TURNSTILE_SITE_KEY') ?: '';
           </div>
 
           <!-- Global erro sep 01 -->
-          <div id="turnstileOrcamento" data-sitekey="<?= htmlspecialchars($turnstileSiteKey, ENT_QUOTES, 'UTF-8') ?>"></div>
 
           <div
             class="global-error"
@@ -764,11 +762,8 @@ $turnstileSiteKey = getenv('TURNSTILE_SITE_KEY') ?: '';
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/js/intlTelInput.min.js"></script>
 <script src="/script.js?v=20261107-2"></script>
-<?php if ($turnstileSiteKey !== ''): ?>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
-<?php endif; ?>
 <script src="/assets/analytics.js?v=20261107-4" defer></script>
-<script src="/main.js?v=9" defer></script>
+<script src="/main.js?v=10" defer></script>
 </body>
 
 </html>

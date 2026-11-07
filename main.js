@@ -23,8 +23,6 @@ const formSuccess = document.getElementById('formSuccess');
 /* ── State ─────────────────────────────────── */
 let currentStep = 1;
 let itiInstance = null;
-let orcamentoWidgetId = null;
-let erroProtecaoOrcamento = '';
 const filled    = new Set();
 
 /* ── cálculo do progresso ───────────── */
@@ -42,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initChoiceFields();
   initValidationBubbles();
   initNavigation();
-  iniciarProtecaoOrcamento();
   preSelecionarProjetoPorURL();
 });
 
@@ -443,61 +440,10 @@ function fillReviewStep3() {
   if (showOutro) document.getElementById('rv_outro_projeto').textContent = outroTxt;
 }
 
-function iniciarProtecaoOrcamento() {
-  const widget = document.getElementById('turnstileOrcamento');
-  if (!widget?.dataset.sitekey || !window.turnstile) return;
-
-  orcamentoWidgetId = window.turnstile.render(widget, {
-    sitekey: widget.dataset.sitekey,
-    action: 'orcamento',
-    appearance: 'always',
-    theme: 'dark',
-    language: 'pt-BR',
-    callback: () => {
-      erroProtecaoOrcamento = '';
-      const erro = document.getElementById('globalErr1');
-      if (erro?.dataset.protecao === 'true') {
-        erro.hidden = true;
-        delete erro.dataset.protecao;
-      }
-    },
-    'error-callback': code => {
-      erroProtecaoOrcamento = 'A verificação de segurança não conseguiu concluir. Confira o aviso da Cloudflare abaixo dos campos.';
-      console.warn('Turnstile orçamento: falha de verificação', code);
-      const erro = document.getElementById('globalErr1');
-      showGlobalError(erro, erroProtecaoOrcamento);
-      if (erro) erro.dataset.protecao = 'true';
-    },
-    'expired-callback': () => {
-      erroProtecaoOrcamento = '';
-      if (orcamentoWidgetId !== null) window.turnstile.reset(orcamentoWidgetId);
-    },
-    'timeout-callback': () => {
-      if (orcamentoWidgetId !== null) window.turnstile.reset(orcamentoWidgetId);
-    }
-  });
-}
-
 async function enviarEtapa(stageValue, btnId, errorId) {
   const btn = document.getElementById(btnId);
   const globalEl = document.getElementById(errorId);
   if (btn?.disabled) return false;
-
-  let token = '';
-  if (stageValue === 'rascunho' && !form.elements.draft_id.value) {
-    if (orcamentoWidgetId === null) {
-      showGlobalError(globalEl, 'A proteção do orçamento está indisponível. Atualize a página e tente novamente.');
-      return false;
-    }
-
-    token = window.turnstile.getResponse(orcamentoWidgetId);
-    if (!token) {
-      showGlobalError(globalEl, erroProtecaoOrcamento || 'Aguarde a verificação de segurança abaixo dos campos. Se aparecer uma caixa de confirmação, conclua-a antes de continuar.');
-      if (globalEl) globalEl.dataset.protecao = 'true';
-      document.getElementById('turnstileOrcamento')?.scrollIntoView({ block: 'center', behavior: 'smooth' });
-      return false;
-    }
-  }
 
   const label = btn?.querySelector('.btn-label');
   const spinner = btn?.querySelector('.btn-spinner');
@@ -510,7 +456,6 @@ async function enviarEtapa(stageValue, btnId, errorId) {
   const fd = new FormData(form);
 
   fd.set('stage', stageValue);
-  if (token) fd.set('cf-turnstile-response', token);
 
   if (itiInstance) {
     fd.set('whatsapp', itiInstance.getNumber());
@@ -544,9 +489,6 @@ async function enviarEtapa(stageValue, btnId, errorId) {
 
   } finally {
     if (btn) btn.disabled = false;
-    if (token && !form.elements.draft_id.value) {
-      window.turnstile.reset(orcamentoWidgetId);
-    }
     if (label) label.hidden = false;
     if (spinner) spinner.hidden = true;
   }

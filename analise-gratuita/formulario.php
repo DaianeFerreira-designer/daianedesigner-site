@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 use PHPMailer\PHPMailer\PHPMailer;
 
-const ANALISE_ACTION = 'analise_landing';
-const ANALISE_HOSTS = ['daianedesigner.com.br', 'www.daianedesigner.com.br'];
 
 ini_set('display_errors', '0');
 header('Content-Type: application/json; charset=utf-8');
@@ -69,27 +67,6 @@ function atualizarLimites(callable $atualizar): bool
     } finally {
         fclose($handle);
     }
-}
-
-function validarTurnstile(string $token, string $secret): bool
-{
-    $contexto = stream_context_create(['http' => [
-        'method' => 'POST',
-        'header' => "Content-Type: application/x-www-form-urlencoded\r\nAccept: application/json",
-        'content' => http_build_query(['secret' => $secret, 'response' => $token]),
-        'timeout' => 8,
-        'follow_location' => 0,
-    ]]);
-
-    $resposta = @file_get_contents('https://challenges.cloudflare.com/turnstile/v0/siteverify', false, $contexto);
-    if ($resposta === false) {
-        throw new RuntimeException('Turnstile indisponível.');
-    }
-
-    $resultado = json_decode($resposta, true, 16, JSON_THROW_ON_ERROR);
-    return ($resultado['success'] ?? false) === true
-        && ($resultado['action'] ?? '') === ANALISE_ACTION
-        && in_array($resultado['hostname'] ?? '', ANALISE_HOSTS, true);
 }
 
 function conectarBancoAnalise(): PDO
@@ -188,12 +165,6 @@ if ((int) ($_SERVER['CONTENT_LENGTH'] ?? 0) > 16384) {
 }
 
 try {
-    $siteKey = getenv('TURNSTILE_SITE_KEY');
-    $secret = getenv('TURNSTILE_SECRET_KEY');
-    if ($metodo === 'GET' && (!$siteKey || !$secret)) {
-        responder(503, ['message' => 'A proteção do formulário está indisponível no momento.']);
-    }
-
     ini_set('session.use_strict_mode', '1');
     ini_set('session.use_only_cookies', '1');
     session_name('DAIANEANALISE');
@@ -211,7 +182,7 @@ try {
         $_SESSION['csrf'] ??= bin2hex(random_bytes(32));
         $csrf = $_SESSION['csrf'];
         session_write_close();
-        responder(200, ['csrf_token' => $csrf, 'turnstile_site_key' => $siteKey]);
+        responder(200, ['csrf_token' => $csrf]);
     }
 
     $csrf = $_SESSION['csrf'] ?? '';
@@ -220,7 +191,7 @@ try {
         responder(403, ['message' => 'A sessão expirou. Atualize a página e tente novamente.']);
     }
 
-    $chaveIp = 'ip:' . hash_hmac('sha256', $_SERVER['REMOTE_ADDR'] ?? '', $secret ?: $csrf);
+    $chaveIp = 'ip:' . hash_hmac('sha256', $_SERVER['REMOTE_ADDR'] ?? '', hash('sha256', __FILE__));
     $permitido = atualizarLimites(static function (array &$estado, int $agora) use ($chaveIp): bool {
         $estado[$chaveIp] ??= ['ate' => $agora + 600, 'total' => 0];
         if ($estado[$chaveIp]['total'] >= 12) {
@@ -259,14 +230,6 @@ try {
         || !str_contains($host, '.') || filter_var(trim($host, '[]'), FILTER_VALIDATE_IP)
         || isset($partes['user']) || isset($partes['pass'])) {
         responder(422, ['message' => 'Digite uma URL válida para sua Landing Page.']);
-    }
-
-    $token = campo('cf-turnstile-response');
-    if (!$secret || !$siteKey) {
-        responder(503, ['message' => 'A proteção do formulário está indisponível no momento.']);
-    }
-    if ($token === '' || strlen($token) > 2048 || !validarTurnstile($token, $secret)) {
-        responder(403, ['message' => 'Conclua a verificação de segurança e tente novamente.']);
     }
 
     $pdo = conectarBancoAnalise();

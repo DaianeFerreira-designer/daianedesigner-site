@@ -44,8 +44,6 @@ function iniciarFormularioAnaliseLanding() {
         );
 
 
-    let turnstileWidgetId =
-        null;
 
 
     /*
@@ -424,9 +422,7 @@ function iniciarFormularioAnaliseLanding() {
                     );
 
 
-                if (turnstileWidgetId !== null) {
-                    erro.classList.remove("ativo");
-                }
+                erro.classList.remove("ativo");
 
             }
         );
@@ -440,7 +436,7 @@ function iniciarFormularioAnaliseLanding() {
 
     Busca:
     - CSRF
-    - Site Key pública Turnstile
+    - Sessão do formulário
     =========================================
     */
 
@@ -487,60 +483,6 @@ function iniciarFormularioAnaliseLanding() {
 
             csrfInput.value =
                 dados.csrf_token;
-
-
-            if (
-                typeof window.turnstile
-                ===
-                "undefined"
-            ) {
-
-                throw new Error(
-                    "A proteção antirrobô não foi carregada."
-                );
-
-            }
-
-
-            turnstileWidgetId =
-                window.turnstile.render(
-                    "#turnstileAnalise",
-                    {
-
-                        sitekey:
-                            dados.turnstile_site_key,
-
-                        theme:
-                            "dark",
-
-                        appearance:
-                            "always",
-
-                        language: "pt-BR",
-                        callback: () => {
-                            if (erro.dataset.protecao === "true") {
-                                erro.classList.remove("ativo");
-                                delete erro.dataset.protecao;
-                            }
-                        },
-                        "error-callback": code => {
-                            console.warn("Turnstile análise: falha de verificação", code);
-                            erro.textContent = "A verificação de segurança não conseguiu concluir. Confira o aviso da Cloudflare abaixo dos campos.";
-                            erro.dataset.protecao = "true";
-                            erro.classList.add("ativo");
-                        },
-                        "expired-callback": () => {
-                            if (turnstileWidgetId !== null) window.turnstile.reset(turnstileWidgetId);
-                        },
-                        "timeout-callback": () => {
-                            if (turnstileWidgetId !== null) window.turnstile.reset(turnstileWidgetId);
-                        },
-
-                        action:
-                            "analise_landing"
-
-                    }
-                );
 
 
             botao.disabled =
@@ -607,37 +549,6 @@ function iniciarFormularioAnaliseLanding() {
             }
 
 
-            /*
-            =========================================
-            TOKEN TURNSTILE
-            =========================================
-            */
-
-            const tokenTurnstile =
-                window.turnstile
-                    ?.getResponse(
-                        turnstileWidgetId
-                    );
-
-
-            if (
-                !tokenTurnstile
-            ) {
-
-                erro.textContent =
-                    "Aguarde a verificação de segurança. Se aparecer uma caixa de confirmação, conclua-a antes de enviar.";
-
-                erro.dataset.protecao = "true";
-                document.getElementById("turnstileAnalise")?.scrollIntoView({ block: "center", behavior: "smooth" });
-
-                erro.classList.add(
-                    "ativo"
-                );
-
-                return;
-            }
-
-
             const htmlOriginal =
                 botao.innerHTML;
 
@@ -662,10 +573,7 @@ function iniciarFormularioAnaliseLanding() {
                     );
 
 
-                dadosForm.set(
-                    "cf-turnstile-response",
-                    tokenTurnstile
-                );
+
 
 
                 const resposta =
@@ -717,9 +625,7 @@ function iniciarFormularioAnaliseLanding() {
                 }
 
 
-                window.turnstile.reset(
-                    turnstileWidgetId
-                );
+
 
 
                 sucesso.textContent =
@@ -742,19 +648,6 @@ function iniciarFormularioAnaliseLanding() {
                 erro.classList.add(
                     "ativo"
                 );
-
-
-                if (
-                    turnstileWidgetId
-                    !==
-                    null
-                ) {
-
-                    window.turnstile.reset(
-                        turnstileWidgetId
-                    );
-
-                }
 
 
             } finally {

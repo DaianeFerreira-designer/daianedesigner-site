@@ -49,38 +49,14 @@ function permitirNovoRascunho(string $secret): bool
     }
 }
 
-function validarNovoRascunho(string $token): void
+function validarNovoRascunho(): void
 {
-    $secret = getenv('TURNSTILE_SECRET_KEY');
-    if (!$secret || !getenv('TURNSTILE_SITE_KEY')) {
-        responderOrcamento(503, 'A proteção do orçamento está indisponível. Tente novamente mais tarde.');
-    }
-    if ($token === '' || strlen($token) > 2048) {
-        responderOrcamento(403, 'Conclua a verificação de segurança e tente novamente.');
-    }
+    $secret = hash('sha256', __FILE__);
     if (!permitirNovoRascunho($secret)) {
         header('Retry-After: 600');
         responderOrcamento(429, 'Muitas tentativas de iniciar um orçamento. Aguarde alguns minutos.');
     }
 
-    $contexto = stream_context_create(['http' => [
-        'method' => 'POST',
-        'header' => "Content-Type: application/x-www-form-urlencoded\r\nAccept: application/json",
-        'content' => http_build_query(['secret' => $secret, 'response' => $token]),
-        'timeout' => 8,
-        'follow_location' => 0,
-    ]]);
-
-    $resposta = @file_get_contents('https://challenges.cloudflare.com/turnstile/v0/siteverify', false, $contexto);
-    if ($resposta === false) {
-        responderOrcamento(503, 'A verificação de segurança está indisponível. Tente novamente.');
-    }
-
-    $dados = json_decode($resposta, true);
-    if (($dados['success'] ?? false) !== true || ($dados['action'] ?? '') !== 'orcamento'
-        || !in_array($dados['hostname'] ?? '', ['daianedesigner.com.br', 'www.daianedesigner.com.br'], true)) {
-        responderOrcamento(403, 'Conclua a verificação de segurança e tente novamente.');
-    }
 }
 
 function finalizarEtapaOrcamento(array &$rascunho, string $etapa, string $mensagem, array $emailConfig, string $assunto, string $corpo): never
