@@ -127,7 +127,8 @@ function enviarAnalise(string $id, string $nome, string $email, string $url): vo
     $usuario = getenv('SMTP_USERNAME');
     $senha = getenv('SMTP_PASSWORD');
     $remetente = getenv('MAIL_FROM_ADDRESS') ?: '';
-    $destinatario = 'newsletter@daianeferreira.com.br';
+    $destinatario = getenv('ANALISE_MAIL_TO_ADDRESS') ?: 'newsletter@daianeferreira.com.br';
+    $nomeDestinatario = getenv('ANALISE_MAIL_TO_NAME') ?: 'Análise gratuita';
     $porta = filter_var(getenv('SMTP_PORT'), FILTER_VALIDATE_INT, ['options' => ['min_range' => 1, 'max_range' => 65535]]);
     if (!$host || !$usuario || !$senha || $porta === false) {
         throw new RuntimeException('SMTP indisponível.');
@@ -147,7 +148,7 @@ function enviarAnalise(string $id, string $nome, string $email, string $url): vo
     $mail->Timeout = 12;
     $mail->CharSet = 'UTF-8';
     $mail->setFrom($remetente, getenv('MAIL_FROM_NAME') ?: 'Daiane Designer');
-    $mail->addAddress($destinatario);
+    $mail->addAddress($destinatario, $nomeDestinatario);
     $mail->addReplyTo($email, $nome);
     $mail->Subject = 'Nova solicitação de análise gratuita';
     $mail->Body = "Solicitação: #$id\nNome: $nome\nE-mail: $email\nLanding page: $url\n";
