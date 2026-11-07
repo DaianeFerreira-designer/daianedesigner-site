@@ -1,0 +1,2667 @@
+<!doctype html>
+<html lang="pt-BR" id="pagina">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (() => {
+        const navegacao = performance.getEntriesByType("navigation")[0];
+        if (navegacao?.type !== "reload") return;
+
+        history.scrollRestoration = "manual";
+
+        function voltarAoInicio() {
+          if (window.lenis) {
+            window.lenis.scrollTo(0, { immediate: true, force: true });
+          }
+          window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+        }
+
+        document.addEventListener("DOMContentLoaded", voltarAoInicio, { once: true });
+        window.addEventListener("pageshow", evento => {
+          if (!evento.persisted) voltarAoInicio();
+        });
+      })();
+    </script>
+    <script>
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.add("preloader-ativo");
+        window.setTimeout(() => {
+          document.documentElement.classList.remove("preloader-ativo");
+        }, 4000);
+      }
+    </script>
+
+
+    <!-- SEO -->
+    <title>Criação de Sites Profissionais e Landing Pages | Daiane Ferreira</title>
+
+    <meta
+      name="description"
+      content="Criação de sites profissionais, landing pages e páginas personalizadas para empresas e negócios que desejam aumentar sua presença online e gerar mais resultados"
+    />
+
+    <meta name="author" content="Daiane Ferreira" />
+
+    <meta name="robots" content="index, follow" />
+
+    <link rel="canonical" href="https://daianedesigner.com.br/" />
+
+    <!-- Open Graph -->
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Daiane Ferreira — Web Designer" />
+
+    <meta
+      property="og:title"
+      content="Criação de Sites Profissionais e Landing Pages | Daiane Ferreira"
+    />
+
+    <meta
+      property="og:description"
+      content="Criação de sites profissionais, landing pages e páginas personalizadas para empresas e negócios que desejam aumentar sua presença online e gerar mais resultados"
+    />
+
+    <meta property="og:url" content="https://daianedesigner.com.br/" />
+
+    <meta
+      property="og:image"
+      content="https://daianedesigner.com.br/assets/imagens/hero-web-design.webp"
+    />
+
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1001" />
+    <meta property="og:image:type" content="image/webp" />
+
+    <meta
+      property="og:image:alt"
+      content="Criação de sites profissionais por Daiane Ferreira"
+    />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta
+      name="twitter:title"
+      content="Criação de Sites Profissionais e Landing Pages | Daiane Ferreira"
+    />
+
+    <meta
+      name="twitter:description"
+      content="Criação de sites profissionais, landing pages e páginas personalizadas para empresas e negócios que desejam aumentar sua presença online e gerar mais resultados"
+    />
+
+    <meta
+      name="twitter:image"
+      content="https://daianedesigner.com.br/assets/imagens/hero-web-design.webp"
+    />
+
+    <meta
+      name="twitter:image:alt"
+      content="Criação de sites profissionais por Daiane Ferreira"
+    />
+
+    <!-- Dados estruturados -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://daianedesigner.com.br/#website",
+            "url": "https://daianedesigner.com.br/",
+            "name": "Daiane Ferreira — Web Designer",
+            "inLanguage": "pt-BR"
+          },
+          {
+            "@type": "Person",
+            "@id": "https://daianedesigner.com.br/#daiane-ferreira",
+            "name": "Daiane Ferreira",
+            "url": "https://daianedesigner.com.br/",
+            "jobTitle": "Web Designer",
+            "sameAs": [
+              "https://www.instagram.com/designer.daiane/",
+              "https://www.linkedin.com/in/daiane-ferreira-araujo/",
+              "https://www.behance.net/daiane_ferreira",
+              "https://github.com/DaianeFerreira-designer"
+            ]
+          },
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://daianedesigner.com.br/#professional-service",
+            "name": "Daiane Ferreira — Web Designer",
+            "url": "https://daianedesigner.com.br/",
+            "image": "https://daianedesigner.com.br/assets/imagens/hero-web-design.webp",
+            "description": "Criação de sites profissionais, landing pages e páginas personalizadas para empresas e negócios que desejam aumentar sua presença online e gerar mais resultados",
+            "areaServed": {
+              "@type": "Country",
+              "name": "Brasil"
+            },
+            "founder": {
+              "@id": "https://daianedesigner.com.br/#daiane-ferreira"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Serviços de Web Design",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Criação de Site Institucional"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Criação de Landing Page"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Criação de Loja Virtual"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Preload das fontes usadas na primeira tela -->
+    <link
+      rel="preload"
+      href="/assets/fonts/WorkSans-SemiBold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link
+      rel="preload"
+      href="/assets/fonts/WorkSans-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link
+      rel="preload"
+      href="/assets/fonts/Satisfy-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Preload da imagem principal -->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/criacao-de-sites-profissionais-daiane-ferreira-mobile.webp"
+      media="(max-width: 767px)"
+      fetchpriority="high"
+    />
+
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/criacao-de-sites-profissionais-daiane-ferreira-desktop.webp"
+      media="(min-width: 768px)"
+      fetchpriority="high"
+    />
+
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lenis@1.1.18/dist/lenis.css"
+    />
+  </head>
+
+  <body>
+    <div id="preloader" aria-hidden="true">
+      <div class="preloader-bg"></div>
+    
+      <div class="preloader-logo">
+        <svg
+          class="preloader-logo-empty"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 40 41"
+          fill="none">
+          <path
+            d="M2 2C2.52501 2 3.04218 2.21118 3.41602 2.58919L3.41536 2.58984C3.78841 2.96291 4 3.47227 4 4C4 4.5285 3.7883 5.04269 3.41081 5.41602L3.41016 5.41537C3.03656 5.78892 2.52426 6 2 6C1.4715 6 0.957313 5.7883 0.583984 5.41081L0.584635 5.41016C0.21108 5.03656 8.5234e-09 4.52426 0 4C0 3.47499 0.211185 2.95782 0.589193 2.58398L0.589844 2.58464C0.963443 2.21108 1.47574 2 2 2Z"
+            fill="currentColor" />
+          <path
+            d="M10 2C10.5285 2 11.0427 2.2117 11.416 2.58919L11.4154 2.58984C11.7884 2.96291 12 3.47227 12 4C12 4.5285 11.7883 5.04269 11.4108 5.41602L11.4102 5.41536C11.0368 5.78867 10.526 6 10 6C9.47499 6 8.95782 5.78882 8.58398 5.41081L8.58464 5.41016C8.21108 5.03656 8 4.52426 8 4C8 3.47499 8.21119 2.95782 8.58919 2.58398L8.58984 2.58464C8.96291 2.21159 9.47227 2 10 2Z"
+            fill="white" />
+          <path
+            d="M18 2C18.525 2 19.0422 2.21118 19.416 2.58919L19.4154 2.58984C19.7884 2.96291 20 3.47227 20 4C20 4.5285 19.7883 5.04269 19.4108 5.41602L19.4102 5.41536C19.0366 5.78892 18.5243 6 18 6C17.4715 6 16.9573 5.7883 16.584 5.41081L16.5846 5.41016C16.2111 5.03656 16 4.52426 16 4C16 3.47499 16.2112 2.95782 16.5892 2.58398L16.5898 2.58464C16.9634 2.21108 17.4757 2 18 2Z"
+            fill="currentColor" />
+          <path
+            d="M8.8096 33.2832C8.304 33.2832 7.8296 33.0864 7.4744 32.7296L0.5528 25.808C0.1968 25.4528 0 24.9784 0 24.4736C0 23.9688 0.1968 23.4936 0.5536 23.1384L7.4752 16.2168C7.8304 15.8608 8.3048 15.664 8.8096 15.664C9.8504 15.664 10.6976 16.5112 10.6976 17.552C10.6976 18.0576 10.5008 18.532 10.144 18.8872L4.5576 24.4736L10.1448 30.0608C10.5016 30.416 10.6976 30.8904 10.6976 31.3952C10.6976 32.436 9.8504 33.2832 8.8096 33.2832Z"
+            fill="currentColor" />
+          <path
+            d="M28.9472 33.9128C27.9064 33.9128 27.0592 33.0656 27.0592 32.0248C27.0592 31.5192 27.256 31.0448 27.6128 30.6896L33.1992 25.1032L27.612 19.516C27.256 19.16 27.0592 18.6856 27.0592 18.1816C27.0592 17.1408 27.9064 16.2936 28.9472 16.2936C29.4528 16.2936 29.9272 16.4904 30.2824 16.8472L37.204 23.7688C37.5608 24.1248 37.7568 24.5992 37.7568 25.1032C37.7568 25.6072 37.56 26.0832 37.2032 26.4384L30.2816 33.36C29.9264 33.7168 29.452 33.9128 28.9472 33.9128Z"
+            fill="currentColor" />
+          <path
+            d="M13.2152 38.9472C12.1744 38.9472 11.3272 38.1 11.3272 37.0592C11.3272 36.8088 11.376 36.564 11.472 36.332L22.7992 11.16C23.0952 10.4552 23.7792 10 24.5416 10C25.5824 10 26.4296 10.8472 26.4296 11.888C26.4296 12.1384 26.3808 12.3832 26.2848 12.6152L14.9568 37.788C14.6608 38.4928 13.9768 38.948 13.2144 38.948L13.2152 38.9472Z"
+            fill="currentColor" />
+        </svg>
+    
+        <svg
+          class="preloader-logo-fill"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 40 41"
+          fill="none">
+          <!-- mesmos paths aqui -->
+          <path
+            d="M2 2C2.52501 2 3.04218 2.21118 3.41602 2.58919L3.41536 2.58984C3.78841 2.96291 4 3.47227 4 4C4 4.5285 3.7883 5.04269 3.41081 5.41602L3.41016 5.41537C3.03656 5.78892 2.52426 6 2 6C1.4715 6 0.957313 5.7883 0.583984 5.41081L0.584635 5.41016C0.21108 5.03656 8.5234e-09 4.52426 0 4C0 3.47499 0.211185 2.95782 0.589193 2.58398L0.589844 2.58464C0.963443 2.21108 1.47574 2 2 2Z"
+            fill="currentColor" />
+          <path
+            d="M10 2C10.5285 2 11.0427 2.2117 11.416 2.58919L11.4154 2.58984C11.7884 2.96291 12 3.47227 12 4C12 4.5285 11.7883 5.04269 11.4108 5.41602L11.4102 5.41536C11.0368 5.78867 10.526 6 10 6C9.47499 6 8.95782 5.78882 8.58398 5.41081L8.58464 5.41016C8.21108 5.03656 8 4.52426 8 4C8 3.47499 8.21119 2.95782 8.58919 2.58398L8.58984 2.58464C8.96291 2.21159 9.47227 2 10 2Z"
+            fill="white" />
+          <path
+            d="M18 2C18.525 2 19.0422 2.21118 19.416 2.58919L19.4154 2.58984C19.7884 2.96291 20 3.47227 20 4C20 4.5285 19.7883 5.04269 19.4108 5.41602L19.4102 5.41536C19.0366 5.78892 18.5243 6 18 6C17.4715 6 16.9573 5.7883 16.584 5.41081L16.5846 5.41016C16.2111 5.03656 16 4.52426 16 4C16 3.47499 16.2112 2.95782 16.5892 2.58398L16.5898 2.58464C16.9634 2.21108 17.4757 2 18 2Z"
+            fill="currentColor" />
+          <path
+            d="M8.8096 33.2832C8.304 33.2832 7.8296 33.0864 7.4744 32.7296L0.5528 25.808C0.1968 25.4528 0 24.9784 0 24.4736C0 23.9688 0.1968 23.4936 0.5536 23.1384L7.4752 16.2168C7.8304 15.8608 8.3048 15.664 8.8096 15.664C9.8504 15.664 10.6976 16.5112 10.6976 17.552C10.6976 18.0576 10.5008 18.532 10.144 18.8872L4.5576 24.4736L10.1448 30.0608C10.5016 30.416 10.6976 30.8904 10.6976 31.3952C10.6976 32.436 9.8504 33.2832 8.8096 33.2832Z"
+            fill="currentColor" />
+          <path
+            d="M28.9472 33.9128C27.9064 33.9128 27.0592 33.0656 27.0592 32.0248C27.0592 31.5192 27.256 31.0448 27.6128 30.6896L33.1992 25.1032L27.612 19.516C27.256 19.16 27.0592 18.6856 27.0592 18.1816C27.0592 17.1408 27.9064 16.2936 28.9472 16.2936C29.4528 16.2936 29.9272 16.4904 30.2824 16.8472L37.204 23.7688C37.5608 24.1248 37.7568 24.5992 37.7568 25.1032C37.7568 25.6072 37.56 26.0832 37.2032 26.4384L30.2816 33.36C29.9264 33.7168 29.452 33.9128 28.9472 33.9128Z"
+            fill="currentColor" />
+          <path
+            d="M13.2152 38.9472C12.1744 38.9472 11.3272 38.1 11.3272 37.0592C11.3272 36.8088 11.376 36.564 11.472 36.332L22.7992 11.16C23.0952 10.4552 23.7792 10 24.5416 10C25.5824 10 26.4296 10.8472 26.4296 11.888C26.4296 12.1384 26.3808 12.3832 26.2848 12.6152L14.9568 37.788C14.6608 38.4928 13.9768 38.948 13.2144 38.948L13.2152 38.9472Z"
+            fill="currentColor" />
+        </svg>
+      </div>
+    
+      <div class="preloader-percent">0%</div>
+    </div>
+    <header class="headerDesktop">
+      <a href="/" title="Daiane Ferreira Web Designer | Página Inicial">
+        <img
+          class="logo"
+          src="/assets/daiane-ferreira-web-designer-logo.svg"
+          alt="Logotipo Daiane Ferreira Web Designer"
+          width="45"
+          height="35"
+        />
+      </a>
+
+      <nav class="principal" aria-label="Navegação principal">
+        <ul>
+          <li>
+            <a href="/">
+              <img
+                src="/assets/icone-home-estado-normal.svg"
+                data-active-src="/assets/icone-home-desktop-ativo.svg"
+                alt=""
+                width="16"
+                height="16"
+              />
+              <span>Home</span>
+            </a>
+          </li>
+
+          <li class="menu-servicos">
+            <a href="#servicos-detalhados">
+              <img
+                src="/assets/icone-servicos-desktop.svg"
+                data-active-src="/assets/icone-servicos-desktop-ativo.svg"
+                alt=""
+                width="16"
+                height="16"
+              />
+
+              <span>Serviços</span>
+
+              <svg class="seta-menu" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </a>
+          </li>
+
+          <li>
+            <a href="#portfolio">
+              <img
+                src="/assets/icone-portfolio.svg"
+                data-active-src="/assets/icone-portfolio-desktop-ativo.svg"
+                alt=""
+                width="16"
+                height="16"
+              />
+              <span>Portfólio</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#contato">
+              <img
+                src="/assets/icone-contato.svg"
+                data-active-src="/assets/icone-contato-desktop-ativo.svg"
+                alt=""
+                width="16"
+                height="16"
+              />
+              <span>Contato</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#sobre-daiane">
+              <img
+                src="/assets/icone-sobre.svg"
+                data-active-src="/assets/icone-sobre-desktop-ativo.svg"
+                alt=""
+                width="16"
+                height="16"
+              />
+              <span>Sobre</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="maisOpcoes">
+        <a href="/orcamento" data-posicao-orcamento="menu_desktop" class="orcamentoHeader"><span class="orcamentoTexto"><span>Solicitar Orçamento</span><span aria-hidden="true">Solicitar Orçamento</span></span></a>
+
+        <a href="/" class="lojaHereader">
+          <span>Templates</span>
+          <img
+            src="/assets/icone-seta-loja.svg"
+            data-active-src="/assets/icone-seta-loja.svg"
+            alt=""
+            width="16"
+            height="16"
+          />
+        </a>
+      </div>
+    </header>
+
+    <!-- ======================================================
+     MENU MOBILE ATUAL COM SHAPE
+======================================================= -->
+
+    <header class="headerMobile">
+      <nav class="menuMobile" aria-label="Navegação mobile">
+        <!-- PAINEL LARANJA -->
+
+        <div class="menuMobilePainel" id="menuMobilePainel">
+          <div class="menu-links">
+            <!-- HOME -->
+
+            <a href="/" class="nav-link">
+              <img
+                src="/assets/icone-home-estado-normal.svg"
+                data-normal-src="/assets/icone-home-estado-normal.svg"
+                data-active-src="/assets/icone-home-desktop-ativo.svg"
+                alt=""
+                width="16"
+                height="16"
+              />
+
+              <span>Home</span>
+            </a>
+
+            <!-- SERVIÇOS -->
+
+            <a href="#servicos-detalhados" class="nav-link">
+              <img
+                src="/assets/icone-servicos-desktop.svg"
+                data-normal-src="/assets/icone-servicos-desktop.svg"
+                data-active-src="/assets/icone-servicos-desktop-ativo.svg"
+                alt=""
+                width="16"
+                height="16"
+              />
+
+              <span>Serviços</span>
+            </a>
+
+            <!-- PORTFÓLIO -->
+
+            <a href="#portfolio" class="nav-link">
+              <img
+                src="/assets/icone-portfolio.svg"
+                data-normal-src="/assets/icone-portfolio.svg"
+                data-active-src="/assets/icone-portfolio-desktop-ativo.svg"
+                alt=""
+                width="16"
+                height="16"
+              />
+
+              <span>Portfólio</span>
+            </a>
+
+            <!-- CONTATO -->
+
+            <a href="#contato" class="nav-link">
+              <img
+                src="/assets/icone-contato.svg"
+                data-normal-src="/assets/icone-contato.svg"
+                data-active-src="/assets/icone-contato-desktop-ativo.svg"
+                alt=""
+                width="16"
+                height="16"
+              />
+
+              <span>Contato</span>
+            </a>
+
+            <!-- SOBRE -->
+
+            <a href="#sobre-daiane" class="nav-link">
+              <img
+                src="/assets/icone-sobre.svg"
+                data-normal-src="/assets/icone-sobre.svg"
+                data-active-src="/assets/icone-sobre-desktop-ativo.svg"
+                alt=""
+                width="16"
+                height="16"
+              />
+
+              <span>Sobre</span>
+            </a>
+          </div>
+
+          <!-- BOTÕES DO MENU ATUAL -->
+
+          <div class="maisOpcoesMobile">
+            <a href="/orcamento" data-posicao-orcamento="menu_mobile" class="orcamentoHeaderMobile">
+              <span>Solicitar Orçamento</span>
+            </a>
+
+            <a href="/" class="lojaHeaderMobile">
+              <span>Templates</span>
+
+              <img
+                src="/assets/icone-seta-loja.svg"
+                alt=""
+                width="16"
+                height="16"
+              />
+            </a>
+          </div>
+        </div>
+
+        <!-- SHAPE -->
+
+        <div class="menuMobileShape">
+          <img
+            class="shape"
+            src="/assets/mobile_menu_drop.svg"
+            alt=""
+            width="430"
+            height="67"
+            aria-hidden="true"
+          />
+
+          <button
+            class="menu-btn"
+            type="button"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="menuMobilePainel"
+          >
+            <span class="menu-line top"></span>
+            <span class="menu-line mid"></span>
+            <span class="menu-line bottom"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <!--  Hero Section -->
+      <section class="hero">
+        <canvas class="canvas-fluid"></canvas>
+        <div class="lateralWrapper">
+          <div class="lateralEsquerdo">
+            <div class="nomeLateral">
+              <span>Daiane Ferreira</span>
+              <span>Web Designer</span>
+            </div>
+
+            <span class="linhaLateral"></span>
+
+            <span class="estrategiaLateral">Estratégia Digital</span>
+          </div>
+        </div>
+        <div class="heroDireito">
+          <h1>
+            <span class="linhaTitulo">Seu site pode</span>
+            <span class="linhaTitulo">ser o começo</span>
+            <span class="linhaTitulo">
+              da sua <strong>próxima venda</strong>
+            </span>
+          </h1>
+
+          <p>
+            Apareça no Google com um site profissional, rápido, otimizado e feito para transformar visitas em vendas.
+          </p>
+          <div class="botoes">
+            <a href="/orcamento" data-posicao-orcamento="hero" class="cta">
+              <span class="circle-bg"></span>
+
+              <img
+                class="cta-icon"
+                src="/assets/icone-button-orcamento.svg"
+                alt=""
+                width="17"
+                height="15"
+              />
+
+              <span class="text">Solicitar Orçamento</span>
+            </a>
+            <a href="#portfolio" class="portfolioButton">
+              <span>Ver Portfólio</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="heroEsquerdo">
+          <div class="heroSocial">
+            <a
+              href="https://wa.me/5511947055638?text=Ol%C3%A1%2C%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20tirar%20algumas%20d%C3%BAvidas."
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            >
+              <img
+                src="/assets/icone-whatsapp.svg"
+                alt=""
+                width="28"
+                height="28"
+              />
+            </a>
+
+            <a
+              href="https://www.instagram.com/designer.daiane/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <img
+                src="/assets/icone-instagram.svg"
+                alt=""
+                width="28"
+                height="28"
+              />
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/daiane-ferreira-araujo/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <img
+                src="/assets/icone-do-linkedin.svg"
+                alt=""
+                width="28"
+                height="28"
+              />
+            </a>
+          </div>
+          <span class="tag-sites cantos-destaque"
+            >Criação de sites profissionais</span
+          >
+
+          <div class="card-container">
+            <!-- As abas decorativas do topo -->
+            <div class="card-abas">
+              <div class="aba-atras"></div>
+              <div class="aba-frente"></div>
+            </div>
+
+            <!-- O corpo principal do cartão -->
+            <div class="card-corpo">
+              <ul class="lista-beneficios">
+                <li>
+                  <span class="numero">01</span>
+                  <span class="texto">Atraia novos clientes</span>
+                </li>
+
+                <li class="divisor"></li>
+
+                <li>
+                  <span class="numero">02</span>
+                  <span class="texto">Ganhe destaque no Google</span>
+                </li>
+
+                <li class="divisor"></li>
+
+                <li>
+                  <span class="numero">03</span>
+                  <span class="texto">Feche mais negócios</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- DIVISOR ANIMADO HERO → DOBRA 02 -->
+      <div class="divisorAnimado" aria-hidden="true">
+        <div class="divisorAnimadoFaixas">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <!-- Seção impacto DOBRA 02 -->
+      <section id="dobra2" class="dobra02" aria-labelledby="query-title">
+        <div class="query-head">
+          <div class="search-bar-wrap">
+          <div class="search-bar">
+            <span class="google-disc">
+              <img src="assets/google-original.svg" width="36" height="37" alt="">
+            </span>
+            <span class="search-typed" role="img" data-typer="Por que sua empresa precisa de um site?" aria-label="Por que sua empresa precisa de um site?">
+              <span class="search-text">P</span>
+              <i class="search-caret" aria-hidden="true"></i>
+            </span>
+          </div>
+          </div>
+          <h2 id="query-title">Sua empresa merece <strong>ser encontrada</strong></h2>
+        </div>
+        <div class="siteImpactoCards">
+          <article class="siteImpactoCard">
+            <div class="siteImpactoCardTopo">
+              <span class="siteImpactoNumero">01</span>
+              <h3>Atraia novos clientes</h3>
+            </div>
+            <div class="siteImpactoCardConteudo">
+              <p>Apareça como uma opção para pessoas que estão pesquisando por produtos ou serviços como os seus, mesmo que ainda não conheçam sua empresa.</p>
+              <img class="siteImpactoLinha" src="assets/dobra02-line-176.svg" alt="">
+              <span class="siteImpactoReticencias" aria-hidden="true">...</span>
+            </div>
+          </article>
+          <article class="siteImpactoCard">
+            <div class="siteImpactoCardTopo">
+              <span class="siteImpactoNumero">02</span>
+              <h3>Amplie suas oportunidades de venda</h3>
+            </div>
+            <div class="siteImpactoCardConteudo">
+              <p>Alcance clientes além das indicações e das redes sociais, crie novos caminhos para receber contatos, pedidos de orçamento e solicitações comerciais.</p>
+              <img class="siteImpactoLinha" src="assets/dobra02-line-177.svg" alt="">
+              <span class="siteImpactoReticencias" aria-hidden="true">...</span>
+            </div>
+          </article>
+          <article class="siteImpactoCard">
+            <div class="siteImpactoCardTopo">
+              <span class="siteImpactoNumero">03</span>
+              <h3>Transmita confiança antes do primeiro contato</h3>
+            </div>
+            <div class="siteImpactoCardConteudo">
+              <p>Apresente seus serviços, diferenciais, projetos e informações essenciais em um ambiente profissional que ajude o cliente a escolher sua empresa.</p>
+              <img class="siteImpactoLinha" src="assets/dobra02-line-177.svg" alt="">
+              <span class="siteImpactoReticencias" aria-hidden="true">...</span>
+            </div>
+          </article>
+        </div>
+        <div class="continueRolando" role="note" aria-label="Continue rolando para ver o restante desta seção">
+          <span class="textoScroll">Continue rolando</span>
+          <span class="setaScroll" aria-hidden="true"><i></i><i></i></span>
+          <span class="progressoScroll" aria-hidden="true"></span>
+        </div>
+      </section>
+      <!--  Seção Presença Textos DOBRA 03 -->
+      <section id="dobra3" class="dobra03" aria-labelledby="presenca-abertura">
+        <div class="presencaAbertura">
+          <h2 id="presenca-abertura" class="presencaAberturaTitulo">Todos os dias, pessoas pesquisam no Google por produtos, serviços e soluções <strong>como os que sua empresa oferece.</strong></h2>
+          <p class="presencaPergunta"><strong>A questão é:</strong> quando elas procuram, encontram você ou seus concorrentes?</p>
+        </div>
+        <div class="presencaDigital">
+          <div class="presencaDigitalTopo">
+            <ul class="presencaDigitalPilares" aria-label="Pilares de uma presença digital profissional">
+              <li><span class="tagPresenca"><img src="assets/dobra03-canto-esquerdo.svg" alt=""><span>Visibilidade</span><img class="presencaCantoDireito" src="assets/dobra03-canto-direito.svg" alt=""></span></li>
+              <li><span class="tagPresenca"><img src="assets/dobra03-canto-esquerdo.svg" alt=""><span>Credibilidade</span><img class="presencaCantoDireito" src="assets/dobra03-canto-direito.svg" alt=""></span></li>
+              <li><span class="tagPresenca"><img src="assets/dobra03-canto-esquerdo.svg" alt=""><span>Posicionamento</span><img class="presencaCantoDireito" src="assets/dobra03-canto-direito.svg" alt=""></span></li>
+              <li><span class="tagPresenca"><img src="assets/dobra03-canto-esquerdo.svg" alt=""><span>Oportunidades</span><img class="presencaCantoDireito" src="assets/dobra03-canto-direito.svg" alt=""></span></li>
+            </ul>
+            <img class="linhaDobra03" src="assets/dobra03-linha.svg" alt="">
+          </div>
+          <div class="presencaDigitalTextos">
+            <div>
+              <p class="presencaLegenda"><span class="presencaMarcador">_</span> O que realmente importa</p>
+              <h3 class="presencaMensagem">Não se trata apenas<br> de ter um <strong>site bonito</strong></h3>
+            </div>
+            <p class="presencaDescricao">Trata-se de construir uma presença digital que represente o nível do seu negócio.</p>
+          </div>
+        </div>
+      </section>
+      <!-- Seção Presença na Internet — dobra extra -->
+      <section id="dobra-extra" class="dobraExtra" aria-labelledby="presenca-internet">
+        <div class="presencaDigitalTextos">
+          <div>
+            <p class="presencaLegenda">Porque estar</p>
+            <h2 id="presenca-internet">na internet não é<br> apenas ser visto</h2>
+          </div>
+          <p>É criar oportunidades para que sua empresa seja<br class="quebraDesktop"> encontrada, escolhida e lembrada.</p>
+        </div>
+      </section>
+      <!-- DIVISOR DOBRA 03 → DOBRA 04 -->
+      <div class="divisorAnimado" aria-hidden="true">
+        <div class="divisorAnimadoFaixas">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <!--  Seção Presença Dobra04 -->
+      <section class="dobra04">
+        <div class="slider orgulho">
+          <div class="listaNavegation">
+            <ul>
+              <li class="ativo">Orgulho</li>
+              <li>Confiança</li>
+              <li>Autoridade</li>
+              <li>Segurança</li>
+            </ul>
+          </div>
+          <span>Presença que representa</span>
+          <h2>Orgulho</h2>
+
+          <div class="infoSection">
+            <div class="textoIcon">
+              <img src="/assets/Icon-presença-digital-que-conecta.svg" alt="" />
+              <p>
+                Sua empresa pode ser excelente. Mas, se isso não fica claro
+                online, você perde oportunidades.
+              </p>
+            </div>
+
+            <div class="ctaDobra04">
+              <a href="/orcamento" data-posicao-orcamento="orgulho" class="cta">
+                <span class="circle-bg"></span>
+
+                <img
+                  class="cta-icon"
+                  src="/assets/icone-button-orcamento.svg"
+                  alt=""
+                  width="17"
+                  height="15"
+                />
+
+                <span class="text">Solicitar Orçamento</span>
+              </a>
+            </div>
+          </div>
+        <div class="continueRolando" role="note" aria-label="Continue rolando para ver o restante desta seção">
+          <span class="textoScroll">Continue rolando</span>
+          <span class="setaScroll" aria-hidden="true"><i></i><i></i></span>
+          <span class="progressoScroll" aria-hidden="true"></span>
+        </div>
+        </div>
+
+        <div class="slider autoridade">
+          <div class="listaNavegation">
+            <ul>
+              <li>Orgulho</li>
+              <li class="ativo">Confiança</li>
+              <li>Autoridade</li>
+              <li>Segurança</li>
+            </ul>
+          </div>
+          <span>Uma presença consistente gera</span>
+          <h2>Confiança</h2>
+
+          <div class="infoSection">
+            <div class="textoIcon">
+              <img src="/assets/Icon-presença-digital-que-conecta.svg" alt="" />
+              <p>
+                Uma experiência digital coerente reduz dúvidas e aproxima as
+                pessoas certas da sua empresa.
+              </p>
+            </div>
+
+            <div class="ctaDobra04">
+              <a href="/orcamento" data-posicao-orcamento="autoridade" class="cta">
+                <span class="circle-bg"></span>
+
+                <img
+                  class="cta-icon"
+                  src="/assets/icone-button-orcamento.svg"
+                  alt=""
+                  width="17"
+                  height="15"
+                />
+
+                <span class="text">Solicitar Orçamento</span>
+              </a>
+            </div>
+          </div>
+        <div class="continueRolando" role="note" aria-label="Continue rolando para ver o restante desta seção">
+          <span class="textoScroll">Continue rolando</span>
+          <span class="setaScroll" aria-hidden="true"><i></i><i></i></span>
+          <span class="progressoScroll" aria-hidden="true"></span>
+        </div>
+        </div>
+
+        <div class="slider confianca">
+          <div class="listaNavegation">
+            <ul>
+              <li>Orgulho</li>
+              <li>Confiança</li>
+              <li class="ativo">Autoridade</li>
+              <li>Segurança</li>
+            </ul>
+          </div>
+          <span>Clareza que consolida</span>
+          <h2>Autoridade</h2>
+
+          <div class="infoSection">
+            <div class="textoIcon">
+              <img src="/assets/Icon-presença-digital-que-conecta.svg" alt="" />
+              <p>
+                Estratégia, conteúdo e design trabalham juntos para tornar seu
+                posicionamento impossível de ignorar.
+              </p>
+            </div>
+
+            <div class="ctaDobra04">
+              <a href="/orcamento" data-posicao-orcamento="confianca" class="cta">
+                <span class="circle-bg"></span>
+
+                <img
+                  class="cta-icon"
+                  src="/assets/icone-button-orcamento.svg"
+                  alt=""
+                  width="17"
+                  height="15"
+                />
+
+                <span class="text">Solicitar Orçamento</span>
+              </a>
+            </div>
+          </div>
+        <div class="continueRolando" role="note" aria-label="Continue rolando para ver o restante desta seção">
+          <span class="textoScroll">Continue rolando</span>
+          <span class="setaScroll" aria-hidden="true"><i></i><i></i></span>
+          <span class="progressoScroll" aria-hidden="true"></span>
+        </div>
+        </div>
+
+        <div class="slider seguranca">
+          <div class="listaNavegation">
+            <ul>
+              <li>Orgulho</li>
+              <li>Confiança</li>
+              <li>Autoridade</li>
+              <li class="ativo">Segurança</li>
+            </ul>
+          </div>
+          <span>Uma estrutura feita para transmitir</span>
+          <h2>Segurança</h2>
+
+          <div class="infoSection">
+            <div class="textoIcon">
+              <img src="/assets/Icon-presença-digital-que-conecta.svg" alt="" />
+              <p>
+                Uma jornada clara e profissional dá segurança para o visitante
+                avançar e tomar uma decisão.
+              </p>
+            </div>
+
+            <div class="ctaDobra04">
+              <a href="/orcamento" data-posicao-orcamento="seguranca" class="cta">
+                <span class="circle-bg"></span>
+
+                <img
+                  class="cta-icon"
+                  src="/assets/icone-button-orcamento.svg"
+                  alt=""
+                  width="17"
+                  height="15"
+                />
+
+                <span class="text">Solicitar Orçamento</span>
+              </a>
+            </div>
+          </div>
+        <div class="continueRolando" role="note" aria-label="Continue rolando para ver o restante desta seção">
+          <span class="textoScroll">Continue rolando</span>
+          <span class="setaScroll" aria-hidden="true"><i></i><i></i></span>
+          <span class="progressoScroll" aria-hidden="true"></span>
+        </div>
+        </div>
+      </section>
+      <!-- Seção Serviços Dobra 05-->
+      <section
+        class="dobra05 servicosCarrossel"
+        id="servicos-detalhados"
+        aria-labelledby="servicos-carrossel-titulo"
+      >
+        <!-- TRANSIÇÃO DE SAÍDA -->
+        <div class="servicosExitFragments" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div id="servicos-carrossel-titulo" class="servicos-carrossel-titulo">
+          <h2>Serviços</h2>
+          <p>
+            Soluções digitais pensadas para posicionar,<br />valorizar e fazer
+            seu negócio crescer.
+          </p>
+        </div>
+
+        <div class="gallery">
+          <div class="cardsCarrossel">
+            <article class="service-card">
+              <div class="topCard">
+                <div class="frameServices">
+                  <span>Serviços</span>
+                  <span class="numeroCard">01</span>
+                </div>
+                <span class="linhaCard-servicos"></span>
+              </div>
+
+              <img src="/assets/icone-section-servicos.svg" alt="" />
+              <div class="meioCard">
+                <h3>Site <span>institucional</span></h3>
+                <p>Apresente sua empresa com mais confiança.</p>
+              </div>
+
+              <div class="finalCard">
+                <a href="/orcamento?projeto=site-institucional" data-posicao-orcamento="servicos" data-servico-orcamento="site-institucional">Solicitar Orçamento</a>
+                <img src="/assets/icone.orcamento.servicos.svg" alt="" />
+              </div>
+            </article>
+          </div>
+
+          <div class="cardsCarrossel">
+            <article class="service-card">
+              <div class="topCard">
+                <div class="frameServices">
+                  <span>Serviços</span>
+                  <span class="numeroCard">02</span>
+                </div>
+                <span class="linhaCard-servicos"></span>
+              </div>
+
+              <img src="/assets/icone-section-servicos.svg" alt="" />
+              <div class="meioCard">
+                <h3>Página <span>de vendas</span></h3>
+                <p>Destaque sua oferta com mais impacto.</p>
+              </div>
+
+              <div class="finalCard">
+                <a href="/orcamento?projeto=landing-page" data-posicao-orcamento="servicos" data-servico-orcamento="landing-page">Solicitar Orçamento</a>
+                <img src="/assets/icone.orcamento.servicos.svg" alt="" />
+              </div>
+            </article>
+          </div>
+
+          <div class="cardsCarrossel">
+            <article class="service-card">
+              <div class="topCard">
+                <div class="frameServices">
+                  <span>Serviços</span>
+                  <span class="numeroCard">03</span>
+                </div>
+                <span class="linhaCard-servicos"></span>
+              </div>
+
+              <img src="/assets/icone-section-servicos.svg" alt="" />
+              <div class="meioCard">
+                <h3>Loja <span>virtual</span></h3>
+                <p>Expanda suas vendas no digital.</p>
+              </div>
+
+              <div class="finalCard">
+                <a href="/orcamento?projeto=loja-virtual" data-posicao-orcamento="servicos" data-servico-orcamento="loja-virtual">Solicitar Orçamento</a>
+                <img src="/assets/icone.orcamento.servicos.svg" alt="" />
+              </div>
+            </article>
+          </div>
+
+          <div class="cardsCarrossel">
+            <article class="service-card">
+              <div class="topCard">
+                <div class="frameServices">
+                  <span>Serviços</span>
+                  <span class="numeroCard">04</span>
+                </div>
+                <span class="linhaCard-servicos"></span>
+              </div>
+
+              <img src="/assets/icone-section-servicos.svg" alt="" />
+              <div class="meioCard">
+                <h3>Página <span>de captura</span></h3>
+                <p>Capture contatos e conduza o próximo passo.</p>
+              </div>
+
+              <div class="finalCard">
+                <a href="/orcamento?projeto=pagina-captura" data-posicao-orcamento="servicos" data-servico-orcamento="pagina-captura">Solicitar Orçamento</a>
+                <img src="/assets/icone.orcamento.servicos.svg" alt="" />
+              </div>
+            </article>
+          </div>
+
+          <div class="cardsCarrossel">
+            <article class="service-card">
+              <div class="topCard">
+                <div class="frameServices">
+                  <span>Serviços</span>
+                  <span class="numeroCard">05</span>
+                </div>
+                <span class="linhaCard-servicos"></span>
+              </div>
+
+              <img src="/assets/icone-section-servicos.svg" alt="" />
+              <div class="meioCard">
+                <h3>Área <span>de membros</span></h3>
+                <p>Seu conteúdo em um ambiente exclusivo.</p>
+              </div>
+
+              <div class="finalCard">
+                <a href="/orcamento?projeto=area-membros" data-posicao-orcamento="servicos" data-servico-orcamento="area-membros">Solicitar Orçamento</a>
+                <img src="/assets/icone.orcamento.servicos.svg" alt="" />
+              </div>
+            </article>
+          </div>
+          <div class="cardsCarrossel">
+            <article class="service-card">
+              <div class="topCard">
+                <div class="frameServices">
+                  <span>Serviços</span>
+                  <span class="numeroCard">06</span>
+                </div>
+                <span class="linhaCard-servicos"></span>
+              </div>
+
+              <img src="/assets/icone-section-servicos.svg" alt="" />
+              <div class="meioCard">
+                <h3>Link <span>na Bio</span></h3>
+                <p>Reúna seus links e facilite o contato.</p>
+              </div>
+
+              <div class="finalCard">
+                <a href="/orcamento?projeto=link-na-bio" data-posicao-orcamento="servicos" data-servico-orcamento="link-na-bio">Solicitar Orçamento</a>
+                <img src="/assets/icone.orcamento.servicos.svg" alt="" />
+              </div>
+            </article>
+          </div>
+          <div class="cardsCarrossel">
+            <article class="service-card">
+              <div class="topCard">
+                <div class="frameServices">
+                  <span>Serviços</span>
+                  <span class="numeroCard">07</span>
+                </div>
+                <span class="linhaCard-servicos"></span>
+              </div>
+
+              <img src="/assets/icone-section-servicos.svg" alt="" />
+              <div class="meioCard">
+                <h3><span>Automação</span></h3>
+                <p>Simplifique tarefas e ganhe tempo no dia a dia.</p>
+              </div>
+
+              <div class="finalCard">
+                <a href="/orcamento?projeto=automacao" data-posicao-orcamento="servicos" data-servico-orcamento="automacao">Solicitar Orçamento</a>
+                <img src="/assets/icone.orcamento.servicos.svg" alt="" />
+              </div>
+            </article>
+          </div>
+          <div class="actions">
+            <button class="prev">
+              <img src="/assets/seta-voltar.svg" alt="" />
+            </button>
+            <button class="next">
+              <img src="/assets/seta-avancar.svg" alt="" />
+            </button>
+          </div>
+        </div>
+        <div class="drag-proxy"></div>
+        <div class="continueRolando" role="note" aria-label="Continue rolando para ver o restante desta seção">
+          <span class="textoScroll">Continue rolando</span>
+          <span class="setaScroll" aria-hidden="true"><i></i><i></i></span>
+          <span class="progressoScroll" aria-hidden="true"></span>
+        </div>
+      </section>
+      <!-- Seção 06 VALOR PERCEBIDO  -->
+      <section class="dobra06 df-colunas-container" id="valor-percebido" aria-labelledby="presenca-valor-titulo">
+        <div class="df-colunas-fundo" aria-hidden="true"><div class="df-colunas-linhas"></div></div>
+        <div class="presencaValor">
+          <span class="tagValor">Presença que gera valor</span>
+          <h2 id="presenca-valor-titulo"><strong>Sua empresa pode oferecer</strong> um excelente serviço, mas, se as pessoas</h2>
+          <div class="textValor">
+            <img class="linhavalor02" src="assets/linha-presenca-valor.svg" alt="">
+            <p>não conseguem encontrá-la no Google, <strong>escolhem a concorrência.</strong></p>
+          </div>
+        </div>
+        <figure class="presencaImagem">
+          <img src="assets/icone-googleanimado.svg" width="461" height="351" alt="Navegação por um site profissional, com clique, conversa e confirmação animados">
+        </figure>
+        <div class="continueRolando" role="note" aria-label="Continue rolando para ver o restante desta seção">
+          <span class="textoScroll">Continue rolando</span>
+          <span class="setaScroll" aria-hidden="true"><i></i><i></i></span>
+          <span class="progressoScroll" aria-hidden="true"></span>
+        </div>
+      </section>
+      <!-- Seção extra — benefícios da presença digital -->
+      <section class="dobraExtra" id="beneficios-presenca" aria-labelledby="beneficios-titulo">
+        <div class="df-colunas-fundo" aria-hidden="true"><div class="df-colunas-linhas"></div></div>
+        <div class="linhaCards-beneficios" aria-hidden="true"></div>
+        <h2 id="beneficios-titulo"><span class="beneficiosTituloMascara"><span class="beneficiosTituloLinha">Quem não é encontrado,</span></span><span class="beneficiosTituloMascara"><span class="beneficiosTituloLinha"><strong>não pode ser escolhido</strong>.</span></span></h2>
+        <div class="classpresenca-beneficios">
+          <article class="ativo" data-etapa="01">
+            <h3><span aria-hidden="true"><img src="assets/icone-menos-visibilidade.svg" alt=""></span>Menos visibilidade</h3>
+            <p>Sua empresa deixa de alcançar pessoas que procuram exatamente o que você oferece.</p>
+          </article>
+          <article data-etapa="02">
+            <h3><span aria-hidden="true"><img src="assets/icone-oportunidades-perdidas.svg" alt=""></span>Oportunidades perdidas</h3>
+            <p>Clientes interessados podem contratar seus concorrentes sem nunca conhecer seu trabalho.</p>
+          </article>
+          <article data-etapa="03">
+            <h3><span aria-hidden="true"><img src="assets/icone-oportunidades-perdidas.svg" alt=""></span>Concorrência à frente</h3>
+            <p>Enquanto outras empresas conquistam espaço nas pesquisas, a sua perde oportunidades de entrar na lista de opções do consumidor.</p>
+          </article>
+        </div>
+        <div class="continueRolando" role="note" aria-label="Continue rolando para ver o restante desta seção">
+          <span class="textoScroll">Continue rolando</span>
+          <span class="setaScroll" aria-hidden="true"><i></i><i></i></span>
+          <span class="progressoScroll" aria-hidden="true"></span>
+        </div>
+      </section>
+      <!-- Seção VALOR parte 02 Dobra 07 -->
+      <section class="dobra07" id="valorPercebido" aria-labelledby="valor-diario-titulo">
+        <div class="valorExitFragments" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="valorTitulo">
+          <p class="tagValor">Prejuízo diário</p>
+          <h2 id="valor-diario-titulo">Esse é o erro invisível que está fazendo a sua<br>empresa <strong>rasgar dinheiro todos os dias</strong>.</h2>
+        </div>
+        <div class="textValor">
+          <span class="linhavalor02" aria-hidden="true"></span>
+          <p><strong>Não ter um site hoje é</strong> o equivalente a manter as<br class="quebraDesktop"> portas da sua empresa trancadas enquanto os<br class="quebraDesktop"> clientes batem do lado de fora.</p>
+        </div>
+        <div class="visual-cards">
+          <article class="visual-card ativo" aria-label="Dependência de marketing">
+            <div class="card-content">
+              <div class="card-copy">
+                <img src="assets/marketing.svg" alt="">
+                <p>Ficar de fora da internet ou depender apenas de redes sociais <strong>não é uma escolha de marketing</strong>. É um prejuízo diário.</p>
+                <img class="linhaCards-beneficios" src="assets/linha-card-valor.svg" alt="">
+              </div>
+            </div>
+          </article>
+          <article class="visual-card" aria-label="Dependência das redes sociais">
+            <div class="card-content">
+              <div class="card-copy">
+                <img src="assets/redes-sociais-icone.svg" alt="">
+                <p>O Instagram e o WhatsApp são ótimas ferramentas de atração, mas funcionam como terrenos alugados: <strong>você não tem controle sobre eles</strong>.</p>
+                <img class="linhaCards-beneficios" src="assets/linha-card-valor.svg" alt="">
+              </div>
+            </div>
+          </article>
+          <article class="visual-card" aria-label="Falta de autoridade">
+            <div class="card-content">
+              <div class="card-copy">
+                <img src="assets/autoridade-icone.svg" alt="">
+                <p>Além disso, perfis sociais <strong>não passam a autoridade</strong> que um cliente exigente procura antes de fechar um contrato de alto valor.</p>
+                <img class="linhaCards-beneficios" src="assets/linha-card-valor.svg" alt="">
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="continueRolando" role="note" aria-label="Continue rolando para ver o restante desta seção">
+          <span class="textoScroll">Continue rolando</span>
+          <span class="setaScroll" aria-hidden="true"><i></i><i></i></span>
+          <span class="progressoScroll" aria-hidden="true"></span>
+        </div>
+      </section>
+      <!-- Seção Projetos Dobra 08 -->
+      <section
+        class="projetosDestaque"
+        id="portfolio"
+        aria-labelledby="projetos-titulo"
+      >
+        <div class="projetosDestaqueInner">
+          <!-- TÍTULO: permanece fixo durante toda a animação -->
+          <h2 class="projetosDestaqueTitulo" id="projetos-titulo">
+            Projetos em <strong>destaque</strong>
+          </h2>
+
+          <div class="projetosDestaqueCorpo">
+            <!-- ========================================== 
+                 LADO ESQUERDO 
+            =========================================== -->
+            <div class="projetosDestaqueEsquerda">
+              <!-- IMAGENS EMPILHADAS -->
+              <div class="projetosDestaqueMidia">
+                <!-- PROJETO 01 -->
+                <div class="projetoImagemSlide is-active">
+                  <img
+                    src="/assets/mentoria-ela.webp"
+                    alt="Projeto Mentoria Ela no Comando"
+                  />
+                </div>
+
+                <!-- PROJETO 02 -->
+                <div class="projetoImagemSlide">
+                  <img src="/assets/lumio.webp" alt="Projeto Lumio" />
+                </div>
+
+                <!-- PROJETO 03 -->
+                <div class="projetoImagemSlide">
+                  <img
+                    src="/assets/nutricao-executiva.webp"
+                    alt="Projeto Nutrição Executiva"
+                  />
+                </div>
+
+                <!-- PROJETO 04 -->
+                <div class="projetoImagemSlide">
+                  <img
+                    src="/assets/trafego-turbo.webp"
+                    alt="Projeto Tráfego Turbo"
+                  />
+                </div>
+              </div>
+
+              <!-- ====================================== 
+                     BARRA INFERIOR 
+                ======================================= -->
+              <div class="projetosDestaqueIndicadores">
+                <div class="projetoIndicador is-active">
+                  <span class="projetoIndicadorLinha"></span>
+
+                  <span class="projetoIndicadorNome"> Mentoria Ela </span>
+                </div>
+
+                <div class="projetoIndicador">
+                  <span class="projetoIndicadorLinha"></span>
+
+                  <span class="projetoIndicadorNome"> Lumio </span>
+                </div>
+
+                <div class="projetoIndicador">
+                  <span class="projetoIndicadorLinha"></span>
+
+                  <span class="projetoIndicadorNome"> Nutrição Executiva </span>
+                </div>
+
+                <div class="projetoIndicador">
+                  <span class="projetoIndicadorLinha"></span>
+
+                  <span class="projetoIndicadorNome"> Tráfego Turbo </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- ========================================== 
+                 LADO DIREITO 
+            =========================================== -->
+            <div class="projetosDestaqueDireita">
+              <!-- ====================================== 
+                     PROJETO 01 
+                ======================================= -->
+              <div class="projetoConteudoSlide is-active">
+                <div class="projetoCabecalho">
+                  <span class="projetoNumero"> 01 </span>
+
+                  <h3 class="projetoNome"> Mentoria Ela no comando </h3>
+                </div>
+
+                <div class="projetoDetalhes">
+                  <div class="projetoTipo">Landing Page</div>
+
+                  <ul>
+                    <li>Transforme visitantes em potenciais clientes</li>
+
+                    <li>Amplie o alcance da sua empresa</li>
+
+                    <li>Facilite o primeiro contato com sua empresa</li>
+                  </ul>
+                </div>
+
+                <a
+                  href="https://portfolio.daianeferreira.com.br/mentoria/"
+                  class="projetoBotao"
+                  data-preview-project="mentoria"
+                  data-preview-title="Mentoria Ela no Comando"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="projetoBotaoTexto">Ver Projeto</span>
+
+                  <span class="projetoBotaoIcone" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M5 12h14"></path>
+                      <path d="m13 6 6 6-6 6"></path>
+                    </svg>
+                  </span>
+                </a>
+              </div>
+
+              <!-- ====================================== 
+                     PROJETO 02 
+                ======================================= -->
+              <div class="projetoConteudoSlide">
+                <div class="projetoCabecalho">
+                  <span class="projetoNumero"> 02 </span>
+
+                  <h3 class="projetoNome"> Lumio </h3>
+                </div>
+
+                <div class="projetoDetalhes">
+                  <div class="projetoTipo">Site Institucional</div>
+
+                  <ul>
+                    <li>Posicionamento digital sofisticado</li>
+
+                    <li>Experiência visual premium</li>
+
+                    <li>Estrutura pensada para percepção de valor</li>
+                  </ul>
+                </div>
+
+                <a
+                  href="https://portfolio.daianeferreira.com.br/lumio/"
+                  class="projetoBotao"
+                  data-preview-project="lumio"
+                  data-preview-title="Lumio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="projetoBotaoTexto">Ver Projeto</span>
+
+                  <span class="projetoBotaoIcone" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M5 12h14"></path>
+                      <path d="m13 6 6 6-6 6"></path>
+                    </svg>
+                  </span>
+                </a>
+              </div>
+
+              <!-- ====================================== 
+                     PROJETO 03 
+                ======================================= -->
+              <div class="projetoConteudoSlide">
+                <div class="projetoCabecalho">
+                  <span class="projetoNumero"> 03 </span>
+
+                  <h3 class="projetoNome"> Nutrição Executiva </h3>
+                </div>
+
+                <div class="projetoDetalhes">
+                  <div class="projetoTipo">Landing Page</div>
+
+                  <ul>
+                    <li>Comunicação clara da proposta</li>
+
+                    <li>Experiência direcionada à conversão</li>
+
+                    <li>Posicionamento profissional</li>
+                  </ul>
+                </div>
+
+                <a
+                  href="https://portfolio.daianeferreira.com.br/bio-nutricao-executiva/"
+                  class="projetoBotao"
+                  data-preview-project="nutricao-executiva"
+                  data-preview-title="Nutrição Executiva"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="projetoBotaoTexto">Ver Projeto</span>
+
+                  <span class="projetoBotaoIcone" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M5 12h14"></path>
+                      <path d="m13 6 6 6-6 6"></path>
+                    </svg>
+                  </span>
+                </a>
+              </div>
+
+              <!-- ====================================== 
+                     PROJETO 04 
+                ======================================= -->
+              <div class="projetoConteudoSlide">
+                <div class="projetoCabecalho">
+                  <span class="projetoNumero"> 04 </span>
+
+                  <h3 class="projetoNome"> Tráfego Turbo </h3>
+                </div>
+
+                <div class="projetoDetalhes">
+                  <div class="projetoTipo">Landing Page</div>
+
+                  <ul>
+                    <li>Estrutura orientada para performance</li>
+
+                    <li>Hierarquia visual estratégica</li>
+
+                    <li>Jornada pensada para conversão</li>
+                  </ul>
+                </div>
+
+                <a
+                  href="https://portfolio.daianeferreira.com.br/trafegoturbo/"
+                  class="projetoBotao"
+                  data-preview-project="trafego-turbo"
+                  data-preview-title="Tráfego Turbo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="projetoBotaoTexto">Ver Projeto</span>
+
+                  <span class="projetoBotaoIcone" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M5 12h14"></path>
+                      <path d="m13 6 6 6-6 6"></path>
+                    </svg>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+              <div class="continueRolando" role="note" aria-label="Continue rolando para conhecer os projetos">
+          <span class="textoScroll">Continue rolando</span>
+          <span class="setaScroll" aria-hidden="true"><i></i><i></i></span>
+          <span class="progressoScroll" aria-hidden="true"></span>
+        </div>
+</section>
+      <!-- Seção extra — oportunidades perdidas, após o portfólio -->
+      <section class="dobraExtra oportunidadesPerdidas" id="oportunidades-perdidas" aria-labelledby="oportunidades-titulo">
+        <div class="bg-abertura" aria-hidden="true"></div>
+        <div class="oportunidadesConteudo">
+          <div class="oportunidadesTexto">
+            <p class="oportunidadesLegenda"><img src="assets/brilhar-oportunidades.svg" width="34.0736" height="34" alt="">Cada oportunidade perdida pode</p>
+            <h2 id="oportunidades-titulo">representar <strong>um orçamento que</strong><br> não chega, um contato que não</h2>
+            <div class="oportunidadesDescricao">
+              <p>acontece e uma venda que poderia ser sua.</p>
+              <p><strong>Afinal</strong>, de que adianta oferecer um excelente serviço se as pessoas que precisam dele nem sabem que sua empresa existe?</p>
+            </div>
+            <a class="oportunidadesBotao" href="#servicos-detalhados">
+              <span>Não perca mais oportunidades</span>
+              <span class="oportunidadesSeta" aria-hidden="true"><img src="assets/seta-oportunidades.svg" width="16" height="16" alt=""></span>
+            </a>
+          </div>
+          <div class="oportunidadesArte" role="group" aria-label="Consequências das oportunidades perdidas">
+            <div class="oportunidadesIlustracao" aria-hidden="true">
+              <img class="oportunidadesLinha" src="assets/linha-oportunidades.svg" width="2.11401" height="628.462" alt="">
+              <div class="oportunidadesIcone demanda"><img src="assets/icone-demanda.svg" width="276" height="269" alt=""></div>
+              <div class="oportunidadesIcone disputa"><img src="assets/icone-disputa.svg" width="331" height="269" alt=""></div>
+              <div class="oportunidadesIcone vendas"><img src="assets/icone-vendas-perdidas.svg" width="269" height="269" alt=""></div>
+            </div>
+            <ol class="oportunidadesEtapas">
+              <li class="oportunidadesEtapa demanda">
+                <img src="assets/pontinho-oportunidades.svg" width="17.5719" height="7.0467" alt="">
+                <h3>Demanda desperdiçada</h3>
+                <p>Buscas que não geram oportunidades.</p>
+              </li>
+              <li class="oportunidadesEtapa disputa">
+                <img src="assets/pontinho-oportunidades.svg" width="17.5719" height="7.0467" alt="">
+                <h3>Fora da disputa</h3>
+                <p>Sua empresa nem chega a ser considerada.</p>
+              </li>
+              <li class="oportunidadesEtapa vendas">
+                <img src="assets/pontinho-oportunidades.svg" width="17.5719" height="7.0467" alt="">
+                <h3>Vendas perdidas</h3>
+                <p>O faturamento fica com a concorrência.</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div class="continueRolando" role="note" aria-label="Continue rolando para acompanhar as oportunidades perdidas">
+          <span class="textoScroll">Continue rolando</span>
+          <span class="setaScroll" aria-hidden="true"><i></i><i></i></span>
+          <span class="progressoScroll" aria-hidden="true"></span>
+        </div>
+      </section>
+      <!-- Abertura de vendas: tag, título e subtítulo -->
+      <section class="vendasSite" id="mais-vendas" aria-labelledby="vendas-titulo">
+        <div class="vendasAberturaConteudo">
+          <p class="vendasLegenda"><img src="assets/brilho-mais-vendas.svg" alt="" width="16" height="16"> MAIS VENDAS, MAIS POSSIBILIDADES</p>
+          <h2 id="vendas-titulo">Mas e se você já tem um site?</h2>
+          <p class="vendasAbertura">Talvez ele quase não receba visitas. Ou até receba, mas os pedidos de orçamento não chegam e as vendas continuam abaixo do esperado.</p>
+          <div class="vendasApoio">
+            <p>Você investiu esperando resultados, mas até agora não viu o retorno que imaginava. <span>Mas isso não significa que todas as oportunidades foram perdidas.</span></p>
+            <p class="vendasVirada">E sabe o que é melhor? <span>Ainda dá para mudar esse cenário.</span></p>
+          </div>
+          <div class="vendasDestaques">
+            <img src="assets/icone-before-sites-profissionais.svg" alt="" class="vendasOrnamento" width="197" height="198">
+            <article class="vendasDestaque">
+              <div class="vendasDestaqueTopo">
+                <div><h3>Seu negócio é encontrado.</h3><p>Uma nova oportunidade começa com uma busca.</p></div>
+                <img src="assets/google-icone-cards.svg" alt="" width="56" height="56">
+              </div>
+              <div class="vendasIlustracao" aria-hidden="true">
+                <img src="assets/icone-encontrado-google-negocio.svg" alt="" width="245" height="200">
+              </div>
+              <p>Com conteúdo relevante e uma estrutura otimizada para o Google, sua empresa aumenta as chances de alcançar mais clientes em potencial.</p>
+            </article>
+            <article class="vendasDestaque">
+              <div class="vendasDestaqueTopo">
+                <div><h3>O cliente entende a oferta</h3><p>Mostre o que você oferece e por que isso importa.</p></div>
+                <img src="assets/google-icone-cards.svg" alt="" width="56" height="56">
+              </div>
+              <div class="vendasIlustracao" aria-hidden="true">
+                <img src="assets/icone-oferta-google.svg" alt="" width="320" height="200">
+              </div>
+              <p>Uma apresentação estratégica destaca os benefícios, responde às principais dúvidas e faz a sua empresa vender muito mais.</p>
+            </article>
+            <article class="vendasDestaque">
+              <div class="vendasDestaqueTopo">
+                <div><h3>O próximo passo fica claro</h3><p>Transforme o interesse em oportunidades de novos orçamentos e vendas.</p></div>
+                <img src="assets/google-icone-cards.svg" alt="" width="56" height="56">
+              </div>
+              <div class="vendasIlustracao" aria-hidden="true">
+                <img src="assets/icone-vendas-google-oportunidades.svg" alt="" width="186" height="200">
+              </div>
+              <p>Com chamadas para ação bem posicionadas e um formulário para solicitar um orçamento, o seu potencial cliente sabe exatamente como avançar.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <!-- Argumentos em cards empilhados, com a referência stack-scroll -->
+      <section class="vendasProposito" id="site-para-vendas" aria-labelledby="vendas-proposito-titulo">
+        <div class="vendasPropositoPainel">
+          <img class="vendasPropositoBolinhas" src="assets/bolinhas-proposito-comercial.svg" width="46" height="850" alt="">
+          <div class="vendasPropositoIntroducao">
+            <h2 id="vendas-proposito-titulo" class="vendasPropositoTitulo">
+              <span>Um <img src="assets/01_estrutura_site-google.svg" width="200" height="200" alt=""> site com</span>
+              <span><strong>propósito</strong><img src="assets/clique-seta-vendas-google.svg" width="256" height="256" alt=""></span>
+              <span><img src="assets/03_orcamento_confirmado%201.svg" width="256" height="256" alt=""><strong>comercial</strong></span>
+            </h2>
+            <p>E é exatamente isso que pode estar faltando no seu site: uma estrutura pensada não apenas para receber visitantes, mas para transformá-los em oportunidades de venda.</p>
+            <ul class="vendasPropositoPontos">
+              <li>Ele precisa comunicar quem você é,</li>
+              <li>o que faz e, principalmente,</li>
+              <li>como o que você oferece</li>
+            </ul>
+            <p class="vendasPropositoDestaque">vai transformar a vida do seu cliente.</p>
+          </div>
+          <div class="vendasPropositoRota">
+            <div>
+              <h3 id="vendas-carrossel-titulo">Porque um site pensado para <strong>vender não termina na visita</strong></h3>
+              <p>Ele cria caminhos para que o interesse se transforme em novos negócios.</p>
+            </div>
+            <img src="assets/clique-seta-vendas-google.svg" width="256" height="256" alt="">
+          </div>
+          <div class="vendasCarrossel" role="group" aria-labelledby="vendas-carrossel-titulo">
+            <img class="vendasCarrosselOrnamento" src="assets/icone-before-sites-profissionais.svg" width="197" height="198" alt="">
+            <ul class="vendasCarrosselLista" id="vendas-carrossel-lista">
+              <li class="vendasCarrosselCard">
+                <h4>Mais oportunidades</h4>
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <p>para conquistar clientes e gerar receita.</p>
+              </li>
+              <li class="vendasCarrosselCard">
+                <h4>Mais autonomia</h4>
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <p>Mais espaço para crescer.</p>
+              </li>
+              <li class="vendasCarrosselCard">
+                <h4>Expansão de mercado</h4>
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <p>para conquistar clientes e gerar receita.</p>
+              </li>
+              <li class="vendasCarrosselCard">
+                <h4>Resultados</h4>
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <p>Saiba quais páginas, campanhas e ações geram contatos.</p>
+              </li>
+              <li class="vendasCarrosselCard">
+                <h4>Captação de clientes</h4>
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <p>Formulários personalizados</p>
+              </li>
+              <li class="vendasCarrosselCard">
+                <h4>Menor esforço comercial</h4>
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <p>Informações disponíveis que reduzem perguntas repetitivas.</p>
+              </li>
+              <li class="vendasCarrosselCard">
+                <h4>Vendas online</h4>
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <p>Possibilidade de vender produtos ou serviços diretamente pelo site.</p>
+              </li>
+              <li class="vendasCarrosselCard">
+                <h4>Vendas recorrentes</h4>
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <p>Possibilidade de facilitar novas compras de clientes existentes.</p>
+              </li>
+              <li class="vendasCarrosselCard">
+                <h4>Recuperação de interessados</h4>
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <p>Possibilidade de retomar contatos e negociações não concluídas.</p>
+              </li>
+              <li class="vendasCarrosselCard">
+                <h4>Controle do canal digital</h4>
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <p>Maior autonomia sobre conteúdo, ofertas e a experiência comercial.</p>
+              </li>
+              <li class="vendasCarrosselCard">
+                <h4>Otimização contínua</h4>
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <p>Testar mensagens, páginas e ofertas para melhorar conversões.</p>
+              </li>
+              <li class="vendasCarrosselCard">
+                <h4>Autoridade no mercado</h4>
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <p>Demonstrar conhecimento, experiência e especialização.</p>
+              </li>
+              <li class="vendasCarrosselCard">
+                <h4>Mais vendas com anúncios</h4>
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <p>Um destino preparado para receber visitantes das campanhas de marketing.</p>
+              </li>
+              <li class="vendasCarrosselCard">
+                <h4>Mais negociações qualificadas</h4>
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <p>Clientes que chegam com informações sobre o que você oferece.</p>
+              </li>
+              <li class="vendasCarrosselCard">
+                <h4>Ciclos de venda mais curtos</h4>
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <p>Menos obstáculos para o cliente entender a oferta e decidir.</p>
+              </li>
+              <li class="vendasCarrosselCard">
+                <h4>Agendamentos automatizados</h4>
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <p>Possibilidade de receber reservas e solicitações sem atendimento manual.</p>
+              </li>
+              <li class="vendasCarrosselCard">
+                <h4>Diferenciação comercial</h4>
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <p>Apresentar vantagens que ajudam o cliente a justificar a contratação.</p>
+              </li>
+              <li class="vendasCarrosselCard">
+                <h4>Escalabilidade</h4>
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <p>Ampliar ofertas, páginas e processos conforme o negócio cresce.</p>
+              </li>
+            </ul>
+            <div class="vendasCarrosselControles" hidden>
+              <button type="button" data-direcao="-1" aria-label="Card anterior" aria-controls="vendas-carrossel-lista">←</button>
+              <p class="vendasCarrosselStatus" aria-live="polite"></p>
+              <button type="button" data-direcao="1" aria-label="Próximo card" aria-controls="vendas-carrossel-lista">→</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="vendasFechamento" id="proximo-cliente" aria-labelledby="estrategia-vendas-titulo">
+        <div class="vendasEstrategia">
+          <p class="vendasLegenda">Estratégia que gera oportunidades</p>
+          <h2 id="estrategia-vendas-titulo">Com um <strong>site profissional,</strong> seus serviços,<br class="quebraEstrategiaDesktop"> diferenciais e projetos ganham</h2>
+          <p class="vendasEstrategiaDescricao">o destaque que merecem, ajudando o visitante a conhecer seu trabalho, confiar na sua empresa e dar o próximo passo.</p>
+          <ul class="vendasEstrategiaTags" aria-label="Da descoberta às oportunidades de venda">
+            <li class="vendasEstrategiaCaminho"><span aria-hidden="true"><img src="assets/icone-button-orcamento.svg" width="17" height="15" alt=""></span>Um caminho claro da descoberta à decisão.</li>
+            <li><img src="assets/MAIS-CLIENTES%20-MAIS-VENDAS-GOOGLE.svg" width="26" height="26" alt="">Vendas</li>
+            <li><img src="assets/MAIS-CLIENTES%20-MAIS-VENDAS-GOOGLE.svg" width="26" height="26" alt="">Clientes qualificados</li>
+          </ul>
+        </div>
+        <div class="vendasConvite" aria-labelledby="proximo-cliente-titulo">
+          <span class="vendasConviteIcone" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+          <h3 id="proximo-cliente-titulo"><span class="vendasConviteChamada">O próximo cliente pode chegar</span><span class="vendasConviteDescricao">quando você menos espera. Sua empresa precisa estar preparada para recebê-lo.</span></h3>
+          <a href="/orcamento" data-posicao-orcamento="proximo_cliente" class="cta"><span class="circle-bg"></span><img class="cta-icon" src="/assets/icone-button-orcamento.svg" alt="" width="17" height="15"><span class="text">Solicitar Orçamento</span></a>
+        </div>
+        <p class="vendasEstrategiaMensagem"><strong>Imagine começar o dia com novos pedidos de orçamento,</strong> clientes interessados nos seus serviços e mais vendas que surgem mesmo fora do horário comercial.</p>
+        <div class="vendasEstrategiaDivisor" aria-hidden="true"><span></span><span></span><span></span></div>
+      </section>
+
+      <!-- Protocolo de criação profissional -->
+      <section class="protocoloCriacao" id="protocolo-criacao" aria-labelledby="protocolo-titulo">
+        <div class="protocoloCabecalho">
+          <div class="protocoloIntroducao">
+            <p class="protocoloLegenda"><img src="assets/brilhar-oportunidades.svg" width="34.0736" height="34" alt="">PROTOCOLO DE CRIAÇÃO PROFISSIONAL</p>
+            <h2 id="protocolo-titulo">Seu projeto segue um <strong>processo estruturado,</strong><br class="quebraProtocolo"> do planejamento à publicação.</h2>
+          </div>
+          <p class="protocoloDescricao">Cada etapa tem um propósito. Você acompanha a evolução do projeto e participa das decisões, do briefing aos ajustes finais.</p>
+        </div>
+        <div class="protocoloJanela">
+          <div class="protocoloLinhaTempo">
+            <div class="protocoloTrilho" aria-hidden="true">
+              <img src="assets/protocolo-linha.svg" width="1680" height="1" alt="">
+              <span class="protocoloProgresso"></span>
+            </div>
+            <ol class="protocoloLista" aria-label="Etapas do protocolo de criação">
+              <li class="protocoloEtapa">
+                <span class="protocoloMarca" aria-hidden="true">
+                  <span class="protocoloPlaca">
+                    <img class="protocoloSombra" src="assets/protocolo-sombra-clara.svg" width="43.9091" height="43.9091" alt="">
+                    <img class="protocoloLateral" src="assets/protocolo-lateral-clara.svg" width="43.9091" height="43.9091" alt="">
+                    <img class="protocoloTopo" src="assets/protocolo-topo-claro.svg" width="44.9837" height="44.9837" alt="">
+                  </span>
+                </span>
+                <div class="protocoloDetalhes">
+                  <span class="protocoloNumero">Fase 01</span>
+                  <h3>Briefing estratégico</h3>
+                  <p>Mapeamento do projeto</p>
+                </div>
+              </li>
+              <li class="protocoloEtapa">
+                <span class="protocoloMarca" aria-hidden="true">
+                  <span class="protocoloPlaca">
+                    <img class="protocoloSombra" src="assets/protocolo-sombra-laranja.svg" width="43.9091" height="43.9091" alt="">
+                    <img class="protocoloLateral" src="assets/protocolo-lateral-laranja.svg" width="43.9091" height="43.9091" alt="">
+                    <img class="protocoloTopo" src="assets/protocolo-topo-laranja.svg" width="44.9837" height="44.9837" alt="">
+                  </span>
+                </span>
+                <div class="protocoloDetalhes">
+                  <span class="protocoloNumero">Fase 02</span>
+                  <h3>Infraestrutura Digital</h3>
+                  <p>Estrutura inicial de funcionamento.</p>
+                </div>
+              </li>
+              <li class="protocoloEtapa">
+                <span class="protocoloMarca" aria-hidden="true">
+                  <span class="protocoloPlaca">
+                    <img class="protocoloSombra" src="assets/protocolo-sombra-clara.svg" width="43.9091" height="43.9091" alt="">
+                    <img class="protocoloLateral" src="assets/protocolo-lateral-clara.svg" width="43.9091" height="43.9091" alt="">
+                    <img class="protocoloTopo" src="assets/protocolo-topo-claro.svg" width="44.9837" height="44.9837" alt="">
+                  </span>
+                </span>
+                <div class="protocoloDetalhes">
+                  <span class="protocoloNumero">Fase 03</span>
+                  <h3>Alinhamento Visual</h3>
+                  <p>Com a proposta da marca.</p>
+                </div>
+              </li>
+              <li class="protocoloEtapa">
+                <span class="protocoloMarca" aria-hidden="true">
+                  <span class="protocoloPlaca">
+                    <img class="protocoloSombra" src="assets/protocolo-sombra-laranja.svg" width="43.9091" height="43.9091" alt="">
+                    <img class="protocoloLateral" src="assets/protocolo-lateral-laranja.svg" width="43.9091" height="43.9091" alt="">
+                    <img class="protocoloTopo" src="assets/protocolo-topo-laranja.svg" width="44.9837" height="44.9837" alt="">
+                  </span>
+                </span>
+                <div class="protocoloDetalhes">
+                  <span class="protocoloNumero">Fase 04</span>
+                  <h3>Desenvolvimento do Layout</h3>
+                  <p>Criação do design da interface.</p>
+                </div>
+              </li>
+              <li class="protocoloEtapa">
+                <span class="protocoloMarca" aria-hidden="true">
+                  <span class="protocoloPlaca">
+                    <img class="protocoloSombra" src="assets/protocolo-sombra-clara.svg" width="43.9091" height="43.9091" alt="">
+                    <img class="protocoloLateral" src="assets/protocolo-lateral-clara.svg" width="43.9091" height="43.9091" alt="">
+                    <img class="protocoloTopo" src="assets/protocolo-topo-claro.svg" width="44.9837" height="44.9837" alt="">
+                  </span>
+                </span>
+                <div class="protocoloDetalhes">
+                  <span class="protocoloNumero">Fase 05</span>
+                  <h3>Validação e Ajustes</h3>
+                  <p>Refinamentos necessários.</p>
+                </div>
+              </li>
+              <li class="protocoloEtapa">
+                <span class="protocoloMarca" aria-hidden="true">
+                  <span class="protocoloPlaca">
+                    <img class="protocoloSombra" src="assets/protocolo-sombra-laranja.svg" width="43.9091" height="43.9091" alt="">
+                    <img class="protocoloLateral" src="assets/protocolo-lateral-laranja.svg" width="43.9091" height="43.9091" alt="">
+                    <img class="protocoloTopo" src="assets/protocolo-topo-laranja.svg" width="44.9837" height="44.9837" alt="">
+                  </span>
+                </span>
+                <div class="protocoloDetalhes">
+                  <span class="protocoloNumero">Fase 06</span>
+                  <h3>Implementação e Publicação</h3>
+                  <p>Desenvolvimento final do projeto.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <p class="protocoloContagem" aria-hidden="true">Fase <b>01</b><span> / 06</span></p>
+        <div class="continueRolando" role="note" aria-label="Continue rolando para acompanhar as fases do projeto">
+          <span class="textoScroll">Continue rolando</span>
+          <span class="setaScroll" aria-hidden="true"><i></i><i></i></span>
+          <span class="progressoScroll" aria-hidden="true"></span>
+        </div>
+      </section>
+      <!-- Seção Contato Dobra 10 -->
+      <section class="contato" id="contato" aria-labelledby="contato-titulo">
+        <div class="contatoDireito">
+          <span>Vamos conversar?</span>
+          <h2 id="contato-titulo">Contato<span class="ponto">.</span></h2>
+          <p>Tem um projeto em mente ou quer tirar alguma dúvida? Estou aqui para ajudar.</p>
+          <div class="infoContatos">
+            <a class="contato-detalhes" href="https://wa.me/5511947055638?text=Ol%C3%A1%2C%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20tirar%20algumas%20d%C3%BAvidas." target="_blank" rel="noopener noreferrer">
+              <img src="/assets/whatsapp.section.contato.svg" alt="">
+              <div class="textContato"><h3>WhatsApp</h3><p>(11) 94705-5638</p></div>
+            </a>
+            <a class="contato-detalhes" href="mailto:contato@daianeferreira.com.br" target="_blank" rel="noopener noreferrer">
+              <img src="/assets/email.section.contato.svg" alt="">
+              <div class="textContato"><h3>E-mail</h3><p>contato@daianeferreira.com.br</p></div>
+            </a>
+          </div>
+        </div>
+        <section class="faq" aria-labelledby="faq-titulo">
+          <div class="faqCabecalho">
+            <h3 id="faq-titulo">Perguntas <strong>Frequentes</strong></h3>
+            <img src="/assets/Faq.svg" alt="">
+          </div>
+          <div class="perguntasFrequentes">
+            <article class="faqItem ativo">
+              <h4 class="faqTituloPergunta">
+                <button class="faqPergunta" id="faq-pergunta-1" type="button" aria-expanded="true" aria-controls="faq-resposta-1">
+                  <span class="faqNumero" aria-hidden="true">01</span>
+                  <span class="faqTextoPergunta">Meu site vai aparecer no Google?</span>
+                  <span class="faqIcone" aria-hidden="true"></span>
+                </button>
+              </h4>
+              <div class="faqResposta" id="faq-resposta-1" role="region" aria-labelledby="faq-pergunta-1" aria-hidden="false">
+                <div><p>Um site desenvolvido com boas práticas de SEO pode ser encontrado nas pesquisas do Google. O posicionamento depende de fatores como relevância, conteúdo e concorrência.</p></div>
+              </div>
+            </article>
+            <article class="faqItem">
+              <h4 class="faqTituloPergunta">
+                <button class="faqPergunta" id="faq-pergunta-2" type="button" aria-expanded="false" aria-controls="faq-resposta-2">
+                  <span class="faqNumero" aria-hidden="true">02</span>
+                  <span class="faqTextoPergunta">Preciso pagar ao Google para meu site aparecer?</span>
+                  <span class="faqIcone" aria-hidden="true"></span>
+                </button>
+              </h4>
+              <div class="faqResposta" id="faq-resposta-2" role="region" aria-labelledby="faq-pergunta-2" aria-hidden="true" inert>
+                <div><p>Não. Seu site pode aparecer gratuitamente nos resultados orgânicos. O Google Ads é uma alternativa para quem também deseja investir em anúncios pagos.</p></div>
+              </div>
+            </article>
+            <article class="faqItem">
+              <h4 class="faqTituloPergunta">
+                <button class="faqPergunta" id="faq-pergunta-3" type="button" aria-expanded="false" aria-controls="faq-resposta-3">
+                  <span class="faqNumero" aria-hidden="true">03</span>
+                  <span class="faqTextoPergunta">Minha empresa pode aparecer nas pesquisas da minha cidade?</span>
+                  <span class="faqIcone" aria-hidden="true"></span>
+                </button>
+              </h4>
+              <div class="faqResposta" id="faq-resposta-3" role="region" aria-labelledby="faq-pergunta-3" aria-hidden="true" inert>
+                <div><p>Sim. Com estratégias de SEO local, seu site pode alcançar pessoas que procuram produtos ou serviços na região onde sua empresa atua.</p></div>
+              </div>
+            </article>
+            <article class="faqItem">
+              <h4 class="faqTituloPergunta">
+                <button class="faqPergunta" id="faq-pergunta-4" type="button" aria-expanded="false" aria-controls="faq-resposta-4">
+                  <span class="faqNumero" aria-hidden="true">04</span>
+                  <span class="faqTextoPergunta">Ter Instagram e WhatsApp é suficiente para minha empresa?</span>
+                  <span class="faqIcone" aria-hidden="true"></span>
+                </button>
+              </h4>
+              <div class="faqResposta" id="faq-resposta-4" role="region" aria-labelledby="faq-pergunta-4" aria-hidden="true" inert>
+                <div><p>Esses canais são importantes para divulgação e atendimento. Um site complementa essa presença, organizando informações e criando novas possibilidades de descoberta.</p></div>
+              </div>
+            </article>
+            <article class="faqItem">
+              <h4 class="faqTituloPergunta">
+                <button class="faqPergunta" id="faq-pergunta-5" type="button" aria-expanded="false" aria-controls="faq-resposta-5">
+                  <span class="faqNumero" aria-hidden="true">05</span>
+                  <span class="faqTextoPergunta">Qual é a diferença entre um site e uma landing page?</span>
+                  <span class="faqIcone" aria-hidden="true"></span>
+                </button>
+              </h4>
+              <div class="faqResposta" id="faq-resposta-5" role="region" aria-labelledby="faq-pergunta-5" aria-hidden="true" inert>
+                <div><p>Um site apresenta sua empresa, serviços e informações em diferentes páginas. Uma landing page concentra a atenção em uma oferta ou ação específica.</p></div>
+              </div>
+            </article>
+            <article class="faqItem">
+              <h4 class="faqTituloPergunta">
+                <button class="faqPergunta" id="faq-pergunta-6" type="button" aria-expanded="false" aria-controls="faq-resposta-6">
+                  <span class="faqNumero" aria-hidden="true">06</span>
+                  <span class="faqTextoPergunta">Como saber se meu site está trazendo resultados?</span>
+                  <span class="faqIcone" aria-hidden="true"></span>
+                </button>
+              </h4>
+              <div class="faqResposta" id="faq-resposta-6" role="region" aria-labelledby="faq-pergunta-6" aria-hidden="true" inert>
+                <div><p>É possível acompanhar indicadores como acessos, cliques em botões, contatos recebidos e solicitações de orçamento, desde que o monitoramento esteja configurado.</p></div>
+              </div>
+            </article>
+            <article class="faqItem">
+              <h4 class="faqTituloPergunta">
+                <button class="faqPergunta" id="faq-pergunta-7" type="button" aria-expanded="false" aria-controls="faq-resposta-7">
+                  <span class="faqNumero" aria-hidden="true">07</span>
+                  <span class="faqTextoPergunta">Quanto tempo leva para criar um site ou landing page?</span>
+                  <span class="faqIcone" aria-hidden="true"></span>
+                </button>
+              </h4>
+              <div class="faqResposta" id="faq-resposta-7" role="region" aria-labelledby="faq-pergunta-7" aria-hidden="true" inert>
+                <div><p>O prazo varia de acordo com o tamanho e a complexidade do projeto. Antes de começar, alinhamos todas as etapas e você recebe uma previsão clara de entrega.</p></div>
+              </div>
+            </article>
+            <article class="faqItem">
+              <h4 class="faqTituloPergunta">
+                <button class="faqPergunta" id="faq-pergunta-8" type="button" aria-expanded="false" aria-controls="faq-resposta-8">
+                  <span class="faqNumero" aria-hidden="true">08</span>
+                  <span class="faqTextoPergunta">O site será adaptado para celular, tablet e computador?</span>
+                  <span class="faqIcone" aria-hidden="true"></span>
+                </button>
+              </h4>
+              <div class="faqResposta" id="faq-resposta-8" role="region" aria-labelledby="faq-pergunta-8" aria-hidden="true" inert>
+                <div><p>Sim. O site é desenvolvido para funcionar corretamente em diferentes tamanhos de tela, oferecendo uma boa experiência tanto no celular quanto no tablet e no computador.</p></div>
+              </div>
+            </article>
+            <article class="faqItem">
+              <h4 class="faqTituloPergunta">
+                <button class="faqPergunta" id="faq-pergunta-9" type="button" aria-expanded="false" aria-controls="faq-resposta-9">
+                  <span class="faqNumero" aria-hidden="true">09</span>
+                  <span class="faqTextoPergunta">Depois que o site estiver pronto, vou conseguir fazer alterações?</span>
+                  <span class="faqIcone" aria-hidden="true"></span>
+                </button>
+              </h4>
+              <div class="faqResposta" id="faq-resposta-9" role="region" aria-labelledby="faq-pergunta-9" aria-hidden="true" inert>
+                <div><p>Sim. Dependendo da estrutura do projeto, você poderá atualizar textos, imagens e outras informações sempre que precisar.</p></div>
+              </div>
+            </article>
+            <article class="faqItem">
+              <h4 class="faqTituloPergunta">
+                <button class="faqPergunta" id="faq-pergunta-10" type="button" aria-expanded="false" aria-controls="faq-resposta-10">
+                  <span class="faqNumero" aria-hidden="true">10</span>
+                  <span class="faqTextoPergunta">Um site realmente ajuda a gerar mais clientes?</span>
+                  <span class="faqIcone" aria-hidden="true"></span>
+                </button>
+              </h4>
+              <div class="faqResposta" id="faq-resposta-10" role="region" aria-labelledby="faq-pergunta-10" aria-hidden="true" inert>
+                <div><p>Um site profissional fortalece sua presença digital, apresenta seu negócio com mais clareza e direciona o visitante para entrar em contato ou solicitar um orçamento.</p></div>
+              </div>
+            </article>
+            <article class="faqItem">
+              <h4 class="faqTituloPergunta">
+                <button class="faqPergunta" id="faq-pergunta-11" type="button" aria-expanded="false" aria-controls="faq-resposta-11">
+                  <span class="faqNumero" aria-hidden="true">11</span>
+                  <span class="faqTextoPergunta">Quanto custa criar um site profissional ou institucional?</span>
+                  <span class="faqIcone" aria-hidden="true"></span>
+                </button>
+              </h4>
+              <div class="faqResposta" id="faq-resposta-11" role="region" aria-labelledby="faq-pergunta-11" aria-hidden="true" inert>
+                <div><p>O valor depende da quantidade de páginas e dos recursos que seu negócio precisa, como formulários, catálogo ou integrações. Um site institucional que apresenta sua empresa e seus serviços tem um escopo diferente de um site com recursos extras. Com essas informações, posso montar um orçamento para o seu projeto.</p></div>
+              </div>
+            </article>
+            <article class="faqItem">
+              <h4 class="faqTituloPergunta">
+                <button class="faqPergunta" id="faq-pergunta-12" type="button" aria-expanded="false" aria-controls="faq-resposta-12">
+                  <span class="faqNumero" aria-hidden="true">12</span>
+                  <span class="faqTextoPergunta">Quanto custa uma landing page profissional?</span>
+                  <span class="faqIcone" aria-hidden="true"></span>
+                </button>
+              </h4>
+              <div class="faqResposta" id="faq-resposta-12" role="region" aria-labelledby="faq-pergunta-12" aria-hidden="true" inert>
+                <div><p>O valor depende do objetivo da página, dos materiais que você já tem e do que precisa ser integrado. Uma landing page para captar contatos pode exigir um trabalho diferente de uma página de vendas com integração ao checkout. Ao pedir o orçamento, conte o que você quer que a pessoa faça ao chegar à página.</p></div>
+              </div>
+            </article>
+            <article class="faqItem">
+              <h4 class="faqTituloPergunta">
+                <button class="faqPergunta" id="faq-pergunta-13" type="button" aria-expanded="false" aria-controls="faq-resposta-13">
+                  <span class="faqNumero" aria-hidden="true">13</span>
+                  <span class="faqTextoPergunta">Como solicitar um orçamento para meu site?</span>
+                  <span class="faqIcone" aria-hidden="true"></span>
+                </button>
+              </h4>
+              <div class="faqResposta" id="faq-resposta-13" role="region" aria-labelledby="faq-pergunta-13" aria-hidden="true" inert>
+                <div><p>Acesse o <a href="/orcamento" data-posicao-orcamento="faq">formulário de orçamento</a>, preencha seus dados de contato e conte o que você quer criar. Se já tiver um site, inclua o link. Informe também o prazo desejado e os detalhes que ajudam a entender seu projeto.</p></div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </section>
+      <!-- Seção Sobre Dobra 11 -->
+      <section class="sobre" id="sobre-daiane" aria-labelledby="sobre-titulo">
+        <div class="daianeFerreira">
+          <div class="sobreMim">
+            <div class="sobreTopo">
+              <div class="sobreParte">
+                <h2 id="sobre-titulo">Sobre mim</h2>
+                <h3>Prazer, <strong>Daiane Ferreira</strong>.</h3>
+                <p>
+                  <span
+                    >Sou Web Designer, formada em Design de Mídias Digitais pela
+                    Fatec e pós-graduada em Desenvolvimento Full Stack pela PUC
+                    Minas.</span
+                  >
+                  <span
+                    >Tenho mais de 6 anos de experiência, unindo design,
+                    estratégia e tecnologia para criar experiências que façam
+                    sentido tanto para quem acessa quanto para o negócio por
+                    trás da tela.</span
+                  >
+                </p>
+              </div>
+
+              <div class="textSeta">
+                <div class="designResultado">
+                  <p>Design com intenção. Resultados que conectam.</p>
+                  <img src="/assets/icone-brilhar.svg" alt="" class="brilhar" />
+                </div>
+
+                <img src="/assets/setaDesign.svg" alt="" class="setaDesigner" />
+              </div>
+            </div>
+
+            <div class="meioSobre">
+              <div class="sobreBottom">
+                <span>Design </span> <img src="/assets/brilhar.svg" alt="" />
+                <span>UX/UI </span> <img src="/assets/brilhar.svg" alt="" />
+                <span>Estratégia</span>
+              </div>
+              <div class="sobreParte2">
+                <div class="citacao">
+                  <img src="/assets/icone-citacao.svg" alt="" />
+                  <p>
+                    Minha história com código começou
+                    <span>muito antes da formação.</span>
+                  </p>
+                </div>
+
+                <span class="lineSobre"></span>
+                <p class="maisSobre">
+                  <span
+                    >Aos 14 anos, eu já entrava no Blogger, encontrava aqueles
+                    códigos “lindos” que todo mundo queria usar e começava a
+                    editar tudo para deixar meu blog com a minha cara. O que
+                    começou como curiosidade virou interesse, depois estudo e,
+                    anos mais tarde, profissão.</span
+                  >
+
+                  <span
+                    >Hoje, consigo olhar para um projeto não apenas como designer,
+                    mas também com uma compreensão do que acontece por trás da
+                    interface.</span
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="fotoDaianeFerreira">
+            <img
+              src="/assets/daiane_ferreira_cria_o_de_sites_sobre_mim_3_0.webp"
+              alt="Daiane Ferreira | Sobre Mim"
+            />
+          </div>
+
+          <div class="faixaAnimada">
+            <div class="faixa">
+              <!-- GRUPO 01 -->
+              <div class="faixaGrupo">
+                <span>HTML5</span>
+                <img src="/assets/brilhar-animado.svg" alt="" />
+
+                <span>CSS3</span>
+                <img src="/assets/brilhar-animado.svg" alt="" />
+
+                <span>JavaScript</span>
+                <img src="/assets/brilhar-animado.svg" alt="" />
+
+                <span>PHP</span>
+                <img src="/assets/brilhar-animado.svg" alt="" />
+
+                <span>WordPress</span>
+                <img src="/assets/brilhar-animado.svg" alt="" />
+
+                <span>Elementor Pro</span>
+                <img src="/assets/brilhar-animado.svg" alt="" />
+
+                <span>Performance e otimização web</span>
+                <img src="/assets/brilhar-animado.svg" alt="" />
+
+                <span>Criação e integração de APIs</span>
+                <img src="/assets/brilhar-animado.svg" alt="" />
+              </div>
+
+              <!-- GRUPO 02 - CÓPIA PARA LOOP -->
+              <div class="faixaGrupo" aria-hidden="true">
+                <span>HTML5</span>
+                <img src="/assets/brilhar-animado.svg" alt="" />
+
+                <span>CSS3</span>
+                <img src="/assets/brilhar-animado.svg" alt="" />
+
+                <span>JavaScript</span>
+                <img src="/assets/brilhar-animado.svg" alt="" />
+
+                <span>PHP</span>
+                <img src="/assets/brilhar-animado.svg" alt="" />
+
+                <span>WordPress</span>
+                <img src="/assets/brilhar-animado.svg" alt="" />
+
+                <span>Elementor Pro</span>
+                <img src="/assets/brilhar-animado.svg" alt="" />
+
+                <span>Performance e otimização web</span>
+                <img src="/assets/brilhar-animado.svg" alt="" />
+
+                <span>Criação e integração de APIs</span>
+                <img src="/assets/brilhar-animado.svg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Seção Sobre Dobra 12 -->
+      <section class="percepcao" id="site-crescimento" aria-labelledby="percepcao-titulo">
+        <div class="percepcaoFundo" aria-hidden="true">
+          <svg viewBox="0 0 1440 900" fill="none" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <defs>
+              <linearGradient id="percepcao-traco" x1="0" y1="900" x2="800" y2="200" gradientUnits="userSpaceOnUse"><stop stop-color="#FF6C00" stop-opacity=".65"/><stop offset="1" stop-color="#f8b88a" stop-opacity="0"/></linearGradient>
+              <radialGradient id="percepcao-luz"><stop stop-color="#FF6C00" stop-opacity=".1"/><stop offset="1" stop-color="#FF6C00" stop-opacity="0"/></radialGradient>
+            </defs>
+            <ellipse cx="60" cy="760" rx="430" ry="400" fill="url(#percepcao-luz)"/>
+            <g class="percepcaoOrbitas" stroke="url(#percepcao-traco)" stroke-width="1">
+              <circle cx="30" cy="810" r="230"/>
+              <circle cx="30" cy="810" r="292"/>
+              <circle cx="30" cy="810" r="354"/>
+            </g>
+            <circle class="percepcaoOrbitaPontilhada" cx="30" cy="810" r="323" stroke="#f8b88a" stroke-opacity=".22" stroke-dasharray="1 11"/>
+            <path class="percepcaoTraco" d="M0 548H76Q100 548 100 524V459Q100 435 124 435H310" stroke="#FF6C00" stroke-opacity=".35"/>
+            <g fill="#FF6C00"><circle cx="100" cy="490" r="3"/><circle cx="257" cy="672" r="3"/></g>
+            <g stroke="#f8b88a" stroke-opacity=".13">
+              <path d="M1110 -900V108Q1110 148 1150 148H1440M1160 -900V70Q1160 98 1188 98H1440M1210 -900V32Q1210 48 1226 48H1440"/>
+              <path d="M1355 235h18m-9-9v18M1305 288h12m-6-6v12"/>
+            </g>
+          </svg>
+        </div>
+        <div class="percepcaoTopo">
+          <span class="sitePercepcao">Seu site</span>
+          <h2 id="percepcao-titulo">
+            Não deve ser apenas <span>mais um endereço na internet.</span><br> Ele precisa trabalhar a favor do crescimento da sua empresa.
+          </h2>
+        </div>
+
+        <div class="percepcaoBottom">
+          <a href="/orcamento" data-posicao-orcamento="crescimento" class="cta">
+            <span class="circle-bg"></span>
+
+            <img
+              class="cta-icon"
+              src="/assets/icone-button-orcamento.svg"
+              alt=""
+              width="17"
+              height="15"
+            />
+
+            <span class="text">Solicitar orçamento</span>
+          </a>
+
+          <p>
+            <span>É com esse objetivo que desenvolvo cada projeto: criar uma experiência que desperte o desejo de contratar, facilite a decisão do cliente e abra caminho para novas vendas.</span>
+            <span>Cada negócio tem seus próprios desafios, objetivos e oportunidades.<br>Mais do que escolher cores, efeitos ou tendências, meu trabalho é transformar esses objetivos em decisões de design, conteúdo e desenvolvimento.</span>
+            <span class="percepcaoConvite"><strong>Vamos conversar sobre o seu projeto?</strong><span>Conte o que você precisa e descubra como podemos transformar suas ideias em um site que valorize sua empresa e seus objetivos.</span></span>
+          </p>
+        </div>
+
+        <div class="continueRolando" role="note" aria-label="Continue rolando para acompanhar esta seção">
+          <span class="textoScroll">Continue rolando</span>
+          <span class="setaScroll" aria-hidden="true"><i></i><i></i></span>
+          <span class="progressoScroll" aria-hidden="true"></span>
+        </div>
+
+        <!-- TRANSIÇÃO DOBRA 12 → DOBRA 13 -->
+        <div class="percepcaoExitFragments" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </section>
+      <!-- Seção Final Dobra 13 -->
+      <section class="dobra13" id="pilares-criacao" aria-label="Estratégia, presença e resultado">
+        <div class="pilaresFundo" aria-hidden="true">
+          <svg viewBox="0 0 1440 900" fill="none" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <g stroke="#f8b88a" stroke-opacity=".14">
+              <ellipse cx="720" cy="450" rx="560" ry="265"/>
+              <ellipse cx="720" cy="450" rx="625" ry="325"/>
+              <path d="M0 450h280m880 0h280M720 0v130m0 640v130"/>
+            </g>
+            <ellipse class="pilaresOrbita" cx="720" cy="450" rx="595" ry="296" stroke="#FF6C00" stroke-opacity=".4" stroke-dasharray="2 18"/>
+            <g stroke="#FF6C00" stroke-opacity=".55"><path d="M200 236h-24v24M1240 236h24v24M200 664h-24v-24M1240 664h24v-24"/></g>
+            <g fill="#FF6C00"><circle cx="160" cy="450" r="3"/><circle cx="1280" cy="450" r="3"/></g>
+          </svg>
+        </div>
+        <h2>Estratégia</h2>
+        <h2>Presença</h2>
+        <h2>Resultado</h2>
+        <div class="continueRolando" role="note" aria-label="Continue rolando para acompanhar esta seção">
+          <span class="textoScroll">Continue rolando</span>
+          <span class="setaScroll" aria-hidden="true"><i></i><i></i></span>
+          <span class="progressoScroll" aria-hidden="true"></span>
+        </div>
+      </section>
+    </main>
+
+    <section class="newsletter" id="analise-gratuita" aria-labelledby="newsletter-titulo">
+      <div class="borderBG">
+        <div class="newsletterConteudo">
+        <div class="analisenewsletter">
+          <span>Sua página poderia vender muito mais.</span>
+          <h2 id="newsletter-titulo">Quer descobrir o que está<br><strong>impedindo isso?</strong></h2>
+          <p>
+            Envie o link do seu site institucional, landing page ou página de vendas.
+            Vou analisar os principais pontos que podem estar reduzindo suas conversões.
+          </p>
+        </div>
+        <div class="formsNews">
+          <form
+            id="formAnaliseLanding"
+            class="formAnaliseLanding"
+            action="/analise-gratuita/formulario.php"
+            method="POST"
+            novalidate
+          >
+            <!--
+        Token de segurança.
+        O formulario.js preencherá automaticamente.
+    -->
+            <input type="hidden" name="csrf_token" id="csrfAnalise" value="" />
+
+            <!--
+        HONEYPOT ANTI-BOT
+
+        Esse campo fica invisível para pessoas reais.
+
+        Muitos bots procuram todos os inputs da página
+        e preenchem tudo automaticamente.
+
+        Se esse campo vier preenchido, o servidor
+        sabe que provavelmente é um robô.
+    -->
+            <div class="campoAntiBot" aria-hidden="true">
+              <label for="empresaConfirmacao"> Não preencha este campo </label>
+
+              <input
+                type="text"
+                id="empresaConfirmacao"
+                name="empresa_confirmacao"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="camposAnalise">
+              <!-- NOME -->
+              <div class="campoAnalise">
+                <span class="campoAnaliseCheck" aria-hidden="true"><img src="/assets/newsletter-check.svg" width="24" height="24" alt="" loading="lazy"></span>
+
+                <span class="campoAnaliseDivisor" aria-hidden="true"></span>
+
+                <label for="analiseNome" class="srOnly">
+                  Digite seu nome
+                </label>
+
+                <input
+                  id="analiseNome"
+                  type="text"
+                  name="nome"
+                  placeholder="Digite seu Nome:"
+                  maxlength="80"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+
+              <!-- EMAIL -->
+              <div class="campoAnalise">
+                <span class="campoAnaliseCheck" aria-hidden="true"><img src="/assets/newsletter-check.svg" width="24" height="24" alt="" loading="lazy"></span>
+
+                <span class="campoAnaliseDivisor" aria-hidden="true"></span>
+
+                <label for="analiseEmail" class="srOnly">
+                  Seu melhor e-mail
+                </label>
+
+                <input
+                  id="analiseEmail"
+                  type="email"
+                  name="email"
+                  placeholder="Seu melhor e-mail"
+                  maxlength="150"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+
+              <!-- LANDING PAGE -->
+              <div class="campoAnalise">
+                <span class="campoAnaliseCheck" aria-hidden="true"><img src="/assets/newsletter-check.svg" width="24" height="24" alt="" loading="lazy"></span>
+
+                <span class="campoAnaliseDivisor" aria-hidden="true"></span>
+
+                <label for="analiseUrl" class="srOnly">
+                  Link do site, landing page ou página de vendas
+                </label>
+
+                <input
+                  id="analiseUrl"
+                  type="text"
+                  name="url"
+                  placeholder="Link do site ou página de vendas"
+                  maxlength="2048"
+                  inputmode="url"
+                  autocomplete="url"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- ERROS -->
+            <div
+              id="erroAnalise"
+              class="mensagemAnalise erroAnalise"
+              role="alert"
+              aria-live="polite"
+            ></div>
+
+            <!-- POLÍTICA -->
+            <p class="privacidadeAnalise">
+              Ao enviar este formulário, você consente que a Daiane Designer
+              utilize seus dados para enviar sua análise e entrar em contato com
+              você sobre serviços, propostas, novidades, ofertas e conteúdos
+              exclusivos. Consulte a
+              <a href="/politica-de-privacidade" target="_blank" rel="noopener noreferrer"> Política de Privacidade. </a>
+            </p>
+
+            <!--
+        CLOUDFLARE TURNSTILE
+
+        O formulario.js colocará a proteção antirrobô aqui.
+        Não precisamos colocar nenhuma chave diretamente
+        no HTML.
+    -->
+            <div id="turnstileAnalise" class="turnstileAnalise"></div>
+
+            <!-- BOTÃO -->
+            <button
+              id="btnEnviarAnalise"
+              type="submit"
+              class="btnAnalise"
+              disabled
+            >
+              <span class="btnAnaliseTexto"> QUERO MINHA ANÁLISE </span>
+
+              <img class="btnAnaliseIcone" src="/assets/newsletter-seta.svg" width="9.703" height="18.483" alt="" loading="lazy">
+            </button>
+
+            <!-- SUCESSO -->
+            <div
+              id="sucessoAnalise"
+              class="mensagemAnalise sucessoAnalise"
+              role="status"
+              aria-live="polite"
+            ></div>
+          </form>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="rodape">
+      <div class="meioFooter">
+        <div class="iconesFooter">
+          <div class="iconesRedesociais">
+            <span class="redeSocialEntrada"><a
+              href="https://github.com/DaianeFerreira-designer"
+              target="_blank"
+              rel="noopener"
+              aria-label="GitHub"
+              ><img
+                src="assets/github.svg"
+                alt=""
+                width="32"
+                height="32"
+                loading="lazy"
+                decoding="async"
+            /></a></span>
+            <span class="redeSocialEntrada"><a
+              href="https://www.linkedin.com/in/daiane-ferreira-araujo/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Linkedin"
+              ><img
+                src="assets/sinal-do-linkedin 1.svg"
+                alt=""
+                width="32"
+                height="32"
+                loading="lazy"
+                decoding="async"
+            /></a></span>
+          </div>
+
+          <img
+            src="assets/logo.svg"
+            alt="Logo Daiane Ferreira"
+            width="89"
+            height="68"
+            loading="lazy"
+            decoding="async"
+          />
+
+          <div class="iconesRedesociais">
+            <span class="redeSocialEntrada"><a
+              href="https://www.instagram.com/designer.daiane/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Instagram"
+              ><img
+                src="assets/instagram 1.svg"
+                alt=""
+                width="32"
+                height="32"
+                loading="lazy"
+                decoding="async"
+            /></a></span>
+            <span class="redeSocialEntrada"><a
+              href="https://www.behance.net/daiane_ferreira"
+              target="_blank"
+              rel="noopener"
+              aria-label="Behance"
+              ><img
+                src="/assets/behance 1.svg"
+                alt=""
+                width="32"
+                height="32"
+                loading="lazy"
+                decoding="async"
+            /></a></span>
+          </div>
+        </div>
+
+        <h2 class="textoAnimado">Daiane <span>Designer</span></h2>
+        <div class="direitos">
+          <p>© <span class="anoAtual" id="anoAtual"></span> Daiane Ferreira</p>
+          |
+
+          <p>Todos os Direitos Reservados</p>
+        </div>
+      </div>
+
+      <div class="finalFooter">
+        <p class="textoAnimado2">
+          Você merece um site profissional que apresenta seus serviços com
+          clareza e <span class="footer-nowrap">autoridade!</span>
+        </p>
+
+        <div class="botoesFooter">
+          <a href="/orcamento" data-posicao-orcamento="rodape" class="cta">
+            <span class="circle-bg"></span>
+
+            <img
+              class="cta-icon"
+              src="/assets/icone-button-orcamento.svg"
+              alt=""
+              width="17"
+              height="15"
+              loading="lazy"
+              decoding="async"
+            />
+
+            <span class="text">Solicitar Orçamento</span>
+          </a>
+          <a href="#portfolio" class="portfolioButton">
+            <span>Ver Portfólio</span>
+          </a>
+        </div>
+      </div>
+      <nav class="linksLegaisFooter" aria-label="Políticas e termos">
+        <a href="/termos-de-uso" target="_blank" rel="noopener noreferrer">Termos de uso</a>
+        <a href="/politica-de-privacidade" target="_blank" rel="noopener noreferrer">Política de privacidade</a>
+        <a href="/politica-de-cookies" target="_blank" rel="noopener noreferrer">Política de cookies</a>
+      </nav>
+    </footer>
+    <div class="custom-scrollbar" hidden>
+      <div class="custom-scroll-thumb" role="scrollbar" tabindex="0"
+        aria-label="Rolagem da página" aria-controls="pagina"
+        aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100"
+        aria-valuenow="0"></div>
+    </div>
+    <a
+      href="https://wa.me/5511947055638?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20um%20orçamento."
+      class="whatsappFloat"
+      target="_blank"
+      rel="noopener"
+      aria-label="Chamar no WhatsApp"
+    >
+      <img src="/assets/whatsapp.svg" alt="" width="150" height="150" />
+    </a>
+
+    <!-- =========================================================
+     POPUP DE VISUALIZAÇÃO DOS PROJETOS
+========================================================= -->
+    <!-- =========================================================
+     POPUP SEGURO DOS PROJETOS
+========================================================= -->
+
+    <div
+      class="portfolioPreviewModal"
+      id="portfolioPreviewModal"
+      aria-hidden="true"
+      hidden
+    >
+      <div
+        class="portfolioPreviewBackdrop"
+        data-preview-close
+        aria-hidden="true"
+      ></div>
+
+      <section
+        class="portfolioPreviewDialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="portfolioPreviewTitle"
+        tabindex="-1"
+      >
+        <!-- CONTROLES -->
+
+        <div class="portfolioPreviewControls">
+          <div class="portfolioPreviewHeading">
+            <span class="portfolioPreviewEyebrow"> Preview do projeto </span>
+
+            <h2 id="portfolioPreviewTitle">Projeto</h2>
+          </div>
+
+          <div
+            class="portfolioPreviewDevices"
+            role="group"
+            aria-label="Tamanho do preview"
+          >
+            <button
+              type="button"
+              class="portfolioPreviewDevice is-active"
+              data-preview-device="desktop"
+              aria-pressed="true"
+            >
+              Desktop
+            </button>
+
+            <button
+              type="button"
+              class="portfolioPreviewDevice"
+              data-preview-device="tablet"
+              aria-pressed="false"
+            >
+              Tablet
+            </button>
+
+            <button
+              type="button"
+              class="portfolioPreviewDevice"
+              data-preview-device="phone"
+              aria-pressed="false"
+            >
+              Celular
+            </button>
+          </div>
+
+          <div class="portfolioPreviewActions">
+            <button
+              type="button"
+              class="portfolioPreviewClose"
+              data-preview-close
+              aria-label="Fechar preview"
+            >
+              &times;
+            </button>
+          </div>
+        </div>
+
+        <!-- ÁREA DO PREVIEW -->
+
+        <div class="portfolioPreviewArea">
+          <div class="portfolioPreviewLoading" aria-live="polite">
+            <span class="portfolioPreviewSpinner" aria-hidden="true"></span>
+
+            <span class="portfolioPreviewLoadingText">
+              Carregando projeto...
+            </span>
+          </div>
+
+          <div class="portfolioPreviewWindow is-desktop">
+            <iframe
+              id="portfolioPreviewFrame"
+              title="Preview do projeto"
+              src="about:blank"
+              sandbox="allow-scripts allow-same-origin"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="autoplay; fullscreen"
+              loading="eager"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    </div>
+    
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js"></script>
+    <script
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+      defer
+    ></script>
+
+    <script src="/script.js"></script>
+    <script src="/assets/analytics.js" defer></script>
+    <script src="/analise-gratuita/formulario.js?v=2" defer></script>
+  </body>
+</html>

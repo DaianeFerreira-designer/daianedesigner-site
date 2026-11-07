@@ -1,2 +1,16 @@
 config/conexao.php
 config/email.php
+
+# Configurações locais e credenciais
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+*.log
+*.sql.gz
+*.sql.zip
+*.pem
+*.key
+Thumbs.db
+.DS_Store

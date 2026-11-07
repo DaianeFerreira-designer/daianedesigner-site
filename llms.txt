@@ -1,0 +1,11 @@
+# Daiane Ferreira — Web Designer
+
+> Criação de sites profissionais e landing pages para empresas e profissionais no Brasil.
+
+## Site oficial
+
+- [Página inicial](https://daianedesigner.com.br/): Apresentação dos serviços de web design, projetos e canais de contato.
+- [Serviços](https://daianedesigner.com.br/#servicos-detalhados): Criação de sites institucionais, páginas de vendas, lojas virtuais e páginas de captura.
+- [Portfólio](https://daianedesigner.com.br/#portfolio): Exemplos de sites e landing pages desenvolvidos.
+- [Sobre Daiane Ferreira](https://daianedesigner.com.br/#sobre-daiane): Apresentação da web designer e sua forma de trabalho.
+- [Contato e perguntas frequentes](https://daianedesigner.com.br/#contato): Canais públicos de contato e respostas sobre os serviços.

@@ -1,10 +1,12 @@
 <header class="headerDesktop">
-  <a href="/">
+  <a href="/" title="Daiane Ferreira Web Designer | Página Inicial">
     <img
       class="logo"
-      src="/assets/imagens/logo-daiane-ferreira.svg"
-      alt="Logo Daiane Ferreira"
-          width="45" height="35" />
+      src="/assets/daiane-ferreira-web-designer-logo.svg"
+      alt="Logotipo Daiane Ferreira Web Designer"
+      width="45"
+      height="35"
+    />
   </a>
 
   <nav class="principal" aria-label="Navegação principal">
@@ -12,130 +14,196 @@
       <li>
         <a href="/">
           <img
-            src="/assets/imagens/home-desktop.svg"
-            data-active-src="/assets/imagens/home-desktop-ativo.svg"
+            src="/assets/icone-home-estado-normal.svg"
+            data-active-src="/assets/icone-home-desktop-ativo.svg"
             alt=""
-          width="24" height="24" />
+            width="16"
+            height="16"
+          />
           <span>Home</span>
         </a>
       </li>
 
-      <li>
-        <a href="/criacao-de-sites-profissionais">
+      <li class="menu-servicos">
+        <a href="/#servicos-detalhados">
           <img
-            src="/assets/imagens/servicos-desktop.svg"
-            data-active-src="/assets/imagens/servicos-desktop-ativo.svg"
+            src="/assets/icone-servicos-desktop.svg"
+            data-active-src="/assets/icone-servicos-desktop-ativo.svg"
             alt=""
-          width="24" height="24" />
+            width="16"
+            height="16"
+          />
+
           <span>Serviços</span>
+
+          <svg class="seta-menu" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
         </a>
       </li>
 
       <li>
-        <a href="/templates-elementor-wordpress-figma">
+        <a href="/#portfolio">
           <img
-            src="/assets/imagens/templates-desktop.svg"
-            data-active-src="/assets/imagens/templates-desktop-ativo.svg"
+            src="/assets/icone-portfolio.svg"
+            data-active-src="/assets/icone-portfolio-desktop-ativo.svg"
             alt=""
-          width="24" height="24" />
-          <span>Templates</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="/portfolio-sites-profissionais">
-          <img
-            src="/assets/imagens/portfolio-desktop.svg"
-            data-active-src="/assets/imagens/portfolio-desktop-ativo.svg"
-            alt=""
-          width="24" height="24" />
+            width="16"
+            height="16"
+          />
           <span>Portfólio</span>
         </a>
       </li>
 
       <li>
-        <a href="/sobre-daiane-ferreira-web-designer">
+        <a href="/#contato">
           <img
-            src="/assets/imagens/sobre-desktop.svg"
-            data-active-src="/assets/imagens/sobre-desktop-ativo.svg"
+            src="/assets/icone-contato.svg"
+            data-active-src="/assets/icone-contato-desktop-ativo.svg"
             alt=""
-          width="24" height="24" />
-          <span>Sobre</span>
+            width="16"
+            height="16"
+          />
+          <span>Contato</span>
         </a>
       </li>
 
       <li>
-        <a href="/contato-criacao-de-sites">
+        <a href="/#sobre-daiane">
           <img
-            src="/assets/imagens/contato-desktop.svg"
-            data-active-src="/assets/imagens/contato-desktop-ativo.svg"
+            src="/assets/icone-sobre.svg"
+            data-active-src="/assets/icone-sobre-desktop-ativo.svg"
             alt=""
-          width="24" height="24" />
-          <span>Contato</span>
+            width="16"
+            height="16"
+          />
+          <span>Sobre</span>
         </a>
       </li>
     </ul>
   </nav>
 
-  <img
-    class="icone"
-    src="/assets/imagens/icon-daiane-ferreira-logo-web-design-sites.svg"
-    alt="Ícone Daiane Ferreira"
-          width="42" height="41" />
+  <div class="maisOpcoes">
+    <a href="/orcamento" class="orcamentoHeader" aria-current="page"><span class="orcamentoTexto"><span>Solicitar Orçamento</span><span aria-hidden="true">Solicitar Orçamento</span></span></a>
+
+  </div>
 </header>
 
 <header class="headerMobile">
-  
-  <nav class="menu-drop-down">
-    <button class="menu-btn" type="button" aria-label="Abrir menu">
-      <span class="menu-line top"></span>
-      <span class="menu-line mid"></span>
-      <span class="menu-line bottom"></span>
-    </button>
+  <nav class="menuMobile" aria-label="Navegação mobile">
+    <!-- PAINEL LARANJA -->
 
-    <div class="menu-links">
-      <a href="/" class="nav-link">
-        <img src="/assets/imagens/mobile-home.svg" data-active-src="/assets/imagens/mobile-home-ativo.svg" alt=""
-          width="16" height="16" />
-        <span>Home</span>
-      </a>
+    <div class="menuMobilePainel" id="menuMobilePainel">
+      <div class="menu-links">
+        <!-- HOME -->
 
-      <a href="/criacao-de-sites-profissionais" class="nav-link">
-        <img src="/assets/imagens/mobile-servicos.svg" data-active-src="/assets/imagens/mobile-servicos-ativo.svg" alt=""
-          width="16" height="16" />
-        <span>Serviços</span>
-      </a>
+        <a href="/" class="nav-link">
+          <img
+            src="/assets/icone-home-estado-normal.svg"
+            data-normal-src="/assets/icone-home-estado-normal.svg"
+            data-active-src="/assets/icone-home-desktop-ativo.svg"
+            alt=""
+            width="16"
+            height="16"
+          />
 
-      <a href="/templates-elementor-wordpress-figma" class="nav-link">
-        <img src="/assets/imagens/mobile-templates.svg" data-active-src="/assets/imagens/mobile-templates-ativo.svg" alt=""
-          width="15" height="16" />
+          <span>Home</span>
+        </a>
 
-        <span>Templates</span>
-      </a>
+        <!-- SERVIÇOS -->
 
-      <a href="/portfolio-sites-profissionais" class="nav-link">
-        <img src="/assets/imagens/mobile-portfolio.svg" data-active-src="/assets/imagens/mobile-portfolio-ativo.svg" alt=""
-          width="16" height="16" />
+        <a href="/#servicos-detalhados" class="nav-link">
+          <img
+            src="/assets/icone-servicos-desktop.svg"
+            data-normal-src="/assets/icone-servicos-desktop.svg"
+            data-active-src="/assets/icone-servicos-desktop-ativo.svg"
+            alt=""
+            width="16"
+            height="16"
+          />
 
-        <span>Portfólio</span>
-      </a>
+          <span>Serviços</span>
+        </a>
 
-      <a href="/sobre-daiane-ferreira-web-designer" class="nav-link">
-        <img src="/assets/imagens/mobile-sobre.svg" data-active-src="/assets/imagens/mobile-sobre-ativo.svg" alt=""
-          width="16" height="16" />
-        <span>Sobre</span>
-      </a>
+        <!-- PORTFÓLIO -->
 
-      <a href="/contato-criacao-de-sites" class="nav-link">
-        <img src="/assets/imagens/mobile-contato.svg" data-active-src="/assets/imagens/mobile-contato-ativo.svg" alt=""
-          width="16" height="16" />
-        <span>Contato</span>
-      </a>
+        <a href="/#portfolio" class="nav-link">
+          <img
+            src="/assets/icone-portfolio.svg"
+            data-normal-src="/assets/icone-portfolio.svg"
+            data-active-src="/assets/icone-portfolio-desktop-ativo.svg"
+            alt=""
+            width="16"
+            height="16"
+          />
+
+          <span>Portfólio</span>
+        </a>
+
+        <!-- CONTATO -->
+
+        <a href="/#contato" class="nav-link">
+          <img
+            src="/assets/icone-contato.svg"
+            data-normal-src="/assets/icone-contato.svg"
+            data-active-src="/assets/icone-contato-desktop-ativo.svg"
+            alt=""
+            width="16"
+            height="16"
+          />
+
+          <span>Contato</span>
+        </a>
+
+        <!-- SOBRE -->
+
+        <a href="/#sobre-daiane" class="nav-link">
+          <img
+            src="/assets/icone-sobre.svg"
+            data-normal-src="/assets/icone-sobre.svg"
+            data-active-src="/assets/icone-sobre-desktop-ativo.svg"
+            alt=""
+            width="16"
+            height="16"
+          />
+
+          <span>Sobre</span>
+        </a>
+      </div>
+
+      <!-- BOTÕES DO MENU ATUAL -->
+
+      <div class="maisOpcoesMobile">
+        <a href="/orcamento" class="orcamentoHeaderMobile" aria-current="page">
+          <span>Solicitar Orçamento</span>
+        </a>
+
+      </div>
     </div>
 
-    <img class="shape" src="/assets/imagens/mobile_menu_drop.svg" alt=""
-          width="430" height="67" />
-  </nav>
+    <!-- SHAPE -->
 
-  
+    <div class="menuMobileShape">
+      <img
+        class="shape"
+        src="/assets/mobile_menu_drop.svg"
+        alt=""
+        width="430"
+        height="67"
+        aria-hidden="true"
+      />
+
+      <button
+        class="menu-btn"
+        type="button"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+        aria-controls="menuMobilePainel"
+      >
+        <span class="menu-line top"></span>
+        <span class="menu-line mid"></span>
+        <span class="menu-line bottom"></span>
+      </button>
+    </div>
+  </nav>
 </header>

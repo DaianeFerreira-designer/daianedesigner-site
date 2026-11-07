@@ -1,0 +1,105 @@
+@font-face {
+  font-family: "Work Sans";
+  src: url("/assets/fonts/WorkSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Work Sans";
+  src: url("/assets/fonts/WorkSans-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  background: #060403;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: clamp(16px, 5vw, 64px);
+  color: #0d0d0d;
+  font: 400 1rem/1.65 "Work Sans", sans-serif;
+}
+
+.pagina-legal {
+  box-sizing: border-box;
+  max-width: 790px;
+  margin-inline: auto;
+  padding: clamp(20px, 5vw, 52px);
+  border: 1px solid #ff6c00;
+  border-radius: 14px;
+  background: #fffefd;
+  overflow-wrap: anywhere;
+}
+
+.pagina-legal h1,
+.pagina-legal h2 {
+  color: #0d0d0d;
+  line-height: 1.2;
+}
+
+.pagina-legal h1 {
+  margin: 16px 0 8px;
+  font-size: clamp(1.85rem, 4vw, 2.75rem);
+}
+
+.pagina-legal h2 {
+  margin: 0 0 8px;
+  font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+}
+
+.pagina-legal section {
+  margin-top: 28px;
+}
+
+.pagina-legal p {
+  margin: 0;
+}
+
+.pagina-legal p + p {
+  margin-top: 12px;
+}
+
+.pagina-legal-data {
+  font-size: 0.875rem;
+}
+
+.pagina-legal ul {
+  margin: 0;
+  padding-inline-start: 1.25rem;
+}
+
+.pagina-legal li + li {
+  margin-top: 10px;
+}
+
+.pagina-legal code {
+  font-family: inherit;
+}
+
+.pagina-legal a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+
+.pagina-legal a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.pagina-legal-inicio {
+  font-size: 0.875rem;
+}
+
+.pagina-legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #e4dace;
+}

@@ -2,22 +2,16 @@
 
 session_start();
 
+ini_set('display_errors', '0');
 header('Content-Type: application/json; charset=utf-8');
+header('Cache-Control: no-store');
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$pdo = new PDO(
-    "mysql:host=" . getenv('DB_HOST') . ";port=" . getenv('DB_PORT') . ";dbname=" . getenv('DB_DATABASE') . ";charset=utf8mb4",
-    getenv('DB_USERNAME'),
-    getenv('DB_PASSWORD'),
-    [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    ]
-);
+require_once __DIR__ . '/seguranca-orcamento.php';
 
 $emailConfig = [
     'host' => getenv('SMTP_HOST'),
@@ -37,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 if (
-    empty($_POST['csrf_token']) ||
+    !is_string($_POST['csrf_token'] ?? null) ||
     empty($_SESSION['csrf_token']) ||
     !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])
 ) {
@@ -56,7 +50,45 @@ if (!empty($_POST['statusweb'] ?? '')) {
 }
 
 $stage = $_POST['stage'] ?? '';
-$draftId = $_POST['draft_id'] ?? null;
+$draftId = $_POST['draft_id'] ?? '';
+$requestId = $_POST['request_id'] ?? '';
+if (!in_array($stage, ['rascunho', 'projeto_enviado', 'confirmado'], true)) {
+    responderOrcamento(400, 'Etapa inválida.');
+}
+if (!is_string($requestId) || !preg_match('/\A[a-f0-9]{32}\z/', $requestId) || !is_string($draftId)) {
+    responderOrcamento(403, 'A sessão do orçamento expirou. Atualize a página para começar novamente.');
+}
+
+// A sessão permanece bloqueada durante a gravação e o aviso, serializando repetições.
+$_SESSION['orcamentos'] ??= [];
+$rascunhos = &$_SESSION['orcamentos'];
+$rascunhoExistente = $rascunhos[$requestId] ?? null;
+if (($draftId !== '' && ($rascunhoExistente['id'] ?? null) !== $draftId)
+    || ($stage !== 'rascunho' && ($draftId === '' || $rascunhoExistente === null))) {
+    responderOrcamento(403, 'Este rascunho não pertence à sessão atual.');
+}
+if (($rascunhoExistente['etapa'] ?? '') === 'confirmado') {
+    if ($stage !== 'confirmado') {
+        responderOrcamento(409, 'Este orçamento já foi confirmado.');
+    }
+    if (!empty($rascunhoExistente['avisos']['confirmado'])) {
+        responderOrcamento(200, 'Orçamento confirmado.', $draftId);
+    }
+}
+if ($stage === 'confirmado' && !in_array($rascunhoExistente['etapa'], ['projeto_enviado', 'confirmado'], true)) {
+    responderOrcamento(409, 'Salve os dados do projeto antes de confirmar.');
+}
+
+$tipoProjetoRecebido = $_POST['tipo_projeto'] ?? [];
+if (is_array($tipoProjetoRecebido) && count(array_filter($tipoProjetoRecebido, 'is_string')) !== count($tipoProjetoRecebido)) {
+    responderOrcamento(422, 'Confira os dados enviados.');
+}
+foreach (['nome', 'whatsapp', 'email', 'empresaOpcional', 'presenca_site', 'site_link', 'outro_projeto',
+    'investimento_estimado', 'prazo_inicio', 'insta', 'observacao', 'cf-turnstile-response'] as $campo) {
+    if (isset($_POST[$campo]) && !is_string($_POST[$campo])) {
+        responderOrcamento(422, 'Confira os dados enviados.');
+    }
+}
 
 $nome = trim($_POST['nome'] ?? '');
 $whatsapp = trim($_POST['whatsapp'] ?? '');
@@ -170,6 +202,26 @@ if (
 }
 
 try {
+    if ($stage === 'rascunho') {
+        if ($nome === '' || $whatsapp === '' || $email === '' || !$aceitePrivacidade || !emailValido($email)) {
+            responderOrcamento(422, 'Preencha os dados de e-mail corretamente.');
+        }
+
+        if ($rascunhoExistente === null) {
+            validarNovoRascunho($_POST['cf-turnstile-response'] ?? '');
+        }
+    }
+
+    $pdo = new PDO(
+        "mysql:host=" . getenv('DB_HOST') . ";port=" . getenv('DB_PORT') . ";dbname=" . getenv('DB_DATABASE') . ";charset=utf8mb4",
+        getenv('DB_USERNAME'),
+        getenv('DB_PASSWORD'),
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        ]
+    );
+
     $colunaNewsletter = $pdo->query("SHOW COLUMNS FROM orcamentos LIKE 'newsletter_opt_in'");
     if (!$colunaNewsletter->fetch()) {
         $pdo->exec(
@@ -180,42 +232,43 @@ try {
     }
 
     if ($stage === 'rascunho') {
-        if ($nome === '' || $whatsapp === '' || $email === '' || !$aceitePrivacidade || !emailValido($email)) {
-            http_response_code(422);
-            echo json_encode(['success' => false, 'message' => 'Preencha os dados de e-mail corretamente.']);
-            exit;
-        }
-
-        $sql = "INSERT INTO orcamentos (
-            nome,
-            whatsapp,
-            email,
-            empresa,
-            aceite_privacidade,
-            newsletter_opt_in,
-            status_solicitacao
-        ) VALUES (
-            :nome,
-            :whatsapp,
-            :email,
-            :empresa,
-            :aceite_privacidade,
-            :newsletter_opt_in,
-            'rascunho'
-        )";
-
-        $stmt = $pdo->prepare($sql);
-
-        $stmt->execute([
+        $dadosContato = [
             ':nome' => $nome,
             ':whatsapp' => $whatsapp,
             ':email' => $email,
             ':empresa' => $empresa !== '' ? $empresa : null,
             ':aceite_privacidade' => $aceitePrivacidade,
             ':newsletter_opt_in' => $newsletterOptIn
-        ]);
+        ];
 
-        $draftId = $pdo->lastInsertId();
+        if ($rascunhoExistente === null) {
+            $sql = "INSERT INTO orcamentos (
+                nome,
+                whatsapp,
+                email,
+                empresa,
+                aceite_privacidade,
+                newsletter_opt_in,
+                status_solicitacao
+            ) VALUES (
+                :nome,
+                :whatsapp,
+                :email,
+                :empresa,
+                :aceite_privacidade,
+                :newsletter_opt_in,
+                'rascunho'
+            )";
+            $pdo->prepare($sql)->execute($dadosContato);
+            $draftId = $pdo->lastInsertId();
+            $rascunhos[$requestId] = ['id' => $draftId, 'etapa' => 'rascunho', 'avisos' => []];
+        } else {
+            $draftId = $rascunhoExistente['id'];
+            $sql = "UPDATE orcamentos SET nome = :nome, whatsapp = :whatsapp, email = :email,
+                empresa = :empresa, aceite_privacidade = :aceite_privacidade, newsletter_opt_in = :newsletter_opt_in
+                WHERE id = :id";
+            $pdo->prepare($sql)->execute($dadosContato + [':id' => $draftId]);
+        }
 
         $corpo = "
             <h2>Orçamento - Etapa 01</h2>
@@ -229,23 +282,10 @@ try {
             <p><strong>Status:</strong> Rascunho</p>
         ";
 
-        enviarEmail($emailConfig, "Orçamento - {$nomeAssunto}", $corpo);
-
-        echo json_encode([
-            'success' => true,
-            'message' => 'Etapa 1 salva.',
-            'draft_id' => $draftId
-        ]);
-        exit;
+        finalizarEtapaOrcamento($rascunhos[$requestId], 'rascunho', 'Etapa 1 salva.', $emailConfig, "Orçamento - {$nomeAssunto}", $corpo);
     }
 
     if ($stage === 'projeto_enviado') {
-        if (empty($draftId)) {
-            http_response_code(422);
-            echo json_encode(['success' => false, 'message' => 'ID do rascunho não encontrado.']);
-            exit;
-        }
-
         $sql = "UPDATE orcamentos SET
             newsletter_opt_in = :newsletter_opt_in,
             presenca_site = :presenca_site,
@@ -274,6 +314,8 @@ try {
             ':id' => $draftId
         ]);
 
+        $rascunhos[$requestId]['etapa'] = 'projeto_enviado';
+
         $corpo = "
             <h2>Orçamento - Etapa 02</h2>
             <p><strong>ID:</strong> " . e($draftId) . "</p>
@@ -294,23 +336,10 @@ try {
             <p><strong>Status:</strong> Projeto enviado</p>
         ";
 
-       enviarEmail($emailConfig, "Orçamento - {$nomeAssunto}", $corpo);
-
-        echo json_encode([
-            'success' => true,
-            'message' => 'Etapa 2 salva.',
-            'draft_id' => $draftId
-        ]);
-        exit;
+        finalizarEtapaOrcamento($rascunhos[$requestId], 'projeto_enviado', 'Etapa 2 salva.', $emailConfig, "Orçamento - {$nomeAssunto}", $corpo);
     }
 
     if ($stage === 'confirmado') {
-        if (empty($draftId)) {
-            http_response_code(422);
-            echo json_encode(['success' => false, 'message' => 'ID do orçamento não encontrado.']);
-            exit;
-        }
-
         $sql = "UPDATE orcamentos SET
             newsletter_opt_in = :newsletter_opt_in,
             status_solicitacao = 'confirmado'
@@ -321,6 +350,8 @@ try {
             ':newsletter_opt_in' => $newsletterOptIn,
             ':id' => $draftId
         ]);
+
+        $rascunhos[$requestId]['etapa'] = 'confirmado';
 
         $corpo = "
             <h2>Orçamento Confirmado</h2>
@@ -342,14 +373,7 @@ try {
             <p><strong>Status:</strong> Confirmado</p>
         ";
 
-       enviarEmail($emailConfig, "Orçamento - {$nomeAssunto}", $corpo);
-
-        echo json_encode([
-            'success' => true,
-            'message' => 'Orçamento confirmado.',
-            'draft_id' => $draftId
-        ]);
-        exit;
+        finalizarEtapaOrcamento($rascunhos[$requestId], 'confirmado', 'Orçamento confirmado.', $emailConfig, "Orçamento - {$nomeAssunto}", $corpo);
     }
 
     http_response_code(400);
@@ -365,7 +389,7 @@ try {
     exit;
 
 } catch (Exception $e) {
-    http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Erro ao enviar e-mail.']);
-    exit;
+    responderOrcamento(500, 'Erro ao enviar e-mail. Tente novamente.');
+} catch (Throwable $erro) {
+    responderOrcamento(503, 'O serviço de orçamento está indisponível no momento.');
 }

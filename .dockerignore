@@ -1,0 +1,14 @@
+.git
+.vscode
+.idea
+.env
+.env.*
+config/conexao.php
+config/email.php
+*.log
+*.pem
+*.key
+*.sql.gz
+*.sql.zip
+Thumbs.db
+.DS_Store

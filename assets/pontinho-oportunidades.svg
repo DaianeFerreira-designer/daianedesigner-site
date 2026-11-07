@@ -1,0 +1,15 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="17.5719" height="7.0467" viewBox="0 0 17.5719 7.0467" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="ICONE-PONTINHO">
+<path id="Vector" d="M3.57449 3.52336H17.5719" stroke-width="1.76168" stroke="#0B0D12" stroke-opacity="0.14"/>
+<g id="Vector_2">
+<use xlink:href="#stroke0_0_6" fill="#F8B88A"/>
+<mask id="stroke1_0_6" fill="white">
+<use xlink:href="#stroke0_0_6"/>
+</mask>
+<path d="M7.14885 3.52335C7.14885 5.46924 5.54853 7.0467 3.57444 7.0467C1.60035 7.0467 2.72989e-05 5.46924 2.72989e-05 3.52335C2.72989e-05 1.57746 1.60035 0 3.57444 0C5.54853 0 7.14885 1.57746 7.14885 3.52335Z" stroke-width="3.52335" stroke="#0B0D12" stroke-opacity="0.14" mask="url(#stroke1_0_6)"/>
+</g>
+</g>
+<defs>
+<path id="stroke0_0_6" d="M3.57444 7.0467C5.54853 7.0467 7.14885 5.46924 7.14885 3.52335C7.14885 1.57746 5.54853 0 3.57444 0C1.60035 0 2.72989e-05 1.57746 2.72989e-05 3.52335C2.72989e-05 5.46924 1.60035 7.0467 3.57444 7.0467Z"/>
+</defs>
+</svg>

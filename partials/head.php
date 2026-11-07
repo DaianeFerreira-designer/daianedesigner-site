@@ -18,7 +18,7 @@
   $socialTitle = $title ?? 'Daiane Ferreira — Web Designer';
   $socialDescription = $description ?? '';
   $socialUrl = $url ?? 'https://daianedesigner.com.br/';
-  $socialImage = $image ?? 'https://daianedesigner.com.br/assets/imagens/hero-web-design.webp';
+  $socialImage = $image ?? 'https://daianedesigner.com.br/assets/criacao-de-sites-profissionais-daiane-ferreira-desktop.webp';
   $socialImageAlt = 'Criação de sites profissionais por Daiane Ferreira';
   ?>
 
@@ -75,25 +75,13 @@
     as="font"
     type="font/woff2"
     crossorigin>
- <!-- Preload -->
-
-  <link
-    rel="preload"
-    as="image"
-    href="/assets/imagens/mobile_BG_hero.webp"
-    media="(max-width: 767px)"
-    fetchpriority="high">
-
-  <link
-    rel="preload"
-    as="image"
-    href="/assets/imagens/bghero-webdesign.webp"
-    media="(min-width: 768px)"
-    fetchpriority="high">
-
 
   <!-- CSS principal -->
-  <link rel="stylesheet" href="/style.css?v=28">
+  <link rel="stylesheet" href="/style.css?v=33">
+
+  <?php if (!empty($isBudgetPage)): ?>
+    <link rel="stylesheet" href="/orcamento.css?v=2">
+  <?php endif; ?>
 
   <!-- CSS do campo de telefone sem bloquear a renderização -->
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/css/intlTelInput.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -103,7 +91,7 @@
   </noscript>
 
   <!-- Favicon -->
-  <link rel="icon" href="/assets/imagens/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 
 
 
