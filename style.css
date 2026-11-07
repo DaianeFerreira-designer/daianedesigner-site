@@ -11071,7 +11071,8 @@ footer .linksLegaisFooter {
   border-top: 1px solid rgba(255, 254, 253, .12);
   padding-top: 24px;
 }
-footer .linksLegaisFooter a {
+footer .linksLegaisFooter a,
+footer .linksLegaisFooter .analytics-preferencias {
   color: var(--color-light);
   font-family: "Work Sans", sans-serif;
   font-size: 1rem;
@@ -11081,7 +11082,9 @@ footer .linksLegaisFooter a {
   transition: color .2s ease;
 }
 footer .linksLegaisFooter a:hover,
-footer .linksLegaisFooter a:focus-visible {
+footer .linksLegaisFooter a:focus-visible,
+footer .linksLegaisFooter .analytics-preferencias:hover,
+footer .linksLegaisFooter .analytics-preferencias:focus-visible {
   color: var(--color-accent);
   text-decoration: underline;
 }
