@@ -151,7 +151,18 @@ function enviarAnalise(string $id, string $nome, string $email, string $url): vo
     $mail->addReplyTo($email, $nome);
     $mail->Subject = 'Nova solicitação de análise gratuita';
     $mail->Body = "Solicitação: #$id\nNome: $nome\nE-mail: $email\nLanding page: $url\n";
-    $mail->send();
+    try {
+        $mail->send();
+    } catch (Throwable $erro) {
+        // A exceção genérica omite a resposta que explica a recusa do provedor.
+        $respostaSmtp = $mail->getSMTPInstance()->getError();
+        throw new RuntimeException(
+            $erro->getMessage() . ' Resposta SMTP: '
+            . json_encode($respostaSmtp, JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE),
+            0,
+            $erro
+        );
+    }
 }
 
 $metodo = $_SERVER['REQUEST_METHOD'] ?? '';
