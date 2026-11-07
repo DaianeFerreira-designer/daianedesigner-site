@@ -137,7 +137,9 @@
   banner.id = 'analytics-cookies';
   banner.setAttribute('aria-label', 'Preferências de cookies');
   banner.hidden = true;
-  banner.innerHTML = '<p>Seus cookies, sua escolha</p>'
+  banner.innerHTML = '<button type="button" class="cookies-fechar" data-close-preferences aria-label="Fechar preferências de cookies">'
+    + '<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>'
+    + '<p>Seus cookies, sua escolha</p>'
     + '<span class="cookies-descricao">Cookies opcionais ajudam a entender a navegação. '
     + '<a href="/politica-de-cookies" target="_blank" rel="noopener noreferrer">Saiba mais</a>.</span>'
     + '<label class="cookies-opcao"><input type="checkbox" id="cookies-analise"> Permitir cookies de análise</label>'
@@ -156,9 +158,27 @@
     if (!banner.hidden) banner.querySelector('button').focus();
   });
 
+  function closePreferences() {
+    // Fechar não autoriza medição nem altera uma escolha já guardada.
+    if (!['accepted', 'rejected', 'dismissed'].includes(consent)) setConsent('dismissed');
+    showPreferences(false);
+    if (settings.getBoundingClientRect().top < innerHeight) settings.focus({ preventScroll: true });
+  }
+
+  banner.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closePreferences();
+    }
+  });
+
   banner.addEventListener('click', event => {
-    const button = event.target.closest('button[data-consent], button[data-save-preferences]');
+    const button = event.target.closest('button[data-consent], button[data-save-preferences], button[data-close-preferences]');
     if (!button) return;
+    if (button.hasAttribute('data-close-preferences')) {
+      closePreferences();
+      return;
+    }
 
     const choice = button.hasAttribute('data-save-preferences')
       ? (banner.querySelector('#cookies-analise').checked ? 'accepted' : 'rejected')
@@ -168,5 +188,5 @@
     if (settings.getBoundingClientRect().top < innerHeight) settings.focus({ preventScroll: true });
   });
 
-  showPreferences(consent !== 'accepted' && consent !== 'rejected');
+  showPreferences(!['accepted', 'rejected', 'dismissed'].includes(consent));
 })();
