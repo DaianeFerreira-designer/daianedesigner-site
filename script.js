@@ -41,7 +41,7 @@ function agendarRefreshAposFontes(preparar) {
       try {
         preparos.forEach(acao => acao());
       } finally {
-        atualizarMedidasScroll();
+        agendarRefreshNoQuadro();
       }
     });
   }
@@ -3322,7 +3322,8 @@ function iniciarProjetosDestaque() {
     },
   });
 
-  ScrollTrigger.refresh();
+  // A primeira medição global já está agendada junto com as outras dobras.
+  agendarRefreshNoQuadro();
 }
 
 if (document.readyState === "loading") {
@@ -4560,8 +4561,7 @@ function iniciarTextosDobra06() {
       anticipatePin: 1,
       invalidateOnRefresh: true,
     });
-    ScrollTrigger.sort();
-    ScrollTrigger.refresh();
+    agendarRefreshNoQuadro(true);
   };
   preparar();
 }
