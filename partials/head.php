@@ -77,7 +77,7 @@
     crossorigin>
 
   <!-- CSS principal -->
-  <link rel="stylesheet" href="/style.css?v=20261112-10">
+  <link rel="stylesheet" href="/style.css?v=20261112-11">
 
   <?php if (!empty($isBudgetPage)): ?>
     <link rel="stylesheet" href="/orcamento.css?v=2">

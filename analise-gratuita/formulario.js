@@ -669,7 +669,8 @@ function iniciarFormularioAnaliseLanding() {
 }
 
 
-document.addEventListener(
-    "DOMContentLoaded",
-    iniciarFormularioAnaliseLanding
-);
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", iniciarFormularioAnaliseLanding, { once: true });
+} else {
+    iniciarFormularioAnaliseLanding();
+}
