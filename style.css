@@ -302,7 +302,7 @@ header.scrolled {
   position: relative;
   width: 100%;
   height: 100vh;
-  background-image: url(/assets/hero-daiane-desktop-v1.webp);
+  background-image: url(/assets/criacao-de-sites-profissionais-daiane-ferreira-desktop.webp);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -1205,7 +1205,7 @@ header.scrolled {
   min-width: 0;
 }
 .presencaLegenda { font-size: 16px; line-height: 1.5; }
-.presencaLegenda .presencaMarcador { color: var(--color-accent); }
+.presencaLegenda .presencaMarcador { color: #a74400; }
 .dobra03 .presencaMensagem {
   font-size: clamp(36px, 3.333333vw, 64px);
   font-weight: 400;
@@ -1547,7 +1547,10 @@ header.scrolled {
   flex-shrink: 0;
 }
 
+.servicos-carrossel-titulo h2 { color: var(--color-text-dark); }
+
 .servicos-carrossel-titulo p {
+  color: #59544d;
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
@@ -3331,7 +3334,7 @@ span.numeroCard {
 
 .citacao p span {
   display: block;
-  color: #ef6500;
+  color: #a74400;
 }
 
 .lineSobre {
@@ -9833,7 +9836,6 @@ body.portfolio-preview-open {
 :is(#dobra2 h2, #dobra2 .siteImpactoCardTopo h3,
     #dobra3 .presencaAberturaTitulo,
     #dobra-extra h2, .dobra04 .slider h2,
-    #servicos-detalhados .servicos-carrossel-titulo h2,
     #servicos-detalhados .service-card .meioCard h3,
     #portfolio .projetosDestaqueTitulo,
     #protocolo-criacao h2, #protocolo-criacao .protocoloEtapa h3) {
@@ -9847,7 +9849,6 @@ body.portfolio-preview-open {
     #dobra3 .presencaPergunta, #dobra3 .presencaPergunta strong,
     #dobra-extra .presencaLegenda, #dobra-extra .presencaDigitalTextos > p,
     .dobra04 .slider > span, .dobra04 .textoIcon p,
-    #servicos-detalhados .servicos-carrossel-titulo p,
     #servicos-detalhados .service-card .frameServices > span,
     #servicos-detalhados .service-card .meioCard p,
     #portfolio .projetoIndicadorNome,
@@ -10002,7 +10003,7 @@ body.portfolio-preview-open {
   .sobre .citacao { display: block; }
   .sobre .citacao > img { display: inline; width: 32px; height: 32px; margin: 0; }
   .sobre .citacao p { color: #0d0d0d; font-size: 20px; font-weight: 600; line-height: 1.2; letter-spacing: 0; }
-  .sobre .citacao p span { display: block; color: #ef6500; }
+  .sobre .citacao p span { display: block; color: #a74400; }
   .sobre .lineSobre { width: 92.31px; height: 4px; }
   .sobre .sobreParte2 .maisSobre { width: 100%; max-width: none; gap: 16px; color: inherit; font-size: 16px; font-weight: 400; line-height: 1.5; letter-spacing: 0; }
   .sobre .sobreParte2 .maisSobre span { font: inherit; color: inherit; }
@@ -10123,9 +10124,9 @@ body.portfolio-preview-open {
 .newsletter .campoAnalise input::placeholder { color: var(--color-light); font-size: inherit; opacity: 1; }
 .newsletter .privacidadeAnalise { width: min(918px, calc(100% - 48px)); margin: 24px auto 0; color: var(--color-light); font-size: 12px; line-height: 1.5; text-align: center; }
 .newsletter .privacidadeAnalise a { color: inherit; }
-.newsletter .btnAnalise { width: min(375px, calc(100% - 48px)); height: 73px; margin: 28px auto 0; border-radius: 12px; background: var(--color-accent); color: var(--color-text); font: 600 18px/1.3 "Work Sans", sans-serif; letter-spacing: -.02em; box-shadow: 0 10px 28px rgba(255,108,0,.12); }
+.newsletter .btnAnalise { width: min(375px, calc(100% - 48px)); height: 73px; margin: 28px auto 0; border-radius: 12px; background: var(--color-accent); color: var(--color-dark); font: 600 18px/1.3 "Work Sans", sans-serif; letter-spacing: -.02em; box-shadow: 0 10px 28px rgba(255,108,0,.12); }
 .newsletter .btnAnalise:disabled { opacity: .65; }
-.newsletter .btnAnaliseIcone { transform: rotate(180deg); }
+.newsletter .btnAnaliseIcone { transform: rotate(180deg); filter: brightness(0); }
 .newsletter .btnAnalise:hover:not(:disabled) .btnAnaliseIcone { transform: translateX(4px) rotate(180deg); }
 .newsletter .mensagemAnalise { width: calc(100% - 48px); margin-inline: auto; }
 .newsletter .campoAnalise:focus-within { border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(255,108,0,.1); }
@@ -10167,7 +10168,7 @@ body.portfolio-preview-open {
 #portfolio .projetosDestaqueIndicadores { margin-top: 28px; }
 #portfolio .projetoIndicadorNome { font-size: 12px; line-height: 1.5; }
 #portfolio .projetoCabecalho { min-height: 58px; padding: 14px 20px; border: 1px solid rgba(255,255,255,.12); border-radius: 10px; background: #fff; color: #222; }
-#portfolio .projetoNumero { font-size: 14px; font-weight: 500; font-variant-numeric: tabular-nums; }
+#portfolio .projetoNumero { color: #a74400; font-size: 14px; font-weight: 500; font-variant-numeric: tabular-nums; }
 #portfolio .projetoNome { margin: 0; font-family: "Work Sans", sans-serif; font-size: clamp(17px, 1.041667vw, 20px); font-weight: 600; line-height: 1.3; letter-spacing: -.015em; color: #222; }
 #portfolio .projetoDetalhes { padding: 18px 20px 12px; margin-top: 8px; border-radius: 10px; background: #fff; color: #615c53; }
 #portfolio .projetoTipo { color: #222; font-size: 14px; font-weight: 500; line-height: 1.4; letter-spacing: .02em; padding-bottom: 14px; border-color: rgba(6,4,3,.1); }
@@ -11282,7 +11283,7 @@ footer .analytics-preferencias {
   cursor: pointer;
 }
 
-.dobra04 .slider .texto-somente-leitor {
+.texto-somente-leitor {
   position: absolute;
   width: 1px;
   height: 1px;

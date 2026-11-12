@@ -3429,7 +3429,7 @@ function iniciarTransicaoPercepcao() {
         });
       },
     });
-    const apoios = [...secao.querySelectorAll(".percepcaoBottom > p > span:not(.percepcaoConvite), .percepcaoConvite > strong, .percepcaoConvite > span")].map((elemento, indice) => SplitText.create(elemento, {
+    const apoios = [...secao.querySelectorAll(".percepcaoBottom > p > span:not(.percepcaoConvite), .percepcaoConvite > strong, .percepcaoConvite > span")].map((elemento, indice) => dividirTextoComAlternativa(elemento, {
       type: "words", autoSplit: true,
       onSplit(divisao) {
         return gsap.from(divisao.words, {
@@ -4492,6 +4492,20 @@ function iniciarAnimacaoDobra03() {
   });
 }
 
+function dividirTextoComAlternativa(elemento, opcoes) {
+  const texto = document.createElement("span");
+  texto.className = "texto-somente-leitor";
+  texto.textContent = elemento.innerText || elemento.textContent;
+  elemento.before(texto);
+  const divisao = SplitText.create(elemento, { ...opcoes, aria: "hidden" });
+  return {
+    revert() {
+      divisao.revert();
+      texto.remove();
+    },
+  };
+}
+
 function iniciarTextosDobra04() {
   const secao = document.querySelector(".dobra04");
   if (!secao || typeof gsap === "undefined" || typeof ScrollTrigger === "undefined" || typeof SplitText === "undefined") return;
@@ -4501,17 +4515,10 @@ function iniciarTextosDobra04() {
     secao.querySelectorAll(".slider").forEach(painel => {
       painel.querySelectorAll(":scope > span, :scope > h2, .textoIcon p").forEach(elemento => {
         const titulo = elemento.tagName === "H2";
-        if (!titulo) {
-          const textoAcessivel = document.createElement("span");
-          textoAcessivel.className = "texto-somente-leitor";
-          textoAcessivel.textContent = elemento.textContent;
-          elemento.before(textoAcessivel);
-        }
-        SplitText.create(elemento, {
+        const opcoes = {
           type: titulo ? "chars,words,lines" : "lines,words",
           mask: "lines",
           autoSplit: true,
-          aria: titulo ? "auto" : "hidden",
           onSplit(divisao) {
             return gsap.from(titulo ? divisao.chars : divisao.words, {
               yPercent: 110,
@@ -4528,7 +4535,9 @@ function iniciarTextosDobra04() {
               },
             });
           },
-        });
+        };
+        if (titulo) SplitText.create(elemento, opcoes);
+        else dividirTextoComAlternativa(elemento, opcoes);
       });
     });
     agendarAtualizacaoScrollTrigger();
@@ -4910,7 +4919,7 @@ function iniciarAnimacoesSobre() {
       scaleX: 0, transformOrigin: "left center", duration: 1, ease: "power3.inOut",
       scrollTrigger: { trigger: secao.querySelector(".lineSobre"), start: "top 89%", toggleActions: "play none none reset" },
     });
-    const historia = [...secao.querySelectorAll(".maisSobre > span")].map(elemento => SplitText.create(elemento, {
+    const historia = [...secao.querySelectorAll(".maisSobre > span")].map(elemento => dividirTextoComAlternativa(elemento, {
       type: "words", autoSplit: true,
       onSplit(divisao) {
         return gsap.from(divisao.words, {
