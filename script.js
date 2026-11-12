@@ -1,6 +1,21 @@
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const fontesComRefreshAgendado = new WeakSet();
+let refreshNoQuadroAgendado = false;
+
+function atualizarMedidasScroll() {
+  ScrollTrigger.refresh();
+}
+
+function agendarRefreshNoQuadro() {
+  if (refreshNoQuadroAgendado) return;
+
+  refreshNoQuadroAgendado = true;
+  requestAnimationFrame(() => {
+    refreshNoQuadroAgendado = false;
+    atualizarMedidasScroll();
+  });
+}
 
 function agendarRefreshAposFontes() {
   const fontesProntas = document.fonts?.ready;
@@ -2145,19 +2160,8 @@ function iniciarAnimacaoDobra02() {
 
   timeline.to({}, { duration: 0.25 });
 
-  requestAnimationFrame(() => {
-    ScrollTrigger.refresh();
-  });
-
-  window.addEventListener(
-    "load",
-    () => {
-      ScrollTrigger.refresh();
-    },
-    {
-      once: true,
-    },
-  );
+  agendarRefreshNoQuadro();
+  window.addEventListener("load", atualizarMedidasScroll, { once: true });
 }
 
 function iniciarDivisoresAnimados() {
@@ -2241,9 +2245,7 @@ function iniciarDivisoresAnimados() {
     );
   });
 
-  requestAnimationFrame(() => {
-    ScrollTrigger.refresh();
-  });
+  agendarRefreshNoQuadro();
 }
 
 function iniciarSlidersDobra04() {
@@ -3052,15 +3054,7 @@ function iniciarValorPercebido() {
     });
   });
 
-  window.addEventListener(
-    "load",
-    () => {
-      ScrollTrigger.refresh();
-    },
-    {
-      once: true,
-    },
-  );
+  window.addEventListener("load", atualizarMedidasScroll, { once: true });
 }
 
 function iniciarProjetosDestaque() {
