@@ -1,5 +1,15 @@
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
+const fontesComRefreshAgendado = new WeakSet();
+
+function agendarRefreshAposFontes() {
+  const fontesProntas = document.fonts?.ready;
+  if (!fontesProntas || fontesComRefreshAgendado.has(fontesProntas)) return;
+
+  fontesComRefreshAgendado.add(fontesProntas);
+  fontesProntas.then(() => ScrollTrigger.refresh());
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   iniciarScrollbarPersonalizada();
   iniciarHeaderScroll();
@@ -4734,7 +4744,7 @@ function iniciarOportunidadesPerdidas() {
       onRefresh: medir,
     });
   });
-  document.fonts?.ready.then(() => ScrollTrigger.refresh());
+  agendarRefreshAposFontes();
 }
 
 
@@ -4820,7 +4830,7 @@ function iniciarProtocoloCriacao() {
       invalidateOnRefresh: true,
     });
   });
-  document.fonts?.ready.then(() => ScrollTrigger.refresh());
+  agendarRefreshAposFontes();
 }
 
 
@@ -4844,7 +4854,7 @@ function iniciarContatoScroll() {
       invalidateOnRefresh: true,
     });
   });
-  document.fonts?.ready.then(() => ScrollTrigger.refresh());
+  agendarRefreshAposFontes();
 }
 
 // Sobre mim: entradas próprias para cada bloco; a foto e a composição ficam intactas.
