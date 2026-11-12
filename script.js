@@ -1,16 +1,6 @@
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-document.addEventListener("DOMContentLoaded", async () => {
-  // As animações de rolagem precisam medir a página com o CSS completo.
-  const estilosPendentes = [...document.querySelectorAll("link[data-home-styles]")]
-    .filter(link => link.media === "print");
-  if (estilosPendentes.length) {
-    await Promise.all(estilosPendentes.map(link => new Promise(resolve => {
-      link.addEventListener("load", resolve, { once: true });
-      link.addEventListener("error", resolve, { once: true });
-    })));
-  }
-
+document.addEventListener("DOMContentLoaded", () => {
   iniciarScrollbarPersonalizada();
   iniciarHeaderScroll();
   iniciarMenuMobile();
@@ -26,7 +16,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   iniciarSlidersDobra04();
   iniciarTextosDobra04();
   iniciarCarrosselServicos();
-  iniciarProjetosDestaque();
   iniciarTextosDobra06();
   iniciarIndicadoresScroll();
   iniciarValorPercebido();
@@ -35,46 +24,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   iniciarVendasBeneficios();
   iniciarProtocoloCriacao();
   iniciarContatoScroll();
-  iniciarAnimacaoAoAproximar("#sobre-daiane", iniciarAnimacoesSobre);
+  iniciarAnimacoesSobre();
   iniciarTransicaoPercepcao();
   iniciarAnimacaoPilares();
   iniciarSobreposicaoNewsletter();
-  iniciarAnimacaoAoAproximar(".newsletter", iniciarTextosNewsletter);
-  iniciarAnimacaoAoAproximar("footer", () => {
-    animarRedesFooter();
-    animarTextosFooter();
-    animarTextoFooter2();
-  });
+  iniciarTextosNewsletter();
+  animarRedesFooter();
+  animarTextosFooter();
+  animarTextoFooter2();
   iniciarWhatsappFlutuante();
   iniciarMenuAncoras();
 
 });
-
-let quadroAtualizacaoScrollTrigger = null;
-
-function agendarAtualizacaoScrollTrigger() {
-  if (quadroAtualizacaoScrollTrigger !== null) return;
-  quadroAtualizacaoScrollTrigger = requestAnimationFrame(() => {
-    quadroAtualizacaoScrollTrigger = null;
-    ScrollTrigger.refresh();
-  });
-}
-
-function iniciarAnimacaoAoAproximar(seletor, iniciar) {
-  const elemento = document.querySelector(seletor);
-  if (!elemento) return;
-  if (!("IntersectionObserver" in window)) {
-    iniciar();
-    return;
-  }
-  const observador = new IntersectionObserver(([entrada]) => {
-    if (!entrada.isIntersecting) return;
-    observador.disconnect();
-    iniciar();
-    agendarAtualizacaoScrollTrigger();
-  }, { rootMargin: "500px 0px" });
-  observador.observe(elemento);
-}
 
 function iniciarMenuAncoras() {
   const links = [...document.querySelectorAll(".principal a, .menu-links .nav-link")];
@@ -2175,13 +2136,13 @@ function iniciarAnimacaoDobra02() {
   timeline.to({}, { duration: 0.25 });
 
   requestAnimationFrame(() => {
-    agendarAtualizacaoScrollTrigger();
+    ScrollTrigger.refresh();
   });
 
   window.addEventListener(
     "load",
     () => {
-      agendarAtualizacaoScrollTrigger();
+      ScrollTrigger.refresh();
     },
     {
       once: true,
@@ -2271,7 +2232,7 @@ function iniciarDivisoresAnimados() {
   });
 
   requestAnimationFrame(() => {
-    agendarAtualizacaoScrollTrigger();
+    ScrollTrigger.refresh();
   });
 }
 
@@ -2441,7 +2402,7 @@ function iniciarSlidersDobra04() {
   requestAnimationFrame(() => {
     ScrollTrigger.sort();
 
-    agendarAtualizacaoScrollTrigger();
+    ScrollTrigger.refresh();
   });
 }
 
@@ -2752,7 +2713,7 @@ function iniciarCarrosselServicos() {
   }
 
   requestAnimationFrame(() => {
-    agendarAtualizacaoScrollTrigger();
+    ScrollTrigger.refresh();
 
     renderizar();
   });
@@ -3084,7 +3045,7 @@ function iniciarValorPercebido() {
   window.addEventListener(
     "load",
     () => {
-      agendarAtualizacaoScrollTrigger();
+      ScrollTrigger.refresh();
     },
     {
       once: true,
@@ -3341,7 +3302,13 @@ function iniciarProjetosDestaque() {
     },
   });
 
-  agendarAtualizacaoScrollTrigger();
+  ScrollTrigger.refresh();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", iniciarProjetosDestaque);
+} else {
+  iniciarProjetosDestaque();
 }
 
 function iniciarFaq() {
@@ -3358,7 +3325,7 @@ function iniciarFaq() {
     resposta.inert = !aberto;
   }
   function recalcularScroll() {
-    if (typeof ScrollTrigger !== "undefined") agendarAtualizacaoScrollTrigger();
+    if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
   }
   itens.forEach(item => {
     const pergunta = item.querySelector(".faqPergunta");
@@ -3420,42 +3387,40 @@ function iniciarTransicaoPercepcao() {
   });
 
 
-  iniciarAnimacaoAoAproximar(".percepcao", () => {
-    // Copy motion: caracteres em perspectiva e modelo blurWords, sem alterar a saída.
-    const mediaEntrada = gsap.matchMedia();
-    mediaEntrada.add("(prefers-reduced-motion: no-preference)", () => {
-      const titulo = SplitText.create(secao.querySelector("h2"), {
-        type: "words,chars", autoSplit: true,
-        onSplit(divisao) {
-          return gsap.from(divisao.chars, {
-            x: 26, rotationY: -75, transformPerspective: 600,
-            transformOrigin: "0% 50%", filter: "blur(6px)", autoAlpha: 0,
-            duration: .85, stagger: { amount: .85 }, ease: "power3.out",
-            scrollTrigger: { trigger: secao, start: "top 75%", toggleActions: "play none none reset" },
-          });
-        },
-      });
-      const apoios = [...secao.querySelectorAll(".percepcaoBottom > p > span:not(.percepcaoConvite), .percepcaoConvite > strong, .percepcaoConvite > span")].map((elemento, indice) => dividirTextoComAlternativa(elemento, {
-        type: "words", autoSplit: true,
-        onSplit(divisao) {
-          return gsap.from(divisao.words, {
-            filter: "blur(12px)", autoAlpha: 0, x: 16, scale: .94,
-            duration: .8, stagger: { amount: .65 }, delay: .25 + indice * .16,
-            ease: "power2.out",
-            scrollTrigger: { trigger: secao, start: "top 65%", toggleActions: "play none none reset" },
-          });
-        },
-      }));
-      gsap.from(secao.querySelector(".sitePercepcao"), {
-        scaleX: .65, autoAlpha: 0, transformOrigin: "left center", duration: .8, ease: "power3.out",
-        scrollTrigger: { trigger: secao, start: "top 78%", toggleActions: "play none none reset" },
-      });
-      gsap.from(secao.querySelector(".percepcaoTraco"), {
-        strokeDasharray: 500, strokeDashoffset: 500, duration: 1.8, ease: "power2.inOut",
-        scrollTrigger: { trigger: secao, start: "top 75%", toggleActions: "play none none reset" },
-      });
-      return () => [titulo, ...apoios].forEach(divisao => divisao.revert());
+  // Copy motion: caracteres em perspectiva e modelo blurWords, sem alterar a saída.
+  const mediaEntrada = gsap.matchMedia();
+  mediaEntrada.add("(prefers-reduced-motion: no-preference)", () => {
+    const titulo = SplitText.create(secao.querySelector("h2"), {
+      type: "words,chars", autoSplit: true,
+      onSplit(divisao) {
+        return gsap.from(divisao.chars, {
+          x: 26, rotationY: -75, transformPerspective: 600,
+          transformOrigin: "0% 50%", filter: "blur(6px)", autoAlpha: 0,
+          duration: .85, stagger: { amount: .85 }, ease: "power3.out",
+          scrollTrigger: { trigger: secao, start: "top 75%", toggleActions: "play none none reset" },
+        });
+      },
     });
+    const apoios = [...secao.querySelectorAll(".percepcaoBottom > p > span:not(.percepcaoConvite), .percepcaoConvite > strong, .percepcaoConvite > span")].map((elemento, indice) => SplitText.create(elemento, {
+      type: "words", autoSplit: true,
+      onSplit(divisao) {
+        return gsap.from(divisao.words, {
+          filter: "blur(12px)", autoAlpha: 0, x: 16, scale: .94,
+          duration: .8, stagger: { amount: .65 }, delay: .25 + indice * .16,
+          ease: "power2.out",
+          scrollTrigger: { trigger: secao, start: "top 65%", toggleActions: "play none none reset" },
+        });
+      },
+    }));
+    gsap.from(secao.querySelector(".sitePercepcao"), {
+      scaleX: .65, autoAlpha: 0, transformOrigin: "left center", duration: .8, ease: "power3.out",
+      scrollTrigger: { trigger: secao, start: "top 78%", toggleActions: "play none none reset" },
+    });
+    gsap.from(secao.querySelector(".percepcaoTraco"), {
+      strokeDasharray: 500, strokeDashoffset: 500, duration: 1.8, ease: "power2.inOut",
+      scrollTrigger: { trigger: secao, start: "top 75%", toggleActions: "play none none reset" },
+    });
+    return () => [titulo, ...apoios].forEach(divisao => divisao.revert());
   });
 
   const animacaoScroll = gsap.timeline({
@@ -4228,7 +4193,7 @@ function iniciarSobreposicaoNewsletter() {
 
   requestAnimationFrame(() => {
     ScrollTrigger.sort();
-    agendarAtualizacaoScrollTrigger();
+    ScrollTrigger.refresh();
   });
 }
 
@@ -4499,20 +4464,6 @@ function iniciarAnimacaoDobra03() {
   });
 }
 
-function dividirTextoComAlternativa(elemento, opcoes) {
-  const texto = document.createElement("span");
-  texto.className = "texto-somente-leitor";
-  texto.textContent = elemento.innerText || elemento.textContent;
-  elemento.before(texto);
-  const divisao = SplitText.create(elemento, { ...opcoes, aria: "hidden" });
-  return {
-    revert() {
-      divisao.revert();
-      texto.remove();
-    },
-  };
-}
-
 function iniciarTextosDobra04() {
   const secao = document.querySelector(".dobra04");
   if (!secao || typeof gsap === "undefined" || typeof ScrollTrigger === "undefined" || typeof SplitText === "undefined") return;
@@ -4522,10 +4473,11 @@ function iniciarTextosDobra04() {
     secao.querySelectorAll(".slider").forEach(painel => {
       painel.querySelectorAll(":scope > span, :scope > h2, .textoIcon p").forEach(elemento => {
         const titulo = elemento.tagName === "H2";
-        const opcoes = {
+        SplitText.create(elemento, {
           type: titulo ? "chars,words,lines" : "lines,words",
           mask: "lines",
           autoSplit: true,
+          aria: "auto",
           onSplit(divisao) {
             return gsap.from(titulo ? divisao.chars : divisao.words, {
               yPercent: 110,
@@ -4542,12 +4494,10 @@ function iniciarTextosDobra04() {
               },
             });
           },
-        };
-        if (titulo) SplitText.create(elemento, opcoes);
-        else dividirTextoComAlternativa(elemento, opcoes);
+        });
       });
     });
-    agendarAtualizacaoScrollTrigger();
+    ScrollTrigger.refresh();
   };
   if (document.fonts) document.fonts.ready.then(preparar);
   else preparar();
@@ -4595,7 +4545,7 @@ function iniciarTextosDobra06() {
       invalidateOnRefresh: true,
     });
     ScrollTrigger.sort();
-    agendarAtualizacaoScrollTrigger();
+    ScrollTrigger.refresh();
   };
   preparar();
 }
@@ -4783,7 +4733,7 @@ function iniciarOportunidadesPerdidas() {
       onRefresh: medir,
     });
   });
-  document.fonts?.ready.then(agendarAtualizacaoScrollTrigger);
+  document.fonts?.ready.then(() => ScrollTrigger.refresh());
 }
 
 
@@ -4869,7 +4819,7 @@ function iniciarProtocoloCriacao() {
       invalidateOnRefresh: true,
     });
   });
-  document.fonts?.ready.then(agendarAtualizacaoScrollTrigger);
+  document.fonts?.ready.then(() => ScrollTrigger.refresh());
 }
 
 
@@ -4893,7 +4843,7 @@ function iniciarContatoScroll() {
       invalidateOnRefresh: true,
     });
   });
-  document.fonts?.ready.then(agendarAtualizacaoScrollTrigger);
+  document.fonts?.ready.then(() => ScrollTrigger.refresh());
 }
 
 // Sobre mim: entradas próprias para cada bloco; a foto e a composição ficam intactas.
@@ -4926,7 +4876,7 @@ function iniciarAnimacoesSobre() {
       scaleX: 0, transformOrigin: "left center", duration: 1, ease: "power3.inOut",
       scrollTrigger: { trigger: secao.querySelector(".lineSobre"), start: "top 89%", toggleActions: "play none none reset" },
     });
-    const historia = [...secao.querySelectorAll(".maisSobre > span")].map(elemento => dividirTextoComAlternativa(elemento, {
+    const historia = [...secao.querySelectorAll(".maisSobre > span")].map(elemento => SplitText.create(elemento, {
       type: "words", autoSplit: true,
       onSplit(divisao) {
         return gsap.from(divisao.words, {
