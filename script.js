@@ -1,28 +1,51 @@
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-const fontesComRefreshAgendado = new WeakSet();
+const preparosPorCicloDeFontes = new WeakMap();
 let refreshNoQuadroAgendado = false;
+let ordenarNoProximoRefresh = false;
 
 function atualizarMedidasScroll() {
   ScrollTrigger.refresh();
 }
 
-function agendarRefreshNoQuadro() {
+function agendarRefreshNoQuadro(ordenar = false) {
+  ordenarNoProximoRefresh ||= ordenar;
   if (refreshNoQuadroAgendado) return;
 
   refreshNoQuadroAgendado = true;
   requestAnimationFrame(() => {
+    const ordenarGatilhos = ordenarNoProximoRefresh;
     refreshNoQuadroAgendado = false;
+    ordenarNoProximoRefresh = false;
+    if (ordenarGatilhos) ScrollTrigger.sort();
     atualizarMedidasScroll();
   });
 }
 
-function agendarRefreshAposFontes() {
+function agendarRefreshAposFontes(preparar) {
   const fontesProntas = document.fonts?.ready;
-  if (!fontesProntas || fontesComRefreshAgendado.has(fontesProntas)) return;
+  if (!fontesProntas) {
+    if (preparar) {
+      preparar();
+      atualizarMedidasScroll();
+    }
+    return;
+  }
 
-  fontesComRefreshAgendado.add(fontesProntas);
-  fontesProntas.then(() => ScrollTrigger.refresh());
+  let preparos = preparosPorCicloDeFontes.get(fontesProntas);
+  if (!preparos) {
+    preparos = [];
+    preparosPorCicloDeFontes.set(fontesProntas, preparos);
+    fontesProntas.then(() => {
+      preparosPorCicloDeFontes.delete(fontesProntas);
+      try {
+        preparos.forEach(acao => acao());
+      } finally {
+        atualizarMedidasScroll();
+      }
+    });
+  }
+  if (preparar) preparos.push(preparar);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -2411,11 +2434,7 @@ function iniciarSlidersDobra04() {
     });
   });
 
-  requestAnimationFrame(() => {
-    ScrollTrigger.sort();
-
-    ScrollTrigger.refresh();
-  });
+  agendarRefreshNoQuadro(true);
 }
 
 function iniciarCarrosselServicos() {
@@ -2724,11 +2743,8 @@ function iniciarCarrosselServicos() {
     });
   }
 
-  requestAnimationFrame(() => {
-    ScrollTrigger.refresh();
-
-    renderizar();
-  });
+  agendarRefreshNoQuadro();
+  requestAnimationFrame(renderizar);
 }
 
 function iniciarValorPercebido() {
@@ -4196,10 +4212,7 @@ function iniciarSobreposicaoNewsletter() {
   });
 
 
-  requestAnimationFrame(() => {
-    ScrollTrigger.sort();
-    ScrollTrigger.refresh();
-  });
+  agendarRefreshNoQuadro(true);
 }
 
 
@@ -4502,10 +4515,8 @@ function iniciarTextosDobra04() {
         });
       });
     });
-    ScrollTrigger.refresh();
   };
-  if (document.fonts) document.fonts.ready.then(preparar);
-  else preparar();
+  agendarRefreshAposFontes(preparar);
 }
 
 function iniciarTextosDobraExtra() {

@@ -84,7 +84,7 @@
 
 <!-- JS -->
 
-<script src="/script.js?v=20261112-14" defer></script>
+<script src="/script.js?v=20261112-15" defer></script>
 
 </body>
 
