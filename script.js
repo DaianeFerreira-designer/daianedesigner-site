@@ -1,8 +1,19 @@
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-document.addEventListener("DOMContentLoaded", () => {
-  iniciarScrollbarPersonalizada();
+document.addEventListener("DOMContentLoaded", async () => {
   iniciarPreloader();
+
+  // As animações de rolagem precisam medir a página com o CSS completo.
+  const estilosPendentes = [...document.querySelectorAll("link[data-home-styles]")]
+    .filter(link => link.media === "print");
+  if (estilosPendentes.length) {
+    await Promise.all(estilosPendentes.map(link => new Promise(resolve => {
+      link.addEventListener("load", resolve, { once: true });
+      link.addEventListener("error", resolve, { once: true });
+    })));
+  }
+
+  iniciarScrollbarPersonalizada();
   iniciarHeaderScroll();
   iniciarMenuMobile();
 
