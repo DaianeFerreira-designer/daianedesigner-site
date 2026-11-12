@@ -302,7 +302,7 @@ header.scrolled {
   position: relative;
   width: 100%;
   height: 100vh;
-  background-image: url(/assets/criacao-de-sites-profissionais-daiane-ferreira-desktop.webp);
+  background-image: url(/assets/hero-daiane-desktop-v1.webp);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -11280,4 +11280,15 @@ footer .analytics-preferencias {
   font: inherit !important;
   text-decoration: none;
   cursor: pointer;
+}
+
+.dobra04 .slider .texto-somente-leitor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }

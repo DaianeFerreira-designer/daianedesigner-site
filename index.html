@@ -209,7 +209,7 @@
     <link
       rel="preload"
       as="image"
-      href="/assets/criacao-de-sites-profissionais-daiane-ferreira-desktop.webp"
+      href="/assets/hero-daiane-desktop-v1.webp"
       media="(min-width: 768px)"
       fetchpriority="high"
     />
@@ -451,7 +451,7 @@
         position: relative;
         width: 100%;
         height: 100vh;
-        background-image: url(/assets/criacao-de-sites-profissionais-daiane-ferreira-desktop.webp);
+        background-image: url(/assets/hero-daiane-desktop-v1.webp);
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
@@ -1671,12 +1671,12 @@
         }
       }
     </style>
-    <link rel="stylesheet" href="/style.css?v=20261107-7" media="print"
+    <link rel="stylesheet" href="/style.css?v=20261112-2" media="print"
       data-home-styles onload="this.media='all'" onerror="this.media='all'" />
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css" media="print"
       data-home-styles onload="this.media='all'" onerror="this.media='all'" />
     <noscript>
-      <link rel="stylesheet" href="/style.css?v=20261107-7" />
+      <link rel="stylesheet" href="/style.css?v=20261112-2" />
       <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css" />
     </noscript>
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
@@ -1741,6 +1741,84 @@
 
       <div class="preloader-percent">0%</div>
     </div>
+    <script>
+      (() => {
+        const preloader = document.getElementById("preloader");
+        const raiz = document.documentElement;
+        if (!preloader || !raiz.classList.contains("preloader-ativo")) return;
+
+        const logo = preloader.querySelector(".preloader-logo");
+        const preenchimento = preloader.querySelector(".preloader-logo-fill");
+        const percentual = preloader.querySelector(".preloader-percent");
+        const fundo = preloader.querySelector(".preloader-bg");
+        let progresso = 0;
+        let quadro;
+        const recursos = [];
+        let finalizado = false;
+        let prontos = 0;
+
+        preloader.addEventListener("wheel", evento => evento.preventDefault(), { passive: false });
+
+        const imagemHero = [...document.querySelectorAll('link[rel="preload"][as="image"]')]
+          .find(link => link.media && window.matchMedia(link.media).matches);
+        if (imagemHero) {
+          const imagem = new Image();
+          imagem.src = imagemHero.href;
+          recursos.push(imagem.decode());
+        }
+        if (document.fonts) recursos.push(document.fonts.load('400 1rem "Work Sans"'));
+
+        const limite = window.setTimeout(finalizar, 1400);
+        recursos.forEach(recurso => {
+          recurso.catch(() => {}).then(() => {
+            if (finalizado) return;
+            prontos += 1;
+            if (prontos === recursos.length) finalizar();
+            else animarProgresso(100 * prontos / recursos.length);
+          });
+        });
+        if (!recursos.length) finalizar();
+
+        function animarProgresso(valor) {
+          cancelAnimationFrame(quadro);
+          const inicio = performance.now();
+          const anterior = progresso;
+          function atualizar(agora) {
+            const tempo = Math.min(1, Math.max(0, (agora - inicio) / 280));
+            progresso = anterior + (valor - anterior) * (1 - (1 - tempo) ** 3);
+            const atual = Math.round(progresso);
+            percentual.textContent = atual + "%";
+            preenchimento.style.clipPath = "inset(" + (100 - atual) + "% 0 0)";
+            if (tempo < 1) quadro = requestAnimationFrame(atualizar);
+          }
+          quadro = requestAnimationFrame(atualizar);
+        }
+
+        function finalizar() {
+          if (finalizado) return;
+          finalizado = true;
+          window.clearTimeout(limite);
+          animarProgresso(100);
+          window.setTimeout(() => {
+            cancelAnimationFrame(quadro);
+            percentual.textContent = "100%";
+            preenchimento.style.clipPath = "inset(0 0 0)";
+            const saida = "cubic-bezier(.22,.61,.36,1)";
+            percentual.animate([{ opacity: 1 }, { opacity: 0, transform: "translateY(10px)" }],
+              { duration: 200, easing: saida, fill: "forwards" });
+            logo.animate([{ opacity: 1 }, { opacity: 0, transform: "scale(.6)" }],
+              { duration: 350, delay: 200, easing: saida, fill: "forwards" });
+            const cortina = fundo.animate([{ transform: "translateY(0)" }, { transform: "translateY(-100%)" }],
+              { duration: 550, delay: 100, easing: "cubic-bezier(.76,0,.24,1)", fill: "forwards" });
+            function liberarPagina() {
+              raiz.classList.remove("preloader-ativo");
+            }
+            cortina.onfinish = liberarPagina;
+            window.setTimeout(liberarPagina, 700);
+          }, 280);
+        }
+      })();
+    </script>
     <header class="headerDesktop">
       <a href="/" title="Daiane Ferreira Web Designer | Página Inicial">
         <img
@@ -2121,7 +2199,7 @@
           <div class="search-bar-wrap">
           <div class="search-bar">
             <span class="google-disc">
-              <img src="assets/google-original.svg" width="36" height="37" alt="">
+              <img src="assets/google-original.svg" width="36" height="37" alt="" loading="lazy">
             </span>
             <span class="search-typed" role="img" data-typer="Por que sua empresa precisa de um site?" aria-label="Por que sua empresa precisa de um site?">
               <span class="search-text">P</span>
@@ -2139,7 +2217,7 @@
             </div>
             <div class="siteImpactoCardConteudo">
               <p>Apareça como uma opção para pessoas que estão pesquisando por produtos ou serviços como os seus, mesmo que ainda não conheçam sua empresa.</p>
-              <img class="siteImpactoLinha" src="assets/dobra02-line-176.svg" alt="">
+              <img class="siteImpactoLinha" src="assets/dobra02-line-176.svg" alt="" width="453" height="1" loading="lazy">
               <span class="siteImpactoReticencias" aria-hidden="true">...</span>
             </div>
           </article>
@@ -2150,7 +2228,7 @@
             </div>
             <div class="siteImpactoCardConteudo">
               <p>Alcance clientes além das indicações e das redes sociais, crie novos caminhos para receber contatos, pedidos de orçamento e solicitações comerciais.</p>
-              <img class="siteImpactoLinha" src="assets/dobra02-line-177.svg" alt="">
+              <img class="siteImpactoLinha" src="assets/dobra02-line-177.svg" alt="" width="453" height="1" loading="lazy">
               <span class="siteImpactoReticencias" aria-hidden="true">...</span>
             </div>
           </article>
@@ -2161,7 +2239,7 @@
             </div>
             <div class="siteImpactoCardConteudo">
               <p>Apresente seus serviços, diferenciais, projetos e informações essenciais em um ambiente profissional que ajude o cliente a escolher sua empresa.</p>
-              <img class="siteImpactoLinha" src="assets/dobra02-line-177.svg" alt="">
+              <img class="siteImpactoLinha" src="assets/dobra02-line-177.svg" alt="" width="453" height="1" loading="lazy">
               <span class="siteImpactoReticencias" aria-hidden="true">...</span>
             </div>
           </article>
@@ -2181,12 +2259,12 @@
         <div class="presencaDigital">
           <div class="presencaDigitalTopo">
             <ul class="presencaDigitalPilares" aria-label="Pilares de uma presença digital profissional">
-              <li><span class="tagPresenca"><img src="assets/dobra03-canto-esquerdo.svg" alt=""><span>Visibilidade</span><img class="presencaCantoDireito" src="assets/dobra03-canto-direito.svg" alt=""></span></li>
-              <li><span class="tagPresenca"><img src="assets/dobra03-canto-esquerdo.svg" alt=""><span>Credibilidade</span><img class="presencaCantoDireito" src="assets/dobra03-canto-direito.svg" alt=""></span></li>
-              <li><span class="tagPresenca"><img src="assets/dobra03-canto-esquerdo.svg" alt=""><span>Posicionamento</span><img class="presencaCantoDireito" src="assets/dobra03-canto-direito.svg" alt=""></span></li>
-              <li><span class="tagPresenca"><img src="assets/dobra03-canto-esquerdo.svg" alt=""><span>Oportunidades</span><img class="presencaCantoDireito" src="assets/dobra03-canto-direito.svg" alt=""></span></li>
+              <li><span class="tagPresenca"><img src="assets/dobra03-canto-esquerdo.svg" alt="" width="7" height="29" loading="lazy"><span>Visibilidade</span><img class="presencaCantoDireito" src="assets/dobra03-canto-direito.svg" alt="" width="7" height="29" loading="lazy"></span></li>
+              <li><span class="tagPresenca"><img src="assets/dobra03-canto-esquerdo.svg" alt="" width="7" height="29" loading="lazy"><span>Credibilidade</span><img class="presencaCantoDireito" src="assets/dobra03-canto-direito.svg" alt="" width="7" height="29" loading="lazy"></span></li>
+              <li><span class="tagPresenca"><img src="assets/dobra03-canto-esquerdo.svg" alt="" width="7" height="29" loading="lazy"><span>Posicionamento</span><img class="presencaCantoDireito" src="assets/dobra03-canto-direito.svg" alt="" width="7" height="29" loading="lazy"></span></li>
+              <li><span class="tagPresenca"><img src="assets/dobra03-canto-esquerdo.svg" alt="" width="7" height="29" loading="lazy"><span>Oportunidades</span><img class="presencaCantoDireito" src="assets/dobra03-canto-direito.svg" alt="" width="7" height="29" loading="lazy"></span></li>
             </ul>
-            <img class="linhaDobra03" src="assets/dobra03-linha.svg" alt="">
+            <img class="linhaDobra03" src="assets/dobra03-linha.svg" alt="" width="1520" height="2" loading="lazy">
           </div>
           <div class="presencaDigitalTextos">
             <div>
@@ -2235,7 +2313,7 @@
 
           <div class="infoSection">
             <div class="textoIcon">
-              <img src="/assets/Icon-presença-digital-que-conecta.svg" alt="" />
+              <img src="/assets/Icon-presença-digital-que-conecta.svg" alt="" width="42" height="40" loading="lazy" />
               <p>
                 Sua empresa pode ser excelente. Mas, se isso não fica claro
                 online, você perde oportunidades.
@@ -2251,7 +2329,7 @@
                   src="/assets/icone-button-orcamento.svg"
                   alt=""
                   width="17"
-                  height="15"
+                  height="15" loading="lazy"
                 />
 
                 <span class="text">Solicitar Orçamento</span>
@@ -2279,7 +2357,7 @@
 
           <div class="infoSection">
             <div class="textoIcon">
-              <img src="/assets/Icon-presença-digital-que-conecta.svg" alt="" />
+              <img src="/assets/Icon-presença-digital-que-conecta.svg" alt="" width="42" height="40" loading="lazy" />
               <p>
                 Uma experiência digital coerente reduz dúvidas e aproxima as
                 pessoas certas da sua empresa.
@@ -2295,7 +2373,7 @@
                   src="/assets/icone-button-orcamento.svg"
                   alt=""
                   width="17"
-                  height="15"
+                  height="15" loading="lazy"
                 />
 
                 <span class="text">Solicitar Orçamento</span>
@@ -2323,7 +2401,7 @@
 
           <div class="infoSection">
             <div class="textoIcon">
-              <img src="/assets/Icon-presença-digital-que-conecta.svg" alt="" />
+              <img src="/assets/Icon-presença-digital-que-conecta.svg" alt="" width="42" height="40" loading="lazy" />
               <p>
                 Estratégia, conteúdo e design trabalham juntos para tornar seu
                 posicionamento impossível de ignorar.
@@ -2339,7 +2417,7 @@
                   src="/assets/icone-button-orcamento.svg"
                   alt=""
                   width="17"
-                  height="15"
+                  height="15" loading="lazy"
                 />
 
                 <span class="text">Solicitar Orçamento</span>
@@ -2367,7 +2445,7 @@
 
           <div class="infoSection">
             <div class="textoIcon">
-              <img src="/assets/Icon-presença-digital-que-conecta.svg" alt="" />
+              <img src="/assets/Icon-presença-digital-que-conecta.svg" alt="" width="42" height="40" loading="lazy" />
               <p>
                 Uma jornada clara e profissional dá segurança para o visitante
                 avançar e tomar uma decisão.
@@ -2383,7 +2461,7 @@
                   src="/assets/icone-button-orcamento.svg"
                   alt=""
                   width="17"
-                  height="15"
+                  height="15" loading="lazy"
                 />
 
                 <span class="text">Solicitar Orçamento</span>
@@ -2431,7 +2509,7 @@
                 <span class="linhaCard-servicos"></span>
               </div>
 
-              <img src="/assets/icone-section-servicos.svg" alt="" />
+              <img src="/assets/icone-section-servicos.svg" alt="" width="56" height="56" loading="lazy" />
               <div class="meioCard">
                 <h3>Site <span>institucional</span></h3>
                 <p>Apresente sua empresa com mais confiança.</p>
@@ -2439,7 +2517,7 @@
 
               <div class="finalCard">
                 <a href="/orcamento?projeto=site-institucional" data-posicao-orcamento="servicos" data-servico-orcamento="site-institucional">Solicitar Orçamento</a>
-                <img src="/assets/icone.orcamento.servicos.svg" alt="" />
+                <img src="/assets/icone.orcamento.servicos.svg" alt="" width="17" height="17" loading="lazy" />
               </div>
             </article>
           </div>
@@ -2454,7 +2532,7 @@
                 <span class="linhaCard-servicos"></span>
               </div>
 
-              <img src="/assets/icone-section-servicos.svg" alt="" />
+              <img src="/assets/icone-section-servicos.svg" alt="" width="56" height="56" loading="lazy" />
               <div class="meioCard">
                 <h3>Página <span>de vendas</span></h3>
                 <p>Destaque sua oferta com mais impacto.</p>
@@ -2462,7 +2540,7 @@
 
               <div class="finalCard">
                 <a href="/orcamento?projeto=landing-page" data-posicao-orcamento="servicos" data-servico-orcamento="landing-page">Solicitar Orçamento</a>
-                <img src="/assets/icone.orcamento.servicos.svg" alt="" />
+                <img src="/assets/icone.orcamento.servicos.svg" alt="" width="17" height="17" loading="lazy" />
               </div>
             </article>
           </div>
@@ -2477,7 +2555,7 @@
                 <span class="linhaCard-servicos"></span>
               </div>
 
-              <img src="/assets/icone-section-servicos.svg" alt="" />
+              <img src="/assets/icone-section-servicos.svg" alt="" width="56" height="56" loading="lazy" />
               <div class="meioCard">
                 <h3>Loja <span>virtual</span></h3>
                 <p>Expanda suas vendas no digital.</p>
@@ -2485,7 +2563,7 @@
 
               <div class="finalCard">
                 <a href="/orcamento?projeto=loja-virtual" data-posicao-orcamento="servicos" data-servico-orcamento="loja-virtual">Solicitar Orçamento</a>
-                <img src="/assets/icone.orcamento.servicos.svg" alt="" />
+                <img src="/assets/icone.orcamento.servicos.svg" alt="" width="17" height="17" loading="lazy" />
               </div>
             </article>
           </div>
@@ -2500,7 +2578,7 @@
                 <span class="linhaCard-servicos"></span>
               </div>
 
-              <img src="/assets/icone-section-servicos.svg" alt="" />
+              <img src="/assets/icone-section-servicos.svg" alt="" width="56" height="56" loading="lazy" />
               <div class="meioCard">
                 <h3>Página <span>de captura</span></h3>
                 <p>Capture contatos e conduza o próximo passo.</p>
@@ -2508,7 +2586,7 @@
 
               <div class="finalCard">
                 <a href="/orcamento?projeto=pagina-captura" data-posicao-orcamento="servicos" data-servico-orcamento="pagina-captura">Solicitar Orçamento</a>
-                <img src="/assets/icone.orcamento.servicos.svg" alt="" />
+                <img src="/assets/icone.orcamento.servicos.svg" alt="" width="17" height="17" loading="lazy" />
               </div>
             </article>
           </div>
@@ -2523,7 +2601,7 @@
                 <span class="linhaCard-servicos"></span>
               </div>
 
-              <img src="/assets/icone-section-servicos.svg" alt="" />
+              <img src="/assets/icone-section-servicos.svg" alt="" width="56" height="56" loading="lazy" />
               <div class="meioCard">
                 <h3>Área <span>de membros</span></h3>
                 <p>Seu conteúdo em um ambiente exclusivo.</p>
@@ -2531,7 +2609,7 @@
 
               <div class="finalCard">
                 <a href="/orcamento?projeto=area-membros" data-posicao-orcamento="servicos" data-servico-orcamento="area-membros">Solicitar Orçamento</a>
-                <img src="/assets/icone.orcamento.servicos.svg" alt="" />
+                <img src="/assets/icone.orcamento.servicos.svg" alt="" width="17" height="17" loading="lazy" />
               </div>
             </article>
           </div>
@@ -2545,7 +2623,7 @@
                 <span class="linhaCard-servicos"></span>
               </div>
 
-              <img src="/assets/icone-section-servicos.svg" alt="" />
+              <img src="/assets/icone-section-servicos.svg" alt="" width="56" height="56" loading="lazy" />
               <div class="meioCard">
                 <h3>Link <span>na Bio</span></h3>
                 <p>Reúna seus links e facilite o contato.</p>
@@ -2553,7 +2631,7 @@
 
               <div class="finalCard">
                 <a href="/orcamento?projeto=link-na-bio" data-posicao-orcamento="servicos" data-servico-orcamento="link-na-bio">Solicitar Orçamento</a>
-                <img src="/assets/icone.orcamento.servicos.svg" alt="" />
+                <img src="/assets/icone.orcamento.servicos.svg" alt="" width="17" height="17" loading="lazy" />
               </div>
             </article>
           </div>
@@ -2567,7 +2645,7 @@
                 <span class="linhaCard-servicos"></span>
               </div>
 
-              <img src="/assets/icone-section-servicos.svg" alt="" />
+              <img src="/assets/icone-section-servicos.svg" alt="" width="56" height="56" loading="lazy" />
               <div class="meioCard">
                 <h3><span>Automação</span></h3>
                 <p>Simplifique tarefas e ganhe tempo no dia a dia.</p>
@@ -2575,16 +2653,16 @@
 
               <div class="finalCard">
                 <a href="/orcamento?projeto=automacao" data-posicao-orcamento="servicos" data-servico-orcamento="automacao">Solicitar Orçamento</a>
-                <img src="/assets/icone.orcamento.servicos.svg" alt="" />
+                <img src="/assets/icone.orcamento.servicos.svg" alt="" width="17" height="17" loading="lazy" />
               </div>
             </article>
           </div>
           <div class="actions">
-            <button class="prev">
-              <img src="/assets/seta-voltar.svg" alt="" />
+            <button class="prev" type="button" aria-label="Serviço anterior">
+              <img src="/assets/seta-voltar.svg" alt="" width="49" height="48" loading="lazy" />
             </button>
-            <button class="next">
-              <img src="/assets/seta-avancar.svg" alt="" />
+            <button class="next" type="button" aria-label="Próximo serviço">
+              <img src="/assets/seta-avancar.svg" alt="" width="49" height="48" loading="lazy" />
             </button>
           </div>
         </div>
@@ -2602,12 +2680,12 @@
           <span class="tagValor">Presença que gera valor</span>
           <h2 id="presenca-valor-titulo"><strong>Sua empresa pode oferecer</strong> um excelente serviço, mas, se as pessoas</h2>
           <div class="textValor">
-            <img class="linhavalor02" src="assets/linha-presenca-valor.svg" alt="">
+            <img class="linhavalor02" src="assets/linha-presenca-valor.svg" alt="" width="134" height="4" loading="lazy">
             <p>não conseguem encontrá-la no Google, <strong>escolhem a concorrência.</strong></p>
           </div>
         </div>
         <figure class="presencaImagem">
-          <img src="assets/icone-googleanimado.svg" width="461" height="351" alt="Navegação por um site profissional, com clique, conversa e confirmação animados">
+          <img src="assets/icone-googleanimado.svg" width="461" height="351" alt="Navegação por um site profissional, com clique, conversa e confirmação animados" loading="lazy">
         </figure>
         <div class="continueRolando" role="note" aria-label="Continue rolando para ver o restante desta seção">
           <span class="textoScroll">Continue rolando</span>
@@ -2622,15 +2700,15 @@
         <h2 id="beneficios-titulo"><span class="beneficiosTituloMascara"><span class="beneficiosTituloLinha">Quem não é encontrado,</span></span><span class="beneficiosTituloMascara"><span class="beneficiosTituloLinha"><strong>não pode ser escolhido</strong>.</span></span></h2>
         <div class="classpresenca-beneficios">
           <article class="ativo" data-etapa="01">
-            <h3><span aria-hidden="true"><img src="assets/icone-menos-visibilidade.svg" alt=""></span>Menos visibilidade</h3>
+            <h3><span aria-hidden="true"><img src="assets/icone-menos-visibilidade.svg" alt="" width="24" height="25" loading="lazy"></span>Menos visibilidade</h3>
             <p>Sua empresa deixa de alcançar pessoas que procuram exatamente o que você oferece.</p>
           </article>
           <article data-etapa="02">
-            <h3><span aria-hidden="true"><img src="assets/icone-oportunidades-perdidas.svg" alt=""></span>Oportunidades perdidas</h3>
+            <h3><span aria-hidden="true"><img src="assets/icone-oportunidades-perdidas.svg" alt="" width="24" height="25" loading="lazy"></span>Oportunidades perdidas</h3>
             <p>Clientes interessados podem contratar seus concorrentes sem nunca conhecer seu trabalho.</p>
           </article>
           <article data-etapa="03">
-            <h3><span aria-hidden="true"><img src="assets/icone-oportunidades-perdidas.svg" alt=""></span>Concorrência à frente</h3>
+            <h3><span aria-hidden="true"><img src="assets/icone-oportunidades-perdidas.svg" alt="" width="24" height="25" loading="lazy"></span>Concorrência à frente</h3>
             <p>Enquanto outras empresas conquistam espaço nas pesquisas, a sua perde oportunidades de entrar na lista de opções do consumidor.</p>
           </article>
         </div>
@@ -2662,27 +2740,27 @@
           <article class="visual-card ativo" aria-label="Dependência de marketing">
             <div class="card-content">
               <div class="card-copy">
-                <img src="assets/marketing.svg" alt="">
+                <img src="assets/marketing.svg" alt="" width="80" height="56" loading="lazy">
                 <p>Ficar de fora da internet ou depender apenas de redes sociais <strong>não é uma escolha de marketing</strong>. É um prejuízo diário.</p>
-                <img class="linhaCards-beneficios" src="assets/linha-card-valor.svg" alt="">
+                <img class="linhaCards-beneficios" src="assets/linha-card-valor.svg" alt="" width="30" height="1" loading="lazy">
               </div>
             </div>
           </article>
           <article class="visual-card" aria-label="Dependência das redes sociais">
             <div class="card-content">
               <div class="card-copy">
-                <img src="assets/redes-sociais-icone.svg" alt="">
+                <img src="assets/redes-sociais-icone.svg" alt="" width="103" height="46" loading="lazy">
                 <p>O Instagram e o WhatsApp são ótimas ferramentas de atração, mas funcionam como terrenos alugados: <strong>você não tem controle sobre eles</strong>.</p>
-                <img class="linhaCards-beneficios" src="assets/linha-card-valor.svg" alt="">
+                <img class="linhaCards-beneficios" src="assets/linha-card-valor.svg" alt="" width="30" height="1" loading="lazy">
               </div>
             </div>
           </article>
           <article class="visual-card" aria-label="Falta de autoridade">
             <div class="card-content">
               <div class="card-copy">
-                <img src="assets/autoridade-icone.svg" alt="">
+                <img src="assets/autoridade-icone.svg" alt="" width="96" height="64" loading="lazy">
                 <p>Além disso, perfis sociais <strong>não passam a autoridade</strong> que um cliente exigente procura antes de fechar um contrato de alto valor.</p>
-                <img class="linhaCards-beneficios" src="assets/linha-card-valor.svg" alt="">
+                <img class="linhaCards-beneficios" src="assets/linha-card-valor.svg" alt="" width="30" height="1" loading="lazy">
               </div>
             </div>
           </article>
@@ -2716,20 +2794,22 @@
                 <div class="projetoImagemSlide is-active">
                   <img
                     src="/assets/mentoria-ela.webp"
-                    alt="Projeto Mentoria Ela no Comando"
+                    srcset="/assets/mentoria-ela-560-v1.webp 560w, /assets/mentoria-ela-960-v1.webp 960w, /assets/mentoria-ela.webp 1920w"
+                    sizes="(max-width: 767px) 280px, (max-width: 1400px) 50vw, 760px"
+                    alt="Projeto Mentoria Ela no Comando" width="1920" height="884" loading="lazy"
                   />
                 </div>
 
                 <!-- PROJETO 02 -->
                 <div class="projetoImagemSlide">
-                  <img src="/assets/lumio.webp" alt="Projeto Lumio" />
+                  <img src="/assets/lumio.webp" alt="Projeto Lumio" width="1920" height="884" loading="lazy" />
                 </div>
 
                 <!-- PROJETO 03 -->
                 <div class="projetoImagemSlide">
                   <img
                     src="/assets/nutricao-executiva.webp"
-                    alt="Projeto Nutrição Executiva"
+                    alt="Projeto Nutrição Executiva" loading="lazy"
                   />
                 </div>
 
@@ -2737,7 +2817,7 @@
                 <div class="projetoImagemSlide">
                   <img
                     src="/assets/trafego-turbo.webp"
-                    alt="Projeto Tráfego Turbo"
+                    alt="Projeto Tráfego Turbo" loading="lazy"
                   />
                 </div>
               </div>
@@ -2953,7 +3033,7 @@
         <div class="bg-abertura" aria-hidden="true"></div>
         <div class="oportunidadesConteudo">
           <div class="oportunidadesTexto">
-            <p class="oportunidadesLegenda"><img src="assets/brilhar-oportunidades.svg" width="34.0736" height="34" alt="">Cada oportunidade perdida pode</p>
+            <p class="oportunidadesLegenda"><img src="assets/brilhar-oportunidades.svg" width="34.0736" height="34" alt="" loading="lazy">Cada oportunidade perdida pode</p>
             <h2 id="oportunidades-titulo">representar <strong>um orçamento que</strong><br> não chega, um contato que não</h2>
             <div class="oportunidadesDescricao">
               <p>acontece e uma venda que poderia ser sua.</p>
@@ -2961,29 +3041,29 @@
             </div>
             <a class="oportunidadesBotao" href="#servicos-detalhados">
               <span>Não perca mais oportunidades</span>
-              <span class="oportunidadesSeta" aria-hidden="true"><img src="assets/seta-oportunidades.svg" width="16" height="16" alt=""></span>
+              <span class="oportunidadesSeta" aria-hidden="true"><img src="assets/seta-oportunidades.svg" width="16" height="16" alt="" loading="lazy"></span>
             </a>
           </div>
           <div class="oportunidadesArte" role="group" aria-label="Consequências das oportunidades perdidas">
             <div class="oportunidadesIlustracao" aria-hidden="true">
-              <img class="oportunidadesLinha" src="assets/linha-oportunidades.svg" width="2.11401" height="628.462" alt="">
-              <div class="oportunidadesIcone demanda"><img src="assets/icone-demanda.svg" width="276" height="269" alt=""></div>
-              <div class="oportunidadesIcone disputa"><img src="assets/icone-disputa.svg" width="331" height="269" alt=""></div>
-              <div class="oportunidadesIcone vendas"><img src="assets/icone-vendas-perdidas.svg" width="269" height="269" alt=""></div>
+              <img class="oportunidadesLinha" src="assets/linha-oportunidades.svg" width="2.11401" height="628.462" alt="" loading="lazy">
+              <div class="oportunidadesIcone demanda"><img src="assets/icone-demanda.svg" width="276" height="269" alt="" loading="lazy"></div>
+              <div class="oportunidadesIcone disputa"><img src="assets/icone-disputa.svg" width="331" height="269" alt="" loading="lazy"></div>
+              <div class="oportunidadesIcone vendas"><img src="assets/icone-vendas-perdidas.svg" width="269" height="269" alt="" loading="lazy"></div>
             </div>
             <ol class="oportunidadesEtapas">
               <li class="oportunidadesEtapa demanda">
-                <img src="assets/pontinho-oportunidades.svg" width="17.5719" height="7.0467" alt="">
+                <img src="assets/pontinho-oportunidades.svg" width="17.5719" height="7.0467" alt="" loading="lazy">
                 <h3>Demanda desperdiçada</h3>
                 <p>Buscas que não geram oportunidades.</p>
               </li>
               <li class="oportunidadesEtapa disputa">
-                <img src="assets/pontinho-oportunidades.svg" width="17.5719" height="7.0467" alt="">
+                <img src="assets/pontinho-oportunidades.svg" width="17.5719" height="7.0467" alt="" loading="lazy">
                 <h3>Fora da disputa</h3>
                 <p>Sua empresa nem chega a ser considerada.</p>
               </li>
               <li class="oportunidadesEtapa vendas">
-                <img src="assets/pontinho-oportunidades.svg" width="17.5719" height="7.0467" alt="">
+                <img src="assets/pontinho-oportunidades.svg" width="17.5719" height="7.0467" alt="" loading="lazy">
                 <h3>Vendas perdidas</h3>
                 <p>O faturamento fica com a concorrência.</p>
               </li>
@@ -2999,7 +3079,7 @@
       <!-- Abertura de vendas: tag, título e subtítulo -->
       <section class="vendasSite" id="mais-vendas" aria-labelledby="vendas-titulo">
         <div class="vendasAberturaConteudo">
-          <p class="vendasLegenda"><img src="assets/brilho-mais-vendas.svg" alt="" width="16" height="16"> MAIS VENDAS, MAIS POSSIBILIDADES</p>
+          <p class="vendasLegenda"><img src="assets/brilho-mais-vendas.svg" alt="" width="16" height="16" loading="lazy"> MAIS VENDAS, MAIS POSSIBILIDADES</p>
           <h2 id="vendas-titulo">Mas e se você já tem um site?</h2>
           <p class="vendasAbertura">Talvez ele quase não receba visitas. Ou até receba, mas os pedidos de orçamento não chegam e as vendas continuam abaixo do esperado.</p>
           <div class="vendasApoio">
@@ -3007,34 +3087,34 @@
             <p class="vendasVirada">E sabe o que é melhor? <span>Ainda dá para mudar esse cenário.</span></p>
           </div>
           <div class="vendasDestaques">
-            <img src="assets/icone-before-sites-profissionais.svg" alt="" class="vendasOrnamento" width="197" height="198">
+            <img src="assets/icone-before-sites-profissionais.svg" alt="" class="vendasOrnamento" width="197" height="198" loading="lazy">
             <article class="vendasDestaque">
               <div class="vendasDestaqueTopo">
                 <div><h3>Seu negócio é encontrado.</h3><p>Uma nova oportunidade começa com uma busca.</p></div>
-                <img src="assets/google-icone-cards.svg" alt="" width="56" height="56">
+                <img src="assets/google-icone-cards.svg" alt="" width="56" height="56" loading="lazy">
               </div>
               <div class="vendasIlustracao" aria-hidden="true">
-                <img src="assets/icone-encontrado-google-negocio.svg" alt="" width="245" height="200">
+                <img src="assets/icone-encontrado-google-negocio.svg" alt="" width="245" height="200" loading="lazy">
               </div>
               <p>Com conteúdo relevante e uma estrutura otimizada para o Google, sua empresa aumenta as chances de alcançar mais clientes em potencial.</p>
             </article>
             <article class="vendasDestaque">
               <div class="vendasDestaqueTopo">
                 <div><h3>O cliente entende a oferta</h3><p>Mostre o que você oferece e por que isso importa.</p></div>
-                <img src="assets/google-icone-cards.svg" alt="" width="56" height="56">
+                <img src="assets/google-icone-cards.svg" alt="" width="56" height="56" loading="lazy">
               </div>
               <div class="vendasIlustracao" aria-hidden="true">
-                <img src="assets/icone-oferta-google.svg" alt="" width="320" height="200">
+                <img src="assets/icone-oferta-google.svg" alt="" width="320" height="200" loading="lazy">
               </div>
               <p>Uma apresentação estratégica destaca os benefícios, responde às principais dúvidas e faz a sua empresa vender muito mais.</p>
             </article>
             <article class="vendasDestaque">
               <div class="vendasDestaqueTopo">
                 <div><h3>O próximo passo fica claro</h3><p>Transforme o interesse em oportunidades de novos orçamentos e vendas.</p></div>
-                <img src="assets/google-icone-cards.svg" alt="" width="56" height="56">
+                <img src="assets/google-icone-cards.svg" alt="" width="56" height="56" loading="lazy">
               </div>
               <div class="vendasIlustracao" aria-hidden="true">
-                <img src="assets/icone-vendas-google-oportunidades.svg" alt="" width="186" height="200">
+                <img src="assets/icone-vendas-google-oportunidades.svg" alt="" width="186" height="200" loading="lazy">
               </div>
               <p>Com chamadas para ação bem posicionadas e um formulário para solicitar um orçamento, o seu potencial cliente sabe exatamente como avançar.</p>
             </article>
@@ -3044,12 +3124,12 @@
       <!-- Argumentos em cards empilhados, com a referência stack-scroll -->
       <section class="vendasProposito" id="site-para-vendas" aria-labelledby="vendas-proposito-titulo">
         <div class="vendasPropositoPainel">
-          <img class="vendasPropositoBolinhas" src="assets/bolinhas-proposito-comercial.svg" width="46" height="850" alt="">
+          <img class="vendasPropositoBolinhas" src="assets/bolinhas-proposito-comercial.svg" width="46" height="850" alt="" loading="lazy">
           <div class="vendasPropositoIntroducao">
             <h2 id="vendas-proposito-titulo" class="vendasPropositoTitulo">
-              <span>Um <img src="assets/01_estrutura_site-google.svg" width="200" height="200" alt=""> site com</span>
-              <span><strong>propósito</strong><img src="assets/clique-seta-vendas-google.svg" width="256" height="256" alt=""></span>
-              <span><img src="assets/03_orcamento_confirmado%201.svg" width="256" height="256" alt=""><strong>comercial</strong></span>
+              <span>Um <img src="assets/01_estrutura_site-google.svg" width="200" height="200" alt="" loading="lazy"> site com</span>
+              <span><strong>propósito</strong><img src="assets/clique-seta-vendas-google.svg" width="256" height="256" alt="" loading="lazy"></span>
+              <span><img src="assets/03_orcamento_confirmado%201.svg" width="256" height="256" alt="" loading="lazy"><strong>comercial</strong></span>
             </h2>
             <p>E é exatamente isso que pode estar faltando no seu site: uma estrutura pensada não apenas para receber visitantes, mas para transformá-los em oportunidades de venda.</p>
             <ul class="vendasPropositoPontos">
@@ -3064,99 +3144,99 @@
               <h3 id="vendas-carrossel-titulo">Porque um site pensado para <strong>vender não termina na visita</strong></h3>
               <p>Ele cria caminhos para que o interesse se transforme em novos negócios.</p>
             </div>
-            <img src="assets/clique-seta-vendas-google.svg" width="256" height="256" alt="">
+            <img src="assets/clique-seta-vendas-google.svg" width="256" height="256" alt="" loading="lazy">
           </div>
           <div class="vendasCarrossel" role="group" aria-labelledby="vendas-carrossel-titulo">
-            <img class="vendasCarrosselOrnamento" src="assets/icone-before-sites-profissionais.svg" width="197" height="198" alt="">
+            <img class="vendasCarrosselOrnamento" src="assets/icone-before-sites-profissionais.svg" width="197" height="198" alt="" loading="lazy">
             <ul class="vendasCarrosselLista" id="vendas-carrossel-lista">
               <li class="vendasCarrosselCard">
                 <h4>Mais oportunidades</h4>
-                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="" loading="lazy">
                 <p>para conquistar clientes e gerar receita.</p>
               </li>
               <li class="vendasCarrosselCard">
                 <h4>Mais autonomia</h4>
-                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="" loading="lazy">
                 <p>Mais espaço para crescer.</p>
               </li>
               <li class="vendasCarrosselCard">
                 <h4>Expansão de mercado</h4>
-                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="" loading="lazy">
                 <p>para conquistar clientes e gerar receita.</p>
               </li>
               <li class="vendasCarrosselCard">
                 <h4>Resultados</h4>
-                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="" loading="lazy">
                 <p>Saiba quais páginas, campanhas e ações geram contatos.</p>
               </li>
               <li class="vendasCarrosselCard">
                 <h4>Captação de clientes</h4>
-                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="" loading="lazy">
                 <p>Formulários personalizados</p>
               </li>
               <li class="vendasCarrosselCard">
                 <h4>Menor esforço comercial</h4>
-                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="" loading="lazy">
                 <p>Informações disponíveis que reduzem perguntas repetitivas.</p>
               </li>
               <li class="vendasCarrosselCard">
                 <h4>Vendas online</h4>
-                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="" loading="lazy">
                 <p>Possibilidade de vender produtos ou serviços diretamente pelo site.</p>
               </li>
               <li class="vendasCarrosselCard">
                 <h4>Vendas recorrentes</h4>
-                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="" loading="lazy">
                 <p>Possibilidade de facilitar novas compras de clientes existentes.</p>
               </li>
               <li class="vendasCarrosselCard">
                 <h4>Recuperação de interessados</h4>
-                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="" loading="lazy">
                 <p>Possibilidade de retomar contatos e negociações não concluídas.</p>
               </li>
               <li class="vendasCarrosselCard">
                 <h4>Controle do canal digital</h4>
-                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="" loading="lazy">
                 <p>Maior autonomia sobre conteúdo, ofertas e a experiência comercial.</p>
               </li>
               <li class="vendasCarrosselCard">
                 <h4>Otimização contínua</h4>
-                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="" loading="lazy">
                 <p>Testar mensagens, páginas e ofertas para melhorar conversões.</p>
               </li>
               <li class="vendasCarrosselCard">
                 <h4>Autoridade no mercado</h4>
-                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="" loading="lazy">
                 <p>Demonstrar conhecimento, experiência e especialização.</p>
               </li>
               <li class="vendasCarrosselCard">
                 <h4>Mais vendas com anúncios</h4>
-                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="" loading="lazy">
                 <p>Um destino preparado para receber visitantes das campanhas de marketing.</p>
               </li>
               <li class="vendasCarrosselCard">
                 <h4>Mais negociações qualificadas</h4>
-                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="" loading="lazy">
                 <p>Clientes que chegam com informações sobre o que você oferece.</p>
               </li>
               <li class="vendasCarrosselCard">
                 <h4>Ciclos de venda mais curtos</h4>
-                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="" loading="lazy">
                 <p>Menos obstáculos para o cliente entender a oferta e decidir.</p>
               </li>
               <li class="vendasCarrosselCard">
                 <h4>Agendamentos automatizados</h4>
-                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="" loading="lazy">
                 <p>Possibilidade de receber reservas e solicitações sem atendimento manual.</p>
               </li>
               <li class="vendasCarrosselCard">
                 <h4>Diferenciação comercial</h4>
-                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="" loading="lazy">
                 <p>Apresentar vantagens que ajudam o cliente a justificar a contratação.</p>
               </li>
               <li class="vendasCarrosselCard">
                 <h4>Escalabilidade</h4>
-                <img src="assets/target_icon%201.svg" width="150" height="150" alt="">
+                <img src="assets/target_icon%201.svg" width="150" height="150" alt="" loading="lazy">
                 <p>Ampliar ofertas, páginas e processos conforme o negócio cresce.</p>
               </li>
             </ul>
@@ -3175,15 +3255,15 @@
           <h2 id="estrategia-vendas-titulo">Com um <strong>site profissional,</strong> seus serviços,<br class="quebraEstrategiaDesktop"> diferenciais e projetos ganham</h2>
           <p class="vendasEstrategiaDescricao">o destaque que merecem, ajudando o visitante a conhecer seu trabalho, confiar na sua empresa e dar o próximo passo.</p>
           <ul class="vendasEstrategiaTags" aria-label="Da descoberta às oportunidades de venda">
-            <li class="vendasEstrategiaCaminho"><span aria-hidden="true"><img src="assets/icone-button-orcamento.svg" width="17" height="15" alt=""></span>Um caminho claro da descoberta à decisão.</li>
-            <li><img src="assets/MAIS-CLIENTES%20-MAIS-VENDAS-GOOGLE.svg" width="26" height="26" alt="">Vendas</li>
-            <li><img src="assets/MAIS-CLIENTES%20-MAIS-VENDAS-GOOGLE.svg" width="26" height="26" alt="">Clientes qualificados</li>
+            <li class="vendasEstrategiaCaminho"><span aria-hidden="true"><img src="assets/icone-button-orcamento.svg" width="17" height="15" alt="" loading="lazy"></span>Um caminho claro da descoberta à decisão.</li>
+            <li><img src="assets/MAIS-CLIENTES%20-MAIS-VENDAS-GOOGLE.svg" width="26" height="26" alt="" loading="lazy">Vendas</li>
+            <li><img src="assets/MAIS-CLIENTES%20-MAIS-VENDAS-GOOGLE.svg" width="26" height="26" alt="" loading="lazy">Clientes qualificados</li>
           </ul>
         </div>
         <div class="vendasConvite" aria-labelledby="proximo-cliente-titulo">
           <span class="vendasConviteIcone" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
           <h3 id="proximo-cliente-titulo"><span class="vendasConviteChamada">O próximo cliente pode chegar</span><span class="vendasConviteDescricao">quando você menos espera. Sua empresa precisa estar preparada para recebê-lo.</span></h3>
-          <a href="/orcamento" data-posicao-orcamento="proximo_cliente" class="cta"><span class="circle-bg"></span><img class="cta-icon" src="/assets/icone-button-orcamento.svg" alt="" width="17" height="15"><span class="text">Solicitar Orçamento</span></a>
+          <a href="/orcamento" data-posicao-orcamento="proximo_cliente" class="cta"><span class="circle-bg"></span><img class="cta-icon" src="/assets/icone-button-orcamento.svg" alt="" width="17" height="15" loading="lazy"><span class="text">Solicitar Orçamento</span></a>
         </div>
         <p class="vendasEstrategiaMensagem"><strong>Imagine começar o dia com novos pedidos de orçamento,</strong> clientes interessados nos seus serviços e mais vendas que surgem mesmo fora do horário comercial.</p>
         <div class="vendasEstrategiaDivisor" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -3193,7 +3273,7 @@
       <section class="protocoloCriacao" id="protocolo-criacao" aria-labelledby="protocolo-titulo">
         <div class="protocoloCabecalho">
           <div class="protocoloIntroducao">
-            <p class="protocoloLegenda"><img src="assets/brilhar-oportunidades.svg" width="34.0736" height="34" alt="">PROTOCOLO DE CRIAÇÃO PROFISSIONAL</p>
+            <p class="protocoloLegenda"><img src="assets/brilhar-oportunidades.svg" width="34.0736" height="34" alt="" loading="lazy">PROTOCOLO DE CRIAÇÃO PROFISSIONAL</p>
             <h2 id="protocolo-titulo">Seu projeto segue um <strong>processo estruturado,</strong><br class="quebraProtocolo"> do planejamento à publicação.</h2>
           </div>
           <p class="protocoloDescricao">Cada etapa tem um propósito. Você acompanha a evolução do projeto e participa das decisões, do briefing aos ajustes finais.</p>
@@ -3201,16 +3281,16 @@
         <div class="protocoloJanela">
           <div class="protocoloLinhaTempo">
             <div class="protocoloTrilho" aria-hidden="true">
-              <img src="assets/protocolo-linha.svg" width="1680" height="1" alt="">
+              <img src="assets/protocolo-linha.svg" width="1680" height="1" alt="" loading="lazy">
               <span class="protocoloProgresso"></span>
             </div>
             <ol class="protocoloLista" aria-label="Etapas do protocolo de criação">
               <li class="protocoloEtapa">
                 <span class="protocoloMarca" aria-hidden="true">
                   <span class="protocoloPlaca">
-                    <img class="protocoloSombra" src="assets/protocolo-sombra-clara.svg" width="43.9091" height="43.9091" alt="">
-                    <img class="protocoloLateral" src="assets/protocolo-lateral-clara.svg" width="43.9091" height="43.9091" alt="">
-                    <img class="protocoloTopo" src="assets/protocolo-topo-claro.svg" width="44.9837" height="44.9837" alt="">
+                    <img class="protocoloSombra" src="assets/protocolo-sombra-clara.svg" width="43.9091" height="43.9091" alt="" loading="lazy">
+                    <img class="protocoloLateral" src="assets/protocolo-lateral-clara.svg" width="43.9091" height="43.9091" alt="" loading="lazy">
+                    <img class="protocoloTopo" src="assets/protocolo-topo-claro.svg" width="44.9837" height="44.9837" alt="" loading="lazy">
                   </span>
                 </span>
                 <div class="protocoloDetalhes">
@@ -3222,9 +3302,9 @@
               <li class="protocoloEtapa">
                 <span class="protocoloMarca" aria-hidden="true">
                   <span class="protocoloPlaca">
-                    <img class="protocoloSombra" src="assets/protocolo-sombra-laranja.svg" width="43.9091" height="43.9091" alt="">
-                    <img class="protocoloLateral" src="assets/protocolo-lateral-laranja.svg" width="43.9091" height="43.9091" alt="">
-                    <img class="protocoloTopo" src="assets/protocolo-topo-laranja.svg" width="44.9837" height="44.9837" alt="">
+                    <img class="protocoloSombra" src="assets/protocolo-sombra-laranja.svg" width="43.9091" height="43.9091" alt="" loading="lazy">
+                    <img class="protocoloLateral" src="assets/protocolo-lateral-laranja.svg" width="43.9091" height="43.9091" alt="" loading="lazy">
+                    <img class="protocoloTopo" src="assets/protocolo-topo-laranja.svg" width="44.9837" height="44.9837" alt="" loading="lazy">
                   </span>
                 </span>
                 <div class="protocoloDetalhes">
@@ -3236,9 +3316,9 @@
               <li class="protocoloEtapa">
                 <span class="protocoloMarca" aria-hidden="true">
                   <span class="protocoloPlaca">
-                    <img class="protocoloSombra" src="assets/protocolo-sombra-clara.svg" width="43.9091" height="43.9091" alt="">
-                    <img class="protocoloLateral" src="assets/protocolo-lateral-clara.svg" width="43.9091" height="43.9091" alt="">
-                    <img class="protocoloTopo" src="assets/protocolo-topo-claro.svg" width="44.9837" height="44.9837" alt="">
+                    <img class="protocoloSombra" src="assets/protocolo-sombra-clara.svg" width="43.9091" height="43.9091" alt="" loading="lazy">
+                    <img class="protocoloLateral" src="assets/protocolo-lateral-clara.svg" width="43.9091" height="43.9091" alt="" loading="lazy">
+                    <img class="protocoloTopo" src="assets/protocolo-topo-claro.svg" width="44.9837" height="44.9837" alt="" loading="lazy">
                   </span>
                 </span>
                 <div class="protocoloDetalhes">
@@ -3250,9 +3330,9 @@
               <li class="protocoloEtapa">
                 <span class="protocoloMarca" aria-hidden="true">
                   <span class="protocoloPlaca">
-                    <img class="protocoloSombra" src="assets/protocolo-sombra-laranja.svg" width="43.9091" height="43.9091" alt="">
-                    <img class="protocoloLateral" src="assets/protocolo-lateral-laranja.svg" width="43.9091" height="43.9091" alt="">
-                    <img class="protocoloTopo" src="assets/protocolo-topo-laranja.svg" width="44.9837" height="44.9837" alt="">
+                    <img class="protocoloSombra" src="assets/protocolo-sombra-laranja.svg" width="43.9091" height="43.9091" alt="" loading="lazy">
+                    <img class="protocoloLateral" src="assets/protocolo-lateral-laranja.svg" width="43.9091" height="43.9091" alt="" loading="lazy">
+                    <img class="protocoloTopo" src="assets/protocolo-topo-laranja.svg" width="44.9837" height="44.9837" alt="" loading="lazy">
                   </span>
                 </span>
                 <div class="protocoloDetalhes">
@@ -3264,9 +3344,9 @@
               <li class="protocoloEtapa">
                 <span class="protocoloMarca" aria-hidden="true">
                   <span class="protocoloPlaca">
-                    <img class="protocoloSombra" src="assets/protocolo-sombra-clara.svg" width="43.9091" height="43.9091" alt="">
-                    <img class="protocoloLateral" src="assets/protocolo-lateral-clara.svg" width="43.9091" height="43.9091" alt="">
-                    <img class="protocoloTopo" src="assets/protocolo-topo-claro.svg" width="44.9837" height="44.9837" alt="">
+                    <img class="protocoloSombra" src="assets/protocolo-sombra-clara.svg" width="43.9091" height="43.9091" alt="" loading="lazy">
+                    <img class="protocoloLateral" src="assets/protocolo-lateral-clara.svg" width="43.9091" height="43.9091" alt="" loading="lazy">
+                    <img class="protocoloTopo" src="assets/protocolo-topo-claro.svg" width="44.9837" height="44.9837" alt="" loading="lazy">
                   </span>
                 </span>
                 <div class="protocoloDetalhes">
@@ -3278,9 +3358,9 @@
               <li class="protocoloEtapa">
                 <span class="protocoloMarca" aria-hidden="true">
                   <span class="protocoloPlaca">
-                    <img class="protocoloSombra" src="assets/protocolo-sombra-laranja.svg" width="43.9091" height="43.9091" alt="">
-                    <img class="protocoloLateral" src="assets/protocolo-lateral-laranja.svg" width="43.9091" height="43.9091" alt="">
-                    <img class="protocoloTopo" src="assets/protocolo-topo-laranja.svg" width="44.9837" height="44.9837" alt="">
+                    <img class="protocoloSombra" src="assets/protocolo-sombra-laranja.svg" width="43.9091" height="43.9091" alt="" loading="lazy">
+                    <img class="protocoloLateral" src="assets/protocolo-lateral-laranja.svg" width="43.9091" height="43.9091" alt="" loading="lazy">
+                    <img class="protocoloTopo" src="assets/protocolo-topo-laranja.svg" width="44.9837" height="44.9837" alt="" loading="lazy">
                   </span>
                 </span>
                 <div class="protocoloDetalhes">
@@ -3307,11 +3387,11 @@
           <p>Tem um projeto em mente ou quer tirar alguma dúvida? Estou aqui para ajudar.</p>
           <div class="infoContatos">
             <a class="contato-detalhes" href="https://wa.me/5511947055638?text=Ol%C3%A1%2C%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20tirar%20algumas%20d%C3%BAvidas." target="_blank" rel="noopener noreferrer">
-              <img src="/assets/whatsapp.section.contato.svg" alt="">
+              <img src="/assets/whatsapp.section.contato.svg" alt="" width="56" height="56" loading="lazy">
               <div class="textContato"><h3>WhatsApp</h3><p>(11) 94705-5638</p></div>
             </a>
             <a class="contato-detalhes" href="mailto:contato@daianeferreira.com.br" target="_blank" rel="noopener noreferrer">
-              <img src="/assets/email.section.contato.svg" alt="">
+              <img src="/assets/email.section.contato.svg" alt="" width="56" height="56" loading="lazy">
               <div class="textContato"><h3>E-mail</h3><p>contato@daianeferreira.com.br</p></div>
             </a>
           </div>
@@ -3319,7 +3399,7 @@
         <section class="faq" aria-labelledby="faq-titulo">
           <div class="faqCabecalho">
             <h3 id="faq-titulo">Perguntas <strong>Frequentes</strong></h3>
-            <img src="/assets/Faq.svg" alt="">
+            <img src="/assets/Faq.svg" alt="" width="149" height="119" loading="lazy">
           </div>
           <div class="perguntasFrequentes">
             <article class="faqItem ativo">
@@ -3507,22 +3587,22 @@
               <div class="textSeta">
                 <div class="designResultado">
                   <p>Design com intenção. Resultados que conectam.</p>
-                  <img src="/assets/icone-brilhar.svg" alt="" class="brilhar" />
+                  <img src="/assets/icone-brilhar.svg" alt="" class="brilhar" width="47" height="46" loading="lazy" />
                 </div>
 
-                <img src="/assets/setaDesign.svg" alt="" class="setaDesigner" />
+                <img src="/assets/setaDesign.svg" alt="" class="setaDesigner" width="87" height="80" loading="lazy" />
               </div>
             </div>
 
             <div class="meioSobre">
               <div class="sobreBottom">
-                <span>Design </span> <img src="/assets/brilhar.svg" alt="" />
-                <span>UX/UI </span> <img src="/assets/brilhar.svg" alt="" />
+                <span>Design </span> <img src="/assets/brilhar.svg" alt="" width="17" height="16" loading="lazy" />
+                <span>UX/UI </span> <img src="/assets/brilhar.svg" alt="" width="17" height="16" loading="lazy" />
                 <span>Estratégia</span>
               </div>
               <div class="sobreParte2">
                 <div class="citacao">
-                  <img src="/assets/icone-citacao.svg" alt="" />
+                  <img src="/assets/icone-citacao.svg" alt="" width="32" height="32" loading="lazy" />
                   <p>
                     Minha história com código começou
                     <span>muito antes da formação.</span>
@@ -3552,7 +3632,7 @@
           <div class="fotoDaianeFerreira">
             <img
               src="/assets/daiane_ferreira_cria_o_de_sites_sobre_mim_3_0.webp"
-              alt="Daiane Ferreira | Sobre Mim"
+              alt="Daiane Ferreira | Sobre Mim" width="701" height="876" loading="lazy"
             />
           </div>
 
@@ -3561,55 +3641,55 @@
               <!-- GRUPO 01 -->
               <div class="faixaGrupo">
                 <span>HTML5</span>
-                <img src="/assets/brilhar-animado.svg" alt="" />
+                <img src="/assets/brilhar-animado.svg" alt="" width="35" height="34" loading="lazy" />
 
                 <span>CSS3</span>
-                <img src="/assets/brilhar-animado.svg" alt="" />
+                <img src="/assets/brilhar-animado.svg" alt="" width="35" height="34" loading="lazy" />
 
                 <span>JavaScript</span>
-                <img src="/assets/brilhar-animado.svg" alt="" />
+                <img src="/assets/brilhar-animado.svg" alt="" width="35" height="34" loading="lazy" />
 
                 <span>PHP</span>
-                <img src="/assets/brilhar-animado.svg" alt="" />
+                <img src="/assets/brilhar-animado.svg" alt="" width="35" height="34" loading="lazy" />
 
                 <span>WordPress</span>
-                <img src="/assets/brilhar-animado.svg" alt="" />
+                <img src="/assets/brilhar-animado.svg" alt="" width="35" height="34" loading="lazy" />
 
                 <span>Elementor Pro</span>
-                <img src="/assets/brilhar-animado.svg" alt="" />
+                <img src="/assets/brilhar-animado.svg" alt="" width="35" height="34" loading="lazy" />
 
                 <span>Performance e otimização web</span>
-                <img src="/assets/brilhar-animado.svg" alt="" />
+                <img src="/assets/brilhar-animado.svg" alt="" width="35" height="34" loading="lazy" />
 
                 <span>Criação e integração de APIs</span>
-                <img src="/assets/brilhar-animado.svg" alt="" />
+                <img src="/assets/brilhar-animado.svg" alt="" width="35" height="34" loading="lazy" />
               </div>
 
               <!-- GRUPO 02 - CÓPIA PARA LOOP -->
               <div class="faixaGrupo" aria-hidden="true">
                 <span>HTML5</span>
-                <img src="/assets/brilhar-animado.svg" alt="" />
+                <img src="/assets/brilhar-animado.svg" alt="" width="35" height="34" loading="lazy" />
 
                 <span>CSS3</span>
-                <img src="/assets/brilhar-animado.svg" alt="" />
+                <img src="/assets/brilhar-animado.svg" alt="" width="35" height="34" loading="lazy" />
 
                 <span>JavaScript</span>
-                <img src="/assets/brilhar-animado.svg" alt="" />
+                <img src="/assets/brilhar-animado.svg" alt="" width="35" height="34" loading="lazy" />
 
                 <span>PHP</span>
-                <img src="/assets/brilhar-animado.svg" alt="" />
+                <img src="/assets/brilhar-animado.svg" alt="" width="35" height="34" loading="lazy" />
 
                 <span>WordPress</span>
-                <img src="/assets/brilhar-animado.svg" alt="" />
+                <img src="/assets/brilhar-animado.svg" alt="" width="35" height="34" loading="lazy" />
 
                 <span>Elementor Pro</span>
-                <img src="/assets/brilhar-animado.svg" alt="" />
+                <img src="/assets/brilhar-animado.svg" alt="" width="35" height="34" loading="lazy" />
 
                 <span>Performance e otimização web</span>
-                <img src="/assets/brilhar-animado.svg" alt="" />
+                <img src="/assets/brilhar-animado.svg" alt="" width="35" height="34" loading="lazy" />
 
                 <span>Criação e integração de APIs</span>
-                <img src="/assets/brilhar-animado.svg" alt="" />
+                <img src="/assets/brilhar-animado.svg" alt="" width="35" height="34" loading="lazy" />
               </div>
             </div>
           </div>
@@ -3654,7 +3734,7 @@
               src="/assets/icone-button-orcamento.svg"
               alt=""
               width="17"
-              height="15"
+              height="15" loading="lazy"
             />
 
             <span class="text">Solicitar orçamento</span>
@@ -3991,7 +4071,7 @@
       rel="noopener"
       aria-label="Chamar no WhatsApp"
     >
-      <img src="/assets/whatsapp.svg" alt="" width="150" height="150" />
+      <img src="/assets/whatsapp.svg" alt="" width="150" height="150" loading="lazy" />
     </a>
 
     <!-- =========================================================
@@ -4100,13 +4180,13 @@
       </section>
     </div>
 
-    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js" defer></script>
 
-    <script src="/script.js?v=20261112-1"></script>
+    <script src="/script.js?v=20261112-2" defer></script>
     <script src="/assets/analytics.js?v=20261107-6" defer></script>
     <script src="/analise-gratuita/formulario.js?v=5" defer></script>
   </body>

@@ -1,8 +1,6 @@
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 document.addEventListener("DOMContentLoaded", async () => {
-  iniciarPreloader();
-
   // As animações de rolagem precisam medir a página com o CSS completo.
   const estilosPendentes = [...document.querySelectorAll("link[data-home-styles]")]
     .filter(link => link.media === "print");
@@ -28,6 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   iniciarSlidersDobra04();
   iniciarTextosDobra04();
   iniciarCarrosselServicos();
+  iniciarProjetosDestaque();
   iniciarTextosDobra06();
   iniciarIndicadoresScroll();
   iniciarValorPercebido();
@@ -40,14 +39,42 @@ document.addEventListener("DOMContentLoaded", async () => {
   iniciarTransicaoPercepcao();
   iniciarAnimacaoPilares();
   iniciarSobreposicaoNewsletter();
-  iniciarTextosNewsletter();
-  animarRedesFooter();
-  animarTextosFooter();
-  animarTextoFooter2();
+  iniciarAnimacaoAoAproximar(".newsletter", iniciarTextosNewsletter);
+  iniciarAnimacaoAoAproximar("footer", () => {
+    animarRedesFooter();
+    animarTextosFooter();
+    animarTextoFooter2();
+  });
   iniciarWhatsappFlutuante();
   iniciarMenuAncoras();
 
 });
+
+let quadroAtualizacaoScrollTrigger = null;
+
+function agendarAtualizacaoScrollTrigger() {
+  if (quadroAtualizacaoScrollTrigger !== null) return;
+  quadroAtualizacaoScrollTrigger = requestAnimationFrame(() => {
+    quadroAtualizacaoScrollTrigger = null;
+    ScrollTrigger.refresh();
+  });
+}
+
+function iniciarAnimacaoAoAproximar(seletor, iniciar) {
+  const elemento = document.querySelector(seletor);
+  if (!elemento) return;
+  if (!("IntersectionObserver" in window)) {
+    iniciar();
+    return;
+  }
+  const observador = new IntersectionObserver(([entrada]) => {
+    if (!entrada.isIntersecting) return;
+    observador.disconnect();
+    iniciar();
+    agendarAtualizacaoScrollTrigger();
+  }, { rootMargin: "500px 0px" });
+  observador.observe(elemento);
+}
 
 function iniciarMenuAncoras() {
   const links = [...document.querySelectorAll(".principal a, .menu-links .nav-link")];
@@ -476,8 +503,10 @@ function iniciarFluidDesktop() {
   if (window.innerWidth <= 1024) return;
 
   function iniciarFluid(canvas) {
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
+    const larguraInicial = canvas.clientWidth;
+    const alturaInicial = canvas.clientHeight;
+    canvas.width = larguraInicial;
+    canvas.height = alturaInicial;
 
     var config = {
       TEXTURE_DOWNSAMPLE: 1,
@@ -496,6 +525,8 @@ function iniciarFluidDesktop() {
 
     var gl = _getWebGLContext.gl;
     var ext = _getWebGLContext.ext;
+    if (!gl || !ext) return;
+    const framebuffers = [];
     var support_linear_float = _getWebGLContext.support_linear_float;
 
     function getWebGLContext(canvas) {
@@ -1397,6 +1428,11 @@ function iniciarFluidDesktop() {
     );
 
     function initFramebuffers() {
+      framebuffers.forEach(([texture, framebuffer]) => {
+        gl.deleteFramebuffer(framebuffer);
+        gl.deleteTexture(texture);
+      });
+      framebuffers.length = 0;
       textureWidth = gl.drawingBufferWidth >> config.TEXTURE_DOWNSAMPLE;
 
       textureHeight = gl.drawingBufferHeight >> config.TEXTURE_DOWNSAMPLE;
@@ -1505,7 +1541,9 @@ function iniciarFluidDesktop() {
 
       gl.clear(gl.COLOR_BUFFER_BIT);
 
-      return [texture, fbo, texId];
+      const framebuffer = [texture, fbo, texId];
+      framebuffers.push(framebuffer);
+      return framebuffer;
     }
 
     function createDoubleFBO(texId, w, h, internalFormat, format, type, param) {
@@ -1577,8 +1615,6 @@ function iniciarFluidDesktop() {
     update();
 
     function update() {
-      resizeCanvas();
-
       var dt = Math.min(
         (Date.now() - lastTime) / 1000,
 
@@ -1854,17 +1890,20 @@ function iniciarFluidDesktop() {
       density.swap();
     }
 
-    function resizeCanvas() {
-      if (
-        canvas.width !== canvas.clientWidth ||
-        canvas.height !== canvas.clientHeight
-      ) {
-        canvas.width = canvas.clientWidth;
+    function redimensionarCanvas(largura, altura) {
+      if (largura < 2 || altura < 2 || (canvas.width === largura && canvas.height === altura)) return;
+      canvas.width = largura;
+      canvas.height = altura;
+      initFramebuffers();
+    }
 
-        canvas.height = canvas.clientHeight;
-
-        initFramebuffers();
-      }
+    if ("ResizeObserver" in window) {
+      new ResizeObserver(([entrada]) => {
+        const { width, height } = entrada.contentRect;
+        redimensionarCanvas(Math.round(width), Math.round(height));
+      }).observe(canvas);
+    } else {
+      window.addEventListener("resize", () => redimensionarCanvas(canvas.clientWidth, canvas.clientHeight));
     }
 
     var count = 0;
@@ -2131,13 +2170,13 @@ function iniciarAnimacaoDobra02() {
   timeline.to({}, { duration: 0.25 });
 
   requestAnimationFrame(() => {
-    ScrollTrigger.refresh();
+    agendarAtualizacaoScrollTrigger();
   });
 
   window.addEventListener(
     "load",
     () => {
-      ScrollTrigger.refresh();
+      agendarAtualizacaoScrollTrigger();
     },
     {
       once: true,
@@ -2227,7 +2266,7 @@ function iniciarDivisoresAnimados() {
   });
 
   requestAnimationFrame(() => {
-    ScrollTrigger.refresh();
+    agendarAtualizacaoScrollTrigger();
   });
 }
 
@@ -2397,7 +2436,7 @@ function iniciarSlidersDobra04() {
   requestAnimationFrame(() => {
     ScrollTrigger.sort();
 
-    ScrollTrigger.refresh();
+    agendarAtualizacaoScrollTrigger();
   });
 }
 
@@ -2708,7 +2747,7 @@ function iniciarCarrosselServicos() {
   }
 
   requestAnimationFrame(() => {
-    ScrollTrigger.refresh();
+    agendarAtualizacaoScrollTrigger();
 
     renderizar();
   });
@@ -3040,7 +3079,7 @@ function iniciarValorPercebido() {
   window.addEventListener(
     "load",
     () => {
-      ScrollTrigger.refresh();
+      agendarAtualizacaoScrollTrigger();
     },
     {
       once: true,
@@ -3297,13 +3336,7 @@ function iniciarProjetosDestaque() {
     },
   });
 
-  ScrollTrigger.refresh();
-}
-
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", iniciarProjetosDestaque);
-} else {
-  iniciarProjetosDestaque();
+  agendarAtualizacaoScrollTrigger();
 }
 
 function iniciarFaq() {
@@ -3320,7 +3353,7 @@ function iniciarFaq() {
     resposta.inert = !aberto;
   }
   function recalcularScroll() {
-    if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
+    if (typeof ScrollTrigger !== "undefined") agendarAtualizacaoScrollTrigger();
   }
   itens.forEach(item => {
     const pergunta = item.querySelector(".faqPergunta");
@@ -4188,7 +4221,7 @@ function iniciarSobreposicaoNewsletter() {
 
   requestAnimationFrame(() => {
     ScrollTrigger.sort();
-    ScrollTrigger.refresh();
+    agendarAtualizacaoScrollTrigger();
   });
 }
 
@@ -4468,11 +4501,17 @@ function iniciarTextosDobra04() {
     secao.querySelectorAll(".slider").forEach(painel => {
       painel.querySelectorAll(":scope > span, :scope > h2, .textoIcon p").forEach(elemento => {
         const titulo = elemento.tagName === "H2";
+        if (!titulo) {
+          const textoAcessivel = document.createElement("span");
+          textoAcessivel.className = "texto-somente-leitor";
+          textoAcessivel.textContent = elemento.textContent;
+          elemento.before(textoAcessivel);
+        }
         SplitText.create(elemento, {
           type: titulo ? "chars,words,lines" : "lines,words",
           mask: "lines",
           autoSplit: true,
-          aria: "auto",
+          aria: titulo ? "auto" : "hidden",
           onSplit(divisao) {
             return gsap.from(titulo ? divisao.chars : divisao.words, {
               yPercent: 110,
@@ -4492,7 +4531,7 @@ function iniciarTextosDobra04() {
         });
       });
     });
-    ScrollTrigger.refresh();
+    agendarAtualizacaoScrollTrigger();
   };
   if (document.fonts) document.fonts.ready.then(preparar);
   else preparar();
@@ -4540,7 +4579,7 @@ function iniciarTextosDobra06() {
       invalidateOnRefresh: true,
     });
     ScrollTrigger.sort();
-    ScrollTrigger.refresh();
+    agendarAtualizacaoScrollTrigger();
   };
   preparar();
 }
@@ -4728,7 +4767,7 @@ function iniciarOportunidadesPerdidas() {
       onRefresh: medir,
     });
   });
-  document.fonts?.ready.then(() => ScrollTrigger.refresh());
+  document.fonts?.ready.then(agendarAtualizacaoScrollTrigger);
 }
 
 
@@ -4814,7 +4853,7 @@ function iniciarProtocoloCriacao() {
       invalidateOnRefresh: true,
     });
   });
-  document.fonts?.ready.then(() => ScrollTrigger.refresh());
+  document.fonts?.ready.then(agendarAtualizacaoScrollTrigger);
 }
 
 
@@ -4838,7 +4877,7 @@ function iniciarContatoScroll() {
       invalidateOnRefresh: true,
     });
   });
-  document.fonts?.ready.then(() => ScrollTrigger.refresh());
+  document.fonts?.ready.then(agendarAtualizacaoScrollTrigger);
 }
 
 // Sobre mim: entradas próprias para cada bloco; a foto e a composição ficam intactas.
@@ -5010,72 +5049,6 @@ function iniciarVendasBeneficios() {
     gsap.from(document.querySelector(".vendasFechamento .vendasConvite"), { clipPath: "inset(0 0 0 100% round 24px)", duration: 1.1, ease: "power3.inOut", scrollTrigger: { trigger: ".vendasConvite", start: "top 78%", toggleActions: "play none none reset" } });
 
   });
-}
-
-function iniciarPreloader() {
-  const preloader = document.getElementById("preloader");
-  const raiz = document.documentElement;
-  if (!preloader || !raiz.classList.contains("preloader-ativo")) return;
-
-  const logo = preloader.querySelector(".preloader-logo");
-  const preenchimento = preloader.querySelector(".preloader-logo-fill");
-  const percentual = preloader.querySelector(".preloader-percent");
-  const fundo = preloader.querySelector(".preloader-bg");
-  const progresso = { valor: 0 };
-  const recursos = [];
-  let finalizado = false;
-  let prontos = 0;
-
-  preloader.addEventListener("wheel", evento => evento.preventDefault(), { passive: false });
-
-  const imagemHero = [...document.querySelectorAll('link[rel="preload"][as="image"]')]
-    .find(link => !link.media || window.matchMedia(link.media).matches);
-  if (imagemHero) {
-    const imagem = new Image();
-    imagem.src = imagemHero.href;
-    recursos.push(imagem.decode());
-  }
-  if (document.fonts) recursos.push(document.fonts.load('400 1rem "Work Sans"'));
-
-  const limite = window.setTimeout(finalizar, 1400);
-  recursos.forEach(recurso => {
-    recurso.catch(() => {}).then(() => {
-      if (finalizado) return;
-      prontos += 1;
-      if (prontos === recursos.length) finalizar();
-      else animarProgresso(100 * prontos / recursos.length);
-    });
-  });
-  if (!recursos.length) finalizar();
-
-  function animarProgresso(valor, onComplete) {
-    gsap.to(progresso, {
-      valor,
-      duration: .28,
-      ease: "power2.out",
-      overwrite: true,
-      onUpdate: () => {
-        const atual = Math.round(progresso.valor);
-        percentual.textContent = atual + "%";
-        preenchimento.style.clipPath = "inset(" + (100 - atual) + "% 0 0)";
-      },
-      onComplete,
-    });
-  }
-
-  function finalizar() {
-    if (finalizado) return;
-    finalizado = true;
-    window.clearTimeout(limite);
-    animarProgresso(100, () => {
-      gsap.timeline({
-        onComplete: () => raiz.classList.remove("preloader-ativo"),
-      })
-        .to(percentual, { opacity: 0, y: 10, duration: .2, ease: "power2.out" })
-        .to(fundo, { yPercent: -100, duration: .55, ease: "power3.inOut" }, .1)
-        .to(logo, { opacity: 0, scale: .6, duration: .35, ease: "power2.out" }, .2);
-    });
-  }
 }
 
 function iniciarScrollbarPersonalizada() {
