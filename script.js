@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   iniciarVendasBeneficios();
   iniciarProtocoloCriacao();
   iniciarContatoScroll();
-  iniciarAnimacoesSobre();
+  iniciarAnimacaoAoAproximar("#sobre-daiane", iniciarAnimacoesSobre);
   iniciarTransicaoPercepcao();
   iniciarAnimacaoPilares();
   iniciarSobreposicaoNewsletter();
@@ -2012,9 +2012,14 @@ function iniciarFluidDesktop() {
       return;
     }
 
-    canvas.dataset.fluidInit = "true";
+    function iniciarAoMoverMouse(evento) {
+      if (evento.pointerType !== "mouse" || window.innerWidth <= 1024) return;
+      canvas.removeEventListener("pointermove", iniciarAoMoverMouse);
+      canvas.dataset.fluidInit = "true";
+      iniciarFluid(canvas);
+    }
 
-    iniciarFluid(canvas);
+    canvas.addEventListener("pointermove", iniciarAoMoverMouse, { passive: true });
   });
 }
 
@@ -3415,40 +3420,42 @@ function iniciarTransicaoPercepcao() {
   });
 
 
-  // Copy motion: caracteres em perspectiva e modelo blurWords, sem alterar a saída.
-  const mediaEntrada = gsap.matchMedia();
-  mediaEntrada.add("(prefers-reduced-motion: no-preference)", () => {
-    const titulo = SplitText.create(secao.querySelector("h2"), {
-      type: "words,chars", autoSplit: true,
-      onSplit(divisao) {
-        return gsap.from(divisao.chars, {
-          x: 26, rotationY: -75, transformPerspective: 600,
-          transformOrigin: "0% 50%", filter: "blur(6px)", autoAlpha: 0,
-          duration: .85, stagger: { amount: .85 }, ease: "power3.out",
-          scrollTrigger: { trigger: secao, start: "top 75%", toggleActions: "play none none reset" },
-        });
-      },
+  iniciarAnimacaoAoAproximar(".percepcao", () => {
+    // Copy motion: caracteres em perspectiva e modelo blurWords, sem alterar a saída.
+    const mediaEntrada = gsap.matchMedia();
+    mediaEntrada.add("(prefers-reduced-motion: no-preference)", () => {
+      const titulo = SplitText.create(secao.querySelector("h2"), {
+        type: "words,chars", autoSplit: true,
+        onSplit(divisao) {
+          return gsap.from(divisao.chars, {
+            x: 26, rotationY: -75, transformPerspective: 600,
+            transformOrigin: "0% 50%", filter: "blur(6px)", autoAlpha: 0,
+            duration: .85, stagger: { amount: .85 }, ease: "power3.out",
+            scrollTrigger: { trigger: secao, start: "top 75%", toggleActions: "play none none reset" },
+          });
+        },
+      });
+      const apoios = [...secao.querySelectorAll(".percepcaoBottom > p > span:not(.percepcaoConvite), .percepcaoConvite > strong, .percepcaoConvite > span")].map((elemento, indice) => dividirTextoComAlternativa(elemento, {
+        type: "words", autoSplit: true,
+        onSplit(divisao) {
+          return gsap.from(divisao.words, {
+            filter: "blur(12px)", autoAlpha: 0, x: 16, scale: .94,
+            duration: .8, stagger: { amount: .65 }, delay: .25 + indice * .16,
+            ease: "power2.out",
+            scrollTrigger: { trigger: secao, start: "top 65%", toggleActions: "play none none reset" },
+          });
+        },
+      }));
+      gsap.from(secao.querySelector(".sitePercepcao"), {
+        scaleX: .65, autoAlpha: 0, transformOrigin: "left center", duration: .8, ease: "power3.out",
+        scrollTrigger: { trigger: secao, start: "top 78%", toggleActions: "play none none reset" },
+      });
+      gsap.from(secao.querySelector(".percepcaoTraco"), {
+        strokeDasharray: 500, strokeDashoffset: 500, duration: 1.8, ease: "power2.inOut",
+        scrollTrigger: { trigger: secao, start: "top 75%", toggleActions: "play none none reset" },
+      });
+      return () => [titulo, ...apoios].forEach(divisao => divisao.revert());
     });
-    const apoios = [...secao.querySelectorAll(".percepcaoBottom > p > span:not(.percepcaoConvite), .percepcaoConvite > strong, .percepcaoConvite > span")].map((elemento, indice) => dividirTextoComAlternativa(elemento, {
-      type: "words", autoSplit: true,
-      onSplit(divisao) {
-        return gsap.from(divisao.words, {
-          filter: "blur(12px)", autoAlpha: 0, x: 16, scale: .94,
-          duration: .8, stagger: { amount: .65 }, delay: .25 + indice * .16,
-          ease: "power2.out",
-          scrollTrigger: { trigger: secao, start: "top 65%", toggleActions: "play none none reset" },
-        });
-      },
-    }));
-    gsap.from(secao.querySelector(".sitePercepcao"), {
-      scaleX: .65, autoAlpha: 0, transformOrigin: "left center", duration: .8, ease: "power3.out",
-      scrollTrigger: { trigger: secao, start: "top 78%", toggleActions: "play none none reset" },
-    });
-    gsap.from(secao.querySelector(".percepcaoTraco"), {
-      strokeDasharray: 500, strokeDashoffset: 500, duration: 1.8, ease: "power2.inOut",
-      scrollTrigger: { trigger: secao, start: "top 75%", toggleActions: "play none none reset" },
-    });
-    return () => [titulo, ...apoios].forEach(divisao => divisao.revert());
   });
 
   const animacaoScroll = gsap.timeline({
