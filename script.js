@@ -2184,7 +2184,6 @@ function iniciarAnimacaoDobra02() {
   timeline.to({}, { duration: 0.25 });
 
   agendarRefreshNoQuadro();
-  window.addEventListener("load", atualizarMedidasScroll, { once: true });
 }
 
 function iniciarDivisoresAnimados() {
@@ -3069,8 +3068,6 @@ function iniciarValorPercebido() {
       }
     });
   });
-
-  window.addEventListener("load", atualizarMedidasScroll, { once: true });
 }
 
 function iniciarProjetosDestaque() {
@@ -4572,6 +4569,10 @@ function iniciarIndicadoresScroll() {
     elemento,
     secao: elemento.closest(".slider, section"),
     trigger: null,
+    visivel: null,
+    progresso: null,
+    proximoVisivel: false,
+    proximoProgresso: null,
   }));
   if (!indicadores.length) return;
   let quadro = 0;
@@ -4599,8 +4600,20 @@ function iniciarIndicadoresScroll() {
           return caixa.right > area.left - 8 && caixa.left < area.right + 8 && caixa.bottom > area.top - 8 && caixa.top < area.bottom + 8;
         });
       }
-      item.elemento.classList.toggle("ativo", visivel);
-      item.elemento.style.setProperty("--progresso-scroll", Math.min(1, progresso / limite).toFixed(4));
+      item.proximoVisivel = visivel;
+      item.proximoProgresso = Math.min(1, progresso / limite).toFixed(4);
+    });
+    // Concluir as leituras de geometria antes de invalidar estilos.
+    indicadores.forEach(item => {
+      if (!item.trigger) return;
+      if (item.visivel !== item.proximoVisivel) {
+        item.visivel = item.proximoVisivel;
+        item.elemento.classList.toggle("ativo", item.visivel);
+      }
+      if (item.progresso !== item.proximoProgresso) {
+        item.progresso = item.proximoProgresso;
+        item.elemento.style.setProperty("--progresso-scroll", item.progresso);
+      }
     });
   }
   function agendar() {
@@ -4654,7 +4667,10 @@ function iniciarOportunidadesPerdidas() {
   const media = gsap.matchMedia();
   const medir = () => {
     const base = window.matchMedia("(max-width: 767px)").matches ? 470 : 840;
-    arte.style.setProperty("--escala-oportunidades", (arte.clientWidth / base).toFixed(6));
+    const escala = (arte.clientWidth / base).toFixed(6);
+    if (arte.style.getPropertyValue("--escala-oportunidades") !== escala) {
+      arte.style.setProperty("--escala-oportunidades", escala);
+    }
   };
   medir();
   const linkServicos = secao.querySelector(".oportunidadesBotao");
