@@ -3403,6 +3403,7 @@ function iniciarTransicaoPercepcao() {
     });
     const apoios = [...secao.querySelectorAll(".percepcaoBottom > p > span:not(.percepcaoConvite), .percepcaoConvite > strong, .percepcaoConvite > span")].map((elemento, indice) => SplitText.create(elemento, {
       type: "words", autoSplit: true,
+      aria: "none",
       onSplit(divisao) {
         return gsap.from(divisao.words, {
           filter: "blur(12px)", autoAlpha: 0, x: 16, scale: .94,
@@ -4477,7 +4478,7 @@ function iniciarTextosDobra04() {
           type: titulo ? "chars,words,lines" : "lines,words",
           mask: "lines",
           autoSplit: true,
-          aria: "auto",
+          aria: titulo ? "auto" : "none",
           onSplit(divisao) {
             return gsap.from(titulo ? divisao.chars : divisao.words, {
               yPercent: 110,
@@ -4878,6 +4879,7 @@ function iniciarAnimacoesSobre() {
     });
     const historia = [...secao.querySelectorAll(".maisSobre > span")].map(elemento => SplitText.create(elemento, {
       type: "words", autoSplit: true,
+      aria: "none",
       onSplit(divisao) {
         return gsap.from(divisao.words, {
           x: 18, autoAlpha: 0, filter: "blur(8px)", duration: .75, stagger: { amount: .65 }, ease: "power2.out",
