@@ -2484,6 +2484,16 @@ span.numeroCard {
   transform: scale(1);
 }
 
+.projetoImagemIndisponivel {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  color: var(--color-light);
+  text-align: center;
+}
+
 .projetoImagemSlide img {
   display: block;
   width: 100%;
