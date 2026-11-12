@@ -72,6 +72,8 @@
   };
 
   document.addEventListener('click', event => {
+    // Sem consentimento, nao consultar o DOM nem preparar eventos descartados.
+    if (consent !== 'accepted' || !tagLoaded) return;
     const control = event.target instanceof Element
       ? event.target.closest('a, button, summary, [role="button"], [data-preview-project], [data-preview-close]')
       : null;
