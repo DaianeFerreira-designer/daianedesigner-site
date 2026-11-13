@@ -302,7 +302,7 @@ header.scrolled {
   position: relative;
   width: 100%;
   height: 100vh;
-  background-image: url(/assets/hero-desktop-sem-perdas-v1.webp);
+  background-image: url(/assets/hero-desktop-v2.avif);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -4687,7 +4687,7 @@ footer .textoAnimado .charFooter {
     height: auto;
     min-height: 100svh;
 
-    background-image: url("/assets/criacao-de-sites-profissionais-daiane-ferreira-mobile.webp");
+    background-image: url("/assets/hero-mobile-v2.avif");
     background-position: center top;
     background-size: cover;
     background-repeat: no-repeat;
