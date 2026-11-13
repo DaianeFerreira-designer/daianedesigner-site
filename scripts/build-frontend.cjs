@@ -9,6 +9,10 @@ for (const [file, loader] of [['style.css', 'css'], ['script.js', 'js']]) {
     loader,
     sourcefile: file,
     minifyWhitespace: true,
+    // Keep CSS transformations unchanged; minify JS syntax and local names too.
+    minifySyntax: loader === 'js',
+    minifyIdentifiers: loader === 'js',
+    keepNames: loader === 'js',
   });
   writeFileSync(`dist/${file}`, result.code);
 }

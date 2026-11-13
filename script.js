@@ -1,9 +1,57 @@
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
+// Prepara entradas antes de a seção chegar à tela. A geometria dos pins continua
+// sendo criada na abertura; duração, easing e gatilhos permanecem iguais.
+const preparosVisuais = new Map();
+let observadorPreparos;
+
+function prepararAnimacoesDestino(destino) {
+  if (!destino) return;
+  for (const [elemento, executar] of [...preparosVisuais]) {
+    if (elemento === destino || elemento.contains(destino) || destino.contains(elemento)) executar();
+  }
+}
+
+function prepararAnimacaoProxima(seletor, preparar) {
+  const elemento = typeof seletor === 'string' ? document.querySelector(seletor) : seletor;
+  if (!elemento) return;
+  if (!('IntersectionObserver' in window) || window.innerWidth <= 1024) {
+    preparar();
+    return;
+  }
+  observadorPreparos ||= new IntersectionObserver(entradas => {
+    for (const entrada of entradas) {
+      if (entrada.isIntersecting) preparosVisuais.get(entrada.target)?.();
+    }
+  }, { rootMargin: '2000px 0px' });
+  const executar = () => {
+    if (!preparosVisuais.has(elemento)) return;
+    observadorPreparos.unobserve(elemento);
+    preparosVisuais.delete(elemento);
+    preparar();
+  };
+  preparosVisuais.set(elemento, executar);
+  observadorPreparos.observe(elemento);
+  prepararAnimacoesHash();
+}
+
+function prepararAnimacoesHash() {
+  try {
+    prepararAnimacoesDestino(document.getElementById(decodeURIComponent(location.hash.slice(1))));
+  } catch { /* Um fragmento inválido não deve interromper a abertura da página. */ }
+}
+window.addEventListener('hashchange', prepararAnimacoesHash);
+
 const preparosPorCicloDeFontes = new WeakMap();
-let refreshNoQuadroAgendado = false;
+let refreshNoQuadroAgendado = 0;
 let ordenarNoProximoRefresh = false;
 
+ScrollTrigger.addEventListener('refreshInit', () => {
+  if (ordenarNoProximoRefresh) { ordenarNoProximoRefresh = false; ScrollTrigger.sort(); }
+});
+ScrollTrigger.addEventListener('refresh', () => {
+  if (refreshNoQuadroAgendado) { cancelAnimationFrame(refreshNoQuadroAgendado); refreshNoQuadroAgendado = 0; }
+});
 function atualizarMedidasScroll() {
   ScrollTrigger.refresh();
 }
@@ -12,10 +60,9 @@ function agendarRefreshNoQuadro(ordenar = false) {
   ordenarNoProximoRefresh ||= ordenar;
   if (refreshNoQuadroAgendado) return;
 
-  refreshNoQuadroAgendado = true;
-  requestAnimationFrame(() => {
+  refreshNoQuadroAgendado = requestAnimationFrame(() => {
     const ordenarGatilhos = ordenarNoProximoRefresh;
-    refreshNoQuadroAgendado = false;
+    refreshNoQuadroAgendado = 0;
     ordenarNoProximoRefresh = false;
     if (ordenarGatilhos) ScrollTrigger.sort();
     atualizarMedidasScroll();
@@ -62,24 +109,24 @@ document.addEventListener("DOMContentLoaded", () => {
   iniciarBuscaDigitada();
   iniciarDivisoresAnimados();
   iniciarSlidersDobra04();
-  iniciarTextosDobra04();
+  prepararAnimacaoProxima(".dobra04", iniciarTextosDobra04);
   iniciarCarrosselServicos();
   iniciarTextosDobra06();
   iniciarIndicadoresScroll();
   iniciarValorPercebido();
   iniciarOportunidadesPerdidas();
   iniciarCarrosselVendas();
-  iniciarVendasBeneficios();
+  prepararAnimacaoProxima("#mais-vendas", iniciarVendasBeneficios);
   iniciarProtocoloCriacao();
   iniciarContatoScroll();
-  iniciarAnimacoesSobre();
+  prepararAnimacaoProxima("#sobre-daiane", iniciarAnimacoesSobre);
   iniciarTransicaoPercepcao();
   iniciarAnimacaoPilares();
   iniciarSobreposicaoNewsletter();
-  iniciarTextosNewsletter();
-  animarRedesFooter();
-  animarTextosFooter();
-  animarTextoFooter2();
+  prepararAnimacaoProxima(".newsletter", iniciarTextosNewsletter);
+  prepararAnimacaoProxima("footer .iconesFooter", animarRedesFooter);
+  prepararAnimacaoProxima("footer .textoAnimado", animarTextosFooter);
+  prepararAnimacaoProxima("footer .textoAnimado2", animarTextoFooter2);
   iniciarWhatsappFlutuante();
   iniciarMenuAncoras();
 
@@ -159,6 +206,7 @@ function iniciarMenuAncoras() {
       if (!secao) return;
 
       evento.preventDefault();
+      prepararAnimacoesDestino(secao);
       const posicao = Math.max(0, posicaoSecao(secao));
       const reduzir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (window.lenis) window.lenis.scrollTo(posicao, { duration: reduzir ? 0 : 1.4, immediate: reduzir });
@@ -3405,12 +3453,14 @@ function iniciarTransicaoPercepcao() {
   });
 
 
+  prepararAnimacaoProxima(secao, () => {
   // Copy motion: caracteres em perspectiva e modelo blurWords, sem alterar a saída.
   const mediaEntrada = gsap.matchMedia();
   mediaEntrada.add("(prefers-reduced-motion: no-preference)", () => {
     const titulo = SplitText.create(secao.querySelector("h2"), {
       type: "words,chars", autoSplit: true,
       onSplit(divisao) {
+        [...divisao.words, ...divisao.chars].forEach(el => gsap.getProperty(el, "x"));
         return gsap.from(divisao.chars, {
           x: 26, rotationY: -75, transformPerspective: 600,
           transformOrigin: "0% 50%", filter: "blur(6px)", autoAlpha: 0,
@@ -3423,6 +3473,7 @@ function iniciarTransicaoPercepcao() {
       type: "words", autoSplit: true,
       aria: "none",
       onSplit(divisao) {
+        [...divisao.words, ...divisao.chars].forEach(el => gsap.getProperty(el, "x"));
         return gsap.from(divisao.words, {
           filter: "blur(12px)", autoAlpha: 0, x: 16, scale: .94,
           duration: .8, stagger: { amount: .65 }, delay: .25 + indice * .16,
@@ -3440,6 +3491,8 @@ function iniciarTransicaoPercepcao() {
       scrollTrigger: { trigger: secao, start: "top 75%", toggleActions: "play none none reset" },
     });
     return () => [titulo, ...apoios].forEach(divisao => divisao.revert());
+  });
+
   });
 
   const animacaoScroll = gsap.timeline({
@@ -3625,6 +3678,7 @@ function iniciarAnimacaoPilares() {
     });
 
 
+    split1.chars.forEach(el => gsap.getProperty(el, "x"));
     pilares.from(split1.chars, {
       opacity: 0,
 
@@ -4225,6 +4279,7 @@ function animarTextosFooter() {
     deepSlice: true,
   });
 
+  splitFooter.chars.forEach(el => gsap.getProperty(el, "x"));
   const charsDesigner = Array.from(
     textoFooter.querySelectorAll("span .charFooter"),
   );
@@ -4495,6 +4550,7 @@ function iniciarTextosDobra04() {
           autoSplit: true,
           aria: titulo ? "auto" : "none",
           onSplit(divisao) {
+            [...divisao.words, ...divisao.chars].forEach(el => gsap.getProperty(el, "x"));
             return gsap.from(titulo ? divisao.chars : divisao.words, {
               yPercent: 110,
               autoAlpha: 0,
@@ -4514,7 +4570,10 @@ function iniciarTextosDobra04() {
       });
     });
   };
-  agendarRefreshAposFontes(preparar);
+  // Com as fontes prontas, cada novo gatilho já mede sua posição ao ser criado.
+  // Um refresh global aqui mediria outros textos no meio da animação de entrada.
+  if (document.fonts?.status === "loaded") preparar();
+  else agendarRefreshAposFontes(preparar);
 }
 
 function iniciarTextosDobraExtra() {
@@ -4886,6 +4945,7 @@ function iniciarAnimacoesSobre() {
     const titulo = SplitText.create(secao.querySelector("h2"), {
       type: "words,chars", autoSplit: true,
       onSplit(divisao) {
+        [...divisao.words, ...divisao.chars].forEach(el => gsap.getProperty(el, "x"));
         return gsap.from(divisao.chars, {
           x: -65, autoAlpha: 0, duration: .7, stagger: .035, ease: "power3.out",
           scrollTrigger: { trigger: secao.querySelector("h2"), start: "top 88%", toggleActions: "play none none reset" },
@@ -4912,6 +4972,7 @@ function iniciarAnimacoesSobre() {
       type: "words", autoSplit: true,
       aria: "none",
       onSplit(divisao) {
+        [...divisao.words, ...divisao.chars].forEach(el => gsap.getProperty(el, "x"));
         return gsap.from(divisao.words, {
           x: 18, autoAlpha: 0, filter: "blur(8px)", duration: .75, stagger: { amount: .65 }, ease: "power2.out",
           scrollTrigger: { trigger: elemento, start: "top 90%", toggleActions: "play none none reset" },
