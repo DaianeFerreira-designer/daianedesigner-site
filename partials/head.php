@@ -1,3 +1,10 @@
+<?php
+$homeHtml = file_get_contents(__DIR__ . '/../index.html');
+preg_match('~/style\.css\?v=([^"]+)~', $homeHtml, $homeCss);
+preg_match('~/script\.js\?v=([^"]+)~', $homeHtml, $homeScript);
+$homeCssVersion = $homeCss[1];
+$homeScriptVersion = $homeScript[1];
+?>
 <!doctype html>
 <html lang="pt-BR">
 
@@ -77,7 +84,7 @@
     crossorigin>
 
   <!-- CSS principal -->
-  <link rel="stylesheet" href="/style.css?v=20261113-2">
+  <link rel="stylesheet" href="/style.css?v=<?= htmlspecialchars($homeCssVersion, ENT_QUOTES, 'UTF-8') ?>">
 
   <?php if (!empty($isBudgetPage)): ?>
     <link rel="stylesheet" href="/orcamento.css?v=2">
