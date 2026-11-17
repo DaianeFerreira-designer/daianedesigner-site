@@ -11609,7 +11609,7 @@ footer .analytics-preferencias {
   #dobra3 .presencaDigitalPilares { gap: 1.5rem; }
   #dobra3 .tagPresenca { font-size: .75rem; }
   #dobra3 .presencaDigitalTextos {
-    grid-template-columns: minmax(0, 305fr) minmax(0, 405fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 22.25rem);
     gap: 1.5rem;
   }
   #dobra3 .presencaDigitalTextos > div { gap: 1.5rem; }
@@ -11618,7 +11618,7 @@ footer .analytics-preferencias {
     width: 100%;
     max-width: 22.25rem;
     font-size: 1rem;
-    justify-self: start;
+    justify-self: end;
   }
   #dobra3 .presencaLegenda { font-size: .875rem; }
 }
@@ -11637,10 +11637,11 @@ footer .analytics-preferencias {
   #dobra3 .presencaDigitalTextos { grid-template-columns: minmax(0, 1fr); }
   #dobra3 .presencaDigitalTextos > div { gap: 1rem; }
   #dobra3 .presencaMensagem br { display: none; }
+  #dobra3 .presencaDescricao { justify-self: start; }
 }
 
 @media (390px <= width < 768px) {
-  #dobra3 { padding: 2.5rem 1.25rem; gap: 2.25rem; }
+  #dobra3 { padding: 2.5rem 1.5rem; gap: 2.25rem; }
   #dobra3 .presencaAbertura { padding: 0; gap: 1rem; }
   #dobra3 .presencaPerguntaLinha { display: block; }
   /* O tamanho local substitui apenas o tamanho global de h2 no mobile. */
@@ -11661,4 +11662,48 @@ footer .analytics-preferencias {
   #dobra3 .presencaDigitalTextos { grid-template-columns: minmax(0, 1fr); }
   #dobra3 .presencaMensagem { font-size: 1.375rem; }
   #dobra3 .presencaDescricao { max-width: none; }
+}
+
+/* Dobra extra: os mesmos estilos de texto, com a composicao de cada faixa. */
+@media (390px <= width <= 1200px) {
+  #dobra-extra {
+    height: auto;
+    min-height: 0;
+    padding: 3.5rem 5rem;
+  }
+  #dobra-extra .presencaDigitalTextos {
+    height: auto;
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 22.375rem);
+    gap: 1.5rem;
+  }
+  #dobra-extra .presencaDigitalTextos > div { gap: 1rem; }
+  #dobra-extra h2 { font-size: 2rem; }
+  #dobra-extra .presencaLegenda { font-size: .75rem; }
+  #dobra-extra .presencaDigitalTextos > p { font-size: 1rem; }
+  #dobra-extra .quebraDesktop { display: none; }
+}
+
+@media (768px <= width < 1024px) {
+  #dobra-extra { padding-inline: 2.5rem; }
+  #dobra-extra .presencaDigitalTextos {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 21.875rem);
+  }
+}
+
+@media (390px <= width < 768px) {
+  #dobra-extra { padding: 2.5rem 1.5rem; }
+  #dobra-extra .presencaDigitalTextos {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.75rem;
+  }
+  #dobra-extra .presencaLegenda { font-size: 1rem; }
+  #dobra-extra .presencaDigitalTextos > p {
+    width: 100%;
+    max-width: none;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0;
+  }
 }
