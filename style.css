@@ -11693,6 +11693,11 @@ footer .analytics-preferencias {
 
 @media (390px <= width < 768px) {
   #dobra-extra { padding: 2.5rem 1.5rem; }
+  #dobra-extra .presencaDigitalTextos > div { width: 100%; }
+  #dobra-extra h2 {
+    width: 100%;
+    white-space: nowrap;
+  }
   #dobra-extra .presencaDigitalTextos {
     grid-template-columns: minmax(0, 1fr);
     gap: 1.75rem;
