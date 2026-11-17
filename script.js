@@ -2188,79 +2188,113 @@ function iniciarAnimacaoDobra02() {
     window.__impactoLenisST = true;
   }
 
-  gsap.set(titulo, {
-    y: () => window.innerHeight * 0.3268,
+  const responsivo = gsap.matchMedia();
 
-    autoAlpha: 0,
-
-    force3D: true,
-  });
-
-  gsap.set(icone, {
-    y: () => window.innerHeight * 0.3268,
-
-    autoAlpha: 0,
-
-    force3D: true,
-  });
-
-  gsap.set(cards, {
-    y: () => window.innerHeight * 0.72,
-
-    autoAlpha: 0,
-
-    force3D: true,
-  });
-
-  // Título e barra sobem juntos assim que o topo da seção chega a 80% da tela.
-  gsap.to([titulo, icone], {
-    y: 0,
-    autoAlpha: 1,
-    ease: "none",
-    scrollTrigger: {
-      trigger: secao,
-      start: "top 80%",
-      end: "top 20%",
-      scrub: 0.35,
-      invalidateOnRefresh: true,
-    },
-  });
-
-  const timeline = gsap.timeline({
-    defaults: {
+  responsivo.add("(max-width: 1200px)", () => {
+    // Revela durante a rolagem natural, sem fixar a dobra na tela.
+    gsap.from([titulo, icone], {
+      y: 32,
+      autoAlpha: 0,
       ease: "none",
-    },
+      scrollTrigger: {
+        trigger: secao,
+        start: "top 85%",
+        end: "top 55%",
+        scrub: 0.35,
+      },
+    });
 
-    scrollTrigger: {
-      trigger: secao,
-
-      start: "top top",
-
-      end: () => "+=" + window.innerHeight * 2,
-
-      pin: true,
-
-      pinSpacing: true,
-
-      scrub: 0.35,
-
-      anticipatePin: 1,
-
-      invalidateOnRefresh: true,
-
-    },
+    cards.forEach(card => {
+      gsap.from(card, {
+        y: 40,
+        autoAlpha: 0,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: card,
+          start: "top 90%",
+          end: "top 60%",
+          scrub: 0.35,
+        },
+      });
+    });
   });
 
-  // Cards entram sem espera inicial, em sequência com leve sobreposição.
-  timeline.to(cards, {
-    y: 0,
-    autoAlpha: 1,
-    duration: 0.75,
-    stagger: 0.35,
-    ease: "power2.out",
-  }, 0);
+  responsivo.add("(min-width: 1201px)", () => {
+    gsap.set(titulo, {
+      y: () => window.innerHeight * 0.3268,
 
-  timeline.to({}, { duration: 0.25 });
+      autoAlpha: 0,
+
+      force3D: true,
+    });
+
+    gsap.set(icone, {
+      y: () => window.innerHeight * 0.3268,
+
+      autoAlpha: 0,
+
+      force3D: true,
+    });
+
+    gsap.set(cards, {
+      y: () => window.innerHeight * 0.72,
+
+      autoAlpha: 0,
+
+      force3D: true,
+    });
+
+    // Título e barra sobem juntos assim que o topo da seção chega a 80% da tela.
+    gsap.to([titulo, icone], {
+      y: 0,
+      autoAlpha: 1,
+      ease: "none",
+      scrollTrigger: {
+        trigger: secao,
+        start: "top 80%",
+        end: "top 20%",
+        scrub: 0.35,
+        invalidateOnRefresh: true,
+      },
+    });
+
+    const timeline = gsap.timeline({
+      defaults: {
+        ease: "none",
+      },
+
+      scrollTrigger: {
+        trigger: secao,
+
+        start: "top top",
+
+        end: () => "+=" + window.innerHeight * 2,
+
+        pin: true,
+
+        pinSpacing: true,
+
+        scrub: 0.35,
+
+        anticipatePin: 1,
+
+        invalidateOnRefresh: true,
+
+      },
+    });
+
+    // Cards entram sem espera inicial, em sequência com leve sobreposição.
+    timeline.to(cards, {
+      y: 0,
+      autoAlpha: 1,
+      duration: 0.75,
+      stagger: 0.35,
+      ease: "power2.out",
+    }, 0);
+
+    timeline.to({}, { duration: 0.25 });
+
+    });
 
   agendarRefreshNoQuadro();
 }

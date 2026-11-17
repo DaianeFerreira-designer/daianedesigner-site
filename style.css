@@ -11517,3 +11517,148 @@ footer .analytics-preferencias {
     background: var(--color-dark);
   }
 }
+
+/* Segunda dobra: composição dos frames de 1024, 768 e 390 px. */
+@media (390px <= width <= 1200px) {
+  #dobra2 {
+    min-height: 0;
+    height: auto;
+    padding: 3.5rem 5rem;
+    gap: 2rem;
+  }
+
+  #dobra2 h2 { max-width: 20ch; font-size: 2.875rem; }
+  #dobra2 h2 strong { display: block; }
+
+  #dobra2 .siteImpactoCards {
+    width: 100%;
+    max-width: 33.125rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  #dobra2 .siteImpactoCardTopo { padding: .875rem 1.5rem; }
+  #dobra2 .siteImpactoNumero { font-size: .8125rem; }
+  #dobra2 .siteImpactoCardTopo h3 {
+    font-size: 1rem;
+    white-space: normal;
+    text-wrap: wrap;
+  }
+
+  #dobra2 .siteImpactoCardConteudo {
+    padding: 3.84375rem 2.125rem 5.34375rem;
+    min-height: 14.875rem;
+  }
+
+  #dobra2 .siteImpactoCardConteudo p { font-size: .9375rem; }
+  #dobra2 .search-typed { font-size: .8125rem; }
+  #dobra2 > .continueRolando { display: none; }
+}
+
+@media (768px <= width < 1024px) {
+  #dobra2 { padding-inline: 3.5rem; }
+  #dobra2 .siteImpactoCardConteudo { gap: 2rem; }
+}
+
+@media (390px <= width < 768px) {
+  #dobra2 { padding: 2.5rem 1.5rem; }
+  #dobra2 .siteImpactoCards { max-width: none; gap: 1.25rem; }
+  #dobra2 .siteImpactoCardTopo {
+    height: auto;
+    min-height: 3.5rem;
+    padding: .75rem 1rem;
+  }
+
+  #dobra2 .siteImpactoNumero { font-size: .6875rem; }
+  #dobra2 .siteImpactoCardTopo h3 { font-size: .875rem; }
+  #dobra2 .siteImpactoCardConteudo {
+    min-height: 13.125rem;
+    padding: 2.5rem 1.25rem 3.875rem;
+  }
+
+  #dobra2 .siteImpactoCardConteudo p { font-size: .875rem; }
+}
+
+/* Dobra 03: layout responsivo; tipografia e cores herdadas do site. */
+@media (390px <= width <= 1200px) {
+  #dobra3 {
+    height: auto;
+    min-height: 0;
+    padding: 3.5rem 5rem;
+    gap: 2rem;
+  }
+  #dobra3 .presencaAbertura {
+    width: 100%;
+    padding-block: 1.5rem;
+    gap: 1.75rem;
+  }
+  #dobra3 .presencaAberturaTitulo {
+    width: 100%;
+    max-width: 44.875rem;
+    font-size: 2rem;
+  }
+  #dobra3 .presencaPergunta { font-size: 1rem; }
+  #dobra3 .presencaDigital {
+    height: auto;
+    min-height: 0;
+    padding: 3.5rem 2.5rem;
+    gap: 3.25rem;
+    justify-content: flex-start;
+  }
+  #dobra3 .presencaDigitalTopo { min-height: 0; gap: 2.5rem; }
+  #dobra3 .presencaDigitalPilares { gap: 1.5rem; }
+  #dobra3 .tagPresenca { font-size: .75rem; }
+  #dobra3 .presencaDigitalTextos {
+    grid-template-columns: minmax(0, 305fr) minmax(0, 405fr);
+    gap: 1.5rem;
+  }
+  #dobra3 .presencaDigitalTextos > div { gap: 1.5rem; }
+  #dobra3 .presencaMensagem { font-size: 1.5rem; }
+  #dobra3 .presencaDescricao {
+    width: 100%;
+    max-width: 22.25rem;
+    font-size: 1rem;
+    justify-self: start;
+  }
+  #dobra3 .presencaLegenda { font-size: .875rem; }
+}
+
+@media (768px <= width < 1024px) {
+  #dobra3 { padding-inline: 2.5rem; }
+  #dobra3 .presencaDigital { padding-block: 3.5rem; gap: 2rem; }
+  #dobra3 .presencaDigitalTopo { align-items: center; gap: 1.5rem; }
+  #dobra3 .presencaDigitalPilares {
+    width: min(100%, 25rem);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 5.125rem;
+  }
+  #dobra3 .tagPresenca { width: 100%; justify-content: space-between; }
+  #dobra3 .presencaDigitalTextos { grid-template-columns: minmax(0, 1fr); }
+  #dobra3 .presencaDigitalTextos > div { gap: 1rem; }
+  #dobra3 .presencaMensagem br { display: none; }
+}
+
+@media (390px <= width < 768px) {
+  #dobra3 { padding: 2.5rem 1.25rem; gap: 2.25rem; }
+  #dobra3 .presencaAbertura { padding: 0; gap: 1rem; }
+  #dobra3 .presencaPerguntaLinha { display: block; }
+  /* O tamanho local substitui apenas o tamanho global de h2 no mobile. */
+  #dobra3 .presencaAberturaTitulo { font-size: 1.375rem !important; }
+  #dobra3 .presencaDigital { padding: 2.5rem 1.5rem; gap: 2rem; }
+  #dobra3 .presencaDigitalTopo { gap: 2rem; }
+  #dobra3 .presencaDigitalPilares {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .75rem;
+  }
+  #dobra3 .presencaDigitalPilares li { width: 100%; }
+  #dobra3 .tagPresenca {
+    width: 100%;
+    justify-content: space-between;
+    font-size: .625rem;
+  }
+  #dobra3 .presencaDigitalTextos { grid-template-columns: minmax(0, 1fr); }
+  #dobra3 .presencaMensagem { font-size: 1.375rem; }
+  #dobra3 .presencaDescricao { max-width: none; }
+}
