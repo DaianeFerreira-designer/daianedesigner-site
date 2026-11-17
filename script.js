@@ -99,6 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
   iniciarScrollbarPersonalizada();
   iniciarHeaderScroll();
   iniciarMenuMobile();
+  iniciarMenuTablet();
 
   iniciarFluidDesktop();
   iniciarLenis();
@@ -240,6 +241,36 @@ function iniciarHeaderScroll() {
   });
 }
 
+function iniciarMenuTablet() {
+  const botao = document.querySelector(".menuTabletToggle");
+  if (!botao) return;
+
+  const painel = document.getElementById(botao.getAttribute("aria-controls"));
+  const faixa = window.matchMedia("(768px <= width <= 1200px)");
+  const aberto = () => botao.getAttribute("aria-expanded") === "true";
+
+  function mostrarMenu(mostrar) {
+    botao.setAttribute("aria-expanded", String(mostrar));
+    botao.setAttribute("aria-label", mostrar ? "Fechar menu" : "Abrir menu");
+  }
+
+  botao.addEventListener("click", () => mostrarMenu(!aberto()));
+  painel.addEventListener("click", evento => {
+    if (!aberto() || !evento.target.closest("a") || evento.metaKey || evento.ctrlKey || evento.shiftKey || evento.altKey) return;
+    botao.focus({ preventScroll: true });
+    mostrarMenu(false);
+  });
+  document.addEventListener("pointerdown", evento => {
+    if (aberto() && !botao.contains(evento.target) && !painel.contains(evento.target)) mostrarMenu(false);
+  });
+  document.addEventListener("keydown", evento => {
+    if (evento.key !== "Escape" || !aberto()) return;
+    botao.focus({ preventScroll: true });
+    mostrarMenu(false);
+  });
+  faixa.addEventListener("change", () => mostrarMenu(false));
+}
+
 function iniciarMenuMobile() {
   const headerMobile =
     document.querySelector(".headerMobile");
@@ -264,12 +295,12 @@ function iniciarMenuMobile() {
 
   const linkOrcamento =
     headerMobile.querySelector(
-      ".orcamentoHeaderMobile"
+      ".orcamentoHeaderMobile, .maisOpcoesMobile .orcamentoHeader"
     );
 
   const linkLoja =
     headerMobile.querySelector(
-      ".lojaHeaderMobile"
+      ".lojaHeaderMobile, .maisOpcoesMobile .lojaHereader"
     );
 
   if (

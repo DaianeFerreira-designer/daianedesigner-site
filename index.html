@@ -79,7 +79,7 @@
     />
 
     <!-- CSS principal -->
-    <link rel="stylesheet" href="/style.css?v=20261113-2" />
+    <link rel="stylesheet" href="/style.css?v=20261117-5" />
 
     <!-- SEO -->
     <title>Criação de Sites Profissionais e Landing Pages | Daiane Ferreira</title>
@@ -376,7 +376,11 @@
         />
       </a>
 
-      <nav class="principal" aria-label="Navegação principal">
+      <button type="button" class="menuTabletToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navegacao-principal">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="navegacao-principal" class="principal" aria-label="Navegação principal">
         <ul>
           <li>
             <a href="/">
@@ -555,11 +559,11 @@
           <!-- BOTÕES DO MENU ATUAL -->
 
           <div class="maisOpcoesMobile">
-            <a href="/orcamento" data-posicao-orcamento="menu_mobile" class="orcamentoHeaderMobile">
-              <span>Solicitar Orçamento</span>
+            <a href="/orcamento" data-posicao-orcamento="menu_mobile" class="orcamentoHeader">
+              <span class="orcamentoTexto"><span>Solicitar Orçamento</span><span aria-hidden="true">Solicitar Orçamento</span></span>
             </a>
 
-            <a href="/" class="lojaHeaderMobile">
+            <a href="/" class="lojaHereader">
               <span>Templates</span>
 
               <img
@@ -575,14 +579,17 @@
         <!-- SHAPE -->
 
         <div class="menuMobileShape">
-          <img
-            class="shape"
-            src="/assets/mobile_menu_drop.svg"
-            alt=""
-            width="430"
-            height="67"
-            aria-hidden="true"
-          />
+          <picture>
+            <source media="(390px <= width <= 767px)" srcset="/assets/mobile_menu_drop.svg.svg" width="368" height="50" />
+            <img
+              class="shape"
+              src="/assets/mobile_menu_drop.svg"
+              alt=""
+              width="430"
+              height="67"
+              aria-hidden="true"
+            />
+          </picture>
 
           <button
             class="menu-btn"
@@ -591,6 +598,7 @@
             aria-expanded="false"
             aria-controls="menuMobilePainel"
           >
+            <img class="menuMobileIcone" src="/assets/Abrir-menu-mobile.svg" alt="" width="23" height="19" />
             <span class="menu-line top"></span>
             <span class="menu-line mid"></span>
             <span class="menu-line bottom"></span>
@@ -2730,7 +2738,7 @@
     <script src="/assets/vendor/ScrollTrigger-3.12.5.min.js"></script>
     <script src="/assets/vendor/SplitText-3.15.1.min.js"></script>
 
-    <script src="/script.js?v=20261113-1"></script>
+    <script src="/script.js?v=20261117-5"></script>
     <script src="/assets/analytics.js?v=20261112-1" defer></script>
     <script>
       (() => {
