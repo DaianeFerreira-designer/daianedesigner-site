@@ -139,33 +139,49 @@
   banner.id = 'analytics-cookies';
   banner.setAttribute('aria-label', 'Preferências de cookies');
   banner.hidden = true;
-  banner.innerHTML = '<button type="button" class="cookies-fechar" data-close-preferences aria-label="Fechar preferências de cookies">'
-    + '<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>'
-    + '<p>Seus cookies, sua escolha</p>'
-    + '<span class="cookies-descricao">Cookies opcionais ajudam a entender a navegação. '
+  banner.dataset.view = 'summary';
+  banner.innerHTML = '<div class="cookies-resumo">'
+    + '<span class="cookies-descricao">Este site usa cookies de medição com sua autorização. '
     + '<a href="/politica-de-cookies" target="_blank" rel="noopener noreferrer">Saiba mais</a>.</span>'
-    + '<label class="cookies-opcao"><input type="checkbox" id="cookies-analise"> Permitir cookies de análise</label>'
-    + '<div class="cookies-acoes"><button type="button" data-consent="rejected">Recusar</button>'
-    + '<button type="button" data-save-preferences>Aceitar cookies</button></div>';
+    + '<div class="cookies-acoes"><button type="button" data-consent="accepted">Aceitar</button>'
+    + '<button type="button" data-consent="rejected">Recusar</button>'
+    + '<button type="button" data-open-preferences>Preferências</button></div></div>'
+    + '<div class="cookies-detalhes" hidden>'
+    + '<button type="button" class="cookies-fechar" data-close-preferences aria-label="Fechar preferências de cookies">'
+    + '<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>'
+    + '<p>Preferências de cookies</p>'
+    + '<span class="cookies-descricao">Escolha se deseja permitir a medição. Você pode mudar sua escolha a qualquer momento pelo rodapé.</span>'
+    + '<div class="cookies-categoria"><div class="cookies-categoria-topo"><strong>Necessários</strong>'
+    + '<span class="cookies-status">Sempre ativos</span></div>'
+    + '<span class="cookies-descricao">Mantêm os formulários protegidos e guardam sua escolha sobre cookies.</span></div>'
+    + '<div class="cookies-categoria"><label class="cookies-opcao" for="cookies-analise"><strong>Medição</strong>'
+    + '<input type="checkbox" id="cookies-analise" aria-describedby="cookies-medicao-descricao"></label>'
+    + '<span class="cookies-descricao" id="cookies-medicao-descricao">O Google Analytics ajuda a entender as visitas, os cliques e os pedidos enviados. Não recebe o conteúdo digitado nos formulários.</span></div>'
+    + '<span class="cookies-descricao cookies-nota">Veja os detalhes na <a href="/politica-de-cookies" target="_blank" rel="noopener noreferrer">Política de Cookies</a> e na '
+    + '<a href="/politica-de-privacidade" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>.</span>'
+    + '<div class="cookies-acoes"><button type="button" data-consent="rejected">Recusar tudo</button>'
+    + '<button type="button" data-save-preferences>Salvar escolhas</button></div></div>';
   document.body.append(banner);
 
   function updateSaveLabel() {
-    banner.querySelector('[data-save-preferences]').textContent = banner.querySelector('#cookies-analise').checked
-      ? 'Aceitar cookies' : 'Guardar preferências';
+    banner.querySelector('[data-save-preferences]').textContent = 'Salvar escolhas';
   }
   banner.querySelector('#cookies-analise').addEventListener('change', updateSaveLabel);
 
-  function showPreferences(visible) {
+  function showPreferences(visible, detailed = true) {
     if (visible) banner.querySelector('#cookies-analise').checked = consent === 'accepted'
       || !['rejected', 'dismissed'].includes(consent);
     if (visible) updateSaveLabel();
     banner.hidden = !visible;
+    banner.dataset.view = detailed ? 'details' : 'summary';
+    banner.querySelector('.cookies-resumo').hidden = detailed;
+    banner.querySelector('.cookies-detalhes').hidden = !detailed;
     settings.setAttribute('aria-expanded', String(visible));
   }
 
   settings.addEventListener('click', () => {
     showPreferences(banner.hidden);
-    if (!banner.hidden) banner.querySelector('button').focus();
+    if (!banner.hidden) banner.querySelector('[data-close-preferences]').focus();
   });
 
   function closePreferences() {
@@ -183,8 +199,13 @@
   });
 
   banner.addEventListener('click', event => {
-    const button = event.target.closest('button[data-consent], button[data-save-preferences], button[data-close-preferences]');
+    const button = event.target.closest('button[data-consent], button[data-save-preferences], button[data-close-preferences], button[data-open-preferences]');
     if (!button) return;
+    if (button.hasAttribute('data-open-preferences')) {
+      showPreferences(true);
+      banner.querySelector('[data-close-preferences]').focus();
+      return;
+    }
     if (button.hasAttribute('data-close-preferences')) {
       closePreferences();
       return;
@@ -198,5 +219,5 @@
     if (settings.getBoundingClientRect().top < innerHeight) settings.focus({ preventScroll: true });
   });
 
-  showPreferences(!['accepted', 'rejected', 'dismissed'].includes(consent));
+  showPreferences(!['accepted', 'rejected', 'dismissed'].includes(consent), false);
 })();

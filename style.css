@@ -9920,6 +9920,12 @@ body.portfolio-preview-open {
 .contato .textContato { gap: 4px; min-width: 0; }
 .contato .textContato h3 { margin: 0; color: var(--color-text); font-size: 16px; font-weight: 600; line-height: 1.4; letter-spacing: -.01em; }
 .contato .textContato p { width: auto; max-width: 100%; margin: 0; color: var(--color-light); font-size: 15px; font-weight: 400; line-height: 1.5; letter-spacing: 0; overflow-wrap: anywhere; transition: color .25s ease; }
+.contato .contato-detalhes[href^="mailto:"] { flex-basis: max-content; }
+.contato .contato-detalhes[href^="mailto:"] .textContato p {
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
 .contato .contato-detalhes:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 6px; border-radius: 4px; }
 .contato .faq { width: 100%; min-width: 0; padding: 0; gap: 24px; }
 .contato .faqCabecalho { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
@@ -9947,7 +9953,7 @@ body.portfolio-preview-open {
 .contato .faqPergunta > span:first-child { max-width: none; flex: none; }
 .contato .faqNumero { color: var(--color-light); font-size: 12px; font-weight: 500; line-height: 1.4; letter-spacing: .02em; font-variant-numeric: tabular-nums; }
 .contato .faqTextoPergunta { min-width: 0; }
-.contato .faqIcone { width: 30px; height: 30px; border: 1px solid rgba(255,108,0,.25); border-radius: 50%; background: rgba(255,108,0,.045); }
+.contato .faqIcone { width: 30px; height: 30px; border: 1px solid rgba(255,254,253,.35); border-radius: 50%; background: transparent; }
 .contato .faqIcone::before,
 .contato .faqIcone::after { width: 12px; height: 1.5px; }
 .contato .faqResposta p { width: 100%; max-width: 62ch; padding: 0 46px 28px 40px; margin: 0; color: var(--color-light); font-size: 16px; line-height: 1.6; letter-spacing: 0; }
@@ -10099,7 +10105,7 @@ body.portfolio-preview-open {
 @media (prefers-reduced-motion: reduce) { .pilaresOrbita { animation: none; } }
 
 /* Análise gratuita — moldura dupla e painel do Figma, com a tipografia do site. */
-.newsletter { padding-block: clamp(64px, 6.25vw, 120px); background: var(--color-dark); color: var(--color-light); }
+.newsletter { min-height: 100svh; isolation: isolate; padding-block: clamp(64px, 6.25vw, 120px); background: var(--color-dark); color: var(--color-light); }
 .newsletter .borderBG { position: relative; isolation: isolate; z-index: 1; width: 100%; max-width: 1313px; padding: 22px; gap: 0; border: 1px solid transparent; border-radius: 30px; background: var(--color-dark); overflow: hidden; }
 .newsletter .borderBG::before {
   content: "";
@@ -10108,18 +10114,18 @@ body.portfolio-preview-open {
   z-index: 10;
   padding: 2px;
   border-radius: inherit;
-  background: linear-gradient(-35deg, var(--color-accent), transparent, transparent, var(--color-accent));
+  background: linear-gradient(-35deg, rgba(255,254,253,.35), transparent, transparent, rgba(255,254,253,.35));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
 }
-.newsletterConteudo { position: relative; isolation: isolate; display: flex; flex-direction: column; align-items: center; gap: 44px; width: 100%; min-width: 0; padding: 56px 0 30px; border: 1px solid rgba(255,108,0,.18); border-radius: 20px; background: var(--color-dark) url('/assets/fundo-newsletter.webp') center / cover no-repeat; overflow: hidden; }
+.newsletterConteudo { position: relative; isolation: isolate; display: flex; flex-direction: column; align-items: center; gap: 44px; width: 100%; min-width: 0; padding: 56px 0 30px; border: 1px solid rgba(255,254,253,.18); border-radius: 20px; background: var(--color-dark) url('/assets/fundo-newsletter.webp') center / cover no-repeat; overflow: hidden; }
 .newsletter .analisenewsletter { align-items: center; width: 100%; max-width: 760px; gap: 20px; padding: 0 24px; text-align: center; }
 .newsletter .analisenewsletter > span { display: flex; align-items: center; justify-content: center; gap: 10px; width: auto; color: var(--color-text); font-size: 16px; line-height: 1.4; }
 .newsletter .analisenewsletter > span::before,
-.newsletter .analisenewsletter > span::after { content: ""; flex: 0 0 20px; height: 5px; border-radius: 10px; background: var(--color-secondary); }
+.newsletter .analisenewsletter > span::after { content: ""; flex: 0 0 20px; height: 5px; border-radius: 10px; background: var(--color-light); }
 .newsletter .analisenewsletter h2 { max-width: 630px; margin: 0; color: var(--color-text); }
 .newsletter .analisenewsletter h2 strong { font-weight: 600; }
 .newsletter .analisenewsletter > p { max-width: 660px; color: var(--color-light); font-size: 16px; line-height: 1.6; letter-spacing: 0; }
@@ -10715,18 +10721,18 @@ footer .footerCalloutWord { display: inline-block; white-space: nowrap; }
   content: "";
   position: absolute;
   inset: 0;
-  padding: 1px;
+  padding: .1875rem;
   border-radius: inherit;
   background: conic-gradient(
     from var(--newsletter-borda-angulo),
-    color-mix(in srgb, var(--color-accent) 6%, transparent) 0deg 200deg,
-    color-mix(in srgb, var(--color-accent) 10%, transparent) 250deg,
-    color-mix(in srgb, var(--color-accent) 22%, transparent) 285deg,
-    color-mix(in srgb, var(--color-accent) 55%, transparent) 315deg,
-    color-mix(in srgb, var(--color-accent) 95%, transparent) 335deg,
-    color-mix(in srgb, var(--color-accent) 55%, transparent) 350deg,
-    color-mix(in srgb, var(--color-accent) 18%, transparent) 358deg,
-    color-mix(in srgb, var(--color-accent) 6%, transparent) 360deg
+    color-mix(in srgb, var(--color-text) 4%, transparent) 0deg 200deg,
+    color-mix(in srgb, var(--color-text) 8%, transparent) 250deg,
+    color-mix(in srgb, var(--color-text) 14%, transparent) 285deg,
+    color-mix(in srgb, var(--color-text) 28%, transparent) 315deg,
+    color-mix(in srgb, var(--color-text) 45%, transparent) 335deg,
+    color-mix(in srgb, var(--color-text) 28%, transparent) 350deg,
+    color-mix(in srgb, var(--color-text) 12%, transparent) 358deg,
+    color-mix(in srgb, var(--color-text) 4%, transparent) 360deg
   );
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -10742,6 +10748,10 @@ footer .footerCalloutWord { display: inline-block; white-space: nowrap; }
 @media (prefers-reduced-motion: reduce) {
   .newsletterConteudo::before { animation: none; }
 }
+
+/* Analise: cantos de 10px, preservando as molduras e a borda animada. */
+.newsletter .borderBG { border-radius: .625rem; }
+.newsletterConteudo { border-radius: .625rem; border-color: rgba(255, 254, 253, .16); }
 
 /* Estratégia, convite e expectativa: uma seção contínua de vendas. */
 
@@ -11249,40 +11259,65 @@ html.portfolio-preview-open .custom-scrollbar { visibility: hidden; }
 #analytics-cookies {
   position: fixed;
   z-index: 9990;
-  inset: auto auto 20px 20px;
-  width: min(390px, calc(100% - 124px));
-  padding: 18px 20px;
-  border: 1px solid var(--color-secondary);
-  border-radius: 14px;
-  background: var(--color-dark);
-  color: var(--color-text);
+  inset: auto auto 1.25rem 1.25rem;
+  width: min(49rem, calc(100% - 8rem));
+  padding: 1rem 1.25rem;
+  border: 1px solid #343434;
+  border-radius: 1rem;
+  background: #131313;
+  color: #f5f5f5;
   font-family: "Work Sans", sans-serif;
+  box-shadow: 0 .5rem 2rem rgba(0, 0, 0, .2);
 }
 #analytics-cookies[hidden] { display: none !important; }
-#analytics-cookies p { margin: 0 0 5px; padding-right: 25px; font-size: 14px !important; font-weight: 600; line-height: 1.4; }
-#analytics-cookies .cookies-descricao { display: block; color: var(--color-light); font-size: 13px; line-height: 1.5; }
-#analytics-cookies a { color: var(--color-secondary); text-decoration: underline; }
-#analytics-cookies .cookies-opcao { display: flex; align-items: center; gap: 8px; margin: 12px 0; font-size: 13px; line-height: 1.4; cursor: pointer; }
-#analytics-cookies input { width: 16px; height: 16px; flex: 0 0 16px; accent-color: var(--color-accent); }
-#analytics-cookies .cookies-acoes { display: flex; flex-wrap: wrap; gap: 8px; }
+#analytics-cookies [hidden] { display: none !important; }
+#analytics-cookies[data-view="details"] { width: min(26.25rem, calc(100% - 8rem)); padding: 1.5rem; }
+#analytics-cookies .cookies-resumo { display: flex; align-items: center; gap: 1.25rem; }
+#analytics-cookies p { margin: 0 0 .5rem; padding-right: 1.5rem; font-size: 1rem !important; font-weight: 600; line-height: 1.4; }
+#analytics-cookies .cookies-descricao { display: block; color: #bcbcbc; font-size: .875rem; line-height: 1.6; }
+#analytics-cookies a { color: #ededed; text-decoration: underline; text-underline-offset: .1875rem; }
+#analytics-cookies .cookies-categoria { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #333; }
+#analytics-cookies .cookies-categoria-topo,
+#analytics-cookies .cookies-opcao { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin: 0 0 .5rem; font-size: .875rem; line-height: 1.4; }
+#analytics-cookies .cookies-opcao { cursor: pointer; }
+#analytics-cookies .cookies-status { color: #bcbcbc; font-size: .75rem; }
+#analytics-cookies input {
+  appearance: none;
+  position: relative;
+  width: 2.625rem;
+  height: 1.5rem;
+  flex: 0 0 2.625rem;
+  margin: 0;
+  border: 1px solid #727272;
+  border-radius: 2rem;
+  background: #444;
+  cursor: pointer;
+}
+#analytics-cookies input::before { content: ""; position: absolute; inset: .1875rem auto auto .1875rem; width: 1rem; height: 1rem; border-radius: 50%; background: #fff; transition: transform .15s ease; }
+#analytics-cookies input:checked { background: var(--color-accent); border-color: var(--color-accent); }
+#analytics-cookies input:checked::before { transform: translateX(1.125rem); }
+#analytics-cookies .cookies-nota { margin-block: 1rem; padding-top: 1rem; border-top: 1px solid #333; }
+#analytics-cookies .cookies-acoes { display: flex; flex-wrap: wrap; gap: .5rem; flex-shrink: 0; }
+#analytics-cookies .cookies-detalhes > .cookies-acoes > button { flex: 1; }
 #analytics-cookies button {
-  min-height: 36px;
-  padding: 7px 12px;
-  border: 1px solid var(--color-secondary);
-  border-radius: 8px;
+  min-height: 2.75rem;
+  padding: .625rem 1rem;
+  border: 1px solid #858585;
+  border-radius: 2rem;
   background: transparent;
   color: inherit;
   font: inherit !important;
-  font-size: 12px !important;
+  font-size: .875rem !important;
   line-height: 1.4;
   letter-spacing: 0;
   cursor: pointer;
 }
 #analytics-cookies button[data-save-preferences] {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: var(--color-dark);
+  background: transparent;
+  border-color: #858585;
+  color: inherit;
 }
+#analytics-cookies .cookies-acoes button:hover { background: #262626; border-color: #f5f5f5; }
 #analytics-cookies .cookies-fechar {
   position: absolute;
   top: 8px;
@@ -11296,9 +11331,21 @@ html.portfolio-preview-open .custom-scrollbar { visibility: hidden; }
   color: var(--color-light);
 }
 #analytics-cookies .cookies-fechar:hover { color: var(--color-text); }
-#analytics-cookies :focus-visible { outline: 2px solid var(--color-secondary); outline-offset: 3px; }
+#analytics-cookies :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+@media (max-width: 1023px) {
+  #analytics-cookies .cookies-resumo { flex-direction: column; align-items: stretch; gap: .75rem; }
+}
 @media (max-width: 767px) {
-  #analytics-cookies { left: 12px; bottom: 12px; width: calc(100% - 106px); padding: 14px; }
+  #analytics-cookies,
+  #analytics-cookies[data-view="details"] {
+    left: .75rem;
+    bottom: calc(6rem + env(safe-area-inset-bottom, 0px));
+    width: calc(100% - 1.5rem);
+    max-height: calc(100dvh - 8rem);
+    padding: 1.25rem;
+    overflow-y: auto;
+  }
+  #analytics-cookies .cookies-resumo .cookies-acoes > button { flex: 1; }
 }
 footer .analytics-preferencias {
   padding: 0;
@@ -12158,4 +12205,84 @@ footer .analytics-preferencias {
     line-height: 1.6;
     letter-spacing: 0;
   }
+}
+
+/* Acabamento cromatico: neutros nos apoios; laranja original nos destaques.
+   Preserva fundos, dimensoes, imagens e propriedades das animacoes. */
+:root { --corner-color: #b8b8b8; }
+#dobra2 .siteImpactoNumero,
+#dobra3 .presencaPergunta strong,
+.dobra04 .slider > span,
+.protocoloCriacao .protocoloLegenda,
+.protocoloCriacao .protocoloContagem b,
+.protocoloCriacao .protocoloEtapa.concluida .protocoloNumero {
+  color: var(--color-text);
+}
+#dobra2 .siteImpactoCardConteudo,
+#dobra3 .tagPresenca,
+.dobra06 .presencaValor > .tagValor,
+.dobra07 .tagValor,
+#beneficios-presenca .classpresenca-beneficios article,
+#valorPercebido .visual-card .card-content {
+  border-color: #d9d9d9;
+}
+#dobra2 .siteImpactoCardConteudo p,
+#beneficios-presenca article:not(.ativo) p,
+#valorPercebido .visual-card:not(.ativo) .card-copy p,
+#portfolio .projetoDetalhes,
+#portfolio .projetoDetalhes li { color: #595959; }
+.dobra04 .listaNavegation,
+.dobra04 .textoIcon,
+#portfolio .projetosDestaqueMidia {
+  border-color: rgba(255, 255, 255, .18);
+}
+#valor-percebido .presencaValor > .tagValor,
+#valorPercebido .valorTitulo > .tagValor {
+  box-shadow: .25rem .25rem 0 rgba(0, 0, 0, .14);
+}
+#beneficios-presenca .classpresenca-beneficios article {
+  box-shadow: .375rem .375rem 0 rgba(0, 0, 0, .14);
+}
+#valorPercebido .visual-card .card-content {
+  box-shadow: .4375rem .4375rem 0 rgba(0, 0, 0, .16);
+}
+#beneficios-presenca .classpresenca-beneficios article.ativo {
+  border-color: #454545;
+  box-shadow: .4375rem .4375rem 0 rgba(0, 0, 0, .2);
+}
+#valorPercebido .visual-card.ativo .card-content {
+  border-color: #454545;
+  box-shadow: .5625rem .5625rem 0 rgba(0, 0, 0, .2);
+}
+#beneficios-presenca .classpresenca-beneficios article.ativo::before {
+  color: var(--color-text);
+  border-color: rgba(255, 255, 255, .22);
+}
+#beneficios-presenca article:not(.ativo) h3 > span { border-color: #dedede; }
+#beneficios-presenca .classpresenca-beneficios article.ativo h3 > span {
+  border-color: var(--color-accent);
+}
+.continueRolando { border-color: rgba(255, 255, 255, .18); box-shadow: none; }
+:is(.dobra02, .dobra04 .slider, .servicosCarrossel, #portfolio) > .continueRolando {
+  border-color: rgba(255, 255, 255, .18);
+  box-shadow: none;
+}
+.hero .nomeLateral span:first-child { color: var(--color-text); }
+.hero .nomeLateral span:last-child { color: var(--color-accent); }
+.meioFooter h2 span,
+footer .textoAnimado span .charFooter {
+  background-image: none;
+  color: var(--color-accent);
+  -webkit-text-fill-color: var(--color-accent);
+}
+@media (hover: hover) and (pointer: fine) {
+  #dobra2 .siteImpactoCard:hover .siteImpactoCardTopo,
+  #dobra3 .tagPresenca:hover,
+  .dobra04 .textoIcon:hover { border-color: #777; }
+  #dobra2 .siteImpactoCard:hover .siteImpactoCardConteudo,
+  #valorPercebido .visual-card:hover .card-content {
+    border-color: #888;
+    box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .12);
+  }
+  .iconesRedesociais a:hover { box-shadow: 0 .25rem 1rem rgba(0, 0, 0, .2); }
 }

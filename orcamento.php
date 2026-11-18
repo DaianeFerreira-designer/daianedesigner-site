@@ -762,7 +762,7 @@ $orcamentoRequestId = bin2hex(random_bytes(16));
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/js/intlTelInput.min.js"></script>
 <script src="/script.js?v=<?= htmlspecialchars($homeScriptVersion, ENT_QUOTES, 'UTF-8') ?>"></script>
-<script src="/assets/analytics.js?v=20261112-1" defer></script>
+<script src="/assets/analytics.js?v=20261118-1" defer></script>
 <script src="/main.js?v=11" defer></script>
 </body>
 
