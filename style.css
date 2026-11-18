@@ -9953,7 +9953,7 @@ body.portfolio-preview-open {
 .contato .faqPergunta > span:first-child { max-width: none; flex: none; }
 .contato .faqNumero { color: var(--color-light); font-size: 12px; font-weight: 500; line-height: 1.4; letter-spacing: .02em; font-variant-numeric: tabular-nums; }
 .contato .faqTextoPergunta { min-width: 0; }
-.contato .faqIcone { width: 30px; height: 30px; border: 1px solid rgba(255,254,253,.35); border-radius: 50%; background: transparent; }
+.contato .faqIcone { width: 30px; height: 30px; border: .125rem solid rgba(255,254,253,.35); border-radius: 50%; background: transparent; }
 .contato .faqIcone::before,
 .contato .faqIcone::after { width: 12px; height: 1.5px; }
 .contato .faqResposta p { width: 100%; max-width: 62ch; padding: 0 46px 28px 40px; margin: 0; color: var(--color-light); font-size: 16px; line-height: 1.6; letter-spacing: 0; }
@@ -12209,6 +12209,18 @@ footer .analytics-preferencias {
 
 /* Acabamento cromatico: neutros nos apoios; laranja original nos destaques.
    Preserva fundos, dimensoes, imagens e propriedades das animacoes. */
+:is(#dobra2 #query-title, #dobra3 #presenca-abertura, #valor-percebido #presenca-valor-titulo, #beneficios-presenca #beneficios-titulo, #valorPercebido #valor-diario-titulo,
+    #proximo-cliente #estrategia-vendas-titulo, #proximo-cliente .vendasEstrategiaMensagem,
+    #protocolo-criacao #protocolo-titulo, #analise-gratuita #newsletter-titulo, #portfolio #projetos-titulo,
+    #site-crescimento #percepcao-titulo) {
+  color: var(--color-light);
+}
+:is(#dobra2 #query-title, #dobra3 #presenca-abertura, #valor-percebido #presenca-valor-titulo, #beneficios-presenca #beneficios-titulo, #valorPercebido #valor-diario-titulo,
+    #proximo-cliente #estrategia-vendas-titulo, #proximo-cliente .vendasEstrategiaMensagem,
+    #protocolo-criacao #protocolo-titulo, #analise-gratuita #newsletter-titulo, #portfolio #projetos-titulo) strong {
+  color: var(--color-text);
+}
+ #site-crescimento #percepcao-titulo span { color: var(--color-text); }
 :root { --corner-color: #b8b8b8; }
 #dobra2 .siteImpactoNumero,
 #dobra3 .presencaPergunta strong,
@@ -12262,9 +12274,9 @@ footer .analytics-preferencias {
 #beneficios-presenca .classpresenca-beneficios article.ativo h3 > span {
   border-color: var(--color-accent);
 }
-.continueRolando { border-color: rgba(255, 255, 255, .18); box-shadow: none; }
-:is(.dobra02, .dobra04 .slider, .servicosCarrossel, #portfolio) > .continueRolando {
-  border-color: rgba(255, 255, 255, .18);
+.continueRolando { border-color: rgba(255, 254, 253, .22); box-shadow: none; }
+:is(.dobra02, .dobra04 .slider, .servicosCarrossel, .protocoloCriacao, .percepcao, .dobra13, #portfolio, #valor-percebido, #beneficios-presenca, #valorPercebido) > .continueRolando {
+  border-color: rgba(255, 254, 253, .22);
   box-shadow: none;
 }
 .hero .nomeLateral span:first-child { color: var(--color-text); }
