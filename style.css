@@ -11919,8 +11919,23 @@ footer .analytics-preferencias {
     /* Compensa a margem negativa da transicao antiga sem alterar Projetos. */
     margin-bottom: 100svh;
   }
-  #valorPercebido .valorTitulo h2 { font-size: 1.5rem !important; }
+  #valorPercebido { row-gap: 2rem; }
+  #valorPercebido .valorTitulo { gap: 1.5rem; }
+  #valorPercebido .valorTitulo h2 {
+    font-size: 1.5rem !important;
+    color: var(--color-text);
+  }
   #valorPercebido .valorTitulo h2 br { display: none; }
+  #valorPercebido > .textValor {
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+  #valorPercebido > .textValor p {
+    font-size: .875rem !important;
+    line-height: 1.5;
+    color: var(--color-light);
+  }
+  #valorPercebido > .textValor p strong { color: var(--color-text); }
   #valorPercebido .visual-cards {
     display: flex;
     flex-direction: column;
