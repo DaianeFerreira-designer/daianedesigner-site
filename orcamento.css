@@ -1265,3 +1265,7 @@
     font-size: 18px;
   }
 }
+
+@media (min-width: 1201px) {
+  .btn-primary { font-size: clamp(1rem, 1.4vw, 1.125rem); }
+}

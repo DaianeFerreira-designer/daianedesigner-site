@@ -2313,6 +2313,7 @@ function iniciarDivisoresAnimados() {
   }
 
   divisores.forEach((divisor) => {
+    const animarDivisor = () => {
     const faixas = gsap.utils.toArray(
       divisor.querySelectorAll(".divisorAnimadoFaixas span"),
     );
@@ -2378,6 +2379,15 @@ function iniciarDivisoresAnimados() {
       },
       0.32,
     );
+    };
+
+    if (divisor.classList.contains("divisorSomenteDesktop")) {
+      gsap.matchMedia().add("(min-width: 1201px)", animarDivisor);
+    } else if (divisor.classList.contains("divisorValoresProjetos")) {
+      gsap.matchMedia().add("(min-width: 768px) and (max-width: 1200px)", animarDivisor);
+    } else {
+      animarDivisor();
+    }
   });
 
   agendarRefreshNoQuadro();
@@ -2412,6 +2422,13 @@ function iniciarSlidersDobra04() {
 
   secao.dataset.slidersAtivos = "true";
 
+  gsap.matchMedia().add({
+    mobile: "(max-width: 767px)",
+    maior: "(min-width: 768px)",
+  }, (contexto) => {
+  const mobile = contexto.conditions.mobile;
+  const margensOriginais = paineis.map(painel => painel.style.marginBottom);
+
   const PAUSA_VIEWPORT = 0.38;
 
   const ESCALA_FINAL = 0.7;
@@ -2423,9 +2440,11 @@ function iniciarSlidersDobra04() {
   const BORDA_FINAL = "rgba(239, 101, 0, 0.72)";
 
   function aplicarPausaEntrePaineis() {
-    const distanciaPausa = Math.max(220, window.innerHeight * PAUSA_VIEWPORT);
-
     paineis.forEach((painel, index) => {
+      // No mobile, os paineis ficam consecutivos, sem completar a altura da tela.
+      const distanciaPausa = mobile
+        ? 0
+        : Math.max(220, window.innerHeight * PAUSA_VIEWPORT);
       const temProximo = index < paineis.length - 1;
 
       const temSaidaFinal = index === paineis.length - 1 && !!dobra05;
@@ -2477,7 +2496,9 @@ function iniciarSlidersDobra04() {
     ScrollTrigger.create({
       trigger: painel,
 
-      start: "top top",
+      start: () => mobile && painel.offsetHeight > window.innerHeight
+        ? "bottom bottom"
+        : "top top",
 
       endTrigger: proximo,
 
@@ -2496,7 +2517,9 @@ function iniciarSlidersDobra04() {
       scrollTrigger: {
         trigger: proximo,
 
-        start: "top bottom",
+        start: () => mobile
+          ? "top " + Math.min(painel.offsetHeight, window.innerHeight) + "px"
+          : "top bottom",
 
         end: "top top",
 
@@ -2544,6 +2567,12 @@ function iniciarSlidersDobra04() {
 
       ease: "none",
     });
+  });
+
+  return () => {
+    ScrollTrigger.removeEventListener("refreshInit", aplicarPausaEntrePaineis);
+    paineis.forEach((painel, index) => { painel.style.marginBottom = margensOriginais[index]; });
+  };
   });
 
   agendarRefreshNoQuadro(true);
@@ -2680,6 +2709,8 @@ function iniciarCarrosselServicos() {
     posicao: 0,
   };
 
+  let atualizarCabecalhoMobile = () => {};
+
   function renderizar() {
     const posicao = gsap.utils.clamp(0, ultimoIndice, estado.posicao);
 
@@ -2688,6 +2719,7 @@ function iniciarCarrosselServicos() {
     rawSequence.time(tempo, false);
 
     atualizarBotoes(posicao);
+    atualizarCabecalhoMobile();
   }
 
   function atualizarBotoes(posicao) {
@@ -2791,6 +2823,33 @@ function iniciarCarrosselServicos() {
     anticipatePin: 1,
 
     invalidateOnRefresh: true,
+
+    onToggle: () => atualizarCabecalhoMobile(),
+  });
+
+  gsap.matchMedia().add("(390px <= width <= 697px)", () => {
+    const medirCabecalho = () => {
+      const espaco = parseFloat(getComputedStyle(secao).rowGap) || 0;
+      secao.style.setProperty("--recuo-cards-servicos", `${(cabecalho.offsetHeight + espaco) / 2}px`);
+    };
+    medirCabecalho();
+    ScrollTrigger.addEventListener("refreshInit", medirCabecalho);
+    atualizarCabecalhoMobile = () => {
+      const tempo = animacaoScroll.time();
+      const duranteCards = trigger.isActive && tempo < inicioSaida
+        && (tempo > 0.03 || estado.posicao > 0.03);
+      secao.classList.toggle("servicosEmRolagem", duranteCards);
+    };
+    animacaoScroll.eventCallback("onUpdate", atualizarCabecalhoMobile);
+    atualizarCabecalhoMobile();
+
+    return () => {
+      ScrollTrigger.removeEventListener("refreshInit", medirCabecalho);
+      animacaoScroll.eventCallback("onUpdate", null);
+      atualizarCabecalhoMobile = () => {};
+      secao.classList.remove("servicosEmRolagem");
+      secao.style.removeProperty("--recuo-cards-servicos");
+    };
   });
 
   function irParaCard(indice) {
@@ -2900,7 +2959,7 @@ function iniciarValorPercebido() {
     });
   }
 
-  configuracoes.forEach((config) => {
+  const animarSecao = (config, tablet = false, mobile = false) => {
     const secao = config.secao;
 
     if (!secao) {
@@ -2932,6 +2991,55 @@ function iniciarValorPercebido() {
           secao.querySelector(".visual-cards"),
         ].filter(Boolean)
       : [];
+
+    if (tablet || mobile) {
+      gsap.set(fragmentosSaida, { scaleY: 1, autoAlpha: 1 });
+      ativarCard(cards, 0);
+
+      if (reduzirMovimento) {
+        gsap.set([...entradaTexto, ...cards], { y: 0, autoAlpha: 1, filter: "none" });
+        return;
+      }
+
+      gsap.fromTo(entradaTexto,
+        { y: -38, autoAlpha: 0, filter: "blur(10px)" },
+        {
+          y: 0,
+          autoAlpha: 1,
+          filter: "blur(0px)",
+          stagger: .08,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: secao.querySelector(".valorTitulo"),
+            start: "top 85%",
+            end: "bottom 55%",
+            scrub: 1,
+            invalidateOnRefresh: true,
+          },
+        },
+      );
+      cards.forEach((card, indice) => {
+        gsap.fromTo(card,
+          { y: mobile ? 54 : -54, autoAlpha: 0 },
+          {
+            y: 0,
+            autoAlpha: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 90%",
+              end: "top 65%",
+              scrub: 1,
+              invalidateOnRefresh: true,
+              onEnter: () => ativarCard(cards, indice),
+              onEnterBack: () => ativarCard(cards, indice),
+              onLeaveBack: () => ativarCard(cards, Math.max(0, indice - 1)),
+            },
+          },
+        );
+      });
+      return;
+    }
 
     ativarCard(cards, -1);
 
@@ -3180,6 +3288,18 @@ function iniciarValorPercebido() {
         secao.style.setProperty("--movimento-presenca", timeline.progress().toFixed(4));
       }
     });
+  };
+
+  configuracoes.forEach((config) => {
+    if (config.secao?.id === "valorPercebido") {
+      gsap.matchMedia().add({
+        tablet: "(min-width: 768px) and (max-width: 1200px)",
+        mobile: "(min-width: 390px) and (max-width: 767px)",
+        original: "(max-width: 389px), (min-width: 1201px)",
+      }, (contexto) => animarSecao(config, contexto.conditions.tablet, contexto.conditions.mobile));
+    } else {
+      animarSecao(config);
+    }
   });
 }
 
