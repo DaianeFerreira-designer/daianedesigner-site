@@ -10220,6 +10220,7 @@ body.portfolio-preview-open {
 
 /* Projetos mobile: imagem alinhada as linhas e mais respiro entre os blocos. */
 @media (max-width: 767px) {
+  #portfolio { background-image: none; }
   #portfolio .projetosDestaqueMidia { width: 100%; max-width: none; }
   #portfolio .projetosDestaqueCorpo { padding-top: 2.5rem; gap: 2rem; }
 }
