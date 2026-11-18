@@ -1,4 +1,8 @@
 /* Estilos exclusivos da página de orçamento. Carregar após style.css. */
+@media (390px <= width < 768px) {
+  .custom-scrollbar { display: none !important; }
+}
+
 .rodapeForms {
   display: flex;
   flex-direction: row;

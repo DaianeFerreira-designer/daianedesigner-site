@@ -11199,6 +11199,18 @@ html.safari-only::-webkit-scrollbar-thumb {
 
 html.portfolio-preview-open .custom-scrollbar { visibility: hidden; }
 
+/* Rolagem nativa laranja no mobile, incluindo Chrome. */
+@media (max-width: 767px) {
+  .custom-scrollbar { display: none !important; }
+  html { scrollbar-color: var(--color-accent) var(--color-dark); }
+  html::-webkit-scrollbar { width: .5rem; }
+  html::-webkit-scrollbar-track { background: var(--color-dark); }
+  html::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: var(--color-accent);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html.preloader-ativo #preloader { display: none; }
 }
