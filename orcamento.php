@@ -18,7 +18,7 @@ $orcamentoRequestId = bin2hex(random_bytes(16));
 <!-- Head Daiane Ferreira -->
 <?php include 'partials/head.php'; ?>
 
-<div class="custom-scrollbar">
+<div class="custom-scrollbar" hidden>
   <div class="custom-scroll-thumb"></div>
 </div>
 

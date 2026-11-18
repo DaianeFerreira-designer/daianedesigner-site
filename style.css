@@ -11775,24 +11775,8 @@ footer .analytics-preferencias {
   }
 }
 
-@media (390px <= width <= 697px) {
-  .servicosCarrossel .servicos-carrossel-titulo {
-    transition: opacity .15s .25s, visibility 0s .25s;
-  }
-  .servicosCarrossel .gallery {
-    overflow: visible;
-    top: 0;
-    transition: top .25s ease;
-  }
-  .servicosCarrossel.servicosEmRolagem .servicos-carrossel-titulo {
-    opacity: 0 !important;
-    visibility: hidden !important;
-    pointer-events: none;
-    transition: none;
-  }
-  .servicosCarrossel.servicosEmRolagem .gallery {
-    top: calc(-1 * var(--recuo-cards-servicos, 0px));
-  }
+@media (max-width: 767px) {
+  #servicos-detalhados .servicos-carrossel-titulo > p { display: none; }
 }
 
 /* Presenca que gera valor: etiqueta com o preto e a tipografia do site. */
@@ -11919,6 +11903,11 @@ footer .analytics-preferencias {
 }
 @media (768px <= width < 1024px) {
   #valorPercebido { padding-inline: 2.5rem; }
+}
+
+/* Dobra06 mobile: remove somente o indicador de rolagem. */
+@media (max-width: 767px) {
+  #valor-percebido > .continueRolando { display: none !important; }
 }
 
 /* Dobra07 mobile: cards no fluxo, revelados de baixo para cima. */

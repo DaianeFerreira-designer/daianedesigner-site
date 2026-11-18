@@ -1,5 +1,5 @@
 /* Estilos exclusivos da página de orçamento. Carregar após style.css. */
-@media (390px <= width < 768px) {
+@media (max-width: 767px) {
   .custom-scrollbar { display: none !important; }
 }
 
@@ -1236,6 +1236,9 @@
     font-size: 13px;
     line-height: 150%;
     color: var(--color-light);
+  }
+  .rodapeForms .linksLegaisFooter {
+    margin-top: 1.25rem;
   }
 }
 

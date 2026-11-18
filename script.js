@@ -2709,8 +2709,6 @@ function iniciarCarrosselServicos() {
     posicao: 0,
   };
 
-  let atualizarCabecalhoMobile = () => {};
-
   function renderizar() {
     const posicao = gsap.utils.clamp(0, ultimoIndice, estado.posicao);
 
@@ -2719,7 +2717,6 @@ function iniciarCarrosselServicos() {
     rawSequence.time(tempo, false);
 
     atualizarBotoes(posicao);
-    atualizarCabecalhoMobile();
   }
 
   function atualizarBotoes(posicao) {
@@ -2824,32 +2821,6 @@ function iniciarCarrosselServicos() {
 
     invalidateOnRefresh: true,
 
-    onToggle: () => atualizarCabecalhoMobile(),
-  });
-
-  gsap.matchMedia().add("(390px <= width <= 697px)", () => {
-    const medirCabecalho = () => {
-      const espaco = parseFloat(getComputedStyle(secao).rowGap) || 0;
-      secao.style.setProperty("--recuo-cards-servicos", `${(cabecalho.offsetHeight + espaco) / 2}px`);
-    };
-    medirCabecalho();
-    ScrollTrigger.addEventListener("refreshInit", medirCabecalho);
-    atualizarCabecalhoMobile = () => {
-      const tempo = animacaoScroll.time();
-      const duranteCards = trigger.isActive && tempo < inicioSaida
-        && (tempo > 0.03 || estado.posicao > 0.03);
-      secao.classList.toggle("servicosEmRolagem", duranteCards);
-    };
-    animacaoScroll.eventCallback("onUpdate", atualizarCabecalhoMobile);
-    atualizarCabecalhoMobile();
-
-    return () => {
-      ScrollTrigger.removeEventListener("refreshInit", medirCabecalho);
-      animacaoScroll.eventCallback("onUpdate", null);
-      atualizarCabecalhoMobile = () => {};
-      secao.classList.remove("servicosEmRolagem");
-      secao.style.removeProperty("--recuo-cards-servicos");
-    };
   });
 
   function irParaCard(indice) {
@@ -2992,7 +2963,7 @@ function iniciarValorPercebido() {
         ].filter(Boolean)
       : [];
 
-    if (tablet || mobile) {
+    if ((tablet || mobile) && secao.id === "valorPercebido") {
       gsap.set(fragmentosSaida, { scaleY: 1, autoAlpha: 1 });
       ativarCard(cards, 0);
 
@@ -3152,6 +3123,40 @@ function iniciarValorPercebido() {
       });
     }
 
+    // No mobile, a extra acompanha a leitura sem o percurso adicional do pin.
+    if (mobile && secao.id === "beneficios-presenca") {
+      gsap.set(cards, { y: 54 });
+      cards.forEach((card, indice) => {
+        gsap.to(card, {
+          y: 0,
+          autoAlpha: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 90%",
+            end: "top 65%",
+            scrub: .5,
+            invalidateOnRefresh: true,
+            onEnter: () => ativarCard(cards, indice),
+            onEnterBack: () => ativarCard(cards, indice),
+            onLeaveBack: () => ativarCard(cards, Math.max(0, indice - 1)),
+          },
+        });
+      });
+      gsap.to(secao, {
+        "--movimento-presenca": 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: secao,
+          start: "top 80%",
+          end: "bottom 20%",
+          scrub: .5,
+          invalidateOnRefresh: true,
+        },
+      });
+      return;
+    }
+
     const inicioCards = 0.38;
 
     const intervaloCards = 0.92;
@@ -3297,6 +3302,11 @@ function iniciarValorPercebido() {
         mobile: "(min-width: 390px) and (max-width: 767px)",
         original: "(max-width: 389px), (min-width: 1201px)",
       }, (contexto) => animarSecao(config, contexto.conditions.tablet, contexto.conditions.mobile));
+    } else if (config.secao?.id === "beneficios-presenca") {
+      gsap.matchMedia().add({
+        mobile: "(max-width: 767px)",
+        original: "(min-width: 768px)",
+      }, (contexto) => animarSecao(config, false, contexto.conditions.mobile));
     } else {
       animarSecao(config);
     }
