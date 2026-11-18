@@ -10212,6 +10212,12 @@ body.portfolio-preview-open {
   #portfolio .projetoDetalhes li { padding-block: 7px; font-size: 12px; }
 }
 
+/* Projetos mobile: imagem alinhada as linhas e mais respiro entre os blocos. */
+@media (max-width: 767px) {
+  #portfolio .projetosDestaqueMidia { width: 100%; max-width: none; }
+  #portfolio .projetosDestaqueCorpo { padding-top: 2.5rem; gap: 2rem; }
+}
+
 /* Footer: hierarquia e cores do site, preservando o nome animado. */
 footer { padding: 80px 6.25vw 40px; gap: 72px; background: var(--color-dark); color: var(--color-light); }
 footer .iconesFooter { width: min(100%, 840px); }
