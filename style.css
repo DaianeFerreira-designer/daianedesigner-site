@@ -11938,13 +11938,12 @@ footer .analytics-preferencias {
     height: 18.75rem;
   }
   #valorPercebido .visual-card.ativo .card-content {
-    background: radial-gradient(ellipse at top left, rgba(255, 108, 0, .4) 0%, rgba(255, 108, 0, .12) 65%, #fff 100%), #fff;
-    border-color: var(--color-accent);
+    background: #15110e;
+    border-color: #4a3020;
+    box-shadow: 7px 7px 0 rgba(248, 184, 138, .23);
   }
-  #valorPercebido .visual-card.ativo .card-copy p,
-  #valorPercebido .visual-card.ativo .card-copy strong {
-    color: var(--color-text-dark);
-  }
+  #valorPercebido .visual-card.ativo .card-copy p { color: var(--color-light); }
+  #valorPercebido .visual-card.ativo .card-copy strong { color: var(--color-text); }
   #valorPercebido > .continueRolando {
     position: absolute;
     inset: auto auto .5rem 50%;
