@@ -12044,6 +12044,18 @@ footer .analytics-preferencias {
   }
 }
 
+/* Mobile: aproxima a dobra07 sem reservar uma linha para o indicador da extra. */
+@media (max-width: 767px) {
+  #beneficios-presenca { padding-bottom: 1rem; }
+  #beneficios-presenca > .continueRolando {
+    position: absolute;
+    inset: auto auto .5rem 50%;
+    margin: 0;
+    transform: translateX(-50%);
+  }
+  #valorPercebido { padding-top: 1.5rem; }
+}
+
 /* Padronizacao autorizada somente no desktop. */
 @media (min-width: 1201px) {
   .campoAnalise input,
