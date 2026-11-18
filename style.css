@@ -11339,7 +11339,7 @@ html.portfolio-preview-open .custom-scrollbar { visibility: hidden; }
   #analytics-cookies,
   #analytics-cookies[data-view="details"] {
     left: .75rem;
-    bottom: calc(6rem + env(safe-area-inset-bottom, 0px));
+    bottom: calc(.75rem + env(safe-area-inset-bottom, 0px));
     width: calc(100% - 1.5rem);
     max-height: calc(100dvh - 8rem);
     padding: 1.25rem;
