@@ -12299,3 +12299,89 @@ footer .textoAnimado span .charFooter {
   }
   .iconesRedesociais a:hover { box-shadow: 0 .25rem 1rem rgba(0, 0, 0, .2); }
 }
+
+/* Oportunidades apos Projetos: altura pelo conteudo nos layouts do Figma. */
+@media (min-width: 390px) and (max-width: 1200px) {
+  #oportunidades-perdidas {
+    width: calc(100% - 10rem);
+    height: auto;
+    min-height: 0;
+    margin: 3.5rem 5rem;
+    padding: 3.5rem 2.5rem;
+    border-radius: 1.75rem;
+    flex-direction: column;
+  }
+  #oportunidades-perdidas .oportunidadesConteudo {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    max-width: none;
+    gap: 2.5rem;
+  }
+  #oportunidades-perdidas .oportunidadesTexto { max-width: none; gap: 1.5rem; }
+  #oportunidades-perdidas .oportunidadesLegenda { font-size: .875rem; line-height: 1.5; gap: 1rem; }
+  #oportunidades-perdidas h2 { max-width: none; font-size: 2rem; line-height: 1.34375; }
+  #oportunidades-perdidas .oportunidadesDescricao { max-width: none; padding-inline: 3.5rem; }
+  #oportunidades-perdidas .oportunidadesDescricao p { font-size: 1rem; line-height: 1.6; }
+  #oportunidades-perdidas .oportunidadesArte { max-width: none; aspect-ratio: 840 / 740; }
+  #oportunidades-perdidas .oportunidadesEtapas { top: 6.41278%; height: 88%; }
+  #oportunidades-perdidas .oportunidadesEtapa { gap: .4375rem; }
+  #oportunidades-perdidas .oportunidadesEtapa h3 { font-size: 1.375rem; }
+  #oportunidades-perdidas .oportunidadesEtapa p { font-size: 1rem; }
+  #oportunidades-perdidas > .continueRolando {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    flex: none;
+    align-self: center;
+    margin-top: 1.5rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  #oportunidades-perdidas { width: calc(100% - 5rem); margin-inline: 2.5rem; }
+  #oportunidades-perdidas .oportunidadesArte { aspect-ratio: 636 / 740; }
+  #oportunidades-perdidas .oportunidadesIcone.demanda { left: 2.17375rem; }
+  #oportunidades-perdidas .oportunidadesIcone.disputa { left: -2.5775rem; }
+  #oportunidades-perdidas .oportunidadesIcone.vendas { left: 2.19375rem; }
+}
+@media (min-width: 390px) and (max-width: 767px) {
+  #oportunidades-perdidas {
+    width: calc(100% - 3rem);
+    margin: 2.5rem 1.5rem;
+    padding: 2.5rem 1.25rem;
+    border-radius: 1.25rem;
+  }
+  #oportunidades-perdidas .oportunidadesConteudo { gap: 1.5rem; }
+  #oportunidades-perdidas .oportunidadesLegenda {
+    max-width: 17rem;
+    font-size: .75rem;
+    letter-spacing: .1rem;
+    line-height: 1.0625rem;
+    gap: .75rem;
+  }
+  #oportunidades-perdidas h2 { font-size: 1.5rem; line-height: 2rem; }
+  #oportunidades-perdidas h2 br { display: none; }
+  #oportunidades-perdidas .oportunidadesDescricao { display: flex; flex-direction: column; gap: .75rem; padding: 0; }
+  #oportunidades-perdidas .oportunidadesBotao { width: 100%; padding-left: 0; gap: .625rem; font-size: 1rem; }
+  #oportunidades-perdidas .oportunidadesBotao > span:first-child { flex: 1; }
+  #oportunidades-perdidas .oportunidadesArte { aspect-ratio: auto; padding-bottom: 3rem; }
+  #oportunidades-perdidas .oportunidadesIlustracao { width: 19.875rem; height: 25.375rem; }
+  #oportunidades-perdidas .oportunidadesLinha { left: 4.792rem; top: 2.96rem; width: auto; height: auto; transform: none; }
+  #oportunidades-perdidas .oportunidadesIcone { display: grid; place-items: center; width: 7.1875rem; height: 7.1875rem; }
+  #oportunidades-perdidas .oportunidadesIcone.demanda { left: 1.25rem; top: -.03rem; }
+  #oportunidades-perdidas .oportunidadesIcone.disputa { left: .98875rem; top: 8.174rem; height: 5.841rem; }
+  #oportunidades-perdidas .oportunidadesIcone.vendas { left: 1.4375rem; top: 15.223rem; }
+  #oportunidades-perdidas .oportunidadesIcone img { width: auto; height: auto; }
+  #oportunidades-perdidas .oportunidadesEtapas {
+    position: relative;
+    left: 55.96%;
+    top: auto;
+    width: 44.04%;
+    height: auto;
+    padding-top: 1.875rem;
+    gap: 1rem;
+  }
+  #oportunidades-perdidas .oportunidadesEtapa { min-height: 7.5rem; gap: .75rem; }
+  #oportunidades-perdidas .oportunidadesEtapa h3 { max-width: 8ch; font-size: 1rem; line-height: 1.125rem; }
+  #oportunidades-perdidas .oportunidadesEtapa p { font-size: .75rem; line-height: 1.125rem; }
+}
