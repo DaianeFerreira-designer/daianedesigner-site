@@ -4999,7 +4999,8 @@ function iniciarOportunidadesPerdidas() {
   const fio = secao.querySelector(".oportunidadesLinha");
   const media = gsap.matchMedia();
   const medir = () => {
-    const base = window.matchMedia("(max-width: 767px)").matches ? 470 : 840;
+    const largura = window.innerWidth;
+    const base = largura >= 390 && largura <= 767 ? 318 : largura < 768 ? 470 : largura < 1024 ? 636 : 840;
     const escala = (arte.clientWidth / base).toFixed(6);
     if (arte.style.getPropertyValue("--escala-oportunidades") !== escala) {
       arte.style.setProperty("--escala-oportunidades", escala);
@@ -5068,13 +5069,14 @@ function iniciarOportunidadesPerdidas() {
   });
 
   // Mateusweb / jornada(): camadas compactadas, expansão de 26% e legendas sequenciais.
-  media.add({ desktop: "(min-width: 1100px)", compacto: "(max-width: 1099px)", celular: "(max-width: 767px)", calmo: "(prefers-reduced-motion: reduce)" }, contexto => {
+  media.add({ desktop: "(min-width: 1201px)", compacto: "(max-width: 1200px)", celular: "(max-width: 767px)", calmo: "(prefers-reduced-motion: reduce)" }, contexto => {
     medir();
     if (contexto.conditions.calmo) return;
     const celular = contexto.conditions.celular;
-    const vao = celular ? 180 : 252.945;
+    const mobileFigma = celular && window.innerWidth >= 390;
+    const vao = mobileFigma ? 123 : celular ? 180 : 252.945;
     const abre = vao * .26;
-    const base = celular ? 470 : 840;
+    const base = mobileFigma ? 318 : celular ? 470 : window.innerWidth < 1024 ? 636 : 840;
     const deslocamentoLegenda = () => abre * arte.clientWidth / base;
     const timeline = gsap.timeline({ defaults: { ease: "none" } });
     timeline
