@@ -3534,10 +3534,34 @@ function iniciarProjetosDestaque() {
   }
 
   /* =========================================================
-     SCROLLTRIGGER ORIGINAL
+     NAVEGACAO POR GESTO, PRESERVANDO O PIN E AS TRANSICOES
   ========================================================= */
 
-  ScrollTrigger.create({
+  let ultimaRoda = -Infinity;
+  let rodaConsumida = false;
+  let liberarTrocaEm = 0;
+  let toqueInicial = null;
+  let toqueConsumido = false;
+
+  function posicionarProjetos(top) {
+    if (window.lenis) {
+      window.lenis.scrollTo(top, { immediate: true, force: true });
+    } else {
+      window.scrollTo({ top, behavior: "instant" });
+    }
+    ScrollTrigger.update();
+  }
+
+  function entrarProjetos(self, indice) {
+    ativarProjeto(indice);
+    ultimaRoda = performance.now();
+    rodaConsumida = true;
+    toqueConsumido = true;
+    liberarTrocaEm = performance.now() + 650;
+    posicionarProjetos(self.start + (self.end - self.start) * (indice + .5) / TOTAL_PROJETOS);
+  }
+
+  const rolagemProjetos = ScrollTrigger.create({
     trigger: secao,
 
     start: "top top",
@@ -3552,6 +3576,9 @@ function iniciarProjetosDestaque() {
 
     invalidateOnRefresh: true,
 
+    onEnter: self => entrarProjetos(self, 0),
+    onEnterBack: self => entrarProjetos(self, TOTAL_PROJETOS - 1),
+
     onUpdate(self) {
       const novoIndex = Math.min(
         TOTAL_PROJETOS - 1,
@@ -3561,6 +3588,58 @@ function iniciarProjetosDestaque() {
       ativarProjeto(novoIndex);
     },
   });
+
+  function podeNavegarProjetos(evento) {
+    return rolagemProjetos.isActive &&
+      !document.documentElement.classList.contains("portfolio-preview-open") &&
+      !evento.target.closest?.("#analytics-cookies, dialog, input, textarea, select");
+  }
+
+  function avancarProjeto(direcao) {
+    const destino = projetoAtual + direcao;
+    liberarTrocaEm = performance.now() + 650;
+    if (destino < 0 || destino >= TOTAL_PROJETOS) {
+      posicionarProjetos(destino < 0 ? rolagemProjetos.start - 2 : rolagemProjetos.end + 2);
+      return;
+    }
+    ativarProjeto(destino);
+    posicionarProjetos(rolagemProjetos.start +
+      (rolagemProjetos.end - rolagemProjetos.start) * (destino + .5) / TOTAL_PROJETOS);
+  }
+
+  window.addEventListener("wheel", evento => {
+    if (!podeNavegarProjetos(evento) || evento.ctrlKey ||
+        Math.abs(evento.deltaY) <= Math.abs(evento.deltaX)) return;
+    evento.preventDefault();
+    evento.stopImmediatePropagation();
+    const agora = performance.now();
+    if (agora - ultimaRoda > 180) rodaConsumida = false;
+    ultimaRoda = agora;
+    if (rodaConsumida || agora < liberarTrocaEm) return;
+    rodaConsumida = true;
+    avancarProjeto(Math.sign(evento.deltaY));
+  }, { passive: false, capture: true });
+
+  window.addEventListener("touchstart", evento => {
+    toqueInicial = evento.touches.length === 1
+      ? { x: evento.touches[0].clientX, y: evento.touches[0].clientY } : null;
+    toqueConsumido = false;
+  }, { passive: true, capture: true });
+
+  window.addEventListener("touchmove", evento => {
+    if (!toqueInicial || evento.touches.length !== 1 || !podeNavegarProjetos(evento)) return;
+    const dy = toqueInicial.y - evento.touches[0].clientY;
+    const dx = toqueInicial.x - evento.touches[0].clientX;
+    if (Math.abs(dx) > Math.abs(dy)) return;
+    evento.preventDefault();
+    evento.stopImmediatePropagation();
+    if (toqueConsumido || Math.abs(dy) < 24 || performance.now() < liberarTrocaEm) return;
+    toqueConsumido = true;
+    avancarProjeto(Math.sign(dy));
+  }, { passive: false, capture: true });
+
+  window.addEventListener("touchend", () => { toqueInicial = null; }, { passive: true });
+  window.addEventListener("touchcancel", () => { toqueInicial = null; }, { passive: true });
 
   // A primeira medição global já está agendada junto com as outras dobras.
   agendarRefreshNoQuadro();
