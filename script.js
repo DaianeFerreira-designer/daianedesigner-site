@@ -4998,10 +4998,12 @@ function iniciarOportunidadesPerdidas() {
   const etapas = [...secao.querySelectorAll(".oportunidadesEtapa")];
   const fio = secao.querySelector(".oportunidadesLinha");
   const media = gsap.matchMedia();
-  const medir = () => {
+  const baseIlustracao = () => {
     const largura = window.innerWidth;
-    const base = largura >= 390 && largura <= 767 ? 318 : largura < 768 ? 470 : largura < 1024 ? 636 : 840;
-    const escala = (arte.clientWidth / base).toFixed(6);
+    return largura >= 390 && largura <= 767 ? 318 : largura < 768 ? 470 : largura < 1024 ? 636 : 840;
+  };
+  const medir = () => {
+    const escala = (arte.clientWidth / baseIlustracao()).toFixed(6);
     if (arte.style.getPropertyValue("--escala-oportunidades") !== escala) {
       arte.style.setProperty("--escala-oportunidades", escala);
     }
@@ -5024,7 +5026,7 @@ function iniciarOportunidadesPerdidas() {
   const observador = new ResizeObserver(medir);
   observador.observe(arte);
 
-  media.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
+  media.add("(min-width: 1201px) and (prefers-reduced-motion: no-preference)", () => {
     gsap.fromTo(secao.querySelector(".bg-abertura"),
       { clipPath: "circle(0% at 50% 50%)" },
       {
@@ -5035,6 +5037,23 @@ function iniciarOportunidadesPerdidas() {
           start: "top 75%",
           end: "bottom bottom",
           scrub: 2,
+          invalidateOnRefresh: true,
+        },
+      },
+    );
+  });
+
+  media.add("(min-width: 768px) and (max-width: 1200px) and (prefers-reduced-motion: no-preference)", () => {
+    gsap.fromTo(secao.querySelector(".bg-abertura"),
+      { clipPath: "circle(0% at 50% 0%)" },
+      {
+        clipPath: "circle(150% at 50% 0%)",
+        ease: "none",
+        scrollTrigger: {
+          trigger: secao,
+          start: "top bottom",
+          end: "top bottom-=40",
+          scrub: true,
           invalidateOnRefresh: true,
         },
       },
@@ -5076,27 +5095,45 @@ function iniciarOportunidadesPerdidas() {
     const mobileFigma = celular && window.innerWidth >= 390;
     const vao = mobileFigma ? 123 : celular ? 180 : 252.945;
     const abre = vao * .26;
-    const base = mobileFigma ? 318 : celular ? 470 : window.innerWidth < 1024 ? 636 : 840;
-    const deslocamentoLegenda = () => abre * arte.clientWidth / base;
+    const deslocamentoLegenda = () => abre * arte.clientWidth / baseIlustracao();
     const timeline = gsap.timeline({ defaults: { ease: "none" } });
-    timeline
-      .fromTo(icones[0], { y: vao }, { y: -abre, duration: 1 }, 0)
-      .fromTo(icones[2], { y: -vao }, { y: abre, duration: 1 }, 0)
-      .fromTo(etapas[0], { y: 0 }, { y: () => -deslocamentoLegenda(), duration: 1 }, 0)
-      .fromTo(etapas[2], { y: 0 }, { y: deslocamentoLegenda, duration: 1 }, 0)
-      .fromTo(fio, { opacity: 0 }, { opacity: 1, duration: .5 }, .35);
+    let prepararFechado;
+    if (mobileFigma) {
+      // Parte do centro, como no desktop; cada legenda acompanha seu icone.
+      const centroSemMovimento = elemento => {
+        const caixa = elemento.getBoundingClientRect();
+        return caixa.top + caixa.height / 2 - (Number(gsap.getProperty(elemento, "y")) || 0);
+      };
+      const distanciaCentro = indice => centroSemMovimento(icones[1]) - centroSemMovimento(icones[indice]);
+      prepararFechado = () => {
+        gsap.set([icones[0], etapas[0]], { y: distanciaCentro(0) });
+        gsap.set([icones[2], etapas[2]], { y: distanciaCentro(2) });
+      };
+      prepararFechado();
+      timeline
+        .to([icones[0], etapas[0]], { y: 0, duration: 1 }, 0)
+        .to([icones[2], etapas[2]], { y: 0, duration: 1 }, 0);
+    } else {
+      timeline
+        .fromTo(icones[0], { y: vao }, { y: -abre, duration: 1 }, 0)
+        .fromTo(icones[2], { y: -vao }, { y: abre, duration: 1 }, 0)
+        .fromTo(etapas[0], { y: 0 }, { y: () => -deslocamentoLegenda(), duration: 1 }, 0)
+        .fromTo(etapas[2], { y: 0 }, { y: deslocamentoLegenda, duration: 1 }, 0);
+    }
+    timeline.fromTo(fio, { opacity: 0 }, { opacity: 1, duration: .5 }, .35);
     etapas.forEach((etapa, indice) => {
-      timeline.fromTo(etapa, { opacity: .12 }, { opacity: 1, duration: .3 }, .25 + (indice + 1) * .28);
+      timeline.fromTo(etapa, { opacity: mobileFigma ? 0 : .12 }, { opacity: 1, duration: .3 }, .25 + (indice + 1) * .28);
     });
     ScrollTrigger.create({
       trigger: contexto.conditions.desktop ? secao : arte,
-      start: contexto.conditions.desktop ? () => "top top+=" + parseFloat(getComputedStyle(secao).marginTop) : "top 82%",
+      start: contexto.conditions.desktop ? () => "top top+=" + parseFloat(getComputedStyle(secao).marginTop) : mobileFigma ? "center 82%" : "top 82%",
       end: contexto.conditions.desktop ? "+=85%" : "center 42%",
       pin: !!contexto.conditions.desktop,
       scrub: .6,
       animation: timeline,
       anticipatePin: 1,
       invalidateOnRefresh: true,
+      onRefreshInit: prepararFechado,
       onRefresh: medir,
     });
   });

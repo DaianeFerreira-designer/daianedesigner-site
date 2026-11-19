@@ -12301,6 +12301,9 @@ footer .textoAnimado span .charFooter {
 }
 
 /* Oportunidades apos Projetos: altura pelo conteudo nos layouts do Figma. */
+@media (min-width: 1201px) {
+  #oportunidades-perdidas { height: auto; min-height: 100vh; }
+}
 @media (min-width: 390px) and (max-width: 1200px) {
   #oportunidades-perdidas {
     width: calc(100% - 10rem);
@@ -12345,32 +12348,60 @@ footer .textoAnimado span .charFooter {
   #oportunidades-perdidas .oportunidadesIcone.vendas { left: 2.19375rem; }
 }
 @media (min-width: 390px) and (max-width: 767px) {
-  #oportunidades-perdidas {
+  #oportunidades-perdidas.oportunidadesPerdidas {
     width: calc(100% - 3rem);
     margin: 2.5rem 1.5rem;
-    padding: 2.5rem 1.25rem;
+    padding: 3.5rem 1.25rem;
     border-radius: 1.25rem;
   }
   #oportunidades-perdidas .oportunidadesConteudo { gap: 1.5rem; }
   #oportunidades-perdidas .oportunidadesLegenda {
-    max-width: 17rem;
-    font-size: .75rem;
-    letter-spacing: .1rem;
+    max-width: none;
+    width: 100%;
+    white-space: nowrap;
+    font-size: .75rem !important;
+    letter-spacing: .025rem;
     line-height: 1.0625rem;
-    gap: .75rem;
+    gap: .5rem;
   }
-  #oportunidades-perdidas h2 { font-size: 1.5rem; line-height: 2rem; }
+  #oportunidades-perdidas h2 { font-size: 1.5rem !important; line-height: 2rem; }
   #oportunidades-perdidas h2 br { display: none; }
   #oportunidades-perdidas .oportunidadesDescricao { display: flex; flex-direction: column; gap: .75rem; padding: 0; }
-  #oportunidades-perdidas .oportunidadesBotao { width: 100%; padding-left: 0; gap: .625rem; font-size: 1rem; }
-  #oportunidades-perdidas .oportunidadesBotao > span:first-child { flex: 1; }
-  #oportunidades-perdidas .oportunidadesArte { aspect-ratio: auto; padding-bottom: 3rem; }
-  #oportunidades-perdidas .oportunidadesIlustracao { width: 19.875rem; height: 25.375rem; }
-  #oportunidades-perdidas .oportunidadesLinha { left: 4.792rem; top: 2.96rem; width: auto; height: auto; transform: none; }
-  #oportunidades-perdidas .oportunidadesIcone { display: grid; place-items: center; width: 7.1875rem; height: 7.1875rem; }
-  #oportunidades-perdidas .oportunidadesIcone.demanda { left: 1.25rem; top: -.03rem; }
-  #oportunidades-perdidas .oportunidadesIcone.disputa { left: .98875rem; top: 8.174rem; height: 5.841rem; }
-  #oportunidades-perdidas .oportunidadesIcone.vendas { left: 1.4375rem; top: 15.223rem; }
+  #oportunidades-perdidas .oportunidadesBotao { width: fit-content; max-width: 100%; padding-left: 0; gap: .625rem; font-size: 1rem !important; }
+  #oportunidades-perdidas .oportunidadesBotao > span:first-child { flex: 0 1 auto; }
+  #oportunidades-perdidas .oportunidadesArte {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    column-gap: 1.5rem;
+    row-gap: 2rem;
+    max-width: 19.875rem;
+    aspect-ratio: auto;
+    padding: 0;
+  }
+  #oportunidades-perdidas .oportunidadesIlustracao,
+  #oportunidades-perdidas .oportunidadesEtapas { display: contents; }
+  #oportunidades-perdidas .oportunidadesIlustracao > picture { position: absolute; inset: 0; pointer-events: none; }
+  #oportunidades-perdidas .oportunidadesLinha {
+    left: calc((100% - 1.5rem) / 4);
+    top: 2.5rem;
+    width: auto;
+    height: calc(100% - 5rem);
+    object-fit: fill;
+    transform: none;
+  }
+  #oportunidades-perdidas .oportunidadesIcone {
+    position: relative;
+    grid-column: 1;
+    justify-self: center;
+    display: grid;
+    place-items: center;
+    width: 7.1875rem;
+    height: 7.1875rem;
+  }
+  #oportunidades-perdidas .oportunidadesIcone.demanda { grid-row: 1; left: auto; top: auto; }
+  #oportunidades-perdidas .oportunidadesIcone.disputa { grid-row: 2; left: auto; top: auto; }
+  #oportunidades-perdidas .oportunidadesIcone.vendas { grid-row: 3; left: auto; top: auto; }
   #oportunidades-perdidas .oportunidadesIcone img { width: auto; height: auto; }
   #oportunidades-perdidas .oportunidadesEtapas {
     position: relative;
@@ -12381,7 +12412,22 @@ footer .textoAnimado span .charFooter {
     padding-top: 1.875rem;
     gap: 1rem;
   }
-  #oportunidades-perdidas .oportunidadesEtapa { min-height: 7.5rem; gap: .75rem; }
-  #oportunidades-perdidas .oportunidadesEtapa h3 { max-width: 8ch; font-size: 1rem; line-height: 1.125rem; }
-  #oportunidades-perdidas .oportunidadesEtapa p { font-size: .75rem; line-height: 1.125rem; }
+  #oportunidades-perdidas .oportunidadesEtapa { grid-column: 2; min-height: 0; gap: .75rem; }
+  #oportunidades-perdidas .oportunidadesEtapa:nth-child(1) { grid-row: 1; }
+  #oportunidades-perdidas .oportunidadesEtapa:nth-child(2) { grid-row: 2; }
+  #oportunidades-perdidas .oportunidadesEtapa:nth-child(3) { grid-row: 3; }
+  #oportunidades-perdidas .oportunidadesEtapa h3 { max-width: 8ch; font-size: 1rem !important; line-height: 1.125rem; }
+  #oportunidades-perdidas .oportunidadesEtapa p { font-size: .75rem !important; line-height: 1.125rem; }
+  #oportunidades-perdidas > .continueRolando { position: absolute; left: 50%; bottom: .5rem; margin: 0; transform: translateX(-50%); }
+}
+
+/* Hierarquia de leitura na superficie branca desta secao. */
+#oportunidades-perdidas h2 { color: #222; font-weight: 400; }
+#oportunidades-perdidas h2 strong { color: var(--color-text-dark); }
+#oportunidades-perdidas .oportunidadesDescricao p { color: #737373; }
+#oportunidades-perdidas .oportunidadesDescricao strong { color: #222; }
+@media (hover: hover) and (pointer: fine) {
+  #oportunidades-perdidas .oportunidadesBotao:hover { background: transparent; }
+  #oportunidades-perdidas .oportunidadesBotao:hover > span:first-child { text-decoration: underline; text-underline-offset: .25rem; }
+  #oportunidades-perdidas .oportunidadesBotao:hover .oportunidadesSeta { background: #f0f0f0; }
 }
