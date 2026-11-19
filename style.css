@@ -12367,8 +12367,8 @@ footer .textoAnimado span .charFooter {
   #oportunidades-perdidas h2 { font-size: 1.5rem !important; line-height: 2rem; letter-spacing: -.04em; }
   #oportunidades-perdidas h2 br { display: none; }
   #oportunidades-perdidas .oportunidadesDescricao { display: flex; flex-direction: column; gap: .75rem; padding: 0; }
-  #oportunidades-perdidas .oportunidadesBotao { width: fit-content; max-width: 100%; padding-left: 0; gap: .625rem; font-size: 1rem !important; }
-  #oportunidades-perdidas .oportunidadesBotao > span:first-child { flex: 0 1 auto; }
+  #oportunidades-perdidas .oportunidadesBotao { width: fit-content; max-width: 100%; padding-inline: 0; gap: .5rem; font-size: 1rem !important; letter-spacing: -.01em; }
+  #oportunidades-perdidas .oportunidadesBotao > span:first-child { flex: 0 0 auto; white-space: nowrap; }
   #oportunidades-perdidas .oportunidadesArte {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
