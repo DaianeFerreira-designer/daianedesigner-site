@@ -12364,7 +12364,7 @@ footer .textoAnimado span .charFooter {
     line-height: 1.0625rem;
     gap: .5rem;
   }
-  #oportunidades-perdidas h2 { font-size: 1.5rem !important; line-height: 2rem; }
+  #oportunidades-perdidas h2 { font-size: 1.5rem !important; line-height: 2rem; letter-spacing: -.04em; }
   #oportunidades-perdidas h2 br { display: none; }
   #oportunidades-perdidas .oportunidadesDescricao { display: flex; flex-direction: column; gap: .75rem; padding: 0; }
   #oportunidades-perdidas .oportunidadesBotao { width: fit-content; max-width: 100%; padding-left: 0; gap: .625rem; font-size: 1rem !important; }
