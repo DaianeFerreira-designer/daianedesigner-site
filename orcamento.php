@@ -56,7 +56,7 @@ $orcamentoRequestId = emitirPedidoOrcamento();
           width="42" height="41" />
         <!-- Título -->
         <h1 class="tituloOrcamento">
-          Preencha o formulário ao&nbsp;lado para
+          Preencha o formulário ao&nbsp;lado&nbsp;para
           <span>solicitar seu orçamento!</span>
         </h1>
       </div>
