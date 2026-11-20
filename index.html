@@ -79,7 +79,7 @@
     />
 
     <!-- CSS principal -->
-    <link rel="stylesheet" href="/style.css?v=20261119-44" />
+    <link rel="stylesheet" href="/style.css?v=20261120-2" />
 
     <!-- SEO -->
     <title>Criação de Sites Profissionais e Landing Pages | Daiane Ferreira</title>
@@ -1700,7 +1700,7 @@
               <span><strong>propósito</strong><img src="assets/clique-seta-vendas-google.svg" width="256" height="256" alt=""></span>
               <span><img src="assets/03_orcamento_confirmado%201.svg" width="256" height="256" alt=""><strong>comercial</strong></span>
             </h2>
-            <p>E é exatamente isso que pode estar faltando no seu site: uma estrutura pensada não apenas para receber visitantes, mas para transformá-los em oportunidades de venda.</p>
+            <p>E é exatamente isso que pode estar faltando no seu site:<br class="quebraPropositoMobile"> uma estrutura pensada não apenas para receber visitantes, mas para transformá-los em oportunidades de venda.</p>
             <ul class="vendasPropositoPontos">
               <li>Ele precisa comunicar quem você é,</li>
               <li>o que faz e, principalmente,</li>
@@ -2371,6 +2371,7 @@
         <div class="formsNews">
           <form
             id="formAnaliseLanding"
+            autocomplete="on"
             data-clarity-mask="true"
             class="formAnaliseLanding"
             action="/analise-gratuita/formulario.php"
@@ -2426,7 +2427,7 @@
                   maxlength="80"
                   autocomplete="name"
                   required
-                />
+                  autocapitalize="words" />
               </div>
 
               <!-- EMAIL -->
@@ -2447,7 +2448,10 @@
                   maxlength="150"
                   autocomplete="email"
                   required
-                />
+                  inputmode="email"
+                  autocapitalize="off"
+                  autocorrect="off"
+                  spellcheck="false" />
               </div>
 
               <!-- LANDING PAGE -->
@@ -2469,7 +2473,9 @@
                   inputmode="url"
                   autocomplete="url"
                   required
-                />
+                  autocapitalize="off"
+                  autocorrect="off"
+                  spellcheck="false" />
               </div>
             </div>
 
@@ -2758,7 +2764,7 @@
     <script src="/assets/vendor/ScrollTrigger-3.12.5.min.js"></script>
     <script src="/assets/vendor/SplitText-3.15.1.min.js"></script>
 
-    <script src="/script.js?v=20261119-9"></script>
+    <script src="/script.js?v=20261120-1"></script>
     <script src="/assets/analytics.js?v=20261119-1" defer></script>
     <script>
       (() => {

@@ -4,6 +4,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 // sendo criada na abertura; duração, easing e gatilhos permanecem iguais.
 const preparosVisuais = new Map();
 let observadorPreparos;
+let navegacaoAncoraAtual = null;
 
 function prepararAnimacoesDestino(destino) {
   if (!destino) return;
@@ -210,8 +211,21 @@ function iniciarMenuAncoras() {
       prepararAnimacoesDestino(secao);
       const posicao = Math.max(0, posicaoSecao(secao));
       const reduzir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (window.lenis) window.lenis.scrollTo(posicao, { duration: reduzir ? 0 : 1.4, immediate: reduzir });
-      else window.scrollTo({ top: posicao, behavior: reduzir ? "instant" : "smooth" });
+      const navegacao = { secao };
+      navegacaoAncoraAtual = navegacao;
+      const concluir = () => {
+        if (navegacaoAncoraAtual === navegacao) navegacaoAncoraAtual = null;
+        window.removeEventListener("scrollend", concluir);
+      };
+      // Pins interativos nao devem redirecionar a rolagem iniciada pelo menu.
+      if (window.lenis) window.lenis.scrollTo(posicao, {
+        duration: reduzir ? 0 : 1.4, immediate: reduzir, onComplete: concluir,
+      });
+      else {
+        window.addEventListener("scrollend", concluir, { once: true });
+        window.scrollTo({ top: posicao, behavior: reduzir ? "instant" : "smooth" });
+      }
+      setTimeout(concluir, 2000);
       history.pushState(null, "", link.getAttribute("href"));
     });
   });
@@ -3553,6 +3567,7 @@ function iniciarProjetosDestaque() {
   }
 
   function entrarProjetos(self, indice) {
+    if (navegacaoAncoraAtual && navegacaoAncoraAtual.secao !== secao) return;
     ativarProjeto(indice);
     ultimaRoda = performance.now();
     rodaConsumida = true;
@@ -3591,6 +3606,7 @@ function iniciarProjetosDestaque() {
 
   function podeNavegarProjetos(evento) {
     return rolagemProjetos.isActive &&
+      (!navegacaoAncoraAtual || navegacaoAncoraAtual.secao === secao) &&
       !document.documentElement.classList.contains("portfolio-preview-open") &&
       !evento.target.closest?.("#analytics-cookies, dialog, input, textarea, select");
   }

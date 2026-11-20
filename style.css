@@ -12910,3 +12910,14 @@ footer .textoAnimado span .charFooter {
 @media (min-width: 768px) and (max-width: 1023px) {
   footer .meioFooter > .textoAnimado { width: 100%; text-align: center; }
 }
+
+.quebraPropositoMobile { display: none; }
+@media (max-width: 767px) {
+  .quebraPropositoMobile { display: initial; }
+  #proximo-cliente .vendasEstrategiaTags > .vendasEstrategiaCaminho { white-space: nowrap; gap: .5rem; padding-inline: .5rem; }
+}
+
+/* Campos da home com tamanho legivel ao focar no celular e tablet. */
+@media (max-width: 1200px) {
+  #analise-gratuita .campoAnalise input { font-size: 16px !important; -webkit-text-size-adjust: 100%; }
+}
