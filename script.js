@@ -46,6 +46,7 @@ window.addEventListener('hashchange', prepararAnimacoesHash);
 const preparosPorCicloDeFontes = new WeakMap();
 let refreshNoQuadroAgendado = 0;
 let ordenarNoProximoRefresh = false;
+let preparandoSecoes = false;
 
 ScrollTrigger.addEventListener('refreshInit', () => {
   if (ordenarNoProximoRefresh) { ordenarNoProximoRefresh = false; ScrollTrigger.sort(); }
@@ -59,7 +60,7 @@ function atualizarMedidasScroll() {
 
 function agendarRefreshNoQuadro(ordenar = false) {
   ordenarNoProximoRefresh ||= ordenar;
-  if (refreshNoQuadroAgendado) return;
+  if (preparandoSecoes || refreshNoQuadroAgendado) return;
 
   refreshNoQuadroAgendado = requestAnimationFrame(() => {
     const ordenarGatilhos = ordenarNoProximoRefresh;
@@ -105,34 +106,78 @@ document.addEventListener("DOMContentLoaded", () => {
   iniciarFluidDesktop();
   iniciarLenis();
 
-  iniciarAnimacaoDobra02();
-  iniciarAnimacaoDobra03();
-  iniciarTextosDobraExtra();
-  iniciarBuscaDigitada();
-  iniciarDivisoresAnimados();
-  iniciarSlidersDobra04();
-  prepararAnimacaoProxima(".dobra04", iniciarTextosDobra04);
-  iniciarCarrosselServicos();
-  iniciarTextosDobra06();
-  iniciarIndicadoresScroll();
-  iniciarValorPercebido();
-  iniciarOportunidadesPerdidas();
-  iniciarCarrosselVendas();
-  prepararAnimacaoProxima("#mais-vendas", iniciarVendasBeneficios);
-  iniciarProtocoloCriacao();
-  iniciarContatoScroll();
-  prepararAnimacaoProxima("#sobre-daiane", iniciarAnimacoesSobre);
-  iniciarTransicaoPercepcao();
-  iniciarAnimacaoPilares();
-  iniciarSobreposicaoNewsletter();
-  prepararAnimacaoProxima(".newsletter", iniciarTextosNewsletter);
-  prepararAnimacaoProxima("footer .iconesFooter", animarRedesFooter);
-  prepararAnimacaoProxima("footer .textoAnimado", animarTextosFooter);
-  prepararAnimacaoProxima("footer .textoAnimado2", animarTextoFooter2);
-  iniciarWhatsappFlutuante();
-  iniciarMenuAncoras();
+  prepararSecoes([
+    iniciarAnimacaoDobra02,
+    iniciarAnimacaoDobra03,
+    iniciarTextosDobraExtra,
+    iniciarBuscaDigitada,
+    iniciarDivisoresAnimados,
+    iniciarSlidersDobra04,
+    () => prepararAnimacaoProxima(".dobra04", iniciarTextosDobra04),
+    iniciarCarrosselServicos,
+    iniciarTextosDobra06,
+    iniciarIndicadoresScroll,
+    iniciarValorPercebido,
+    iniciarOportunidadesPerdidas,
+    iniciarCarrosselVendas,
+    () => prepararAnimacaoProxima("#mais-vendas", iniciarVendasBeneficios),
+    iniciarProtocoloCriacao,
+    iniciarContatoScroll,
+    () => prepararAnimacaoProxima("#sobre-daiane", iniciarAnimacoesSobre),
+    iniciarTransicaoPercepcao,
+    iniciarAnimacaoPilares,
+    iniciarSobreposicaoNewsletter,
+    () => prepararAnimacaoProxima(".newsletter", iniciarTextosNewsletter),
+    () => prepararAnimacaoProxima("footer .iconesFooter", animarRedesFooter),
+    () => prepararAnimacaoProxima("footer .textoAnimado", animarTextosFooter),
+    () => prepararAnimacaoProxima("footer .textoAnimado2", animarTextoFooter2),
+    iniciarWhatsappFlutuante,
+    iniciarMenuAncoras,
+    iniciarProjetosDestaque,
+  ]);
 
 });
+
+// Na abertura pelo topo, dê ao navegador a oportunidade de pintar entre os grupos.
+// Uma navegação imediata precisa de todos os pins antes de calcular o destino.
+function prepararSecoes(etapas) {
+  const home = document.querySelector("main .hero");
+  if (!home || location.hash || window.scrollY || history.state ||
+      performance.getEntriesByType("navigation")[0]?.type === "back_forward") {
+    etapas.forEach(iniciar => iniciar());
+    return;
+  }
+
+  preparandoSecoes = true;
+  let indice = 0;
+  const eventos = ["wheel", "touchstart", "pointerdown", "keydown", "click", "scroll", "hashchange"];
+  const opcoes = { capture: true, passive: true };
+  function concluir(evento) {
+    eventos.forEach(tipo => window.removeEventListener(tipo, concluir, true));
+    try {
+      while (indice < etapas.length) etapas[indice++]();
+    } finally {
+      preparandoSecoes = false;
+      if (evento) {
+        ScrollTrigger.sort();
+        atualizarMedidasScroll();
+      } else {
+        agendarRefreshNoQuadro(true);
+      }
+    }
+  }
+  function prepararGrupo() {
+    if (indice >= etapas.length) return;
+    const inicio = performance.now();
+    do {
+      etapas[indice++]();
+    } while (indice < etapas.length && performance.now() - inicio < 12);
+    if (indice === etapas.length) concluir();
+    else setTimeout(prepararGrupo, 0);
+  }
+  eventos.forEach(tipo => window.addEventListener(tipo, concluir, opcoes));
+  prepararGrupo();
+}
 
 function iniciarMenuAncoras() {
   const links = [...document.querySelectorAll(".principal a, .menu-links .nav-link")];
@@ -3661,11 +3706,7 @@ function iniciarProjetosDestaque() {
   agendarRefreshNoQuadro();
 }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", iniciarProjetosDestaque);
-} else {
-  iniciarProjetosDestaque();
-}
+
 
 function iniciarFaq() {
   const faq = document.querySelector(".contato .faq");

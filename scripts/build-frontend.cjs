@@ -55,8 +55,8 @@ critical.walkRules(rule => {
   if (!applies) rule.remove();
 });
 critical.walkAtRules(rule => { if (rule.nodes?.length === 0) rule.remove(); });
-const headStyles = '<style media="' + mobile + '">' + critical.toString() + '</style>' +
-  '<link rel="stylesheet" media="(min-width: 768px)" href="' + styleURL + '">';
+const headStyles = '<link rel="stylesheet" media="(min-width: 768px)" href="' + styleURL + '">' +
+  '<style media="' + mobile + '">' + critical.toString() + '</style>';
 const bodyStyles = '<link rel="stylesheet" media="' + mobile + '" href="' + styleURL + '">';
 const compiled = html.replace(homeCSS, () => headStyles)
   .replace('<!-- DIVISOR ANIMADO HERO', bodyStyles + '\n      <!-- DIVISOR ANIMADO HERO')
