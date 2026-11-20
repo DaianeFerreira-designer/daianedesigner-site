@@ -79,7 +79,7 @@
     />
 
     <!-- CSS principal -->
-    <link rel="stylesheet" href="/style.css?v=20261119-9" />
+    <link rel="stylesheet" href="/style.css?v=20261119-44" />
 
     <!-- SEO -->
     <title>Criação de Sites Profissionais e Landing Pages | Daiane Ferreira</title>
@@ -1651,7 +1651,10 @@
             <article class="vendasDestaque">
               <div class="vendasDestaqueTopo">
                 <div><h3>Seu negócio é encontrado.</h3><p>Uma nova oportunidade começa com uma busca.</p></div>
-                <img src="assets/google-icone-cards.svg" alt="" width="56" height="56">
+                <picture class="vendasGoogle">
+                  <source media="(max-width: 767px)" srcset="assets/google-icone-cards-mobile.svg">
+                  <img src="assets/google-icone-cards.svg" alt="" width="56" height="56">
+                </picture>
               </div>
               <div class="vendasIlustracao" aria-hidden="true">
                 <img src="assets/icone-encontrado-google-negocio.svg" alt="" width="245" height="200">
@@ -1661,7 +1664,10 @@
             <article class="vendasDestaque">
               <div class="vendasDestaqueTopo">
                 <div><h3>O cliente entende a oferta</h3><p>Mostre o que você oferece e por que isso importa.</p></div>
-                <img src="assets/google-icone-cards.svg" alt="" width="56" height="56">
+                <picture class="vendasGoogle">
+                  <source media="(max-width: 767px)" srcset="assets/google-icone-cards-mobile.svg">
+                  <img src="assets/google-icone-cards.svg" alt="" width="56" height="56">
+                </picture>
               </div>
               <div class="vendasIlustracao" aria-hidden="true">
                 <img src="assets/icone-oferta-google.svg" alt="" width="320" height="200">
@@ -1671,7 +1677,10 @@
             <article class="vendasDestaque">
               <div class="vendasDestaqueTopo">
                 <div><h3>O próximo passo fica claro</h3><p>Transforme o interesse em oportunidades de novos orçamentos e vendas.</p></div>
-                <img src="assets/google-icone-cards.svg" alt="" width="56" height="56">
+                <picture class="vendasGoogle">
+                  <source media="(max-width: 767px)" srcset="assets/google-icone-cards-mobile.svg">
+                  <img src="assets/google-icone-cards.svg" alt="" width="56" height="56">
+                </picture>
               </div>
               <div class="vendasIlustracao" aria-hidden="true">
                 <img src="assets/icone-vendas-google-oportunidades.svg" alt="" width="186" height="200">
@@ -1813,7 +1822,7 @@
         <div class="vendasEstrategia">
           <p class="vendasLegenda">Estratégia que gera oportunidades</p>
           <h2 id="estrategia-vendas-titulo">Com um <strong>site profissional,</strong> seus serviços,<br class="quebraEstrategiaDesktop"> diferenciais e projetos ganham</h2>
-          <p class="vendasEstrategiaDescricao">o destaque que merecem, ajudando o visitante a conhecer seu trabalho, confiar na sua empresa e dar o próximo passo.</p>
+          <p class="vendasEstrategiaDescricao"><span>o destaque que merecem, ajudando o</span> <span>visitante a conhecer seu trabalho, confiar</span> <span>na sua empresa e dar o próximo passo.</span></p>
           <ul class="vendasEstrategiaTags" aria-label="Da descoberta às oportunidades de venda">
             <li class="vendasEstrategiaCaminho"><span aria-hidden="true"><img src="assets/icone-button-orcamento.svg" width="17" height="15" alt=""></span>Um caminho claro da descoberta à decisão.</li>
             <li><img src="assets/MAIS-CLIENTES%20-MAIS-VENDAS-GOOGLE.svg" width="26" height="26" alt="">Vendas</li>
@@ -1834,7 +1843,7 @@
         <div class="protocoloCabecalho">
           <div class="protocoloIntroducao">
             <p class="protocoloLegenda"><img src="assets/brilhar-oportunidades.svg" width="34.0736" height="34" alt="">PROTOCOLO DE CRIAÇÃO PROFISSIONAL</p>
-            <h2 id="protocolo-titulo">Seu projeto segue um <strong>processo estruturado,</strong><br class="quebraProtocolo"> do planejamento à publicação.</h2>
+            <h2 id="protocolo-titulo">Seu projeto segue um <strong>processo<br class="quebraProtocoloTablet"> estruturado,</strong><br class="quebraProtocolo"> do planejamento à <span class="protocoloPublicacao">publicação.</span></h2>
           </div>
           <p class="protocoloDescricao">Cada etapa tem um propósito. Você acompanha a evolução do projeto e participa das decisões, do briefing aos ajustes finais.</p>
         </div>
@@ -2281,7 +2290,7 @@
         <div class="percepcaoTopo">
           <span class="sitePercepcao">Seu site</span>
           <h2 id="percepcao-titulo">
-            Não deve ser apenas <span>mais um endereço na internet.</span><br> Ele precisa trabalhar a favor do crescimento da sua empresa.
+            Não deve ser apenas <span>mais um endereço na internet.</span><br class="percepcaoQuebra"><span class="percepcaoCrescimento">Ele precisa trabalhar a favor do crescimento da sua empresa.</span>
           </h2>
         </div>
 
@@ -2362,6 +2371,7 @@
         <div class="formsNews">
           <form
             id="formAnaliseLanding"
+            data-clarity-mask="true"
             class="formAnaliseLanding"
             action="/analise-gratuita/formulario.php"
             method="POST"
@@ -2587,7 +2597,7 @@
 
       <div class="finalFooter">
         <p class="textoAnimado2">
-          Você merece um site profissional que apresenta seus serviços com
+          Você merece um site profissional que apresente sua empresa com
           clareza e <span class="footer-nowrap">autoridade!</span>
         </p>
 
@@ -2748,8 +2758,8 @@
     <script src="/assets/vendor/ScrollTrigger-3.12.5.min.js"></script>
     <script src="/assets/vendor/SplitText-3.15.1.min.js"></script>
 
-    <script src="/script.js?v=20261119-6"></script>
-    <script src="/assets/analytics.js?v=20261118-1" defer></script>
+    <script src="/script.js?v=20261119-9"></script>
+    <script src="/assets/analytics.js?v=20261119-1" defer></script>
     <script>
       (() => {
         const form = document.getElementById("formAnaliseLanding");

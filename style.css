@@ -10380,6 +10380,8 @@ footer .footerCalloutWord { display: inline-block; white-space: nowrap; }
 .vendasDestaque { position: relative; min-width: 0; min-height: 496px; display: grid; grid-template-rows: 1fr auto 1fr; gap: 16px; align-items: start; padding: 48px clamp(16px, 1.36vw, 26px); border-radius: 28px; background: #fff; color: #615c53; font-size: 16px; line-height: 1.5; }
 .vendasDestaqueTopo { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; align-self: start; }
 .vendasDestaqueTopo img { flex: none; }
+.vendasGoogle { display: block; flex: 0 0 56px; }
+.vendasGoogle img { display: block; }
 .vendasDestaque h3 { margin: 0; color: var(--color-dark); font-size: clamp(18px, 1.15vw, 22px); font-weight: 600; line-height: 1.3; letter-spacing: -.015em; }
 .vendasIlustracao { display: grid; place-items: center; min-width: 0; height: 200px; }
 .vendasIlustracao img { display: block; max-width: 100%; height: auto; }
@@ -12430,4 +12432,481 @@ footer .textoAnimado span .charFooter {
   #oportunidades-perdidas .oportunidadesBotao:hover { background: transparent; }
   #oportunidades-perdidas .oportunidadesBotao:hover > span:first-child { text-decoration: underline; text-underline-offset: .25rem; }
   #oportunidades-perdidas .oportunidadesBotao:hover .oportunidadesSeta { background: #f0f0f0; }
+}
+
+/* Mais vendas: layouts de 1024, 768 e mobile; espaçamentos na escala de 8/4. */
+@media (max-width: 1200px) {
+  #mais-vendas.vendasSite { padding: 3.5rem 5rem; }
+  #mais-vendas .vendasLegenda {
+    gap: 1rem;
+    margin: 0 0 2rem;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.5;
+    letter-spacing: .06em;
+  }
+  #mais-vendas #vendas-titulo { font-size: 2rem; line-height: 1.18; }
+  #mais-vendas .vendasAbertura {
+    max-width: 64ch;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -.02em;
+  }
+  #mais-vendas .vendasApoio { gap: 2rem; margin-top: 1.5rem; }
+  #mais-vendas .vendasVirada { align-self: end; font-size: 1.375rem; line-height: 1.5; }
+  #mais-vendas .vendasDestaques {
+    grid-template-columns: minmax(0, 34.6875rem);
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  #mais-vendas .vendasDestaque {
+    min-height: 0;
+    grid-template-rows: auto auto auto;
+    gap: 1rem;
+    padding: 3rem 2rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  #mais-vendas .vendasDestaqueTopo { gap: 1rem; }
+  #mais-vendas .vendasDestaqueTopo > div { min-width: 0; }
+  #mais-vendas .vendasDestaque h3 { font-size: 1.375rem; line-height: 1.3; }
+  #mais-vendas .vendasOrnamento {
+    inset: auto auto -2.5rem max(-1.5rem, calc((100% - 34.6875rem) / 2 - 2.5rem));
+    width: 8rem;
+    height: auto;
+    transform: none;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  #mais-vendas.vendasSite { padding-inline: 2.5rem; }
+  #mais-vendas .vendasApoio { grid-template-columns: 1fr; gap: 2rem; }
+  #mais-vendas .vendasApoio > p:first-child { max-width: 50ch; }
+  #mais-vendas .vendasDestaques { margin-top: 2rem; }
+}
+@media (max-width: 767px) {
+  #mais-vendas.vendasSite { padding: 2.5rem 1.5rem 3.5rem; }
+  #mais-vendas .vendasLegenda { gap: .5rem; letter-spacing: .035em; }
+  #mais-vendas #vendas-titulo { font-size: 1.5rem !important; }
+  #mais-vendas .vendasApoio { grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1rem; }
+  #mais-vendas .vendasVirada { text-align: left; font-size: 1rem; }
+  #mais-vendas .vendasDestaque { padding: 2rem 1.5rem; }
+  #mais-vendas .vendasDestaqueTopo { gap: .5rem; }
+  #mais-vendas .vendasDestaque h3 { font-size: 1.125rem; }
+  #mais-vendas .vendasGoogle { flex-basis: 2rem; }
+  #mais-vendas .vendasGoogle img { width: 2rem; height: 2rem; }
+}
+
+/* Tablet largo: três cards maiores, com o destaque centralizado. */
+@media (min-width: 901px) and (max-width: 1200px) {
+  #site-para-vendas .vendasCarrosselAtivo .vendasCarrosselCard {
+    width: min(35%, 21.375rem);
+    gap: 1rem;
+    padding: 1.5rem 1rem;
+    transform: translate(var(--card-x), var(--card-y)) rotate(var(--card-rotacao));
+  }
+}
+
+/* Propósito comercial no mobile: leitura compacta e carrossel até a borda. */
+@media (max-width: 767px) {
+  #site-para-vendas .vendasPropositoPainel { padding-inline: 1.5rem; }
+  #site-para-vendas .vendasPropositoIntroducao { gap: 1rem; }
+  #site-para-vendas .vendasPropositoIntroducao > p { line-height: 1.5; }
+  #site-para-vendas .vendasPropositoPontos {
+    display: grid;
+    justify-content: center;
+    gap: .5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  #site-para-vendas .vendasPropositoIntroducao .vendasPropositoDestaque {
+    max-width: 26ch;
+    padding: .75rem 1rem;
+    border-radius: .5rem;
+    background: #fff4eb;
+    color: var(--color-dark);
+    font-size: 1.375rem !important;
+    line-height: 1.3;
+  }
+  #site-para-vendas .vendasPropositoRota { margin-block: 3rem 1.5rem; gap: 1rem; }
+  #site-para-vendas .vendasPropositoRota h3 { margin-bottom: 1rem; }
+  #site-para-vendas .vendasCarrossel {
+    width: calc(100% + 3rem);
+    margin-inline: -1.5rem;
+  }
+  #site-para-vendas .vendasCarrosselLista { padding-block: 3rem 1.5rem; }
+  #site-para-vendas .vendasCarrosselAtivo .vendasCarrosselCard {
+    width: min(83%, 21.375rem);
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+  #site-para-vendas .vendasCarrosselControles { gap: 1rem; margin-top: 1rem; padding-inline: 1.5rem; }
+  #site-para-vendas .vendasCarrosselStatus { line-height: 1.5; }
+}
+
+/* Título de destaque maior, preservando a composição em três linhas no mobile. */
+@media (max-width: 767px) {
+  #site-para-vendas .vendasPropositoTitulo {
+    font-size: clamp(2.25rem, 11.5cqw, 3rem) !important;
+  }
+}
+
+/* Restaura o recuo editorial do botão sem quebrar seu texto no mobile. */
+@media (min-width: 390px) and (max-width: 767px) {
+  #oportunidades-perdidas .oportunidadesBotao {
+    padding-left: 1.5rem;
+    max-width: calc(100% + 1.25rem);
+  }
+}
+
+/* Mesmo recuo para os dois blocos de leitura da abertura no mobile. */
+@media (max-width: 767px) {
+  #mais-vendas .vendasAbertura,
+  #mais-vendas .vendasApoio > p:first-child {
+    padding-inline: 1rem;
+  }
+  #mais-vendas .vendasApoio > p:first-child > span { padding-top: 1rem; }
+}
+
+/* Respiro interno dos dois blocos de texto no painel comercial mobile. */
+@media (max-width: 767px) {
+  #site-para-vendas .vendasPropositoIntroducao > p:first-of-type,
+  #site-para-vendas .vendasPropositoPontos {
+    padding: 1rem;
+  }
+}
+
+/* Aproxima as frases e o destaque sem alterar a distância da próxima dobra. */
+@media (max-width: 767px) {
+  #site-para-vendas .vendasPropositoPontos {
+    gap: 0;
+    line-height: 1.25;
+    padding-block: .5rem 0;
+  }
+}
+
+@media (max-width: 767px) {
+  #site-para-vendas .vendasPropositoPontos > li { margin: 0; padding: 0; }
+}
+
+/* Próximo cliente: composição responsiva, preservando bordas, fundo e animações. */
+@media (max-width: 1200px) {
+  #proximo-cliente.vendasFechamento { padding: 3.5rem 5rem; gap: 3.5rem; }
+  #proximo-cliente .vendasEstrategia { gap: 1.5rem; }
+  #proximo-cliente .vendasLegenda { margin: 0; font-size: .875rem; line-height: 1.5; }
+  #proximo-cliente #estrategia-vendas-titulo { max-width: 100%; font-size: 2rem; line-height: 1.18; }
+  #proximo-cliente .vendasEstrategiaDescricao { max-width: 35rem; font-size: 1rem; line-height: 1.6; }
+  #proximo-cliente .vendasEstrategiaTags { gap: 1rem; margin-top: .5rem; }
+  #proximo-cliente .vendasEstrategiaTags li { padding: .75rem 1rem; }
+  #proximo-cliente .vendasEstrategiaCaminho { flex: 0 1 27.5rem; }
+  #proximo-cliente .vendasConvite {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: 3.5rem;
+    height: auto;
+    min-height: 0;
+    padding: 4rem 2.5rem;
+  }
+  #proximo-cliente .vendasConvite h3 {
+    width: 100%;
+    max-width: 32rem;
+    min-width: 0;
+    align-items: center;
+    text-align: center;
+    gap: .5rem;
+    font-size: 1.375rem;
+    line-height: 1.35;
+  }
+  #proximo-cliente .vendasConvite .cta { justify-self: center; max-width: 100%; }
+  #proximo-cliente .vendasEstrategiaMensagem { max-width: 40rem; font-size: 1.375rem; line-height: 1.35; }
+  #proximo-cliente .vendasEstrategiaDivisor { width: 100%; gap: .5rem; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  #proximo-cliente.vendasFechamento { padding-inline: 2.5rem; gap: 3rem; }
+  #proximo-cliente .vendasEstrategiaDescricao { max-width: 31.5rem; }
+  #proximo-cliente .vendasEstrategiaMensagem { max-width: 34rem; }
+}
+@media (max-width: 767px) {
+  #proximo-cliente.vendasFechamento { padding: 2.5rem 1.5rem; gap: 2.5rem; }
+  #proximo-cliente .vendasLegenda {
+    max-width: 100%;
+    white-space: nowrap;
+    font-size: .875rem !important;
+    line-height: 1.5;
+    letter-spacing: .12em;
+  }
+  #proximo-cliente #estrategia-vendas-titulo { font-size: 1.5rem !important; }
+  #proximo-cliente .vendasEstrategiaDescricao { max-width: 100%; }
+  #proximo-cliente .vendasEstrategiaCaminho { flex-basis: 100%; min-height: 4rem; }
+  #proximo-cliente .vendasEstrategiaTags li { font-size: .875rem; gap: .75rem; padding-inline: .75rem; }
+  #proximo-cliente .vendasConvite { padding: 3.5rem 1.5rem 3rem; border-radius: 1.125rem; }
+  #proximo-cliente .vendasConviteChamada { max-width: 20ch; }
+  #proximo-cliente .vendasConvite .vendasConviteDescricao { font-size: 1rem !important; }
+  #proximo-cliente .vendasConvite .cta { justify-self: center; width: max-content; gap: .75rem; padding-inline: 1rem; letter-spacing: 0; }
+  #proximo-cliente .vendasEstrategiaMensagem { font-size: 1.125rem !important; line-height: 1.44; }
+}
+
+@media (max-width: 767px) {
+  #proximo-cliente .vendasEstrategiaTags > li:not(.vendasEstrategiaCaminho) { flex: 1 1 auto; }
+  #proximo-cliente .vendasEstrategiaDescricao { max-width: 21.375rem; font-weight: 400; }
+  #proximo-cliente .vendasEstrategiaDescricao > span { display: block; }
+}
+
+/* Protocolo: responsividade das fases, com os detalhes e o movimento existentes. */
+.quebraProtocoloTablet { display: none; }
+@media (max-width: 1200px) {
+  #protocolo-criacao.protocoloCriacao { padding: 3.5rem 5rem; gap: 3.5rem; justify-content: flex-start; }
+  #protocolo-criacao .protocoloCabecalho { gap: 3.5rem; }
+  #protocolo-criacao .protocoloIntroducao { gap: 1.5rem; }
+  #protocolo-criacao .protocoloLegenda { font-size: 1rem; line-height: 1.4; gap: 1rem; }
+  #protocolo-criacao #protocolo-titulo { font-size: 2rem; line-height: 1.18; }
+  #protocolo-criacao .protocoloDescricao { font-size: 1rem; line-height: 1.6; }
+  #protocolo-criacao .quebraProtocolo { display: none; }
+  #protocolo-criacao .protocoloDetalhes { gap: .5rem; }
+  #protocolo-criacao .protocoloEtapa h3 { font-size: .875rem; line-height: 1.3; }
+  #protocolo-criacao .protocoloEtapa p { font-size: .75rem; line-height: 1.5; }
+}
+@media (min-width: 1024px) and (max-width: 1200px) {
+  #protocolo-criacao .protocoloCabecalho { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+  #protocolo-criacao .protocoloDetalhes { width: 100%; margin-left: -50%; }
+  #protocolo-criacao .quebraProtocoloTablet { display: initial; }
+  #protocolo-criacao .protocoloPublicacao { display: block; }
+}
+@media (max-width: 1023px) {
+  #protocolo-criacao.protocoloCriacao {
+    --largura-fase: min(18.75rem, calc(100vw - 4.5rem));
+    padding-inline: 2.5rem;
+    gap: 3rem;
+  }
+  #protocolo-criacao .protocoloCabecalho { grid-template-columns: 1fr; align-items: start; gap: 2rem; }
+  #protocolo-criacao .protocoloLegenda { font-size: .6875rem; }
+  #protocolo-criacao #protocolo-titulo { max-width: none; font-size: 2.375rem; }
+  #protocolo-criacao .protocoloDescricao { max-width: 60ch; }
+  #protocolo-criacao .protocoloJanela { overflow: hidden; }
+  #protocolo-criacao .protocoloLinhaTempo { width: calc(var(--largura-fase) * 6); height: 16.25rem; }
+  #protocolo-criacao .protocoloLista { grid-template-columns: repeat(6, var(--largura-fase)); }
+  #protocolo-criacao .protocoloTrilho { top: 3rem; left: calc(var(--largura-fase) / 2); right: calc(var(--largura-fase) / 2); }
+  #protocolo-criacao .protocoloMarca { top: 3rem; }
+  #protocolo-criacao .protocoloEtapa:nth-child(n) .protocoloDetalhes {
+    top: 6rem;
+    bottom: auto;
+    width: calc(100% - 2rem);
+    max-width: none;
+    margin-left: calc((100% - 2rem) / -2);
+    gap: .5rem;
+  }
+  #protocolo-criacao .protocoloEtapa h3 { min-height: 0; font-size: 1.25rem; }
+  #protocolo-criacao .protocoloEtapa p { min-height: 0; font-size: .9375rem; max-width: 28ch; }
+  #protocolo-criacao .protocoloNumero { font-size: .75rem; }
+  #protocolo-criacao .protocoloContagem { display: none; }
+}
+@media (max-width: 767px) {
+  #protocolo-criacao.protocoloCriacao { padding: 2.5rem 1.5rem; gap: 2rem; }
+  #protocolo-criacao .protocoloIntroducao { align-items: center; }
+  #protocolo-criacao .protocoloLegenda {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    font-size: .875rem !important;
+    text-align: center;
+  }
+  #protocolo-criacao #protocolo-titulo { font-size: 1.375rem !important; text-align: center; }
+  #protocolo-criacao .protocoloDescricao { text-align: center; }
+}
+@media (max-width: 1023px) and (prefers-reduced-motion: reduce) {
+  #protocolo-criacao .protocoloJanela { overflow: visible; }
+  #protocolo-criacao .protocoloLinhaTempo { width: 100%; height: auto; }
+  #protocolo-criacao .protocoloLista { grid-template-columns: 1fr; height: auto; gap: 2rem; }
+  #protocolo-criacao .protocoloEtapa { min-height: 8rem; }
+  #protocolo-criacao .protocoloTrilho { display: none; }
+  #protocolo-criacao .protocoloMarca { left: 2.625rem; }
+  #protocolo-criacao .protocoloEtapa:nth-child(n) .protocoloDetalhes {
+    position: relative;
+    left: 6rem;
+    top: 0;
+    width: calc(100% - 6rem);
+    margin: 0;
+    align-items: flex-start;
+    text-align: left;
+  }
+  #protocolo-criacao .protocoloEtapa h3 { justify-content: flex-start; }
+  #protocolo-criacao > .continueRolando { position: relative; inset: auto; transform: none; }
+}
+
+/* Em 1024, leitura empilhada como no tablet, com os recuos aprovados no mobile. */
+@media (min-width: 1024px) and (max-width: 1200px) {
+  #mais-vendas .vendasApoio { grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1rem; }
+  #mais-vendas .vendasAbertura,
+  #mais-vendas .vendasApoio > p:first-child { padding-inline: 1rem; }
+  #mais-vendas .vendasApoio > p:first-child { max-width: 50ch; }
+  #mais-vendas .vendasApoio > p:first-child > span { padding-top: 1rem; }
+}
+
+/* Centraliza o conjunto do protocolo nos tablets com tela mais alta. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  #protocolo-criacao.protocoloCriacao { justify-content: center; }
+}
+
+/* Carrossel de benefícios no tablet: recorte junto às bordas do painel branco. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  #site-para-vendas .vendasCarrossel { width: calc(100% + 12.5vw); margin-inline: -6.25vw; }
+  #site-para-vendas .vendasCarrosselControles { padding-inline: 6.25vw; }
+}
+
+/* Projetos no tablet: imagem acima e informações abaixo, como no mobile. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  #portfolio .projetosDestaqueCorpo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+  }
+  #portfolio .projetosDestaqueEsquerda { max-width: 30rem; }
+  #portfolio .projetosDestaqueMidia { width: min(100%, 30rem, calc(max(8rem, 100svh - 40.625rem) * 16 / 9)); }
+  #portfolio .projetosDestaqueIndicadores { margin-top: 1rem; gap: 1rem; }
+  #portfolio .projetosDestaqueDireita { width: 100%; max-width: 35rem; flex-shrink: 0; }
+  #portfolio .projetoConteudoSlide { left: 0; right: 0; }
+}
+
+/* Em 768, os mesmos recuos e espaços entre parágrafos da abertura. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  #mais-vendas .vendasAbertura,
+  #mais-vendas .vendasApoio > p:first-child { padding-inline: 1rem; }
+  #mais-vendas .vendasApoio { margin-top: 1rem; gap: 1.5rem; }
+  #mais-vendas .vendasApoio > p:first-child > span { padding-top: 1rem; }
+}
+
+/* Recuo dos canais de contato no mobile. */
+@media (max-width: 767px) {
+  #contato .infoContatos { padding-left: 1.5rem; }
+}
+
+/* Sobre mim no tablet: texto e foto em áreas próprias, sem sobreposição. */
+@media (min-width: 768px) and (max-width: 1200px) {
+  #sobre-daiane .daianeFerreira {
+    --recuo-foto-sobre: 2.5rem;
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    align-items: end;
+    gap: 2rem;
+    height: auto;
+    padding: 2.5rem 2.5rem 3.5rem;
+  }
+  #sobre-daiane .sobreMim { display: contents; }
+  #sobre-daiane .sobreTopo { grid-column: 1 / -1; min-width: 0; gap: 2rem; }
+  #sobre-daiane .sobreParte p { width: 100%; max-width: 100%; }
+  #sobre-daiane .meioSobre { grid-column: 1; grid-row: 2; flex-direction: column; align-items: flex-start; gap: 2rem; min-width: 0; }
+  #sobre-daiane .sobreBottom {
+    flex: none;
+    width: 100%;
+    max-width: 21.875rem;
+    height: auto;
+    padding: 1rem;
+    gap: .5rem;
+  }
+  #sobre-daiane .sobreParte2 { flex: none; width: 100%; max-width: 100%; padding-bottom: 2rem; }
+  #sobre-daiane .fotoDaianeFerreira {
+    grid-column: 2;
+    grid-row: 2;
+    position: relative;
+    inset: auto;
+    align-self: end;
+    width: calc(100% + var(--recuo-foto-sobre) + 1.5rem);
+    max-width: none;
+    margin: 0 0 -5rem;
+  }
+  #sobre-daiane .fotoDaianeFerreira > img { display: block; width: 100%; height: auto; transform: none; }
+  #sobre-daiane .faixaAnimada { left: 0; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  #sobre-daiane .daianeFerreira { --recuo-foto-sobre: 2rem; padding-inline: 2rem; }
+  #sobre-daiane .citacao { width: max-content; max-width: none; }
+  #sobre-daiane .citacao p { white-space: nowrap; }
+}
+@media (min-width: 1024px) and (max-width: 1200px) {
+  #sobre-daiane .fotoDaianeFerreira { margin-bottom: -6rem; }
+}
+
+/* Percepcao: mesma hierarquia, com leitura livre no mobile. */
+#site-crescimento #percepcao-titulo .percepcaoCrescimento { font: inherit; color: inherit; }
+@media (min-width: 768px) and (max-width: 1200px) {
+  #site-crescimento {
+    height: auto;
+    min-height: 100svh;
+    padding: 3.5rem 12vw;
+    gap: 3.5rem;
+  }
+  #site-crescimento .percepcaoTopo { top: 0; gap: 1rem; }
+  #site-crescimento #percepcao-titulo { font-size: 2rem; line-height: 1.18; }
+  #site-crescimento .sitePercepcao { font-size: 1rem; line-height: 1.5; padding: .5rem 3.5rem; }
+  #site-crescimento .percepcaoBottom { gap: 2rem; }
+  #site-crescimento .percepcaoBottom > p { width: auto; flex: 1; gap: 1.5rem; font-size: 1rem; line-height: 1.5; }
+  #site-crescimento .percepcaoConvite { gap: .5rem; }
+  #site-crescimento .percepcaoConvite > strong { font-size: 1.5rem; line-height: 1.3; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  #site-crescimento { padding-inline: 2.5rem; gap: 2rem; }
+  #site-crescimento #percepcao-titulo { font-size: 1.5rem; line-height: 1.33; }
+  #site-crescimento .percepcaoBottom { flex-direction: column; align-items: flex-start; }
+  #site-crescimento .percepcaoBottom > p { order: 0; flex: none; width: 100%; }
+  #site-crescimento .percepcaoBottom > .cta { order: 1; }
+}
+@media (max-width: 767px) {
+  #site-crescimento { height: auto; min-height: 0; padding: 2.5rem 1.5rem; gap: 1rem; }
+  #site-crescimento .percepcaoTopo { top: 0; gap: 1rem; }
+  #site-crescimento .sitePercepcao { padding: .5rem 1.25rem; font-size: .75rem; line-height: 1.5; }
+  #site-crescimento #percepcao-titulo { font-size: 1.5rem !important; line-height: 1.33; }
+  #site-crescimento .percepcaoQuebra { display: none; }
+  #site-crescimento #percepcao-titulo .percepcaoCrescimento { display: block; margin-top: 1rem; }
+  #site-crescimento .percepcaoBottom { gap: 2rem; }
+  #site-crescimento .percepcaoBottom > p { font-size: 1rem; line-height: 1.5; gap: 1rem; }
+  #site-crescimento .percepcaoConvite { gap: .5rem; }
+  #site-crescimento .percepcaoConvite > strong { font-size: 1rem; line-height: 1.5; }
+  #site-crescimento .percepcaoBottom > .cta { height: 3.5rem; padding-inline: 1rem; font-size: 1.125rem; }
+  #site-crescimento > .continueRolando,
+  #site-crescimento .percepcaoExitFragments { display: none; }
+  #pilares-criacao { margin-top: 0; }
+}
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  #pilares-criacao { height: auto; min-height: 0; padding: 3.5rem 1.5rem; gap: 2rem; }
+  #pilares-criacao h2 { position: relative; inset: auto; margin: 0; }
+}
+
+/* Tamanhos dos textos da analise gratuita no mobile. */
+@media (max-width: 767px) {
+  #analise-gratuita .privacidadeAnalise { font-size: .875rem !important; }
+  #analise-gratuita .analisenewsletter > p { font-size: 1rem !important; }
+}
+
+@media (max-width: 767px) {
+  footer .finalFooter > .textoAnimado2 { text-align: center; margin-inline: auto; }
+}
+
+@media (min-width: 1024px) and (max-width: 1200px) {
+  footer .finalFooter { grid-template-columns: 1fr; justify-items: center; }
+  footer .finalFooter > .textoAnimado2 { text-align: center; margin-inline: auto; }
+  footer .finalFooter > .botoesFooter { justify-content: center; }
+}
+
+@media (max-width: 767px) {
+  footer .finalFooter > .textoAnimado2 { max-width: 24rem; text-wrap: balance; }
+}
+
+@media (max-width: 429px) {
+  footer .finalFooter > .textoAnimado2 { font-size: .875rem !important; }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  footer .finalFooter { grid-template-columns: 1fr; justify-items: center; }
+  footer .finalFooter > .textoAnimado2 { text-align: center; margin-inline: auto; }
+  footer .finalFooter > .botoesFooter { justify-content: center; }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  footer .meioFooter > .textoAnimado { width: 100%; text-align: center; }
 }

@@ -87,7 +87,7 @@ $homeScriptVersion = $homeScript[1];
   <link rel="stylesheet" href="/style.css?v=<?= htmlspecialchars($homeCssVersion, ENT_QUOTES, 'UTF-8') ?>">
 
   <?php if (!empty($isBudgetPage)): ?>
-    <link rel="stylesheet" href="/orcamento.css?v=6">
+    <link rel="stylesheet" href="/orcamento.css?v=9">
   <?php endif; ?>
 
   <!-- CSS do campo de telefone sem bloquear a renderização -->

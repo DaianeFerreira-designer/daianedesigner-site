@@ -3688,6 +3688,12 @@ function iniciarTransicaoPercepcao() {
   if (!secao) return;
 
 
+  gsap.matchMedia().add({
+    mobile: "(max-width: 767px)",
+    amplo: "(min-width: 768px)",
+    reduzir: "(prefers-reduced-motion: reduce)",
+  }, contexto => {
+  const { mobile } = contexto.conditions;
   const conteudo = gsap.utils.toArray(
     secao.querySelectorAll(
       ".percepcaoTopo, .percepcaoBottom"
@@ -3752,7 +3758,7 @@ function iniciarTransicaoPercepcao() {
           filter: "blur(12px)", autoAlpha: 0, x: 16, scale: .94,
           duration: .8, stagger: { amount: .65 }, delay: .25 + indice * .16,
           ease: "power2.out",
-          scrollTrigger: { trigger: secao, start: "top 65%", toggleActions: "play none none reset" },
+          scrollTrigger: { trigger: mobile ? elemento : secao, start: mobile ? "top 85%" : "top 65%", toggleActions: "play none none reset" },
         });
       },
     }));
@@ -3768,6 +3774,8 @@ function iniciarTransicaoPercepcao() {
   });
 
   });
+
+  if (mobile) return;
 
   const animacaoScroll = gsap.timeline({
     paused: true,
@@ -3865,7 +3873,7 @@ function iniciarTransicaoPercepcao() {
   ScrollTrigger.create({
     trigger: secao,
 
-    start: "top top",
+    start: () => secao.offsetHeight > window.innerHeight ? "bottom bottom" : "top top",
 
     end: () =>
       "+=" +
@@ -3882,6 +3890,7 @@ function iniciarTransicaoPercepcao() {
 
     invalidateOnRefresh: true,
   });
+  });
 }
 
 // Animação dos textos Seção 13
@@ -3892,6 +3901,17 @@ function iniciarAnimacaoPilares() {
   if (!dobra13) return;
 
 
+  gsap.matchMedia().add({
+    mobile: "(max-width: 767px)",
+    amplo: "(min-width: 768px)",
+    reduzir: "(prefers-reduced-motion: reduce)",
+  }, contexto => {
+  const { mobile, reduzir } = contexto.conditions;
+  const divisoes = [];
+  if (reduzir && mobile) {
+    gsap.set(dobra13.querySelectorAll("h2"), { autoAlpha: 1 });
+    return;
+  }
   const pilares = gsap.timeline({
     scrollTrigger: {
       id: "pilares",
@@ -3946,14 +3966,19 @@ function iniciarAnimacaoPilares() {
     );
 
 
-  textosDobra13.forEach((pilar) => {
+  textosDobra13.forEach((pilar, indice) => {
     const split1 = new SplitText(pilar, {
       type: "chars",
     });
 
 
+    divisoes.push(split1);
     split1.chars.forEach(el => gsap.getProperty(el, "x"));
-    pilares.from(split1.chars, {
+    if (mobile && indice === 0) {
+      // The first word is already visible while this section enters from below.
+      gsap.set(split1.chars, { opacity: 1 });
+      pilares.to({}, { duration: 3 });
+    } else pilares.from(split1.chars, {
       opacity: 0,
 
       stagger: {
@@ -3976,6 +4001,11 @@ function iniciarAnimacaoPilares() {
 
       "=+2",
     );
+  });
+  return () => {
+    dobra13.classList.remove("dobra13AguardandoNewsletter");
+    divisoes.forEach(divisao => divisao.revert());
+  };
   });
 }
 
@@ -4450,11 +4480,6 @@ function iniciarSobreposicaoNewsletter() {
   if (!dobra13 || !newsletter) return;
 
 
-  const triggerPilares =
-    ScrollTrigger.getById("pilares");
-
-
-  if (!triggerPilares) return;
 
 
   /*
@@ -4484,7 +4509,7 @@ function iniciarSobreposicaoNewsletter() {
     */
     onEnter: () => {
       if (
-        triggerPilares.progress >= 0.999
+        ScrollTrigger.getById("pilares")?.progress >= 0.999
       ) {
         dobra13.classList.add(
           "dobra13AguardandoNewsletter"
@@ -4514,7 +4539,7 @@ function iniciarSobreposicaoNewsletter() {
     */
     onEnterBack: () => {
       if (
-        triggerPilares.progress >= 0.999
+        ScrollTrigger.getById("pilares")?.progress >= 0.999
       ) {
         dobra13.classList.add(
           "dobra13AguardandoNewsletter"
@@ -5160,7 +5185,7 @@ function iniciarProtocoloCriacao() {
     contagem.textContent = String(indice + 1).padStart(2, "0");
   }
   marcarFase(0);
-  media.add({ compacto: "(max-width: 900px)", desktop: "(min-width: 901px)", calmo: "(prefers-reduced-motion: reduce)" }, contexto => {
+  media.add({ compacto: "(max-width: 1023px)", desktop: "(min-width: 1024px)", calmo: "(prefers-reduced-motion: reduce)" }, contexto => {
     const compacto = contexto.conditions.compacto;
     if (contexto.conditions.calmo) {
       gsap.set(progresso, { scaleX: 1 });
@@ -5347,6 +5372,7 @@ function iniciarCarrosselVendas() {
   const cards = [...carrossel.querySelectorAll(".vendasCarrosselCard")];
   const controles = carrossel.querySelector(".vendasCarrosselControles");
   const status = carrossel.querySelector(".vendasCarrosselStatus");
+  const tresCards = window.matchMedia("(min-width: 901px) and (max-width: 1200px)");
   let ativo = 2;
 
   function atualizar() {
@@ -5359,7 +5385,7 @@ function iniciarCarrosselVendas() {
       card.style.setProperty("--card-y", posicao === 0 ? "-32px" : posicao % 2 ? "12px" : "-6px");
       card.style.setProperty("--card-rotacao", posicao === 0 ? "0deg" : posicao % 2 ? "2.5deg" : "-2.5deg");
       card.style.zIndex = String(cards.length - Math.abs(posicao));
-      card.setAttribute("aria-hidden", String(posicao < -2 || posicao > 1));
+      card.setAttribute("aria-hidden", String(posicao < (tresCards.matches ? -1 : -2) || posicao > 1));
       if (posicao === 0) card.setAttribute("aria-current", "true");
       else card.removeAttribute("aria-current");
     });
@@ -5380,6 +5406,7 @@ function iniciarCarrosselVendas() {
     navegar(evento.key === "ArrowLeft" ? -1 : 1);
   });
 
+  tresCards.addEventListener("change", atualizar);
   atualizar();
   carrossel.classList.add("vendasCarrosselAtivo");
   controles.hidden = false;

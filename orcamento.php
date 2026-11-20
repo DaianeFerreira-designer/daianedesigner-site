@@ -1,6 +1,7 @@
 <?php
 
-session_start();
+require_once __DIR__ . '/api/seguranca-orcamento.php';
+iniciarSessaoOrcamento();
 
 if (empty($_SESSION['csrf_token'])) {
   $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
@@ -11,7 +12,7 @@ $description = "Formulário para solicitar orçamento";
 $url = "https://daianedesigner.com.br/orcamento";
 $robots = "noindex, nofollow";
 $isBudgetPage = true;
-$orcamentoRequestId = bin2hex(random_bytes(16));
+$orcamentoRequestId = emitirPedidoOrcamento();
 
 ?>
 
@@ -55,7 +56,7 @@ $orcamentoRequestId = bin2hex(random_bytes(16));
           width="42" height="41" />
         <!-- Título -->
         <h1 class="tituloOrcamento">
-          Preencha o formulário ao lado para
+          Preencha o formulário ao&nbsp;lado para
           <span>solicitar seu orçamento!</span>
         </h1>
       </div>
@@ -101,7 +102,7 @@ $orcamentoRequestId = bin2hex(random_bytes(16));
       </div>
     </div>
 
-    <div class="formsConteudo">
+    <div class="formsConteudo" data-clarity-mask="true">
       <form
         id="formsOrcamento"
         method="post"
@@ -115,7 +116,6 @@ $orcamentoRequestId = bin2hex(random_bytes(16));
 
         <input type="hidden" name="request_id" value="<?= $orcamentoRequestId ?>">
         <input type="hidden" name="stage" id="stage" value="draft" />
-        <input type="hidden" name="draft_id" id="draft_id" value="" />
 
         <!-- Honeypot ( bot) -->
         <div class="hp-trap" aria-hidden="true">
@@ -156,7 +156,7 @@ $orcamentoRequestId = bin2hex(random_bytes(16));
                 id="phone"
                 name="whatsapp"
                 class="field-input"
-                placeholder="Digite seu número de WhatsApp"
+                placeholder="Seu WhatsApp"
                 autocomplete="tel"
                 required
                 aria-required="true"
@@ -762,8 +762,8 @@ $orcamentoRequestId = bin2hex(random_bytes(16));
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/js/intlTelInput.min.js"></script>
 <script src="/script.js?v=<?= htmlspecialchars($homeScriptVersion, ENT_QUOTES, 'UTF-8') ?>"></script>
-<script src="/assets/analytics.js?v=20261118-1" defer></script>
-<script src="/main.js?v=11" defer></script>
+<script src="/assets/analytics.js?v=20261119-1" defer></script>
+<script src="/main.js?v=12" defer></script>
 </body>
 
 </html>

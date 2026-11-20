@@ -9,13 +9,34 @@
   const disableKey = 'ga-disable-' + id;
   let consent;
   let tagLoaded = false;
+  const clarityId = 'zgcofz2ds1';
+  let clarityLoaded = false;
+  let clarityStopped = false;
   try {
     consent = localStorage.getItem(storageKey);
   } catch {
     consent = null;
   }
 
+  function enableClarity() {
+    window.clarity = window.clarity || function () {
+      (window.clarity.q = window.clarity.q || []).push(arguments);
+    };
+    if (clarityStopped) {
+      window.clarity('start', { projectId: clarityId });
+      clarityStopped = false;
+    }
+    window.clarity('consentv2', { analytics_Storage: 'granted', ad_Storage: 'denied' });
+    if (clarityLoaded) return;
+    clarityLoaded = true;
+    const tag = document.createElement('script');
+    tag.async = true;
+    tag.src = 'https://www.clarity.ms/tag/' + clarityId;
+    document.head.append(tag);
+  }
+
   function enableAnalytics() {
+    enableClarity();
     window[disableKey] = false;
     if (tagLoaded) return;
 
@@ -55,7 +76,12 @@
 
     window[disableKey] = true;
     if (tagLoaded) window.gtag('consent', 'update', { analytics_storage: 'denied' });
-    for (const name of ['_ga', '_ga_' + id.slice(2)]) {
+    if (clarityLoaded) {
+      window.clarity('consentv2', { analytics_Storage: 'denied', ad_Storage: 'denied' });
+      window.clarity('stop');
+      clarityStopped = true;
+    }
+    for (const name of ['_ga', '_ga_' + id.slice(2), '_clck', '_clsk']) {
       document.cookie = name + '=; Max-Age=0; Path=/; Secure';
       document.cookie = name + '=; Max-Age=0; Path=/; Domain=daianedesigner.com.br; Secure';
     }
@@ -156,7 +182,7 @@
     + '<span class="cookies-descricao">Mantêm os formulários protegidos e guardam sua escolha sobre cookies.</span></div>'
     + '<div class="cookies-categoria"><label class="cookies-opcao" for="cookies-analise"><strong>Medição</strong>'
     + '<input type="checkbox" id="cookies-analise" aria-describedby="cookies-medicao-descricao"></label>'
-    + '<span class="cookies-descricao" id="cookies-medicao-descricao">O Google Analytics ajuda a entender as visitas, os cliques e os pedidos enviados. Não recebe o conteúdo digitado nos formulários.</span></div>'
+    + '<span class="cookies-descricao" id="cookies-medicao-descricao">O Google Analytics mede visitas, cliques e pedidos enviados. O Microsoft Clarity ajuda a entender a navegação com mapas de calor e gravações de sessão, com os dados dos formulários mascarados.</span></div>'
     + '<span class="cookies-descricao cookies-nota">Veja os detalhes na <a href="/politica-de-cookies" target="_blank" rel="noopener noreferrer">Política de Cookies</a> e na '
     + '<a href="/politica-de-privacidade" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>.</span>'
     + '<div class="cookies-acoes"><button type="button" data-consent="rejected">Recusar tudo</button>'

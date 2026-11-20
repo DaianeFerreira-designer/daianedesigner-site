@@ -477,10 +477,6 @@ async function enviarEtapa(stageValue, btnId, errorId) {
       return false;
     }
 
-    if (data.draft_id) {
-      document.getElementById('draft_id').value = data.draft_id;
-    }
-
     return true;
 
   } catch (error) {

@@ -9,6 +9,7 @@ ini_set('display_errors', '0');
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 header('X-Content-Type-Options: nosniff');
+require_once dirname(__DIR__) . '/api/seguranca-orcamento.php';
 
 function responder(int $status, array $dados): never
 {
@@ -83,7 +84,7 @@ function conectarBancoAnalise(): PDO
         "mysql:host=$host;port=$porta;dbname=$banco;charset=utf8mb4",
         $usuario,
         getenv('DB_PASSWORD') ?: '',
-        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_EMULATE_PREPARES => false]
     );
 }
 
@@ -174,6 +175,10 @@ if (!in_array($metodo, ['GET', 'POST'], true)) {
 
 if ((int) ($_SERVER['CONTENT_LENGTH'] ?? 0) > 16384) {
     responder(413, ['message' => 'Os dados enviados excedem o tamanho permitido.']);
+}
+
+if (!validarOrigemFormulario()) {
+    responder(403, ['message' => 'Envio nao autorizado.']);
 }
 
 try {

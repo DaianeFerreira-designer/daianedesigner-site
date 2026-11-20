@@ -1,6 +1,7 @@
 <?php
 
-session_start();
+require_once __DIR__ . '/seguranca-orcamento.php';
+iniciarSessaoOrcamento();
 
 ini_set('display_errors', '0');
 header('Content-Type: application/json; charset=utf-8');
@@ -10,8 +11,6 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require_once __DIR__ . '/../vendor/autoload.php';
-
-require_once __DIR__ . '/seguranca-orcamento.php';
 
 $emailConfig = [
     'host' => getenv('SMTP_HOST'),
@@ -25,9 +24,17 @@ $emailConfig = [
 ];
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Allow: POST');
     http_response_code(405);
     echo json_encode(['success' => false, 'message' => 'Método inválido.']);
     exit;
+}
+
+if ((int) ($_SERVER['CONTENT_LENGTH'] ?? 0) > 65536) {
+    responderOrcamento(413, 'Os dados enviados excedem o tamanho permitido.');
+}
+if (!validarOrigemFormulario()) {
+    responderOrcamento(403, 'Envio nao autorizado.');
 }
 
 if (
@@ -62,17 +69,25 @@ if (!is_string($requestId) || !preg_match('/\A[a-f0-9]{32}\z/', $requestId) || !
 // A sessão permanece bloqueada durante a gravação e o aviso, serializando repetições.
 $_SESSION['orcamentos'] ??= [];
 $rascunhos = &$_SESSION['orcamentos'];
-$rascunhoExistente = $rascunhos[$requestId] ?? null;
-if (($draftId !== '' && ($rascunhoExistente['id'] ?? null) !== $draftId)
-    || ($stage !== 'rascunho' && ($draftId === '' || $rascunhoExistente === null))) {
-    responderOrcamento(403, 'Este rascunho não pertence à sessão atual.');
+$pedido = $rascunhos[$requestId] ?? null;
+if ($pedido === null || ($pedido['expira'] ?? 0) <= time()) {
+    responderOrcamento(403, 'A sessao do orcamento expirou. Atualize a pagina.');
+}
+$rascunhoExistente = isset($pedido['id']) ? $pedido : null;
+// O ID da linha vem apenas da sessao. Um campo legado nunca escolhe outro registro.
+if ($draftId !== '' && ($pedido['id'] ?? null) !== $draftId) {
+    responderOrcamento(403, 'Este rascunho nao pertence a sessao atual.');
+}
+$draftId = $pedido['id'] ?? '';
+if ($stage !== 'rascunho' && $draftId === '') {
+    responderOrcamento(403, 'Salve os dados de contato antes de continuar.');
 }
 if (($rascunhoExistente['etapa'] ?? '') === 'confirmado') {
     if ($stage !== 'confirmado') {
         responderOrcamento(409, 'Este orçamento já foi confirmado.');
     }
     if (!empty($rascunhoExistente['avisos']['confirmado'])) {
-        responderOrcamento(200, 'Orçamento confirmado.', $draftId);
+        responderOrcamento(200, 'Orçamento confirmado.');
     }
 }
 if ($stage === 'confirmado' && !in_array($rascunhoExistente['etapa'], ['projeto_enviado', 'confirmado'], true)) {
@@ -80,11 +95,11 @@ if ($stage === 'confirmado' && !in_array($rascunhoExistente['etapa'], ['projeto_
 }
 
 $tipoProjetoRecebido = $_POST['tipo_projeto'] ?? [];
-if (is_array($tipoProjetoRecebido) && count(array_filter($tipoProjetoRecebido, 'is_string')) !== count($tipoProjetoRecebido)) {
+if (!is_array($tipoProjetoRecebido) || count(array_filter($tipoProjetoRecebido, 'is_string')) !== count($tipoProjetoRecebido)) {
     responderOrcamento(422, 'Confira os dados enviados.');
 }
 foreach (['nome', 'whatsapp', 'email', 'empresaOpcional', 'presenca_site', 'site_link', 'outro_projeto',
-    'investimento_estimado', 'prazo_inicio', 'insta', 'observacao'] as $campo) {
+    'investimento_estimado', 'prazo_inicio', 'insta', 'observacao', 'aceitePrivacidade', 'newsletterOptIn'] as $campo) {
     if (isset($_POST[$campo]) && !is_string($_POST[$campo])) {
         responderOrcamento(422, 'Confira os dados enviados.');
     }
@@ -94,8 +109,8 @@ $nome = trim($_POST['nome'] ?? '');
 $whatsapp = trim($_POST['whatsapp'] ?? '');
 $email = trim($_POST['email'] ?? '');
 $empresa = trim($_POST['empresaOpcional'] ?? '');
-$aceitePrivacidade = isset($_POST['aceitePrivacidade']) ? 1 : 0;
-$newsletterOptIn = isset($_POST['newsletterOptIn']) ? 1 : 0;
+$aceitePrivacidade = in_array($_POST['aceitePrivacidade'] ?? '', ['1', 'on'], true) ? 1 : 0;
+$newsletterOptIn = in_array($_POST['newsletterOptIn'] ?? '', ['1', 'on'], true) ? 1 : 0;
 
 $presencaSite = trim($_POST['presenca_site'] ?? '');
 $siteLink = trim($_POST['site_link'] ?? '');
@@ -152,7 +167,9 @@ function emailValido($email) {
 }
 
 function tamanhoValido($valor, $max) {
-    return mb_strlen(trim((string)$valor), 'UTF-8') <= $max;
+    $texto = trim((string)$valor);
+    if (!preg_match('//u', $texto)) return false;
+    return function_exists('mb_strlen') ? mb_strlen($texto, 'UTF-8') <= $max : strlen($texto) <= $max;
 }
 
 function enviarEmail($emailConfig, $assunto, $corpoHtml) {
@@ -166,6 +183,7 @@ function enviarEmail($emailConfig, $assunto, $corpoHtml) {
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     $mail->Port = $emailConfig['port'];
     $mail->CharSet = 'UTF-8';
+    $mail->Timeout = 12;
 
     $mail->setFrom($emailConfig['from_email'], $emailConfig['from_name']);
     $mail->addAddress($emailConfig['to_email'], $emailConfig['to_name']);
@@ -201,6 +219,9 @@ if (
     exit;
 }
 
+validarCamposOrcamento($stage, $nome, $whatsapp, $email, $aceitePrivacidade, $presencaSite,
+    $siteLink, $tipoProjetoArray, $outroProjeto, $investimentoEstimado, $prazoInicio);
+
 try {
     if ($stage === 'rascunho') {
         if ($nome === '' || $whatsapp === '' || $email === '' || !$aceitePrivacidade || !emailValido($email)) {
@@ -212,6 +233,11 @@ try {
         }
     }
 
+    if (!permitirNovoRascunho(hash('sha256', session_id()), 60)) {
+        header('Retry-After: 600');
+        responderOrcamento(429, 'Muitas tentativas. Aguarde alguns minutos.');
+    }
+
     $pdo = new PDO(
         "mysql:host=" . getenv('DB_HOST') . ";port=" . getenv('DB_PORT') . ";dbname=" . getenv('DB_DATABASE') . ";charset=utf8mb4",
         getenv('DB_USERNAME'),
@@ -219,17 +245,9 @@ try {
         [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
         ]
     );
-
-    $colunaNewsletter = $pdo->query("SHOW COLUMNS FROM orcamentos LIKE 'newsletter_opt_in'");
-    if (!$colunaNewsletter->fetch()) {
-        $pdo->exec(
-            "ALTER TABLE orcamentos
-             ADD COLUMN newsletter_opt_in TINYINT(1) NOT NULL DEFAULT 0
-             AFTER aceite_privacidade"
-        );
-    }
 
     if ($stage === 'rascunho') {
         $dadosContato = [
@@ -261,7 +279,7 @@ try {
             )";
             $pdo->prepare($sql)->execute($dadosContato);
             $draftId = $pdo->lastInsertId();
-            $rascunhos[$requestId] = ['id' => $draftId, 'etapa' => 'rascunho', 'avisos' => []];
+            $rascunhos[$requestId] = ['id' => $draftId, 'etapa' => 'rascunho', 'avisos' => [], 'expira' => $pedido['expira']];
         } else {
             $draftId = $rascunhoExistente['id'];
             $sql = "UPDATE orcamentos SET nome = :nome, whatsapp = :whatsapp, email = :email,

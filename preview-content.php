@@ -23,8 +23,8 @@ $projects = [
         'https://portfolio.daianeferreira.com.br/trafegoturbo/',
 ];
 
-$project = isset($_GET['project'])
-    ? trim((string) $_GET['project'])
+$project = is_string($_GET['project'] ?? null)
+    ? trim($_GET['project'])
     : '';
 
 if (!isset($projects[$project])) {
