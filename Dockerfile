@@ -1,7 +1,7 @@
 FROM node:22-alpine AS frontend
 
 WORKDIR /build
-RUN npm install --no-audit --no-fund --no-save esbuild@0.25.12 lenis@1.1.18
+RUN npm install --no-audit --no-fund --no-save esbuild@0.25.12 lenis@1.1.18 postcss@8.5.25
 COPY index.html style.css script.js ./
 COPY scripts/build-frontend.cjs ./
 RUN node build-frontend.cjs

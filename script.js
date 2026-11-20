@@ -16,7 +16,7 @@ function prepararAnimacoesDestino(destino) {
 function prepararAnimacaoProxima(seletor, preparar) {
   const elemento = typeof seletor === 'string' ? document.querySelector(seletor) : seletor;
   if (!elemento) return;
-  if (!('IntersectionObserver' in window) || window.innerWidth <= 1024) {
+  if (!('IntersectionObserver' in window) || (window.innerWidth >= 768 && window.innerWidth <= 1024)) {
     preparar();
     return;
   }
