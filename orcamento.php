@@ -107,7 +107,7 @@ $orcamentoRequestId = emitirPedidoOrcamento();
         id="formsOrcamento"
         method="post"
         novalidate=""
-        autocomplete="off">
+        autocomplete="on">
         <!-- Cross-Site Request Forgery -->
         <input
           type="hidden"
@@ -143,7 +143,8 @@ $orcamentoRequestId = emitirPedidoOrcamento();
               spellcheck="false"
               required
               aria-required="true"
-              aria-describedby="nomeErr" />
+              aria-describedby="nomeErr"
+              autocapitalize="words" />
             <span class="fieldError" id="nomeErr" role="alert"></span>
           </div>
 
@@ -160,7 +161,8 @@ $orcamentoRequestId = emitirPedidoOrcamento();
                 autocomplete="tel"
                 required
                 aria-required="true"
-                aria-describedby="phoneErr" />
+                aria-describedby="phoneErr"
+                inputmode="tel" />
             </div>
             <span class="fieldError" id="phoneErr" role="alert"></span>
           </div>
@@ -177,7 +179,11 @@ $orcamentoRequestId = emitirPedidoOrcamento();
               autocomplete="email"
               required
               aria-required="true"
-              aria-describedby="emailErr" />
+              aria-describedby="emailErr"
+              inputmode="email"
+              autocapitalize="off"
+              autocorrect="off"
+              spellcheck="false" />
             <span class="fieldError" id="emailErr" role="alert"></span>
           </div>
 
@@ -193,7 +199,8 @@ $orcamentoRequestId = emitirPedidoOrcamento();
               class="field-input"
               placeholder="Nome da empresa / marca (se tiver)"
               maxlength="500"
-              aria-describedby="empresaErr" />
+              aria-describedby="empresaErr"
+              autocomplete="organization" />
             <span class="fieldError" id="empresaErr" role="alert"></span>
           </div>
 
@@ -207,7 +214,8 @@ $orcamentoRequestId = emitirPedidoOrcamento();
                 value="1"
                 required
                 aria-required="true"
-                aria-describedby="privErr" />
+                aria-describedby="privErr"
+                autocomplete="off" />
               <span class="checkUI" aria-hidden="true"></span>
 
               <span class="fieldLabel aceiteText">
@@ -231,7 +239,8 @@ $orcamentoRequestId = emitirPedidoOrcamento();
                 type="checkbox"
                 id="newsletterOptIn"
                 name="newsletterOptIn"
-                value="1" />
+                value="1"
+                autocomplete="off" />
               <span class="checkUI" aria-hidden="true"></span>
 
               <span class="fieldLabel aceiteText">
@@ -314,7 +323,10 @@ $orcamentoRequestId = emitirPedidoOrcamento();
               placeholder="https://seusite.com.br"
               autocomplete="url"
               inputmode="url"
-              aria-describedby="siteLinkErr" />
+              aria-describedby="siteLinkErr"
+              autocapitalize="off"
+              autocorrect="off"
+              spellcheck="false" />
             <span class="fieldError" id="siteLinkErr" role="alert"></span>
           </div>
 
@@ -573,7 +585,11 @@ $orcamentoRequestId = emitirPedidoOrcamento();
               maxlength="100"
               required
               aria-required="true"
-              aria-describedby="instaErr" />
+              aria-describedby="instaErr"
+              autocomplete="on"
+              autocapitalize="off"
+              autocorrect="off"
+              spellcheck="false" />
             <span class="fieldError" id="instaErr" role="alert"></span>
           </div>
 
@@ -763,7 +779,7 @@ $orcamentoRequestId = emitirPedidoOrcamento();
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/js/intlTelInput.min.js"></script>
 <script src="/script.js?v=<?= htmlspecialchars($homeScriptVersion, ENT_QUOTES, 'UTF-8') ?>"></script>
 <script src="/assets/analytics.js?v=20261119-1" defer></script>
-<script src="/main.js?v=12" defer></script>
+<script src="/main.js?v=13" defer></script>
 </body>
 
 </html>

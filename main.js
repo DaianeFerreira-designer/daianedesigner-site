@@ -135,16 +135,25 @@ function initTextFields() {
    
   ];
 
-  map.forEach(({ id, key, min }) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.addEventListener('input', () => {
+  const sincronizarPreenchimento = () => {
+    map.forEach(({ id, key, min }) => {
+      const el = document.getElementById(id);
+      if (!el) return;
       el.value.trim().length >= min
         ? filled.add(key)
         : filled.delete(key);
-      updateProgress();
     });
+    updateProgress();
+  };
+  map.forEach(({ id }) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('input', sincronizarPreenchimento);
+    el.addEventListener('change', sincronizarPreenchimento);
   });
+  window.addEventListener('pageshow', sincronizarPreenchimento);
+  form.addEventListener('focusin', () => requestAnimationFrame(sincronizarPreenchimento));
+  requestAnimationFrame(sincronizarPreenchimento);
 }
 
 function initChoiceFields() {
